@@ -1,0 +1,1 @@
+export { ZekeLogoIcon } from "./ZekeLogoIcon";
