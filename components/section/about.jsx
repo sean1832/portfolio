@@ -1,6 +1,5 @@
 import React from "react";
 import profile from "@/data/profile.json";
-import Image from "next/image";
 import { buttonVariants } from "../ui/buttons/button";
 import { GitHubLogoIcon, InstagramLogoIcon } from "@radix-ui/react-icons";
 import { IoLogoYoutube } from "react-icons/io5";
@@ -12,19 +11,20 @@ const About = () => {
     <div id="about">
       <section className="flex flex-col justify-center items-center h-screen w-full">
         <div className=" grid grid-cols-1 md:grid-cols-2 items-center gap-4">
-          <div className="max-w-2xl w-full px-4 text-center">
+          <div className="max-w-2xl w-full flex justify-center">
             <BlurImage
               src={profile.image.src}
               alt={profile.image.alt}
               style={{ width: "auto", objectFit: "cover", objectPosition: "bottom" }}
               className="rounded-xl"
-              width={500}
-              height={500}
+              width={400}
+              height={350}
             />
           </div>
-          <div className="max-w-2xl w-full px-4 text-center">
+          <div className="max-w-2xl w-full px-4 flex flex-col gap-3">
+            <h2 className="text-4xl font-bold">ZEKE ZHANG</h2>
             <p>{profile.about}</p>
-            <div className="py-4 gap-9 flex justify-center">
+            <div className="py-4 gap-9 flex justify-left">
               <Link href={profile.social.github} className={buttonVariants({ variant: "ghost" })}>
                 <GitHubLogoIcon />
               </Link>
