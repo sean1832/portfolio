@@ -17,14 +17,7 @@ const AboutReveal = () => {
   };
   return (
     <div className=" grid grid-cols-1 md:grid-cols-2 items-center gap-4">
-      <motion.div
-        className="max-w-2xl w-full flex justify-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        variants={variants}
-      >
+      <div className="max-w-2xl w-full flex justify-center">
         <Image
           src={profileImage}
           alt={profile.image.alt}
@@ -34,7 +27,7 @@ const AboutReveal = () => {
           width={400}
           height={350}
         />
-      </motion.div>
+      </div>
       <motion.div
         className="max-w-2xl w-full px-4 flex flex-col gap-3"
         initial="hidden"
