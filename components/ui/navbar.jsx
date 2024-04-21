@@ -9,7 +9,7 @@ import Link from "next/link";
 const NavBar = () => {
   return (
     <nav className="flex fixed z-20 ">
-      <div className="fixed w-full backdrop-blur-lg dark:backdrop-brightness-75 backdrop-brightness-150">
+      <div className="fixed w-full backdrop-blur-lg dark:backdrop-brightness-75">
         <div className="max-w-[2300px] m-auto">
           <div className="flex items-center justify-between px-10 py-3">
             <div className="flex items-center">
@@ -23,7 +23,7 @@ const NavBar = () => {
                 <Link
                   key={i}
                   href={item.url}
-                  className="text-m font-medium transition-colors dark:hover:text-primary dark:text-muted-foreground hover:text-primary text-gray-600"
+                  className="text-m font-medium transition-colors dark:hover:text-primary dark:text-muted-foreground hover:text-gray-500 dark:text-gray-300 text-primary"
                 >
                   {item.title}
                 </Link>
