@@ -4,7 +4,8 @@
     "type": "Design Studio",
     "hero": {
       "src": "/projects/sharaClarke/main.webp",
-      "alt": "Shara Clarke Aboriginal Cultural & Education Centre"
+      "alt": "Shara Clarke Aboriginal Cultural & Education Centre",
+      "sizes": "(min-width: 780px) calc(60vw - 80px), calc(100vw - 112px)"
     },
     "video": {
       "src": "https://www.youtube.com/watch?v=q15wEzLeKXw",
@@ -17,9 +18,7 @@
       "name": "Framlingham, VIC, Australia",
       "url": "https://maps.app.goo.gl/4EWqHdEW1ScD4eFs8"
     },
-    "group": [
-      "Chukang Liang"
-    ],
+    "group": ["Chukang Liang"],
     "awards": [
       {
         "name": "ARM ARCHITECTURE PRIZE",
@@ -59,7 +58,8 @@
     "type": "International Competition",
     "hero": {
       "src": "/projects/modular/main.webp",
-      "alt": "Modular: Natural - Build"
+      "alt": "Modular: Natural - Build",
+      "sizes": "(min-width: 780px) calc(70vw - 80px), calc(100vw - 112px)"
     },
     "year": "2022",
     "description": "Low-tech, bamboo-based modular housing system in Senegal",
@@ -84,7 +84,8 @@
     "type": "Design Studio / Research",
     "hero": {
       "src": "/projects/aiDune/main.webp",
-      "alt": "AI Dune"
+      "alt": "AI Dune",
+      "sizes": "(min-width: 780px) calc(66.67vw - 91px), calc(100vw - 112px)"
     },
     "year": "2024",
     "description": "AI-accelerated resilient habitat in desert regions",
@@ -102,10 +103,7 @@
         "url": "https://www.alisaandrasek.com/"
       }
     ],
-    "group": [
-      "Luyao Jiang",
-      "Kang Liu"
-    ],
+    "group": ["Luyao Jiang", "Kang Liu"],
     "publications": [
       {
         "name": "Synthetic Dunescape | ISSUU",
@@ -119,7 +117,8 @@
     "type": "Design Studio",
     "hero": {
       "src": "/projects/jakartaRising/main.webp",
-      "alt": "Jakarta Rising"
+      "alt": "Jakarta Rising",
+      "sizes": "(min-width: 780px) calc(40vw - 69px), calc(100vw - 112px)"
     },
     "video": {
       "src": "https://youtu.be/ov6RFqihmLQ?si=2mxnwuXAEf_vBYYy",
@@ -142,22 +141,19 @@
       "name": "North Jakarta, Indonesia",
       "url": "https://maps.app.goo.gl/T46wS3aJhsVf5ymQ9"
     },
-    "group": [
-      "JingChen Lin",
-      "Yao Xiao",
-      "Jacqueline Pionan"
-    ],
+    "group": ["JingChen Lin", "Yao Xiao", "Jacqueline Pionan"],
     "bentoAttributes": {
       "className": "md:col-span-2",
       "href": "/jakarta-rising"
     }
   },
   {
-    "name": "Terra//Form",
+    "name": "Terra // Form",
     "type": "Design Studio",
     "hero": {
       "src": "/projects/terraForm/main.webp",
-      "alt": "Terra//Form"
+      "alt": "Terra//Form",
+      "sizes": "(min-width: 780px) calc(40vw - 69px), calc(100vw - 112px)"
     },
     "video": {
       "src": "https://www.youtube.com/watch?v=ffDNh79mnEE",
@@ -180,9 +176,7 @@
       "name": "North Dharavi, Mumbai, India",
       "url": "https://maps.app.goo.gl/pW9E2d3oCLjm7sFX9"
     },
-    "group": [
-      "Eu Yeo"
-    ],
+    "group": ["Eu Yeo"],
     "awards": [
       {
         "name": "Shortlisted Master of Architectural Design Awards for Excellence | 2021 Semester 2 | RMIT University",
@@ -199,7 +193,8 @@
     "type": "Research Assistanship",
     "hero": {
       "src": "/projects/mongrelAssembly/main.webp",
-      "alt": "Mongrel Assembly"
+      "alt": "Mongrel Assembly",
+      "sizes": "(min-width: 780px) calc(66.67vw - 91px), calc(100vw - 112px)"
     },
     "tutors": [
       {
