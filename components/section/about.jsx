@@ -14,8 +14,7 @@ const About = () => {
           <Image
             src={profile.image.src}
             alt={profile.image.alt}
-            objectFit="cover"
-            objectPosition="bottom"
+            style={{ width: "auto", objectFit: "cover", objectPosition: "bottom" }}
             className="rounded-xl "
             width={500}
             height={500}

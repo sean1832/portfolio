@@ -4,7 +4,8 @@ import projects from "@/data/projects.json";
 import Image from "next/image";
 import Link from "next/link";
 
-const Projects = () => {
+const Projects = async () => {
+  const images = await addBlurredDataUrls(images);
   return (
     <section>
       <BentoGrid className={`auto-rows-[50rem] md:auto-rows-[50rem] md:grid-cols-6`}>
@@ -16,7 +17,8 @@ const Projects = () => {
             header={
               <ImageHeader
                 src={project.hero.src}
-                alt={project.name}
+                alt={project.hero.alt}
+                sizes={project.hero.sizes}
                 href={project.bentoAttributes.href}
               />
             }
@@ -28,7 +30,7 @@ const Projects = () => {
   );
 };
 
-const ImageHeader = ({ src, alt, href }) => (
+const ImageHeader = ({ src, alt, href, sizes, blurDataUrl }) => (
   <Link
     className="relative w-full h-full dark:opacity-80 dark:hover:opacity-100 transition duration-200"
     href={href}
@@ -36,10 +38,13 @@ const ImageHeader = ({ src, alt, href }) => (
     <Image
       src={src}
       alt={alt}
-      layout="fill"
-      objectFit="cover"
-      objectPosition="bottom"
+      fill
+      sizes={sizes}
+      style={{ objectFit: "cover", objectPosition: "bottom" }}
       className="rounded-xl"
+      loading="lazy"
+      placeholder="blur"
+      blurDataURL={blurDataUrl}
     />
   </Link>
 );
