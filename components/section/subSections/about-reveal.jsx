@@ -21,7 +21,6 @@ const AboutReveal = () => {
           alt={profile.image.alt}
           style={{ width: "auto", objectFit: "cover", objectPosition: "bottom" }}
           className="rounded-xl"
-          placeholder="blur"
           width={400}
           height={350}
         />
