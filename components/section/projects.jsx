@@ -6,26 +6,28 @@ import BlurImage from "../ui/blur";
 
 const Projects = async () => {
   return (
-    <section>
-      <BentoGrid className={`auto-rows-[50rem] md:auto-rows-[50rem] md:grid-cols-6`}>
-        {projects.map((project, i) => (
-          <BentoGridItem
-            key={i}
-            title={project.name}
-            description={project.description}
-            header={
-              <ImageHeader
-                src={project.hero.src}
-                alt={project.hero.alt}
-                sizes={project.hero.sizes}
-                href={project.bentoAttributes.href}
-              />
-            }
-            className={`${project.bentoAttributes.className} uppercase`}
-          />
-        ))}
-      </BentoGrid>
-    </section>
+    <div id="projects">
+      <section>
+        <BentoGrid className={`auto-rows-[50rem] md:auto-rows-[50rem] md:grid-cols-6`}>
+          {projects.map((project, i) => (
+            <BentoGridItem
+              key={i}
+              title={project.name}
+              description={project.description}
+              header={
+                <ImageHeader
+                  src={project.hero.src}
+                  alt={project.hero.alt}
+                  sizes={project.hero.sizes}
+                  href={project.bentoAttributes.href}
+                />
+              }
+              className={`${project.bentoAttributes.className} uppercase`}
+            />
+          ))}
+        </BentoGrid>
+      </section>
+    </div>
   );
 };
 
