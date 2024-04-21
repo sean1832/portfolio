@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import profile from "@/data/profile.json";
 import { buttonVariants } from "@/components/ui/buttons/button";
