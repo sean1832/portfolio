@@ -59,7 +59,7 @@
     "hero": {
       "src": "/projects/modular/main.webp",
       "alt": "Modular: Natural - Build",
-      "sizes": "(min-width: 780px) calc(70vw - 80px), calc(100vw - 112px)"
+      "sizes": "(min-width: 780px) calc(70vw - 80px), calc(100vw - 20px)"
     },
     "year": "2022",
     "description": "Low-tech, bamboo-based modular housing system in Senegal",

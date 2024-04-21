@@ -8,7 +8,7 @@ const Projects = async () => {
   return (
     <div id="projects">
       <section>
-        <BentoGrid className={`auto-rows-[50rem] md:auto-rows-[50rem] md:grid-cols-6`}>
+        <BentoGrid className={`auto-rows-[30rem] md:auto-rows-[50rem] md:grid-cols-6`}>
           {projects.map((project, i) => (
             <BentoGridItem
               key={i}
