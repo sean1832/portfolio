@@ -7,6 +7,12 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Zeke Zhang",
   description: "Portfolio of Zeke Zhang",
+  icons: {
+    icon: ["/favicon.ico?v=4"],
+    apple: ["/apple-touch-icon.png?v=4"],
+    shortcut: ["/apple-touch-icon.png"],
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({ children }) {
