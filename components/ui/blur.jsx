@@ -15,6 +15,7 @@ const BlurImage = async (image) => {
         sizes={image.sizes}
         style={image.style}
         className={image.className}
+        loading="lazy"
         placeholder="blur"
         blurDataURL={base64}
         width={image.width}
