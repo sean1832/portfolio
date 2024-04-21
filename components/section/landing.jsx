@@ -13,7 +13,7 @@ const Landing = () => {
   return (
     <section className="flex flex-col h-screen items-center justify-center">
       <div className="text-4xl sm:text-6xl m:text-6xl lg:text-6xl font-bold text-center flex flex-col gap-0">
-        <TextDecode text="INTELEGENT SYNTHESIS" interval={50} />
+        <TextDecode text="INTELLIGENT SYNTHESIS" interval={50} />
       </div>
       <TextDecodeCycle
         texts={[
