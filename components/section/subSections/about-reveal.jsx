@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import profile from "@/data/profile.json";
 import { buttonVariants } from "@/components/ui/buttons/button";
@@ -5,10 +6,18 @@ import { GitHubLogoIcon, InstagramLogoIcon } from "@radix-ui/react-icons";
 import { IoLogoYoutube } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
+import { RevealList } from "next-reveal";
 
 const AboutReveal = () => {
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-2 items-center gap-4">
+    <RevealList
+      className=" grid grid-cols-1 md:grid-cols-2 items-center gap-4"
+      origin="bottom"
+      opacity={0}
+      delay={200}
+      interval={300}
+      duration={1500}
+    >
       <div className="max-w-2xl w-full flex justify-center">
         <Image
           src={profile.image.src}
@@ -46,7 +55,7 @@ const AboutReveal = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </RevealList>
   );
 };
 
