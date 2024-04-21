@@ -12,6 +12,8 @@ export const metadata = {
     apple: ["/apple-touch-icon.png?v=4"],
     shortcut: ["/apple-touch-icon.png"],
   },
+  keywords: ["RMIT Architecture", "Low-tech assembly craft", "Autonomos Material Reconstruction"],
+  creator: "Zeke Zhang",
   manifest: "/site.webmanifest",
 };
 
