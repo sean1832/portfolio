@@ -19,7 +19,7 @@ My personal portfolio website built with Next.js and Tailwind CSS. The website s
 To run the project locally, clone the repository and run the following commands:
 
 ```bash
-npm install
+npm install .
 npm run dev
 ```
 
@@ -28,8 +28,8 @@ npm run dev
 - [x] Responsive design
 - [x] Server-side rendering
 - [x] Dark mode
-- [ ] Open graph meta tags
-- [ ] SEO optimization
+- [x] Open graph meta
+- [x] SEO optimization
 - [ ] Detailed project pages
 - [ ] Blog section
 - [ ] Resume download
