@@ -42,7 +42,7 @@ const ImageHeader = ({ src, alt, href, sizes }) => (
       fill
       sizes={sizes}
       style={{ objectFit: "cover", objectPosition: "bottom" }}
-      className="rounded-xl"
+      className="rounded-xl dark:hover:scale-[1.02] transition duration-500"
     />
   </Link>
 );

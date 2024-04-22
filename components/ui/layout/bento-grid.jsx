@@ -1,21 +1,29 @@
 import { cn } from "@/utils/cn";
+import RevealListClient from "@/components/ui/reveal-list-client";
 
 export const BentoGrid = ({ className, children }) => {
   return (
-    <div className={cn("grid md:auto-rows-[18rem] grid-cols-1 md:grid-cols-3 gap-4 ", className)}>
+    <RevealListClient
+      origin="bottom"
+      opacity={0}
+      delay={100}
+      interval={0}
+      duration={1000}
+      className={cn("grid md:auto-rows-[18rem] grid-cols-1 md:grid-cols-3 gap-4 ", className)}
+    >
       {children}
-    </div>
+    </RevealListClient>
   );
 };
 
 export const BentoGridItem = ({ className, title, description, header, icon }) => {
   return (
     <div
-      className={`row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:border-white/[0.2] border-transparent justify-between flex flex-col space-y-4 ${className}`}
+      className={`row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-500 shadow-input dark:shadow-none p-4 dark:border-white/[0.2] border-transparent justify-between flex flex-col space-y-4 ${className}`}
     >
       {header}
 
-      <div className="group-hover/bento:translate-x-2 transition duration-200">
+      <div className="group-hover/bento:translate-x-2 transition duration-500">
         {icon}
         <div className="font-sans font-bold mb-2 mt-2">{title}</div>
         <div className="font-sans font-normal text-xs text-gray-600 dark:text-gray-300">
