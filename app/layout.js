@@ -5,7 +5,11 @@ import { ThemeProvider } from "@/components/ui/theme/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Intelligent Synthesis | Zeke Zhang",
+  metadataBase: new URL("https://zekezhang.com"),
+  title: {
+    default: "Zeke Zhang",
+    template: "Zeke Zhang | %s",
+  },
   description:
     "Melbourne based designer and researcher specializing machine learning, algorithmic design, and low-tech assembly craft in architecture.",
   icons: {
@@ -14,7 +18,7 @@ export const metadata = {
     shortcut: ["/apple-touch-icon.png"],
   },
   keywords: [
-    "RMIT Architecture",
+    "Architecture",
     "Low-tech assembly craft",
     "Autonomos Material Reconstruction",
     "machine learning",
@@ -23,6 +27,19 @@ export const metadata = {
   ],
   creator: "Zeke Zhang",
   manifest: "/site.webmanifest",
+  authors: [{ name: "Zeke Zhang" }],
+  openGraph: {
+    title: {
+      default: "Zeke Zhang | Intelligent Synthesis",
+      template: "Zeke Zhang | %s",
+    },
+    description:
+      "Melbourne based designer and researcher specializing machine learning, algorithmic design, and low-tech assembly craft in architecture.",
+    type: "website",
+    locale: "en_US",
+    url: "https://zekezhang.com",
+    siteName: "Zeke Zhang",
+  },
 };
 
 export default function RootLayout({ children }) {
