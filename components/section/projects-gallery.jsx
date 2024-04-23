@@ -4,7 +4,7 @@ import projects from "@/data/projects.json";
 import Link from "next/link";
 import BlurImage from "../ui/blur";
 
-const Projects = async () => {
+const ProjectsGallery = async () => {
   return (
     <div id="projects">
       <section>
@@ -47,4 +47,4 @@ const ImageHeader = ({ src, alt, href, sizes }) => (
   </Link>
 );
 
-export default Projects;
+export default ProjectsGallery;

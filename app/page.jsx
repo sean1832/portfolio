@@ -1,7 +1,7 @@
 import About from "@/components/section/about";
 import Footer from "@/components/section/footer";
 import Landing from "@/components/section/landing";
-import Projects from "@/components/section/projects";
+import ProjectsGallery from "@/components/section/projects-gallery";
 import NavBar from "@/components/ui/navbar";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
       <div className="px-10">
         <Landing />
         <About />
-        <Projects />
+        <ProjectsGallery />
         <Footer />
       </div>
     </main>
