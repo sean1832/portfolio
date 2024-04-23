@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import NavBar from "@/components/ui/navbar";
+import projectData from "@/data/projects.json";
+import ProjectInfo from "@/components/section/project-info";
 
 const TerraFormPage = () => {
+  const data = projectData.find(
+    (project) => project.name.toLowerCase() === "terra // form".toLowerCase()
+  );
   return (
-    <div>TerraFormPage</div>
-  )
-}
+    <div className="px-10">
+      <NavBar />
+      <ProjectInfo data={data} />
+    </div>
+  );
+};
 
-export default TerraFormPage
+export default TerraFormPage;
