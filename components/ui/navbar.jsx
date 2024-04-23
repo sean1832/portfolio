@@ -10,7 +10,7 @@ const NavBar = () => {
   return (
     <nav className="flex fixed z-20 ">
       <div className="fixed w-full bg-background">
-        <div className="max-w-[2300px] m-auto">
+        <div className="flex justify-center max-w-[1920px] flex-col mx-auto">
           <div className="flex items-center justify-between px-10 py-3">
             <div className="flex items-center">
               <a href="/">
