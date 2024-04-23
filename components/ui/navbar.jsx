@@ -9,11 +9,11 @@ import Link from "next/link";
 const NavBar = () => {
   return (
     <nav className="flex fixed z-20 ">
-      <div className="fixed w-full backdrop-blur-lg dark:backdrop-brightness-75">
+      <div className="fixed w-full bg-background">
         <div className="max-w-[2300px] m-auto">
           <div className="flex items-center justify-between px-10 py-3">
             <div className="flex items-center">
-              <a href="#">
+              <a href="/">
                 <ZekeLogoIcon className="h-8 w-8" />
               </a>
             </div>
