@@ -13,7 +13,7 @@ const NavBar = () => {
         <div className="flex justify-center max-w-[1920px] flex-col mx-auto">
           <div className="flex items-center justify-between px-10 py-3">
             <div className="flex items-center">
-              <a href="/">
+              <a href="/#">
                 <ZekeLogoIcon className="h-8 w-8" />
               </a>
             </div>
