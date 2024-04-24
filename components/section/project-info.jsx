@@ -1,6 +1,6 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import ExternalTextLink from "../ui/external-text-link";
 
 const ProjectInfo = ({ data }) => {
   return (
@@ -14,22 +14,18 @@ const ProjectInfo = ({ data }) => {
 
       {/* project info */}
       <div className="grid grid-cols-3 max-w-7xl mx-auto">
-        <div className="">
-          <div className="text-3xl font-semibold">{data.name}</div>
-          <div className="font-bold">
-            {data.type} - {data.year}
+        <div className=" flex flex-col gap-5">
+          <div>
+            <div className="text-3xl font-semibold">{data.name}</div>
+            <div className="font-bold">
+              {data.type} - {data.year}
+            </div>
           </div>
 
           {data.location.url ? (
             <div>
               <strong>Location: </strong>
-              <Link
-                href={data.location.url}
-                target="_blank"
-                className="text-primary underline-offset-4 hover:underline"
-              >
-                {data.location.name}
-              </Link>
+              <ExternalTextLink href={data.location.url}>{data.location.name}</ExternalTextLink>
             </div>
           ) : (
             <div>
@@ -37,30 +33,23 @@ const ProjectInfo = ({ data }) => {
               {data.location.name}
             </div>
           )}
-
+          {data.group && data.group.length > 0 && (
+            <div>
+              <strong>Group: </strong>
+              {data.group.join(", ")}
+            </div>
+          )}
           {data.tutors && data.tutors.length > 0 && (
             <div className="">
               <strong>Supervisors: </strong>
               {data.tutors.map((tutor, i) => (
                 <React.Fragment key={i}>
                   {i > 0 && ", "}
-                  <Link
-                    key={i}
-                    href={tutor.url}
-                    target="_blank"
-                    className="text-primary underline-offset-4 hover:underline"
-                  >
+                  <ExternalTextLink key={i} href={tutor.url}>
                     {tutor.name}
-                  </Link>
+                  </ExternalTextLink>
                 </React.Fragment>
               ))}
-            </div>
-          )}
-
-          {data.group && data.group.length > 0 && (
-            <div>
-              <strong>Group: </strong>
-              {data.group.join(", ")}
             </div>
           )}
 
@@ -69,15 +58,10 @@ const ProjectInfo = ({ data }) => {
               <strong>Awards: </strong>
               {data.awards.map((award, i) => (
                 <div key={i}>
-                  <Link
-                    key={i}
-                    className="text-primary underline-offset-4 hover:underline"
-                    href={award.url}
-                    target="_blank"
-                  >
+                  <ExternalTextLink key={i} href={award.url}>
                     {"- "}
                     {award.name}
-                  </Link>
+                  </ExternalTextLink>
                 </div>
               ))}
             </div>
@@ -88,15 +72,10 @@ const ProjectInfo = ({ data }) => {
               <strong>Publications: </strong>
               {data.publications.map((link, i) => (
                 <div key={i}>
-                  <Link
-                    key={i}
-                    className="text-primary underline-offset-4 hover:underline"
-                    href={link.url}
-                    target="_blank"
-                  >
+                  <ExternalTextLink key={i} href={link.url}>
                     {"- "}
                     {link.name}
-                  </Link>
+                  </ExternalTextLink>
                 </div>
               ))}
             </div>

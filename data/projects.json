@@ -51,6 +51,28 @@
         "name": "Stasinos Mantzis",
         "url": "https://www.linkedin.com/in/stasinos-mantzis-64ab463b/"
       }
+    ],
+    "images": [
+      {
+        "src": "/projects/sharaClarke/1.webp",
+        "alt": "Shara Clarke | Image 1",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)"
+      },
+      {
+        "src": "/projects/sharaClarke/2.webp",
+        "alt": "Shara Clarke | Image 2",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)"
+      },
+      {
+        "src": "/projects/sharaClarke/3.webp",
+        "alt": "Shara Clarke | Image 3",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)"
+      },
+      {
+        "src": "/projects/sharaClarke/4.webp",
+        "alt": "Shara Clarke | Image 4",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)"
+      }
     ]
   },
   {
