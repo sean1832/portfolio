@@ -118,6 +118,9 @@
       "className": "md:col-span-3",
       "href": "/modular"
     },
+    "imageAttributes": {
+      "adaptive": true
+    },
     "images": [
       {
         "src": "/projects/modular/1.webp",

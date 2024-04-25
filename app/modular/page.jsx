@@ -17,11 +17,11 @@ export const metadata = {
 
 const ModularPage = () => {
   return (
-    <>
+    <div>
       <NavBar />
       <ProjectInfo data={data} />
       <Footer />
-    </>
+    </div>
   );
 };
 

@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import ExternalTextLink from "../ui/external-text-link";
 import { cn } from "@/utils/cn";
+import ImageLists from "../ui/images-list";
 
 const ProjectInfo = ({ data }) => {
   return (
@@ -14,7 +15,7 @@ const ProjectInfo = ({ data }) => {
       </div>
 
       {/* project info */}
-      <div className="grid grid-cols-12 max-w-9xl mx-auto gap-4">
+      <div className="grid grid-cols-12 max-w-9xl mx-auto gap-4 px-4">
         <div className=" flex flex-col gap-5 col-span-3">
           <div>
             <div className="text-3xl font-semibold">{data.name}</div>
@@ -86,23 +87,8 @@ const ProjectInfo = ({ data }) => {
           </div>
         </div>
         {/* images */}
-        <div className="col-span-9">
-          {data.images && data.images.length > 0 && (
-            <div className="grid gap-5">
-              {data.images.map((image, i) => (
-                <div key={i} className={cn("relative w-full", image.className)}>
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    layout="responsive"
-                    style={{ objectFit: "cover" }}
-                    width={600}
-                    height={400}
-                  />
-                </div>
-              ))}
-            </div>
-          )}
+        <div className=" col-span-9">
+          <ImageLists data={data} />
         </div>
       </div>
     </section>
