@@ -20,7 +20,8 @@ To run the project locally, clone the repository and run the following commands:
 
 ```bash
 npm install .
-npm run dev
+npm run build
+npm run start
 ```
 
 ## Features

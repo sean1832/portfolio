@@ -8,7 +8,7 @@ export const metadata = {
   metadataBase: new URL("https://zekezhang.com"),
   title: {
     default: "Zeke Zhang",
-    template: "Zeke Zhang | %s",
+    template: "%s | Zeke Zhang",
   },
   description:
     "Melbourne based designer and researcher specializing machine learning, algorithmic design, and low-tech assembly craft in architecture.",

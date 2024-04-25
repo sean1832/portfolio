@@ -51,6 +51,45 @@
         "name": "Stasinos Mantzis",
         "url": "https://www.linkedin.com/in/stasinos-mantzis-64ab463b/"
       }
+    ],
+    "images": [
+      {
+        "src": "/projects/sharaClarke/01.webp",
+        "alt": "Shara Clarke | Image 1",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "col-span-2"
+      },
+
+      {
+        "src": "/projects/sharaClarke/03.webp",
+        "alt": "Shara Clarke | Image 3",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "col-span-2"
+      },
+      {
+        "src": "/projects/sharaClarke/02.webp",
+        "alt": "Shara Clarke | Image 2",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "col-span-2"
+      },
+      {
+        "src": "/projects/sharaClarke/05.webp",
+        "alt": "Shara Clarke | Image 4",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "classclassNamename": "lg:col-span-1 col-span-2"
+      },
+      {
+        "src": "/projects/sharaClarke/06.webp",
+        "alt": "Shara Clarke | Image 4",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "lg:col-span-1 col-span-2"
+      },
+      {
+        "src": "/projects/sharaClarke/07.webp",
+        "alt": "Shara Clarke | Image 4",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "col-span-2"
+      }
     ]
   },
   {
@@ -78,7 +117,36 @@
     "bentoAttributes": {
       "className": "md:col-span-3",
       "href": "/modular"
-    }
+    },
+    "imageAttributes": {
+      "adaptive": true
+    },
+    "images": [
+      {
+        "src": "/projects/modular/1.webp",
+        "alt": "Modular: Natural - Build | Image 1",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "col-span-2"
+      },
+      {
+        "src": "/projects/modular/2.webp",
+        "alt": "Modular: Natural - Build | Image 2",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "col-span-2"
+      },
+      {
+        "src": "/projects/modular/3.webp",
+        "alt": "Modular: Natural - Build | Image 3",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "col-span-2"
+      },
+      {
+        "src": "/projects/modular/4.webp",
+        "alt": "Modular: Natural - Build | Image 4",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "col-span-2"
+      }
+    ]
   },
   {
     "name": "Synthetic Dunescapes",
@@ -135,7 +203,7 @@
         "url": "https://www.instagram.com/joshualye_/?hl=en"
       }
     ],
-    "year": "2024",
+    "year": "2022",
     "description": "Sustainable superblocks with algae-driven solution in Jakarta",
     "longDescription": "This project is designed to confront the escalating challenges of rising sea levels and extreme weather in Jakarta by 2044, utilizing innovative algae technology and recycled ocean plastics to transform abandoned structures into functional public and commercial spaces. Central to this approach is the creation of a sustainable closed-loop system that diminishes dependence on conventional energy sources, enhances air and water quality, and significantly reduces oceanic waste and pollution. Furthermore, it addresses the socio-emotional and physical hardships faced by displaced populations, enhancing community resilience. By seamlessly integrating these facilities, the project not only strengthens environmental sustainability but also bolsters the social fabric of the community, ameliorating living conditions and substantially decreasing the environmental carbon footprint, supporting Jakarta's burgeoning population in a sustainable manner.",
     "location": {

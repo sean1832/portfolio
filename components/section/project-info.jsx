@@ -1,6 +1,8 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import ExternalTextLink from "../ui/external-text-link";
+import { cn } from "@/utils/cn";
+import ImageLists from "../ui/images-list";
 
 const ProjectInfo = ({ data }) => {
   return (
@@ -13,71 +15,53 @@ const ProjectInfo = ({ data }) => {
       </div>
 
       {/* project info */}
-      <div className="grid grid-cols-3 max-w-7xl mx-auto">
-        <div className="">
-          <div className="text-3xl font-semibold">{data.name}</div>
-          <div className="font-bold">
-            {data.type} - {data.year}
+      <div className="grid grid-cols-12 max-w-9xl mx-auto gap-4 px-4">
+        <div className=" flex flex-col gap-5 col-span-3 dark:text-gray-300 text-gray-700">
+          <div>
+            <div className="text-3xl font-semibold text-primary">{data.name.toUpperCase()}</div>
+            <div className="font-bold text-primary">
+              {data.type} - {data.year}
+            </div>
           </div>
 
           {data.location.url ? (
             <div>
-              <strong>Location: </strong>
-              <Link
-                href={data.location.url}
-                target="_blank"
-                className="text-primary underline-offset-4 hover:underline"
-              >
-                {data.location.name}
-              </Link>
+              <strong className="text-primary">Location: </strong>
+              <ExternalTextLink href={data.location.url}>{data.location.name}</ExternalTextLink>
             </div>
           ) : (
             <div>
-              <strong>Location: </strong>
+              <strong className="text-primary">Location: </strong>
               {data.location.name}
             </div>
           )}
-
+          {data.group && data.group.length > 0 && (
+            <div>
+              <strong className="text-primary">Group: </strong>
+              {data.group.join(", ")}
+            </div>
+          )}
           {data.tutors && data.tutors.length > 0 && (
             <div className="">
-              <strong>Supervisors: </strong>
+              <strong className="text-primary">Supervisors: </strong>
               {data.tutors.map((tutor, i) => (
                 <React.Fragment key={i}>
                   {i > 0 && ", "}
-                  <Link
-                    key={i}
-                    href={tutor.url}
-                    target="_blank"
-                    className="text-primary underline-offset-4 hover:underline"
-                  >
-                    {tutor.name}
-                  </Link>
+                  <ExternalTextLink href={tutor.url}>{tutor.name}</ExternalTextLink>
                 </React.Fragment>
               ))}
             </div>
           )}
 
-          {data.group && data.group.length > 0 && (
-            <div>
-              <strong>Group: </strong>
-              {data.group.join(", ")}
-            </div>
-          )}
-
           {data.awards && data.awards.length > 0 && (
             <div className="">
-              <strong>Awards: </strong>
+              <strong className="text-primary">Awards: </strong>
               {data.awards.map((award, i) => (
                 <div key={i}>
-                  <Link
-                    key={i}
-                    className="text-primary underline-offset-4 hover:underline"
-                    href={award.url}
-                    target="_blank"
-                  >
+                  <ExternalTextLink href={award.url}>
                     {"- "}
                     {award.name}
-                  </Link>
+                  </ExternalTextLink>
                 </div>
               ))}
             </div>
@@ -85,25 +69,26 @@ const ProjectInfo = ({ data }) => {
 
           {data.publications && data.publications.length > 0 && (
             <div className="">
-              <strong>Publications: </strong>
+              <strong className="text-primary">Publications: </strong>
               {data.publications.map((link, i) => (
                 <div key={i}>
-                  <Link
-                    key={i}
-                    className="text-primary underline-offset-4 hover:underline"
-                    href={link.url}
-                    target="_blank"
-                  >
+                  <ExternalTextLink href={link.url}>
                     {"- "}
                     {link.name}
-                  </Link>
+                  </ExternalTextLink>
                 </div>
               ))}
             </div>
           )}
+
+          <div className="">
+            <strong className="text-primary">Description: </strong>
+            {data.longDescription}
+          </div>
         </div>
-        <div className=" col-span-2">
-          <div className="">{data.longDescription}</div>
+        {/* images */}
+        <div className=" col-span-9">
+          <ImageLists data={data} />
         </div>
       </div>
     </section>

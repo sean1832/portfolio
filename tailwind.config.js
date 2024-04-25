@@ -76,6 +76,11 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      maxWidth: {
+        "7xl": "80rem",
+        "8xl": "96rem",
+        "9xl": "120rem",
+      },
     },
     fontSize: {
       "2xs": "0.625rem",
