@@ -8,30 +8,30 @@ import Link from "next/link";
 
 const NavBar = () => {
   return (
-    <nav className="flex fixed z-20 ">
-      <div className="fixed w-full bg-background">
-        <div className="flex max-w-9xl flex-col mx-auto">
-          <div className="flex items-center justify-between py-3">
-            <div className="flex items-center">
-              <a href="/#">
-                <ZekeLogoIcon className="h-8 w-8" />
-              </a>
-            </div>
-            <div className="hidden sm:flex items-center gap-10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background">
+      <div className="flex items-center justify-between h-16 px-4 md:px-6 w-full">
+        <div
+          style={{ maxWidth: "1920px" }}
+          className="w-full mx-auto flex justify-between items-center"
+        >
+          <Link className="flex items-center gap-2" href="/#">
+            <ZekeLogoIcon className="w-8 h-8" />
+          </Link>
+          <nav className="items-center gap-4">
+            <div className="hidden md:flex items-center gap-10">
               {navbarData.map((item, i) => (
                 <Link
                   key={`navbar ${i}`}
                   href={item.url}
-                  className="text-m font-medium transition-colors dark:hover:text-primary dark:text-muted-foreground hover:text-gray-500 dark:text-gray-300 text-primary"
+                  className="text-xl font-medium transition-colors dark:hover:text-primary dark:text-muted-foreground hover:text-gray-500 dark:text-gray-300 text-primary"
                 >
                   {item.title}
                 </Link>
               ))}
-
               <ModeToggle />
             </div>
 
-            <div className="sm:hidden flex justify-end">
+            <div className="md:hidden flex justify-end">
               <Sheet>
                 <SheetTrigger asChild>
                   <button>
@@ -54,12 +54,11 @@ const NavBar = () => {
                 </SheetContent>
               </Sheet>
             </div>
-          </div>
+          </nav>
         </div>
-
-        <Separator />
       </div>
-    </nav>
+      <Separator className="w-full" /> {/* Add the Separator here */}
+    </header>
   );
 };
 
