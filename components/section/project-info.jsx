@@ -16,34 +16,34 @@ const ProjectInfo = ({ data }) => {
 
       {/* project info */}
       <div className="grid grid-cols-12 max-w-9xl mx-auto gap-4 px-4">
-        <div className=" flex flex-col gap-5 col-span-3">
+        <div className=" flex flex-col gap-5 col-span-3 dark:text-gray-300 text-gray-700">
           <div>
-            <div className="text-3xl font-semibold">{data.name}</div>
-            <div className="font-bold">
+            <div className="text-3xl font-semibold text-primary">{data.name.toUpperCase()}</div>
+            <div className="font-bold text-primary">
               {data.type} - {data.year}
             </div>
           </div>
 
           {data.location.url ? (
             <div>
-              <strong>Location: </strong>
+              <strong className="text-primary">Location: </strong>
               <ExternalTextLink href={data.location.url}>{data.location.name}</ExternalTextLink>
             </div>
           ) : (
             <div>
-              <strong>Location: </strong>
+              <strong className="text-primary">Location: </strong>
               {data.location.name}
             </div>
           )}
           {data.group && data.group.length > 0 && (
             <div>
-              <strong>Group: </strong>
+              <strong className="text-primary">Group: </strong>
               {data.group.join(", ")}
             </div>
           )}
           {data.tutors && data.tutors.length > 0 && (
             <div className="">
-              <strong>Supervisors: </strong>
+              <strong className="text-primary">Supervisors: </strong>
               {data.tutors.map((tutor, i) => (
                 <React.Fragment key={i}>
                   {i > 0 && ", "}
@@ -55,7 +55,7 @@ const ProjectInfo = ({ data }) => {
 
           {data.awards && data.awards.length > 0 && (
             <div className="">
-              <strong>Awards: </strong>
+              <strong className="text-primary">Awards: </strong>
               {data.awards.map((award, i) => (
                 <div key={i}>
                   <ExternalTextLink href={award.url}>
@@ -69,7 +69,7 @@ const ProjectInfo = ({ data }) => {
 
           {data.publications && data.publications.length > 0 && (
             <div className="">
-              <strong>Publications: </strong>
+              <strong className="text-primary">Publications: </strong>
               {data.publications.map((link, i) => (
                 <div key={i}>
                   <ExternalTextLink href={link.url}>
@@ -82,7 +82,7 @@ const ProjectInfo = ({ data }) => {
           )}
 
           <div className="">
-            <strong>Description: </strong>
+            <strong className="text-primary">Description: </strong>
             {data.longDescription}
           </div>
         </div>
