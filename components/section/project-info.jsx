@@ -86,12 +86,19 @@ const ProjectInfo = ({ data }) => {
           </div>
         </div>
         {/* images */}
-        <div className=" col-span-9">
+        <div className="col-span-9">
           {data.images && data.images.length > 0 && (
-            <div className=" grid gap-5">
+            <div className="grid gap-5">
               {data.images.map((image, i) => (
-                <div key={i} className={cn("relative h-[600px]", image.className)}>
-                  <Image src={image.src} alt={image.alt} style={{ objectFit: "cover" }} fill />
+                <div key={i} className={cn("relative w-full", image.className)}>
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    layout="responsive"
+                    style={{ objectFit: "cover" }}
+                    width={600}
+                    height={400}
+                  />
                 </div>
               ))}
             </div>

@@ -117,7 +117,33 @@
     "bentoAttributes": {
       "className": "md:col-span-3",
       "href": "/modular"
-    }
+    },
+    "images": [
+      {
+        "src": "/projects/modular/1.webp",
+        "alt": "Modular: Natural - Build | Image 1",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "col-span-2"
+      },
+      {
+        "src": "/projects/modular/2.webp",
+        "alt": "Modular: Natural - Build | Image 2",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "col-span-2"
+      },
+      {
+        "src": "/projects/modular/3.webp",
+        "alt": "Modular: Natural - Build | Image 3",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "col-span-2"
+      },
+      {
+        "src": "/projects/modular/4.webp",
+        "alt": "Modular: Natural - Build | Image 4",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "col-span-2"
+      }
+    ]
   },
   {
     "name": "Synthetic Dunescapes",
