@@ -17,11 +17,10 @@ const NavBar = () => {
                 <ZekeLogoIcon className="h-8 w-8" />
               </a>
             </div>
-            {/* Desktop Nav */}
             <div className="hidden sm:flex items-center gap-10">
               {navbarData.map((item, i) => (
                 <Link
-                  key={i}
+                  key={`navbar ${i}`}
                   href={item.url}
                   className="text-m font-medium transition-colors dark:hover:text-primary dark:text-muted-foreground hover:text-gray-500 dark:text-gray-300 text-primary"
                 >
@@ -32,7 +31,6 @@ const NavBar = () => {
               <ModeToggle />
             </div>
 
-            {/* Mobile Nav */}
             <div className="sm:hidden flex justify-end">
               <Sheet>
                 <SheetTrigger asChild>
@@ -44,7 +42,7 @@ const NavBar = () => {
                   <div className="flex flex-col gap-8 justify-center items-center text-2xl">
                     {navbarData.map((item) => (
                       <a
-                        key={item.id}
+                        key={`item ${item.id}`}
                         href={item.url}
                         className="text-m font-medium transition-colors dark:hover:text-primary dark:text-muted-foreground hover:text-primary text-gray-600"
                       >

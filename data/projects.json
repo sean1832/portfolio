@@ -54,24 +54,41 @@
     ],
     "images": [
       {
-        "src": "/projects/sharaClarke/1.webp",
+        "src": "/projects/sharaClarke/01.webp",
         "alt": "Shara Clarke | Image 1",
-        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)"
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "col-span-2"
       },
+
       {
-        "src": "/projects/sharaClarke/2.webp",
-        "alt": "Shara Clarke | Image 2",
-        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)"
-      },
-      {
-        "src": "/projects/sharaClarke/3.webp",
+        "src": "/projects/sharaClarke/03.webp",
         "alt": "Shara Clarke | Image 3",
-        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)"
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "col-span-2"
       },
       {
-        "src": "/projects/sharaClarke/4.webp",
+        "src": "/projects/sharaClarke/02.webp",
+        "alt": "Shara Clarke | Image 2",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "col-span-2"
+      },
+      {
+        "src": "/projects/sharaClarke/05.webp",
         "alt": "Shara Clarke | Image 4",
-        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)"
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "classclassNamename": "lg:col-span-1 col-span-2"
+      },
+      {
+        "src": "/projects/sharaClarke/06.webp",
+        "alt": "Shara Clarke | Image 4",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "lg:col-span-1 col-span-2"
+      },
+      {
+        "src": "/projects/sharaClarke/07.webp",
+        "alt": "Shara Clarke | Image 4",
+        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
+        "className": "col-span-2"
       }
     ]
   },

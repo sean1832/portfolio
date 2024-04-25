@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import ExternalTextLink from "../ui/external-text-link";
+import { cn } from "@/utils/cn";
 
 const ProjectInfo = ({ data }) => {
   return (
@@ -13,8 +14,8 @@ const ProjectInfo = ({ data }) => {
       </div>
 
       {/* project info */}
-      <div className="grid grid-cols-3 max-w-7xl mx-auto">
-        <div className=" flex flex-col gap-5">
+      <div className="grid grid-cols-12 max-w-9xl mx-auto gap-4">
+        <div className=" flex flex-col gap-5 col-span-3">
           <div>
             <div className="text-3xl font-semibold">{data.name}</div>
             <div className="font-bold">
@@ -45,9 +46,7 @@ const ProjectInfo = ({ data }) => {
               {data.tutors.map((tutor, i) => (
                 <React.Fragment key={i}>
                   {i > 0 && ", "}
-                  <ExternalTextLink key={i} href={tutor.url}>
-                    {tutor.name}
-                  </ExternalTextLink>
+                  <ExternalTextLink href={tutor.url}>{tutor.name}</ExternalTextLink>
                 </React.Fragment>
               ))}
             </div>
@@ -58,7 +57,7 @@ const ProjectInfo = ({ data }) => {
               <strong>Awards: </strong>
               {data.awards.map((award, i) => (
                 <div key={i}>
-                  <ExternalTextLink key={i} href={award.url}>
+                  <ExternalTextLink href={award.url}>
                     {"- "}
                     {award.name}
                   </ExternalTextLink>
@@ -72,7 +71,7 @@ const ProjectInfo = ({ data }) => {
               <strong>Publications: </strong>
               {data.publications.map((link, i) => (
                 <div key={i}>
-                  <ExternalTextLink key={i} href={link.url}>
+                  <ExternalTextLink href={link.url}>
                     {"- "}
                     {link.name}
                   </ExternalTextLink>
@@ -80,9 +79,23 @@ const ProjectInfo = ({ data }) => {
               ))}
             </div>
           )}
+
+          <div className="">
+            <strong>Description: </strong>
+            {data.longDescription}
+          </div>
         </div>
-        <div className=" col-span-2">
-          <div className="">{data.longDescription}</div>
+        {/* images */}
+        <div className=" col-span-9">
+          {data.images && data.images.length > 0 && (
+            <div className=" grid gap-5">
+              {data.images.map((image, i) => (
+                <div key={i} className={cn("relative h-[600px]", image.className)}>
+                  <Image src={image.src} alt={image.alt} style={{ objectFit: "cover" }} fill />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
