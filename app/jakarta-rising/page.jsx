@@ -14,10 +14,10 @@ export const metadata = {
 
 const JakartaRisingPage = () => {
   return (
-    <div className="px-10">
+    <>
       <NavBar />
       <ProjectInfo data={data} />
-    </div>
+    </>
   );
 };
 

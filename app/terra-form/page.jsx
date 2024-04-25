@@ -8,10 +8,10 @@ const TerraFormPage = () => {
     (project) => project.name.toLowerCase() === "terra // form".toLowerCase()
   );
   return (
-    <div className="px-10">
+    <>
       <NavBar />
       <ProjectInfo data={data} />
-    </div>
+    </>
   );
 };
 

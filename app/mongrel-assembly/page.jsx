@@ -14,10 +14,10 @@ export const metadata = {
 
 const MongrelAssemblyPage = () => {
   return (
-    <div className="px-10">
+    <>
       <NavBar />
       <ProjectInfo data={data} />
-    </div>
+    </>
   );
 };
 

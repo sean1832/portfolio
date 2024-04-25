@@ -15,11 +15,11 @@ export const metadata = {
 
 const SharaClarkePage = () => {
   return (
-    <div className="px-10">
+    <>
       <NavBar />
       <ProjectInfo data={data} />
       <Footer />
-    </div>
+    </>
   );
 };
 
