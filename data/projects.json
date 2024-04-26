@@ -152,7 +152,7 @@
     "name": "Synthetic Dunescapes",
     "type": "Design Studio / Research",
     "hero": {
-      "src": "/projects/aiDune/main.webp",
+      "src": "/projects/syntheticDunescapes/main.webp",
       "alt": "AI Dune",
       "sizes": "(min-width: 780px) calc(66.67vw - 91px), calc(100vw - 112px)"
     },
