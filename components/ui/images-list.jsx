@@ -1,6 +1,6 @@
 import React from "react";
-import Image from "next/image";
 import { cn } from "@/utils/cn";
+import BlurImage from "./blur";
 
 const ImageLists = ({ data }) => {
   return (
@@ -13,7 +13,7 @@ const ImageLists = ({ data }) => {
               // Perform the adaptive action
               return (
                 <div key={i} className={cn("relative w-full", image.containerClassName)}>
-                  <Image
+                  <BlurImage
                     src={image.src}
                     alt={image.alt}
                     style={{ objectFit: "cover", width: "100%", height: "auto" }}
@@ -26,7 +26,7 @@ const ImageLists = ({ data }) => {
               // Perform the non-adaptive action
               return (
                 <div key={i} className={cn("relative h-[600px]", image.containerClassName)}>
-                  <Image
+                  <BlurImage
                     src={image.src}
                     alt={image.alt}
                     className={cn("object-cover object-center w-full h-full", image.className)}
