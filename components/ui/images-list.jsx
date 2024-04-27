@@ -6,13 +6,13 @@ const ImageLists = ({ data }) => {
   return (
     <>
       {data.images && data.images.length > 0 && (
-        <div className="grid gap-5">
+        <div className="grid gap-5 grid-cols-2">
           {data.images.map((image, i) => {
             // Conditional rendering based on data.imageAttributes.adaptive
             if (image.adaptive) {
               // Perform the adaptive action
               return (
-                <div key={i} className={cn("relative w-full", image.containerClassName)}>
+                <div key={i} className={cn("relative w-full col-span-2", image.containerClassName)}>
                   <BlurImage
                     src={image.src}
                     alt={image.alt}
@@ -25,7 +25,13 @@ const ImageLists = ({ data }) => {
             } else {
               // Perform the non-adaptive action
               return (
-                <div key={i} className={cn("relative h-[600px]", image.containerClassName)}>
+                <div
+                  key={i}
+                  className={cn(
+                    "relative h-[600px] md:col-span-2 col-span-2",
+                    image.containerClassName
+                  )}
+                >
                   <BlurImage
                     src={image.src}
                     alt={image.alt}
