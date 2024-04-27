@@ -1,16 +1,14 @@
 import React from "react";
-import Image from "next/image";
 import ExternalTextLink from "../ui/external-text-link";
 import ImageLists from "../ui/images-list";
 import ClickableImage from "../ui/clickable-image";
-import { Dialog, DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
 
 const ProjectInfo = ({ data }) => {
   return (
     <section className=" flex flex-col gap-10">
       {/* hero image */}
       <div className="pt-32">
-        <div className="flex relative w-full mx-auto h-[800px]">
+        <div className="flex relative max-w-[2560px] mx-auto h-[800px]">
           <ClickableImage src={data.hero.src} alt={data.hero.alt} />
         </div>
       </div>
