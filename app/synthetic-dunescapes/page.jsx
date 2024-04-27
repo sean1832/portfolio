@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "@/components/ui/navbar";
 import projectData from "@/data/projects.json";
 import ProjectInfo from "@/components/section/project-info";
+import Footer from "@/components/section/footer";
 
 const projectName = "Synthetic Dunescapes";
 const data = projectData.find(
@@ -17,6 +18,7 @@ const SyntheticDunescapesPage = () => {
     <>
       <NavBar />
       <ProjectInfo data={data} />
+      <Footer />
     </>
   );
 };

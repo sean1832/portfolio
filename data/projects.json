@@ -221,7 +221,8 @@
       {
         "src": "/projects/syntheticDunescapes/9.webp",
         "alt": "Synthetic Dunescapes | Image 9",
-        "containerClassName": "col-span-2"
+        "containerClassName": "col-span-2",
+        "adaptive": true
       }
     ]
   },
