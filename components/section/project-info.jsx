@@ -1,8 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import ExternalTextLink from "../ui/external-text-link";
-import { cn } from "@/utils/cn";
 import ImageLists from "../ui/images-list";
+import ClickableImage from "../ui/clickable-image";
+import { Dialog, DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
 
 const ProjectInfo = ({ data }) => {
   return (
@@ -10,7 +11,7 @@ const ProjectInfo = ({ data }) => {
       {/* hero image */}
       <div className="pt-32">
         <div className="flex relative w-full mx-auto h-[800px]">
-          <Image src={data.hero.src} alt={data.hero.alt} layout="fill" objectFit="cover" />
+          <ClickableImage src={data.hero.src} alt={data.hero.alt} />
         </div>
       </div>
 

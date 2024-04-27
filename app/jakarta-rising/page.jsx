@@ -2,6 +2,7 @@ import React from "react";
 import projectData from "@/data/projects.json";
 import NavBar from "@/components/ui/navbar";
 import ProjectInfo from "@/components/section/project-info";
+import Footer from "@/components/section/footer";
 
 const projectName = "Jakarta Rising";
 const data = projectData.find(
@@ -17,6 +18,7 @@ const JakartaRisingPage = () => {
     <>
       <NavBar />
       <ProjectInfo data={data} />
+      <Footer />
     </>
   );
 };
