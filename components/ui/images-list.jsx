@@ -12,7 +12,7 @@ const ImageLists = ({ data }) => {
             if (image.adaptive) {
               // Perform the adaptive action
               return (
-                <div key={i} className={cn("relative w-full", image.className)}>
+                <div key={i} className={cn("relative w-full", image.containerClassName)}>
                   <Image
                     src={image.src}
                     alt={image.alt}
