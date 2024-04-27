@@ -57,38 +57,38 @@
         "src": "/projects/sharaClarke/01.webp",
         "alt": "Shara Clarke | Image 1",
         "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
-        "className": "col-span-2"
+        "containerClassName": "col-span-2"
       },
 
       {
         "src": "/projects/sharaClarke/03.webp",
         "alt": "Shara Clarke | Image 3",
         "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
-        "className": "col-span-2"
+        "containerClassName": "col-span-2"
       },
       {
         "src": "/projects/sharaClarke/02.webp",
         "alt": "Shara Clarke | Image 2",
         "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
-        "className": "col-span-2"
+        "containerClassName": "col-span-2"
       },
       {
         "src": "/projects/sharaClarke/05.webp",
         "alt": "Shara Clarke | Image 4",
         "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
-        "classclassNamename": "lg:col-span-1 col-span-2"
+        "containerClassName": "lg:col-span-1 col-span-2"
       },
       {
         "src": "/projects/sharaClarke/06.webp",
         "alt": "Shara Clarke | Image 4",
         "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
-        "className": "lg:col-span-1 col-span-2"
+        "containerClassName": "lg:col-span-1 col-span-2"
       },
       {
         "src": "/projects/sharaClarke/07.webp",
         "alt": "Shara Clarke | Image 4",
         "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
-        "className": "col-span-2"
+        "containerClassName": "col-span-2"
       }
     ]
   },
@@ -118,33 +118,30 @@
       "className": "md:col-span-3",
       "href": "/modular"
     },
-    "imageAttributes": {
-      "adaptive": true
-    },
     "images": [
       {
         "src": "/projects/modular/1.webp",
         "alt": "Modular: Natural - Build | Image 1",
-        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
-        "className": "col-span-2"
+        "containerClassName": "col-span-2",
+        "adaptive": true
       },
       {
         "src": "/projects/modular/2.webp",
         "alt": "Modular: Natural - Build | Image 2",
-        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
-        "className": "col-span-2"
+        "containerClassName": "col-span-2",
+        "adaptive": true
       },
       {
         "src": "/projects/modular/3.webp",
         "alt": "Modular: Natural - Build | Image 3",
-        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
-        "className": "col-span-2"
+        "containerClassName": "col-span-2",
+        "adaptive": true
       },
       {
         "src": "/projects/modular/4.webp",
         "alt": "Modular: Natural - Build | Image 4",
-        "sizes": "(min-width: 780px) calc(50vw - 80px), calc(100vw - 20px)",
-        "className": "col-span-2"
+        "containerClassName": "col-span-2",
+        "adaptive": true
       }
     ]
   },
@@ -178,6 +175,53 @@
         "name": "Synthetic Dunescape | ISSUU",
         "url": "",
         "img": ""
+      }
+    ],
+    "images": [
+      {
+        "src": "/projects/syntheticDunescapes/1.webp",
+        "alt": "Synthetic Dunescapes | Image 1",
+        "containerClassName": "col-span-1"
+      },
+      {
+        "src": "/projects/syntheticDunescapes/2.webp",
+        "alt": "Synthetic Dunescapes | Image 2",
+        "containerClassName": "col-span-1"
+      },
+      {
+        "src": "/projects/syntheticDunescapes/3.webp",
+        "alt": "Synthetic Dunescapes | Image 3",
+        "containerClassName": "col-span-1"
+      },
+      {
+        "src": "/projects/syntheticDunescapes/4.webp",
+        "alt": "Synthetic Dunescapes | Image 4",
+        "containerClassName": "col-span-1"
+      },
+      {
+        "src": "/projects/syntheticDunescapes/5.webp",
+        "alt": "Synthetic Dunescapes | Image 5",
+        "containerClassName": "col-span-1"
+      },
+      {
+        "src": "/projects/syntheticDunescapes/6.webp",
+        "alt": "Synthetic Dunescapes | Image 6",
+        "containerClassName": "col-span-1"
+      },
+      {
+        "src": "/projects/syntheticDunescapes/7.webp",
+        "alt": "Synthetic Dunescapes | Image 7",
+        "containerClassName": "col-span-1"
+      },
+      {
+        "src": "/projects/syntheticDunescapes/8.webp",
+        "alt": "Synthetic Dunescapes | Image 8",
+        "containerClassName": "col-span-1"
+      },
+      {
+        "src": "/projects/syntheticDunescapes/9.webp",
+        "alt": "Synthetic Dunescapes | Image 9",
+        "containerClassName": "col-span-2"
       }
     ]
   },
@@ -214,7 +258,60 @@
     "bentoAttributes": {
       "className": "md:col-span-2",
       "href": "/jakarta-rising"
-    }
+    },
+    "images": [
+      {
+        "src": "/projects/jakartaRising/1.webp",
+        "alt": "Jakarta Rising | Image 1",
+        "containerClassName": "col-span-2"
+      },
+      {
+        "src": "/projects/jakartaRising/2.webp",
+        "alt": "Jakarta Rising | Image 2",
+        "containerClassName": "col-span-1"
+      },
+      {
+        "src": "/projects/jakartaRising/3.webp",
+        "alt": "Jakarta Rising | Image 3",
+        "containerClassName": "col-span-1"
+      },
+      {
+        "src": "/projects/jakartaRising/4.webp",
+        "alt": "Jakarta Rising | Image 4",
+        "containerClassName": "col-span-2"
+      },
+      {
+        "src": "/projects/jakartaRising/5.webp",
+        "alt": "Jakarta Rising | Image 5",
+        "containerClassName": "col-span-1"
+      },
+      {
+        "src": "/projects/jakartaRising/6.webp",
+        "alt": "Jakarta Rising | Image 6",
+        "containerClassName": "col-span-1"
+      },
+      {
+        "src": "/projects/jakartaRising/7.webp",
+        "alt": "Jakarta Rising | Image 7",
+        "containerClassName": "col-span-2"
+      },
+      {
+        "src": "/projects/jakartaRising/8.webp",
+        "alt": "Jakarta Rising | Image 8",
+        "containerClassName": "col-span-1"
+      },
+      {
+        "src": "/projects/jakartaRising/9.webp",
+        "alt": "Jakarta Rising | Image 9",
+        "containerClassName": "col-span-1"
+      },
+      {
+        "src": "/projects/jakartaRising/10.webp",
+        "alt": "Jakarta Rising | Image 10",
+        "containerClassName": "col-span-2",
+        "className": "object-bottom"
+      }
+    ]
   },
   {
     "name": "Terra // Form",

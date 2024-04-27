@@ -9,7 +9,7 @@ const ImageLists = ({ data }) => {
         <div className="grid gap-5">
           {data.images.map((image, i) => {
             // Conditional rendering based on data.imageAttributes.adaptive
-            if (data.imageAttributes && data.imageAttributes.adaptive) {
+            if (image.adaptive) {
               // Perform the adaptive action
               return (
                 <div key={i} className={cn("relative w-full", image.className)}>
@@ -25,8 +25,13 @@ const ImageLists = ({ data }) => {
             } else {
               // Perform the non-adaptive action
               return (
-                <div key={i} className={cn("relative h-[600px]", image.className)}>
-                  <Image src={image.src} alt={image.alt} style={{ objectFit: "cover" }} fill />
+                <div key={i} className={cn("relative h-[600px]", image.containerClassName)}>
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    className={cn("object-cover object-center w-full h-full", image.className)}
+                    fill
+                  />
                 </div>
               );
             }
