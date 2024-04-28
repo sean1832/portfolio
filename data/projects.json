@@ -18,7 +18,9 @@
       "name": "Framlingham, VIC, Australia",
       "url": "https://maps.app.goo.gl/4EWqHdEW1ScD4eFs8"
     },
-    "group": ["Chukang Liang"],
+    "group": [
+      "Chukang Liang"
+    ],
     "awards": [
       {
         "name": "ARM ARCHITECTURE PRIZE",
@@ -57,7 +59,6 @@
         "src": "/projects/sharaClarke/01.webp",
         "alt": "Shara Clarke | Image 1"
       },
-
       {
         "src": "/projects/sharaClarke/03.webp",
         "alt": "Shara Clarke | Image 3"
@@ -97,7 +98,10 @@
       "name": "Tanaff, Senegal",
       "url": "https://maps.app.goo.gl/ESYG7m8gwo9VXPvh6"
     },
-    "group": ["Chukang Liang", "Wanyue Peng"],
+    "group": [
+      "Chukang Liang",
+      "Wanyue Peng"
+    ],
     "awards": [
       {
         "name": "Buildner | Honourable Mention",
@@ -155,7 +159,10 @@
         "url": "https://www.alisaandrasek.com/"
       }
     ],
-    "group": ["Luyao Jiang", "Kang Liu"],
+    "group": [
+      "Luyao Jiang",
+      "Kang Liu"
+    ],
     "publications": [
       {
         "name": "Synthetic Dunescape | ISSUU",
@@ -240,7 +247,11 @@
       "name": "North Jakarta, Indonesia",
       "url": "https://maps.app.goo.gl/T46wS3aJhsVf5ymQ9"
     },
-    "group": ["JingChen Lin", "Yao Xiao", "Jacqueline Pionan"],
+    "group": [
+      "JingChen Lin",
+      "Yao Xiao",
+      "Jacqueline Pionan"
+    ],
     "bentoAttributes": {
       "className": "md:col-span-2",
       "href": "/jakarta-rising"
@@ -324,7 +335,9 @@
       "name": "North Dharavi, Mumbai, India",
       "url": "https://maps.app.goo.gl/pW9E2d3oCLjm7sFX9"
     },
-    "group": ["Eu Yeo"],
+    "group": [
+      "Eu Yeo"
+    ],
     "awards": [
       {
         "name": "Shortlisted Master of Architectural Design Awards for Excellence | 2021 Semester 2 | RMIT University",
@@ -334,7 +347,55 @@
     "bentoAttributes": {
       "className": "md:col-span-2",
       "href": "/terra-form"
-    }
+    },
+    "images": [
+      {
+        "src": "/projects/terraForm/10.webp",
+        "alt": "Terra Form | Image 10"
+      },
+      {
+        "src": "/projects/terraForm/1.webp",
+        "alt": "Terra Form | Image 1",
+        "containerClassName": "md:col-span-1 col-span-2"
+      },
+      {
+        "src": "/projects/terraForm/2.webp",
+        "alt": "Terra Form | Image 2",
+        "containerClassName": "md:col-span-1 col-span-2"
+      },
+      {
+        "src": "/projects/terraForm/3.webp",
+        "alt": "Terra Form | Image 3",
+        "containerClassName": "md:col-span-1 col-span-2"
+      },
+      {
+        "src": "/projects/terraForm/4.webp",
+        "alt": "Terra Form | Image 4",
+        "containerClassName": "md:col-span-1 col-span-2"
+      },
+      {
+        "src": "/projects/terraForm/5.webp",
+        "alt": "Terra Form | Image 5"
+      },
+      {
+        "src": "/projects/terraForm/6.webp",
+        "alt": "Terra Form | Image 6"
+      },
+      {
+        "src": "/projects/terraForm/7.webp",
+        "alt": "Terra Form | Image 7",
+        "adaptive": true
+      },
+      {
+        "src": "/projects/terraForm/8.webp",
+        "alt": "Terra Form | Image 8",
+        "adaptive": true
+      },
+      {
+        "src": "/projects/terraForm/9.webp",
+        "alt": "Terra Form | Image 9"
+      }
+    ]
   },
   {
     "name": "Mongrel Assembly",
