@@ -2,6 +2,7 @@ import React from "react";
 import ExternalTextLink from "../ui/external-text-link";
 import ImageLists from "../ui/images-list";
 import ClickableImage from "../ui/clickable-image";
+import { YoutubeVideo } from "../ui/youtube-video";
 
 const ProjectInfo = ({ data }) => {
   return (
@@ -9,7 +10,14 @@ const ProjectInfo = ({ data }) => {
       {/* hero image */}
       <div className="pt-32">
         <div className="flex relative max-w-[2560px] mx-auto h-[800px]">
-          <ClickableImage src={data.hero.src} alt={data.hero.alt} />
+          {
+            // if there is no video, show the image, otherwise show the video
+            data.video ? (
+              <YoutubeVideo src={data.video.src} alt={data.video.alt} mute />
+            ) : (
+              <ClickableImage src={data.hero.src} alt={data.hero.alt} />
+            )
+          }
         </div>
       </div>
 

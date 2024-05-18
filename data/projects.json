@@ -8,7 +8,8 @@
       "sizes": "(min-width: 780px) calc(60vw - 80px), calc(100vw - 112px)"
     },
     "video": {
-      "src": "https://www.youtube.com/watch?v=q15wEzLeKXw",
+      "src": "https://www.youtube.com/embed/q15wEzLeKXw?si=N_EUmE4cvzq_bukx",
+      "id": "q15wEzLeKXw",
       "alt": "Shara Clarke | Video Presentation"
     },
     "year": "2021",
@@ -18,9 +19,7 @@
       "name": "Framlingham, VIC, Australia",
       "url": "https://maps.app.goo.gl/4EWqHdEW1ScD4eFs8"
     },
-    "group": [
-      "Chukang Liang"
-    ],
+    "group": ["Chukang Liang"],
     "awards": [
       {
         "name": "ARM ARCHITECTURE PRIZE",
@@ -98,10 +97,7 @@
       "name": "Tanaff, Senegal",
       "url": "https://maps.app.goo.gl/ESYG7m8gwo9VXPvh6"
     },
-    "group": [
-      "Chukang Liang",
-      "Wanyue Peng"
-    ],
+    "group": ["Chukang Liang", "Wanyue Peng"],
     "awards": [
       {
         "name": "Buildner | Honourable Mention",
@@ -153,16 +149,18 @@
       "className": "md:col-span-4",
       "href": "/synthetic-dunescapes"
     },
+    "video": {
+      "src": "https://www.youtube.com/embed/PNKjyfp9L2M?si=YKckKJ2IYIaZzzGH",
+      "id": "PNKjyfp9L2M",
+      "alt": "Synthetic Dunescapes | Video Presentation"
+    },
     "tutors": [
       {
         "name": "Dr. Alisa Andrasek",
         "url": "https://www.alisaandrasek.com/"
       }
     ],
-    "group": [
-      "Luyao Jiang",
-      "Kang Liu"
-    ],
+    "group": ["Luyao Jiang", "Kang Liu"],
     "publications": [
       {
         "name": "Synthetic Dunescape | ISSUU",
@@ -227,7 +225,8 @@
       "sizes": "(min-width: 780px) calc(40vw - 69px), calc(100vw - 112px)"
     },
     "video": {
-      "src": "https://youtu.be/ov6RFqihmLQ?si=2mxnwuXAEf_vBYYy",
+      "src": "https://www.youtube.com/embed/ov6RFqihmLQ?si=dZVZYMSjo_UtNDIV",
+      "id": "ov6RFqihmLQ?si=dZVZYMSjo_UtNDIV",
       "alt": "Jakarta Rising | Video Presentation"
     },
     "tutors": [
@@ -247,11 +246,7 @@
       "name": "North Jakarta, Indonesia",
       "url": "https://maps.app.goo.gl/T46wS3aJhsVf5ymQ9"
     },
-    "group": [
-      "JingChen Lin",
-      "Yao Xiao",
-      "Jacqueline Pionan"
-    ],
+    "group": ["JingChen Lin", "Yao Xiao", "Jacqueline Pionan"],
     "bentoAttributes": {
       "className": "md:col-span-2",
       "href": "/jakarta-rising"
@@ -315,7 +310,8 @@
       "sizes": "(min-width: 780px) calc(40vw - 69px), calc(100vw - 112px)"
     },
     "video": {
-      "src": "https://www.youtube.com/watch?v=ffDNh79mnEE",
+      "src": "https://www.youtube.com/embed/ffDNh79mnEE?si=RPGW12y582pP_6ck",
+      "id": "ffDNh79mnEE",
       "alt": "Terra//Form | Video Presentation"
     },
     "tutors": [
@@ -335,9 +331,7 @@
       "name": "North Dharavi, Mumbai, India",
       "url": "https://maps.app.goo.gl/pW9E2d3oCLjm7sFX9"
     },
-    "group": [
-      "Eu Yeo"
-    ],
+    "group": ["Eu Yeo"],
     "awards": [
       {
         "name": "Shortlisted Master of Architectural Design Awards for Excellence | 2021 Semester 2 | RMIT University",
