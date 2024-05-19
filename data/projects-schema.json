@@ -90,7 +90,7 @@
               "type": "string"
             }
           },
-          "required": ["name", "url", "img"]
+          "required": ["name", "url"]
         }
       },
       "bentoAttributes": {
