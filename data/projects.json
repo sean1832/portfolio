@@ -2,14 +2,8 @@
   {
     "name": "SHARA CLARKE",
     "type": "Design Studio",
-    "hero": {
-      "src": "/projects/sharaClarke/main.webp",
-      "alt": "Shara Clarke Aboriginal Cultural & Education Centre",
-      "sizes": "(min-width: 780px) calc(60vw - 80px), calc(100vw - 112px)"
-    },
     "video": {
       "src": "https://www.youtube.com/embed/q15wEzLeKXw?si=N_EUmE4cvzq_bukx",
-      "id": "q15wEzLeKXw",
       "alt": "Shara Clarke | Video Presentation"
     },
     "year": "2021",
@@ -37,6 +31,10 @@
         "name": "Architecture students embrace life-changing learning on Country",
         "url": "https://www.rmit.edu.au/news/all-news/2021/may/architectural-students-learning-on-country",
         "img": "/awards/rmit_publication.webp"
+      },
+      {
+        "name": "On Country: Framlingham, Portfolio 2021",
+        "url": "https://issuu.com/rmitarchitecture/docs/phillipsmantzis_zhang_zeke_sem1_2021"
       }
     ],
     "bentoAttributes": {
@@ -55,6 +53,11 @@
     ],
     "images": [
       {
+        "src": "/projects/sharaClarke/main.webp",
+        "alt": "Shara Clarke Aboriginal Cultural & Education Centre",
+        "hero": true
+      },
+      {
         "src": "/projects/sharaClarke/01.webp",
         "alt": "Shara Clarke | Image 1"
       },
@@ -69,12 +72,12 @@
       {
         "src": "/projects/sharaClarke/05.webp",
         "alt": "Shara Clarke | Image 4",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/sharaClarke/06.webp",
         "alt": "Shara Clarke | Image 4",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/sharaClarke/07.webp",
@@ -85,11 +88,6 @@
   {
     "name": "MODULAR: NATURAL - BUILD",
     "type": "International Competition",
-    "hero": {
-      "src": "/projects/modular/main.webp",
-      "alt": "Modular: Natural - Build",
-      "sizes": "(min-width: 780px) calc(70vw - 80px), calc(100vw - 20px)"
-    },
     "year": "2022",
     "description": "Low-tech, bamboo-based modular housing system in Senegal",
     "longDescription": "The project proposed a low-tech, bamboo-based modular housing system designed to address critical housing shortages in Tanaff, a remote town in southern Senegal. Bamboo is selected for its local availability and structural properties, enabling self-construction without the need for heavy machinery, which is vital given the limited infrastructure and isolation of the area. The system's design emphasizes flexibility and scalability, incorporating local materials and traditional techniques to enhance community participation and adaptability to the local context. Implemented in an area plagued by environmental challenges, the project aims to validate its effectiveness under harsh conditions and offer a sustainable, scalable model for similar global settings.",
@@ -109,6 +107,11 @@
       "href": "/modular"
     },
     "images": [
+      {
+        "src": "/projects/modular/main.webp",
+        "alt": "Modular: Natural - Build",
+        "hero": true
+      },
       {
         "src": "/projects/modular/1.webp",
         "alt": "Modular: Natural - Build | Image 1",
@@ -134,11 +137,6 @@
   {
     "name": "Synthetic Dunescapes",
     "type": "Design Studio / Research",
-    "hero": {
-      "src": "/projects/syntheticDunescapes/main.webp",
-      "alt": "AI Dune",
-      "sizes": "(min-width: 780px) calc(66.67vw - 91px), calc(100vw - 112px)"
-    },
     "year": "2024",
     "description": "AI-accelerated resilient habitat in desert regions",
     "longDescription": "The project speculates a future where population growth, resource scarcity, and climate change drive human migration to uninhabitable regions like deserts. To address these challenges, we propose a cellular, self-organizing system where each 'cell' autonomously adapts, transforms, and self-replicates. These cells, made from genetically engineered mycelium with exceptional structural strength and piezoelectric properties, serve as the fundamental building blocks of the habitat. This adaptability stems from the collective intelligence of the cellular agents, which dynamically respond to their surroundings by observing, acting, and evaluating the result. Drawing insights from thinkers like Jeremy Rifkin and Benjamin Bratton, the project seeks to merge design, technology, and ecology to transform challenging landscapes into viable habitats for very large buildings designed with 80% nonhuman and 20% human programming.",
@@ -151,7 +149,6 @@
     },
     "video": {
       "src": "https://www.youtube.com/embed/PNKjyfp9L2M?si=YKckKJ2IYIaZzzGH",
-      "id": "PNKjyfp9L2M",
       "alt": "Synthetic Dunescapes | Video Presentation"
     },
     "tutors": [
@@ -170,63 +167,61 @@
     ],
     "images": [
       {
+        "src": "/projects/syntheticDunescapes/main.webp",
+        "alt": "AI Dune",
+        "hero": true
+      },
+      {
         "src": "/projects/syntheticDunescapes/1.webp",
         "alt": "Synthetic Dunescapes | Image 1",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/syntheticDunescapes/2.webp",
         "alt": "Synthetic Dunescapes | Image 2",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/syntheticDunescapes/3.webp",
         "alt": "Synthetic Dunescapes | Image 3",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/syntheticDunescapes/4.webp",
         "alt": "Synthetic Dunescapes | Image 4",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/syntheticDunescapes/5.webp",
         "alt": "Synthetic Dunescapes | Image 5",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/syntheticDunescapes/6.webp",
         "alt": "Synthetic Dunescapes | Image 6",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/syntheticDunescapes/7.webp",
         "alt": "Synthetic Dunescapes | Image 7",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/syntheticDunescapes/8.webp",
         "alt": "Synthetic Dunescapes | Image 8",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/syntheticDunescapes/9.webp",
-        "alt": "Synthetic Dunescapes | Image 9",
-        "adaptive": true
+        "alt": "Synthetic Dunescapes | Image 9"
       }
     ]
   },
   {
     "name": "Jakarta Rising",
     "type": "Design Studio",
-    "hero": {
-      "src": "/projects/jakartaRising/main.webp",
-      "alt": "Jakarta Rising",
-      "sizes": "(min-width: 780px) calc(40vw - 69px), calc(100vw - 112px)"
-    },
     "video": {
       "src": "https://www.youtube.com/embed/ov6RFqihmLQ?si=dZVZYMSjo_UtNDIV",
-      "id": "ov6RFqihmLQ?si=dZVZYMSjo_UtNDIV",
       "alt": "Jakarta Rising | Video Presentation"
     },
     "tutors": [
@@ -253,18 +248,23 @@
     },
     "images": [
       {
+        "src": "/projects/jakartaRising/main.webp",
+        "alt": "Jakarta Rising",
+        "hero": true
+      },
+      {
         "src": "/projects/jakartaRising/1.webp",
         "alt": "Jakarta Rising | Image 1"
       },
       {
         "src": "/projects/jakartaRising/2.webp",
         "alt": "Jakarta Rising | Image 2",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/jakartaRising/3.webp",
         "alt": "Jakarta Rising | Image 3",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/jakartaRising/4.webp",
@@ -273,12 +273,12 @@
       {
         "src": "/projects/jakartaRising/5.webp",
         "alt": "Jakarta Rising | Image 5",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/jakartaRising/6.webp",
         "alt": "Jakarta Rising | Image 6",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/jakartaRising/7.webp",
@@ -287,12 +287,12 @@
       {
         "src": "/projects/jakartaRising/8.webp",
         "alt": "Jakarta Rising | Image 8",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/jakartaRising/9.webp",
         "alt": "Jakarta Rising | Image 9",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/jakartaRising/10.webp",
@@ -304,14 +304,8 @@
   {
     "name": "Terra // Form",
     "type": "Design Studio",
-    "hero": {
-      "src": "/projects/terraForm/main.webp",
-      "alt": "Terra//Form",
-      "sizes": "(min-width: 780px) calc(40vw - 69px), calc(100vw - 112px)"
-    },
     "video": {
       "src": "https://www.youtube.com/embed/ffDNh79mnEE?si=RPGW12y582pP_6ck",
-      "id": "ffDNh79mnEE",
       "alt": "Terra//Form | Video Presentation"
     },
     "tutors": [
@@ -344,28 +338,33 @@
     },
     "images": [
       {
+        "src": "/projects/terraForm/main.webp",
+        "alt": "Terra//Form",
+        "hero": true
+      },
+      {
         "src": "/projects/terraForm/10.webp",
         "alt": "Terra Form | Image 10"
       },
       {
         "src": "/projects/terraForm/1.webp",
         "alt": "Terra Form | Image 1",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/terraForm/2.webp",
         "alt": "Terra Form | Image 2",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/terraForm/3.webp",
         "alt": "Terra Form | Image 3",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/terraForm/4.webp",
         "alt": "Terra Form | Image 4",
-        "containerClassName": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/terraForm/5.webp",
@@ -393,19 +392,14 @@
   },
   {
     "name": "Mongrel Assembly",
-    "type": "Research Assistanship",
-    "hero": {
-      "src": "/projects/mongrelAssembly/main.webp",
-      "alt": "Mongrel Assembly",
-      "sizes": "(min-width: 780px) calc(66.67vw - 91px), calc(100vw - 112px)"
-    },
+    "type": "Design Studio / Research",
     "tutors": [
       {
         "name": "Caitlyn Parry",
         "url": "https://www.rmit.edu.au/contact/staff-contacts/academic-staff/p/parry-ms-caitlyn"
       }
     ],
-    "year": "2023-Ongoing",
+    "year": "2023",
     "description": "Intelligent Assembly of Recycled Materials Through Machine Learning",
     "longDescription": "This research proposed an innovative approach to sustainable architecture by developing a system for the intelligent assembly of recycled materials, which inherently vary in geometry, size, and form. The project created a comprehensive material database to catalog the properties of salvaged materials, serving as the foundation for training reinforcement learning algorithms. These algorithms optimized the assembly process, aiming for structural integrity and aesthetic quality through discrete aggregation simulations. By integrating machine learning with recycled material usage, this project not only addressed environmental sustainability by reducing construction waste but also enhanced architectural design processes, potentially leading to more innovative and cost-effective construction practices. The ultimate goal was to demonstrate that sustainable methods can be effectively aligned with architectural innovation, pushing the boundaries of technology in design.",
     "location": {
@@ -421,6 +415,13 @@
     "bentoAttributes": {
       "className": "md:col-span-4",
       "href": "/mongrel-assembly"
-    }
+    },
+    "images": [
+      {
+        "src": "/projects/mongrelAssembly/main.webp",
+        "alt": "Mongrel Assembly",
+        "hero": true
+      }
+    ]
   }
 ]

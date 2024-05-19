@@ -3,16 +3,21 @@ import { cn } from "@/utils/cn";
 import BlurImage from "./blur";
 
 const ImageLists = ({ data }) => {
+  const showHero = data.video && data.video.src; // Show hero image if there is no video
+
+  // Filter images to exclude the hero image if a video is present
+  const imagesToShow = showHero ? data.images : data.images.filter((image) => !image.hero);
+
   return (
     <>
-      {data.images && data.images.length > 0 && (
+      {imagesToShow && imagesToShow.length > 0 && (
         <div className="grid gap-5 grid-cols-2">
-          {data.images.map((image, i) => {
+          {imagesToShow.map((image, i) => {
             // Conditional rendering based on data.imageAttributes.adaptive
             if (image.adaptive) {
               // Perform the adaptive action
               return (
-                <div key={i} className={cn("relative w-full col-span-2", image.containerClassName)}>
+                <div key={i} className={cn("relative w-full col-span-2", image.className)}>
                   <BlurImage
                     src={image.src}
                     alt={image.alt}
@@ -27,10 +32,7 @@ const ImageLists = ({ data }) => {
               return (
                 <div
                   key={i}
-                  className={cn(
-                    "relative h-[600px] md:col-span-2 col-span-2",
-                    image.containerClassName
-                  )}
+                  className={cn("relative h-[600px] md:col-span-2 col-span-2", image.className)}
                 >
                   <BlurImage
                     src={image.src}
