@@ -9,29 +9,48 @@ const ProjectsGallery = async () => {
     <div id="projects">
       <section>
         <BentoGrid className={`auto-rows-[30rem] md:auto-rows-[50rem] md:grid-cols-6`}>
-          {projects.map((project, i) => (
-            <BentoGridItem
-              key={i}
-              title={project.name}
-              description={project.description}
-              header={
-                <ImageHeader
-                  src={project.hero.src}
-                  alt={project.hero.alt}
-                  sizes={project.hero.sizes}
-                  href={project.bentoAttributes.href}
-                />
+          {projects.map((project, i) => {
+            let heroImage = null;
+            try {
+              if (!project.images) {
+                throw new Error(`Project "${project.name}" does not have images property.`);
               }
-              className={`${project.bentoAttributes.className} uppercase`}
-            />
-          ))}
+              heroImage = project.images.find((image) => image.hero);
+              if (!heroImage) {
+                throw new Error(`Project "${project.name}" does not have a hero image.`);
+              }
+            } catch (error) {
+              console.error(error.message);
+              // You can also render a fallback UI here if needed
+              return (
+                <div key={i} className="text-red-500 font-bold">
+                  {error.message}
+                </div>
+              );
+            }
+            return (
+              <BentoGridItem
+                key={i}
+                title={project.name}
+                description={project.description}
+                header={
+                  <ImageHeader
+                    src={heroImage?.src}
+                    alt={heroImage?.alt}
+                    href={project.bentoAttributes.href}
+                  />
+                }
+                className={`${project.bentoAttributes.className} uppercase`}
+              />
+            );
+          })}
         </BentoGrid>
       </section>
     </div>
   );
 };
 
-const ImageHeader = ({ src, alt, href, sizes }) => (
+const ImageHeader = ({ src, alt, href }) => (
   <Link
     className="relative w-full h-full dark:opacity-80 dark:hover:opacity-100 transition duration-200"
     href={href}
@@ -40,7 +59,6 @@ const ImageHeader = ({ src, alt, href, sizes }) => (
       src={src}
       alt={alt}
       fill
-      sizes={sizes}
       style={{ objectFit: "cover", objectPosition: "bottom" }}
       className="rounded-xl dark:hover:scale-[1.02] transition duration-500"
     />

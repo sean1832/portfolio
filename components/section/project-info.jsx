@@ -5,6 +5,7 @@ import ClickableImage from "../ui/clickable-image";
 import { YoutubeVideo } from "../ui/youtube-video";
 
 const ProjectInfo = ({ data }) => {
+  const heroImage = data.images.find((image) => image.hero == true);
   return (
     <section className=" flex flex-col gap-10">
       {/* hero image */}
@@ -15,7 +16,7 @@ const ProjectInfo = ({ data }) => {
             data.video ? (
               <YoutubeVideo src={data.video.src} alt={data.video.alt} mute />
             ) : (
-              <ClickableImage src={data.hero.src} alt={data.hero.alt} />
+              <ClickableImage src={heroImage.src} alt={heroImage.alt} />
             )
           }
         </div>

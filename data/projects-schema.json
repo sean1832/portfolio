@@ -1,0 +1,164 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Project",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "Design Studio",
+          "International Competition",
+          "Design Studio / Research",
+          "Research",
+          "Research Assistanship"
+        ]
+      },
+      "video": {
+        "type": "object",
+        "properties": {
+          "src": {
+            "type": "string"
+          },
+          "alt": {
+            "type": "string"
+          }
+        },
+        "required": ["src", "alt"]
+      },
+      "year": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "longDescription": {
+        "type": "string"
+      },
+      "location": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": ["name"]
+      },
+      "group": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "awards": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "img": {
+              "type": "string"
+            }
+          },
+          "required": ["name"]
+        }
+      },
+      "publications": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "img": {
+              "type": "string"
+            }
+          },
+          "required": ["name", "url", "img"]
+        }
+      },
+      "bentoAttributes": {
+        "type": "object",
+        "properties": {
+          "className": {
+            "type": "string"
+          },
+          "href": {
+            "type": "string"
+          }
+        },
+        "required": ["className", "href"]
+      },
+      "tutors": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            }
+          },
+          "required": ["name", "url"]
+        }
+      },
+      "images": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "className": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            },
+            "caption": {
+              "type": "string"
+            },
+            "hero": {
+              "type": "boolean"
+            },
+            "adaptive": {
+              "type": "boolean"
+            }
+          },
+          "required": ["src", "alt"]
+        }
+      }
+    },
+    "required": [
+      "name",
+      "type",
+      "year",
+      "description",
+      "longDescription",
+      "location",
+      "bentoAttributes"
+    ]
+  }
+}
