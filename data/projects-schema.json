@@ -33,6 +33,9 @@
       "year": {
         "type": "string"
       },
+      "href": {
+        "type": "string"
+      },
       "description": {
         "type": "string"
       },
@@ -98,12 +101,9 @@
         "properties": {
           "className": {
             "type": "string"
-          },
-          "href": {
-            "type": "string"
           }
         },
-        "required": ["className", "href"]
+        "required": ["className"]
       },
       "tutors": {
         "type": "array",
@@ -158,7 +158,8 @@
       "description",
       "longDescription",
       "location",
-      "bentoAttributes"
+      "bentoAttributes",
+      "href"
     ]
   }
 }
