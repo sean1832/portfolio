@@ -34,11 +34,7 @@ const ProjectsGallery = async () => {
                 title={project.name}
                 description={project.description}
                 header={
-                  <ImageHeader
-                    src={heroImage?.src}
-                    alt={heroImage?.alt}
-                    href={project.bentoAttributes.href}
-                  />
+                  <ImageHeader src={heroImage?.src} alt={heroImage?.alt} href={project.href} />
                 }
                 className={`${project.bentoAttributes.className} uppercase`}
               />

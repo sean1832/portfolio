@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 
 const TextDecode = ({
-  text,
+  children,
   blockChar = {
     enabled: false,
     random: false,
@@ -13,9 +13,11 @@ const TextDecode = ({
   delay = 0,
   onCompleted,
   initChar = "#&*0d@",
+  charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+",
 }) => {
   const [displayedText, setDisplayedText] = useState(initChar);
-  const randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
+
+  const text = children;
 
   useEffect(() => {
     const currentText = Array(text.length).fill(" ");
@@ -27,14 +29,14 @@ const TextDecode = ({
           return text[index];
         } else if (revealed[index - 1] && blockChar.enabled) {
           if (blockChar.random) {
-            return randomChars[Math.floor(Math.random() * randomChars.length)];
+            return charSet[Math.floor(Math.random() * charSet.length)];
           } else {
             return blockChar.char;
           }
         } else if (hideAfter) {
           return "";
         } else {
-          return randomChars[Math.floor(Math.random() * randomChars.length)];
+          return charSet[Math.floor(Math.random() * charSet.length)];
         }
       });
 

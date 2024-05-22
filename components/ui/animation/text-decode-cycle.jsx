@@ -24,7 +24,9 @@ const TextDecodeCycle = ({ texts, interval = 150, cycleInterval = 3000 }) => {
   }, [textCompleted, texts.length, cycleInterval]);
 
   return (
-    <TextDecode text={texts[currentIndex]} interval={interval} onCompleted={handleTextCompleted} />
+    <TextDecode interval={interval} onCompleted={handleTextCompleted}>
+      {texts[currentIndex]}
+    </TextDecode>
   );
 };
 
