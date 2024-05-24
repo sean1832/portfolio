@@ -3,6 +3,8 @@ import ExternalTextLink from "../ui/external-text-link";
 import ImageLists from "../ui/images-list";
 import ClickableImage from "../ui/clickable-image";
 import { YoutubeVideo } from "../ui/youtube-video";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 
 const ProjectInfo = ({ data }) => {
   const heroImage = data.images.find((image) => image.hero == true);
@@ -10,6 +12,18 @@ const ProjectInfo = ({ data }) => {
     <section className=" flex flex-col gap-10">
       {/* hero image */}
       <div className="pt-32">
+        {/* alert message */}
+        <div className="flex max-w-9xl mx-auto px-4 py-4 md:hidden">
+          <Alert variant="destructive">
+            <ExclamationTriangleIcon className="h-4 w-4" />
+            <AlertTitle>Warning</AlertTitle>
+            <AlertDescription>
+              This page currently does not support mobile devices. Some element may not be display
+              correctly.
+            </AlertDescription>
+          </Alert>
+        </div>
+
         <div className="flex relative max-w-[2560px] mx-auto h-[800px]">
           {
             // if there is no video, show the image, otherwise show the video
