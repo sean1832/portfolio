@@ -52,10 +52,10 @@ async function LinkPreview({ url }) {
     return <div>Failed to fetch link preview.</div>;
   }
   return (
-    <div className="p-1 shadow-md hover:shadow-lg transition-shadow duration-200 flex">
+    <div className="p-1 hover:shadow-lg transition-shadow duration-200 flex">
       {data.image ? (
-        <div className="w-1/2 h-auto">
-          <img src={data.image} alt="favicon" className="object-cover h-full w-full" />
+        <div className="w-1/2 max-h-72">
+          <img src={data.image} alt="favicon" className="object-cover h-full w-full object-left" />
         </div>
       ) : null}
       <div

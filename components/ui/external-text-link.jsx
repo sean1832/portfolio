@@ -21,7 +21,7 @@ const ExternalTextLink = ({ children, href, key, className }) => {
           </span>
         </Link>
       </HoverCardTrigger>
-      <HoverCardContent className="w-[620px]">
+      <HoverCardContent className="w-[620px] text-sm">
         <LinkPreview url={href} />
       </HoverCardContent>
     </HoverCard>

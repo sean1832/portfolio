@@ -7,12 +7,14 @@ My personal portfolio website built with Next.js and Tailwind CSS. The website s
 
 > **Note:** 🚧The website is still under development and will be updated frequently.
 
+> You are welcome to use this as a template for your own portfolio website. If you do, please give credit to the original author.
+
 ## Build With
 
-- Next.js
-- JavaScript
-- Tailwind CSS
-- Framer Motion
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Shadcn](https://ui.shadcn.com/)
+- [Framer Motion](https://www.framer.com/motion/)
 
 ## Run Locally
 
@@ -24,7 +26,7 @@ npm run build
 npm run start
 ```
 
-## Features
+## To-Do
 
 - [x] Responsive design
 - [x] Server-side rendering
@@ -32,6 +34,8 @@ npm run start
 - [x] Open graph meta
 - [x] SEO optimization
 - [ ] Detailed project pages
+  - [ ] Carousel
+  - [ ] Mobile view
 - [ ] Blog section
 - [ ] Resume download
 - [ ] Contact form
