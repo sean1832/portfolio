@@ -30,5 +30,12 @@
   },
   "contact": {
     "email": "zekezhang@gmail.com"
-  }
+  },
+  "skills": [
+    {
+      "category": "Design",
+      "name": "Rhino3D",
+      "level": 90
+    }
+  ]
 }
