@@ -1,10 +1,10 @@
 import React from "react";
 import ExternalTextLink from "../ui/external-text-link";
 import ImageLists from "../ui/images-list";
-import ClickableImage from "../ui/clickable-image";
 import { YoutubeVideo } from "../ui/youtube-video";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
+import BlurImage from "../ui/blur";
 
 const ProjectInfo = ({ data }) => {
   const heroImage = data.images.find((image) => image.hero == true);
@@ -30,7 +30,14 @@ const ProjectInfo = ({ data }) => {
             data.video ? (
               <YoutubeVideo src={data.video.src} alt={data.video.alt} mute />
             ) : (
-              <ClickableImage src={heroImage.src} alt={heroImage.alt} />
+              <a href={heroImage.src} target="_blank">
+                <BlurImage
+                  src={heroImage.src}
+                  alt={heroImage.alt}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              </a>
             )
           }
         </div>
