@@ -44,7 +44,10 @@ const ImageLists = ({ data }) => {
               return (
                 <div
                   key={i}
-                  className={cn("relative h-[600px] md:col-span-2 col-span-2", image.className)}
+                  className={cn(
+                    "relative h-[300px] md:h-[600px] md:col-span-2 col-span-2",
+                    image.className
+                  )}
                 >
                   {/* if image is external link, do not use BlurImage */}
                   {image.external ? (

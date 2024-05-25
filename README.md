@@ -48,7 +48,7 @@ Currently the content is stored in `data` folder. You can modify the content in 
 - [x] SEO optimization
 - [ ] Detailed project pages
   - [ ] Carousel
-  - [ ] Mobile view
+  - [x] Mobile view
 - [ ] Blog section
   - [ ] Implement markdown
 - [ ] Resume download
