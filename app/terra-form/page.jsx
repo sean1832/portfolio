@@ -13,6 +13,11 @@ const dataIndex = projectData.findIndex(
 
 const data = projectData[dataIndex];
 
+export const metadata = {
+  title: projectName,
+  description: data.description,
+};
+
 const TerraFormPage = () => {
   return (
     <>
