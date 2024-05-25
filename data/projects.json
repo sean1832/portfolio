@@ -13,9 +13,7 @@
     "bentoAttributes": {
       "className": "md:col-span-3"
     },
-    "group": [
-      "Chukang Liang"
-    ],
+    "group": ["Chukang Liang"],
     "tutors": [
       {
         "name": "Dr. Christine Phillips",
@@ -101,10 +99,7 @@
     "bentoAttributes": {
       "className": "md:col-span-3"
     },
-    "group": [
-      "Chukang Liang",
-      "Wanyue Peng"
-    ],
+    "group": ["Chukang Liang", "Wanyue Peng"],
     "awards": [
       {
         "name": "Buildner | Honourable Mention",
@@ -152,10 +147,7 @@
     "bentoAttributes": {
       "className": "md:col-span-4"
     },
-    "group": [
-      "Luyao Jiang",
-      "Kang Liu"
-    ],
+    "group": ["Luyao Jiang", "Kang Liu"],
     "tutors": [
       {
         "name": "Dr. Alisa Andrasek",
@@ -239,11 +231,7 @@
     "bentoAttributes": {
       "className": "md:col-span-2"
     },
-    "group": [
-      "JingChen Lin",
-      "Yao Xiao",
-      "Jacqueline Pionan"
-    ],
+    "group": ["JingChen Lin", "Yao Xiao", "Jacqueline Pionan"],
     "tutors": [
       {
         "name": "Dr. Alisa Andrasek",
@@ -327,9 +315,7 @@
     "bentoAttributes": {
       "className": "md:col-span-2"
     },
-    "group": [
-      "Eu Yeo"
-    ],
+    "group": ["Eu Yeo"],
     "tutors": [
       {
         "name": "Dr. Natalie Alima",
@@ -430,11 +416,47 @@
         "url": "https://www.instagram.com/p/Czc5dDZSkJz/?img_index=4"
       }
     ],
+    "publications": [
+      {
+        "name": "WILD HOPE Conversations for a Planetary Commons",
+        "url": "https://designhub.rmit.edu.au/wp-content/uploads/2023/08/Wild-Hope-room-sheet-FINAL-Screen.pdf"
+      },
+      {
+        "name": "Mongrel Assemblies Official Website",
+        "url": "https://mongrelassemblies.com/"
+      }
+    ],
     "images": [
       {
         "src": "/projects/mongrelAssembly/main.webp",
         "alt": "Mongrel Assembly",
         "hero": true
+      },
+      {
+        "src": "/projects/mongrelAssembly/1.webp",
+        "alt": "Mongrel Assembly | Image 1",
+        "adaptive": true
+      },
+      {
+        "src": "/projects/mongrelAssembly/2.webp",
+        "alt": "Mongrel Assembly | Image 2",
+        "adaptive": true
+      },
+      {
+        "src": "https://freight.cargo.site/w/2750/i/b49c1c726655b2f18f70364355b986d0d9071d531af1fcc672461fa5706e88bd/MONGREL-ASSEMBLIES_ANIMATION_PROVINANCE-MAPPING_V04.jpg",
+        "alt": "Mongrel Assembly | Image 3",
+        "external": true
+      },
+      {
+        "src": "https://freight.cargo.site/w/1500/i/bb98ce4c2b6276122c92a6bd7d0dd32fbb4becdfc980d8d32e690d7266b6b9f2/foreoi-website-copy2.jpg",
+        "alt": "Mongrel Assembly | Image 4",
+        "external": true,
+        "adaptive": true
+      },
+      {
+        "src": "https://freight.cargo.site/w/2750/i/82664724a75fd3347e92384ec19a0836d270a341c7c1096c086922ecaaf3d5a1/A-Wild-Hope_-material-schedule-3-copy.jpg",
+        "alt": "Mongrel Assembly | Image 5",
+        "external": true
       }
     ]
   }
