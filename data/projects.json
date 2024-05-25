@@ -27,7 +27,7 @@
     "awards": [
       {
         "name": "ARM ARCHITECTURE PRIZE",
-        "url": "https://www.instagram.com/p/CWSYBVogyYI/",
+        "url": "https://www.instagram.com/armarchitecture/p/CWVFOyvFK-9/?hl=zh-cn&ref=159",
         "img": "/awards/arm.webp"
       },
       {
@@ -102,8 +102,18 @@
     "group": ["Chukang Liang", "Wanyue Peng"],
     "awards": [
       {
-        "name": "Buildner | Honourable Mention",
+        "name": "Modular Home / Edition #2  | Architecture Competitions ",
+        "url": "https://architecturecompetitions.com/modularhome2/"
+      }
+    ],
+    "publications": [
+      {
+        "name": "Honourable Mention Interview | Architecture Competitions ",
         "url": "https://architecturecompetitions.com/mod-2-hon-interview"
+      },
+      {
+        "name": "How Can Modular Design Be Used to Revolutionize Housing Architecture? | ArchDaily",
+        "url": "https://www.archdaily.com/1015545/how-can-modular-design-be-used-to-revolutionize-housing-architecture?ad_medium=gallery"
       }
     ],
     "images": [
