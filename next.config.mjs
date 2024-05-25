@@ -2,7 +2,13 @@
 import withPlaiceholder from "@plaiceholder/next";
 const nextConfig = {
   images: {
-    domains: ["freight.cargo.site"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "freight.cargo.site",
+        pathname: "**",
+      },
+    ],
   },
 };
 export default withPlaiceholder(nextConfig);
