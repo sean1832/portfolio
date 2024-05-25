@@ -7,7 +7,7 @@ const BlurImage = async (image) => {
   const buffer = await fs.readFile(`./public${image.src}`);
   const { base64 } = await getPlaiceholder(buffer);
   return (
-    <a href={image.src} target="_blank">
+    <>
       <Image
         src={image.src}
         alt={image.alt}
@@ -20,7 +20,7 @@ const BlurImage = async (image) => {
         width={image.width}
         height={image.height}
       />
-    </a>
+    </>
   );
 };
 

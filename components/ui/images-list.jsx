@@ -21,20 +21,13 @@ const ImageLists = ({ data }) => {
                 <div key={i} className={cn("relative w-full col-span-2", image.className)}>
                   {/* if image is external link, do not use BlurImage */}
                   {image.external ? (
-                    <a
-                      href={image.src}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full h-full"
-                    >
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        style={{ objectFit: "cover", width: "100%", height: "auto" }}
-                        width={image.width || 1920} // Use image width if available, otherwise default
-                        height={image.height || 1080} // Use image height if available, otherwise default
-                      />
-                    </a>
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      style={{ objectFit: "cover", width: "100%", height: "auto" }}
+                      width={image.width || 1920} // Use image width if available, otherwise default
+                      height={image.height || 1080} // Use image height if available, otherwise default
+                    />
                   ) : (
                     <BlurImage
                       src={image.src}
@@ -55,19 +48,12 @@ const ImageLists = ({ data }) => {
                 >
                   {/* if image is external link, do not use BlurImage */}
                   {image.external ? (
-                    <a
-                      href={image.src}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full h-full"
-                    >
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        className={cn("object-cover object-center w-full h-full", image.className)}
-                        fill
-                      />
-                    </a>
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      className={cn("object-cover object-center w-full h-full", image.className)}
+                      fill
+                    />
                   ) : (
                     <BlurImage
                       src={image.src}
