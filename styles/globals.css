@@ -66,6 +66,11 @@
   }
 }
 
+::selection {
+  background-color: theme("colors.custom-selected-text");
+  color: black; /* Optional: Change the text color when selected */
+}
+
 @layer base {
   * {
     @apply border-border;

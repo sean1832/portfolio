@@ -1,0 +1,608 @@
+[
+  {
+    "name": "Rhino3D",
+    "level": 0.9,
+    "type": "software",
+    "tags": ["3D", "modeling", "design", "architecture", "CAD", "BIM"],
+    "description": "Rhino3D is a 3D modeling software that is widely used in the architecture and design industry. It is known for its flexibility and ease of use, making it a popular choice for designers and architects.",
+    "developer": "Robert McNeel & Associates",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0.6
+      },
+      {
+        "name": "Modeling",
+        "ratio": 1
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0.3
+      },
+      {
+        "name": "Programming",
+        "ratio": 0.1
+      }
+    ]
+  },
+  {
+    "name": "Grasshopper",
+    "level": 0.8,
+    "type": "software",
+    "tags": ["parametric", "design", "visual programming", "3D"],
+    "description": "Grasshopper is a visual programming language and environment that is integrated with Rhino3D. It allows designers to create complex parametric designs and algorithms without the need for traditional coding.",
+    "developer": "Robert McNeel & Associates",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0.4
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0.75
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0.1
+      },
+      {
+        "name": "Programming",
+        "ratio": 0.6
+      }
+    ]
+  },
+  {
+    "name": "Revit",
+    "level": 0.6,
+    "type": "software",
+    "tags": ["BIM", "architecture", "construction", "modeling", "3D", "CAD"],
+    "description": "Revit is a building information modeling (BIM) software that is widely used in the architecture and construction industry. It allows architects and designers to create detailed 3D models of buildings and structures.",
+    "developer": "Autodesk",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 1.0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 1.0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0
+      },
+      {
+        "name": "Programming",
+        "ratio": 0
+      }
+    ]
+  },
+  {
+    "name": "AutoCAD",
+    "level": 0.6,
+    "type": "software",
+    "tags": ["2D", "CAD", "drafting", "architecture", "construction", "BIM"],
+    "description": "AutoCAD is a 2D and 3D computer-aided design (CAD) software that is widely used in the architecture, engineering, and construction industries. It is known for its precision and versatility in creating detailed technical drawings and designs.",
+    "developer": "Autodesk",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 1.0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0.3
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0
+      },
+      {
+        "name": "Programming",
+        "ratio": 0
+      }
+    ]
+  },
+  {
+    "name": "V-Ray",
+    "level": 0.65,
+    "type": "software",
+    "tags": ["rendering", "visualization", "3D", "architecture"],
+    "description": "V-Ray is a rendering software that is widely used in the architecture and design industry. It is known for its realistic lighting and material effects, making it a popular choice for creating high-quality visualizations of architectural projects.",
+    "developer": "Chaos Group",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 1.0
+      },
+      {
+        "name": "Programming",
+        "ratio": 0
+      }
+    ]
+  },
+  {
+    "name": "Octane Render",
+    "level": 0.7,
+    "type": "software",
+    "tags": ["rendering", "visualization", "3D", "architecture"],
+    "description": "Octane Render is a GPU-accelerated rendering software that is known for its speed and efficiency in creating high-quality visualizations. It is widely used in the architecture and design industry for its realistic lighting and material effects.",
+    "developer": "OTOY",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 1.0
+      },
+      {
+        "name": "Programming",
+        "ratio": 0
+      }
+    ]
+  },
+  {
+    "name": "Zbrush",
+    "level": 0.7,
+    "type": "software",
+    "tags": ["3D", "modeling", "sculpting", "design"],
+    "description": "Zbrush is a digital sculpting software that is widely used in the architecture and design industry. It is known for its powerful tools for creating detailed and realistic 3D models, making it a popular choice for artists and designers.",
+    "developer": "Pixologic",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 1.0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0
+      },
+      {
+        "name": "Programming",
+        "ratio": 0
+      }
+    ]
+  },
+  {
+    "name": "Unreal Engine",
+    "level": 0.75,
+    "type": "software",
+    "tags": ["3D", "visualization", "architecture", "design", "VR", "virtual production"],
+    "description": "Unreal Engine is a real-time 3D creation platform that is widely used in the architecture and design industry. It allows designers to create interactive and immersive visualizations of architectural projects, as well as virtual reality experiences.",
+    "developer": "Epic Games",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 1.0
+      },
+      {
+        "name": "Programming",
+        "ratio": 0.2
+      }
+    ]
+  },
+  {
+    "name": "Photoshop",
+    "level": 0.65,
+    "type": "software",
+    "tags": ["photo editing", "design", "visualization", "digital painting"],
+    "description": "Photoshop is a raster graphics editing software that is widely used in the architecture and design industry. It is known for its versatility in creating and editing images, as well as its powerful tools for digital painting and photo manipulation.",
+    "developer": "Adobe Inc.",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0.8
+      },
+      {
+        "name": "Programming",
+        "ratio": 0
+      }
+    ]
+  },
+  {
+    "name": "Illustrator",
+    "level": 0.75,
+    "type": "software",
+    "tags": ["vector graphics", "illustration", "design", "typography"],
+    "description": "Illustrator is a vector graphics editing software that is widely used in the architecture and design industry. It is known for its precision and versatility in creating detailed illustrations and graphics, as well as its powerful tools for typography and layout design.",
+    "developer": "Adobe Inc.",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0.2
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0.7
+      },
+      {
+        "name": "Programming",
+        "ratio": 0
+      }
+    ]
+  },
+  {
+    "name": "InDesign",
+    "level": 0.8,
+    "type": "software",
+    "tags": ["desktop publishing", "layout design", "typography", "print materials"],
+    "description": "InDesign is a desktop publishing software that is widely used in the architecture and design industry. It is known for its powerful tools for layout design and typography, making it a popular choice for creating brochures, magazines, and other print materials.",
+    "developer": "Adobe Inc.",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0.6
+      },
+      {
+        "name": "Programming",
+        "ratio": 0
+      }
+    ]
+  },
+  {
+    "name": "Premiere Pro",
+    "level": 0.6,
+    "type": "software",
+    "tags": ["video editing", "post-production", "motion graphics", "visual effects"],
+    "description": "Premiere Pro is a video editing software that is widely used in the architecture and design industry. It is known for its powerful tools for editing and post-production, as well as its integration with other Adobe Creative Cloud applications.",
+    "developer": "Adobe Inc.",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0.6
+      },
+      {
+        "name": "Programming",
+        "ratio": 0
+      }
+    ]
+  },
+  {
+    "name": "Python",
+    "level": 0.85,
+    "type": "language",
+    "tags": ["programming", "scripting", "automation", "software development"],
+    "description": "Python is a high-level programming language that is widely used in the architecture and design industry. It is known for its simplicity and readability, making it a popular choice for creating scripts and automation tools for design workflows.",
+    "developer": "Python Software Foundation",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0
+      },
+      {
+        "name": "Programming",
+        "ratio": 1.0
+      }
+    ]
+  },
+  {
+    "name": "JavaScript",
+    "level": 0.65,
+    "type": "language",
+    "tags": ["programming", "web development", "interactive design"],
+    "description": "JavaScript is a high-level programming language that is widely used in the architecture and design industry. It is known for its versatility and interactivity, making it a popular choice for creating web-based design tools and applications.",
+    "developer": "Netscape Communications Corporation",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0
+      },
+      {
+        "name": "Programming",
+        "ratio": 1.0
+      }
+    ]
+  },
+  {
+    "name": "C#",
+    "level": 0.7,
+    "type": "language",
+    "tags": ["programming", "software development", "desktop applications"],
+    "description": "C# is a high-level programming language that is widely used in the architecture and design industry. It is known for its simplicity and versatility, making it a popular choice for creating desktop and web-based design applications.",
+    "developer": "Microsoft",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0
+      },
+      {
+        "name": "Programming",
+        "ratio": 1.0
+      }
+    ]
+  },
+  {
+    "name": "C++",
+    "level": 0.35,
+    "type": "language",
+    "tags": ["programming", "performance", "efficiency", "low-level"],
+    "description": "C++ is a low-level programming language that is widely used in the architecture and design industry. It is known for its speed and efficiency, making it a popular choice for creating performance-critical design applications and simulations.",
+    "developer": "Bjarne Stroustrup",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0
+      },
+      {
+        "name": "Programming",
+        "ratio": 1.0
+      }
+    ]
+  },
+  {
+    "name": "Next.JS",
+    "level": 0.55,
+    "type": "framework",
+    "tags": [
+      "web development",
+      "React",
+      "JavaScript",
+      "programming",
+      "user interfaces",
+      "server-side rendering",
+      "interactive"
+    ],
+    "description": "Next.JS is a React framework that is widely used in the architecture and design industry. It is known for its speed and efficiency in creating interactive and dynamic web applications, making it a popular choice for creating design portfolios and online presentations.",
+    "developer": "Vercel",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0
+      },
+      {
+        "name": "Programming",
+        "ratio": 1.0
+      }
+    ]
+  },
+  {
+    "name": "React",
+    "level": 0.6,
+    "type": "framework",
+    "tags": ["web development", "JavaScript", "programming", "user interfaces", "interactive"],
+    "description": "React is a JavaScript library that is widely used in the architecture and design industry. It is known for its simplicity and efficiency in creating interactive user interfaces, making it a popular choice for creating web-based design tools and applications.",
+    "developer": "Facebook",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0
+      },
+      {
+        "name": "Programming",
+        "ratio": 1.0
+      }
+    ]
+  },
+  {
+    "name": "Firebase",
+    "level": 0.5,
+    "type": "database",
+    "tags": ["database", "web development", "programming"],
+    "description": "Firebase is a mobile and web application development platform that is widely used in the architecture and design industry. It is known for its real-time database and authentication services, making it a popular choice for creating interactive and dynamic web applications.",
+    "developer": "Google",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0
+      },
+      {
+        "name": "Programming",
+        "ratio": 1.0
+      }
+    ]
+  },
+  {
+    "name": "Sqlite",
+    "level": 0.6,
+    "type": "database",
+    "tags": ["database", "programming"],
+    "description": "Sqlite is a lightweight and self-contained SQL database engine that is widely used in the architecture and design industry. It is known for its simplicity and efficiency in storing and retrieving data, making it a popular choice for creating design applications and tools.",
+    "developer": "D. Richard Hipp",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0
+      },
+      {
+        "name": "Programming",
+        "ratio": 1.0
+      }
+    ]
+  },
+  {
+    "name": "ML-Agents",
+    "level": 0.4,
+    "type": "library",
+    "tags": ["machine learning", "AI", "programming", "design", "simulation"],
+    "description": "ML-Agents is a machine learning library that is widely used in the architecture and design industry. It is known for its efficiency in creating intelligent and interactive design applications, making it a popular choice for creating AI-driven design tools and simulations.",
+    "developer": "Unity Technologies",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0
+      },
+      {
+        "name": "Programming",
+        "ratio": 1.0
+      }
+    ]
+  },
+  {
+    "name": "Unity",
+    "level": 0.7,
+    "type": "software",
+    "tags": ["3D", "simulation", "visualization", "architecture", "design", "VR"],
+    "description": "Unity is a real-time 3D development platform that is widely used in the architecture and design industry. It allows designers to create interactive and immersive visualizations of architectural projects, as well as virtual reality experiences.",
+    "developer": "Unity Technologies",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0.2
+      },
+      {
+        "name": "Programming",
+        "ratio": 0.8
+      }
+    ]
+  },
+  {
+    "name": "Streamlit",
+    "level": 0.6,
+    "type": "library",
+    "tags": ["web development", "programming", "interactive"],
+    "description": "Streamlit is a Python library that is widely used in the architecture and design industry. It is known for its simplicity and efficiency in creating interactive and dynamic web applications, making it a popular choice for creating design portfolios and online presentations.",
+    "developer": "Streamlit Inc.",
+    "categories": [
+      {
+        "name": "Drafting",
+        "ratio": 0
+      },
+      {
+        "name": "Modeling",
+        "ratio": 0
+      },
+      {
+        "name": "Visualization",
+        "ratio": 0
+      },
+      {
+        "name": "Programming",
+        "ratio": 1.0
+      }
+    ]
+  }
+]

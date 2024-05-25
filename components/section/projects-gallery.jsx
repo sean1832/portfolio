@@ -36,7 +36,7 @@ const ProjectsGallery = async () => {
                 header={
                   <ImageHeader src={heroImage?.src} alt={heroImage?.alt} href={project.href} />
                 }
-                className={`${project.bentoAttributes.className} uppercase`}
+                className={`${project.bentoAttributes.className} uppercase border dark:border-background hover:dark:border-primary hover:border-black rounded-none`}
               />
             );
           })}
@@ -56,7 +56,7 @@ const ImageHeader = ({ src, alt, href }) => (
       alt={alt}
       fill
       style={{ objectFit: "cover", objectPosition: "bottom" }}
-      className="rounded-xl dark:hover:scale-[1.02] transition duration-500"
+      className="transition duration-500"
     />
   </Link>
 );

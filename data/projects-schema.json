@@ -145,9 +145,15 @@
             },
             "adaptive": {
               "type": "boolean"
+            },
+            "carousel": {
+              "type": "boolean"
+            },
+            "external": {
+              "type": "boolean"
             }
           },
-          "required": ["src", "alt"]
+          "required": ["src"]
         }
       }
     },

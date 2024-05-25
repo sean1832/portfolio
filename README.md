@@ -26,6 +26,19 @@ npm run build
 npm run start
 ```
 
+## Modify Content
+
+Currently the content is stored in `data` folder. You can modify the content in the following files:
+
+| filename               | description                   |
+| ---------------------- | ----------------------------- |
+| `projects.json`        | Featured projects information |
+| `projects-schema.json` | JSON schema for the projects  |
+| `profile.json`         | Personal profile information  |
+| `navbar.json`          | Navigation bar links          |
+
+> There is a plan to move the content to a CMS in the future.
+
 ## To-Do
 
 - [x] Responsive design
@@ -37,5 +50,8 @@ npm run start
   - [ ] Carousel
   - [ ] Mobile view
 - [ ] Blog section
+  - [ ] Implement markdown
 - [ ] Resume download
 - [ ] Contact form
+- [ ] Skills section
+- [ ] TinaCMS integration

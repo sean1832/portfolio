@@ -56,6 +56,7 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "custom-selected-text": "#ea580c",
       },
       borderRadius: {
         lg: "var(--radius)",

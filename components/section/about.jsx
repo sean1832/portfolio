@@ -24,7 +24,6 @@ const About = () => {
               src={profile.image.src}
               alt={profile.image.alt}
               style={{ width: "auto", objectFit: "cover", objectPosition: "bottom" }}
-              className="rounded-xl"
               width={400}
               height={350}
             />
