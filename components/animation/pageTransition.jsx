@@ -9,7 +9,7 @@ const titles = projectData.reduce((acc, project) => {
   return acc;
 }, {});
 
-const Transition = ({ children }) => {
+const PageTransition = ({ children }) => {
   const pathname = usePathname();
   const [pageTitle, setPageTitle] = useState("");
   const isBrowser = () => typeof window !== "undefined";
@@ -79,4 +79,4 @@ const Transition = ({ children }) => {
   );
 };
 
-export default Transition;
+export default PageTransition;
