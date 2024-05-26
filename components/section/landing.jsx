@@ -1,11 +1,11 @@
 import React from "react";
 import dynamic from "next/dynamic";
 
-const TextDecode = dynamic(() => import("@/components/ui/animation/text-decode"), {
+const TextDecode = dynamic(() => import("@/components/animation/text-decode"), {
   ssr: false,
 });
 
-const TextDecodeCycle = dynamic(() => import("@/components/ui/animation/text-decode-cycle"), {
+const TextDecodeCycle = dynamic(() => import("@/components/animation/text-decode-cycle"), {
   ssr: false,
 });
 

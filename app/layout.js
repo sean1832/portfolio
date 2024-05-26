@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/ui/theme/theme-provider";
+import PageAnimatePresence from "@/components/HOC/pageAnimatePresence";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -47,7 +48,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system">
-          {children}
+          <PageAnimatePresence>{children}</PageAnimatePresence>
         </ThemeProvider>
       </body>
     </html>

@@ -50,6 +50,7 @@ const ImageHeader = ({ src, alt, href }) => (
   <Link
     className="relative w-full h-full dark:opacity-80 dark:hover:opacity-100 transition duration-200"
     href={href}
+    scroll={false}
   >
     <BlurImage
       src={src}
