@@ -1,22 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
-import projectData from "@/data/projects";
-
-const titles = projectData.reduce((acc, project) => {
-  acc[project.href] = project.name;
-  return acc;
-}, {});
 
 const PageTransition = ({ children }) => {
-  const pathname = usePathname();
-  const [pageTitle, setPageTitle] = useState("");
   const isBrowser = () => typeof window !== "undefined";
-
-  useEffect(() => {
-    setPageTitle(titles[pathname] || null);
-  }, [pathname]);
 
   const animateUp = {
     initial: {
