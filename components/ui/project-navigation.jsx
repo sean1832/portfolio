@@ -1,17 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Link from "next/link";
 
 const ProjectNavigationButton = ({ name, href, direction }) => {
   return (
     <div>
       {direction === "next" ? (
-        <a href={href} className="text-primary underline-offset-4 hover:underline">
+        <Link
+          href={href}
+          className="text-primary underline-offset-4 hover:underline"
+          scroll={false}
+        >
           {name.toUpperCase()} →
-        </a>
+        </Link>
       ) : (
-        <a href={href} className="text-primary underline-offset-4 hover:underline">
+        <Link
+          href={href}
+          className="text-primary underline-offset-4 hover:underline"
+          scroll={false}
+        >
           ← {name.toUpperCase()}
-        </a>
+        </Link>
       )}
     </div>
   );

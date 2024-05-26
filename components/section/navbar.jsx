@@ -1,14 +1,14 @@
 import React from "react";
 import navbarData from "@/data/navbar";
-import { ZekeLogoIcon } from "./svg";
-import { Separator } from "./separator";
+import { ZekeLogoIcon } from "../ui/svg";
+import { Separator } from "../ui/separator";
 import { ModeToggle } from "@/components/ui/theme/mode-toggle";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Link from "next/link";
 
 const NavBar = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background">
+    <header className="fixed top-0 left-0 right-0 z-40 bg-background">
       <div className="flex items-center justify-between h-16 px-4 md:px-6 w-full">
         <div
           style={{ maxWidth: "1920px" }}
