@@ -1,6 +1,6 @@
 import React from "react";
 import projectData from "@/data/projects.json";
-import NavBar from "@/components/ui/navbar";
+import NavBar from "@/components/section/navbar";
 import ProjectInfo from "@/components/section/project-info";
 import Footer from "@/components/section/footer";
 import { ProjectNavigation } from "@/components/ui/project-navigation";

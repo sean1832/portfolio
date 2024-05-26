@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "@/components/ui/navbar";
+import NavBar from "@/components/section/navbar";
 import projectData from "@/data/projects.json";
 import ProjectInfo from "@/components/section/project-info";
 import Footer from "@/components/section/footer";
