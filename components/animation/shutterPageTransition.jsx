@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 
-const PageTransition = ({ children }) => {
+const ShutterPageTransition = ({ children }) => {
   const isBrowser = () => typeof window !== "undefined";
 
   const animateUp = {
@@ -65,4 +65,4 @@ const PageTransition = ({ children }) => {
   );
 };
 
-export default PageTransition;
+export default ShutterPageTransition;
