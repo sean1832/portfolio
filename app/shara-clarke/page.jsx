@@ -1,7 +1,6 @@
 import ProjectInfo from "@/components/section/project-info";
 import React from "react";
 import projectData from "@/data/projects.json";
-import Footer from "@/components/section/footer";
 import { ProjectNavigation } from "@/components/ui/project-navigation";
 
 const projectName = "Shara Clarke";
@@ -22,7 +21,6 @@ const SharaClarkePage = () => {
     <>
       <ProjectInfo data={data} />
       <ProjectNavigation projectData={projectData} index={dataIndex} />
-      <Footer />
     </>
   );
 };

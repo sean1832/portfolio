@@ -1,7 +1,6 @@
 import React from "react";
 import projectData from "@/data/projects.json";
 import ProjectInfo from "@/components/section/project-info";
-import Footer from "@/components/section/footer";
 import { ProjectNavigation } from "@/components/ui/project-navigation";
 // Find the index of the current project
 
@@ -22,7 +21,6 @@ const TerraFormPage = () => {
     <>
       <ProjectInfo data={data} />
       <ProjectNavigation projectData={projectData} index={dataIndex} />
-      <Footer />
     </>
   );
 };
