@@ -14,7 +14,7 @@ const NavBar = () => {
           style={{ maxWidth: "1920px" }}
           className="w-full mx-auto flex justify-between items-center"
         >
-          <Link className="flex items-center gap-2" href="/#">
+          <Link className="flex items-center gap-2" href="/#home">
             <ZekeLogoIcon className="w-8 h-8" />
           </Link>
           <nav className="items-center gap-4">
