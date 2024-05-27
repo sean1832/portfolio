@@ -1,7 +1,8 @@
 import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/ui/theme/theme-provider";
-import PageAnimatePresence from "@/components/HOC/pageAnimatePresence";
+import NavBar from "@/components/section/navbar";
+// import PageAnimatePresence from "@/components/HOC/pageAnimatePresence";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,10 +46,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system">
-          <PageAnimatePresence>{children}</PageAnimatePresence>
+          <NavBar />
+          {children}
         </ThemeProvider>
       </body>
     </html>

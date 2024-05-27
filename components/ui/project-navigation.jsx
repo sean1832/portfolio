@@ -6,19 +6,11 @@ const ProjectNavigationButton = ({ name, href, direction }) => {
   return (
     <div>
       {direction === "next" ? (
-        <Link
-          href={href}
-          className="text-primary underline-offset-4 hover:underline"
-          scroll={false}
-        >
+        <Link href={href} className="text-primary underline-offset-4 hover:underline">
           {name.toUpperCase()} →
         </Link>
       ) : (
-        <Link
-          href={href}
-          className="text-primary underline-offset-4 hover:underline"
-          scroll={false}
-        >
+        <Link href={href} className="text-primary underline-offset-4 hover:underline">
           ← {name.toUpperCase()}
         </Link>
       )}

@@ -13,7 +13,7 @@ const Landing = () => {
   return (
     <section className="flex flex-col h-screen items-center justify-center">
       <div className="text-3xl sm:text-4xl m:text-5xl xl:text-5xl 2xl:text-6xl font-bold text-center flex flex-col gap-0">
-        <TextDecode interval={50} delay={800} initChar="PDPsLVHCdFwwaygPIdbXX">
+        <TextDecode interval={50} initChar="PDPsLVHCdFwwaygPIdbXX">
           INTELLIGENT SYNTHESIS
         </TextDecode>
       </div>
