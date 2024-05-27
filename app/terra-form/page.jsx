@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "@/components/section/navbar";
 import projectData from "@/data/projects.json";
 import ProjectInfo from "@/components/section/project-info";
 import Footer from "@/components/section/footer";
@@ -21,7 +20,6 @@ export const metadata = {
 const TerraFormPage = () => {
   return (
     <>
-      <NavBar />
       <ProjectInfo data={data} />
       <ProjectNavigation projectData={projectData} index={dataIndex} />
       <Footer />
