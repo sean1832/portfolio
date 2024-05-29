@@ -77,31 +77,24 @@ const ProjectInfo = ({ data }) => {
             <YoutubeVideo src={data.video.src} alt={data.video.alt} mute />
           ) : (
             <a href={heroImage.src} target="_blank" rel="noopener noreferrer">
-              <BlurImage
-                src={heroImage.src}
-                alt={heroImage.alt}
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              <BlurImage src={heroImage.src} alt={heroImage.alt} fill style={{ objectFit: "cover" }} />
             </a>
           )}
         </div>
       </div>
 
       {/* Project info */}
-      <div className="flex flex-col md:grid md:grid-cols-12 max-w-9xl mx-auto gap-4 px-4">
+      <div className="flex flex-col lg:grid lg:grid-cols-12 max-w-9xl mx-auto gap-4 px-4">
         <div className="flex flex-col gap-5 col-span-3 dark:text-gray-300 text-gray-700">
           <div>
-            <div className="text-2xl md:text-3xl font-semibold text-primary">
-              {data.name.toUpperCase()}
-            </div>
+            <div className="text-2xl lg:text-3xl font-semibold text-primary">{data.name.toUpperCase()}</div>
             <div className="font-bold text-primary">
               {data.type} - {data.year}
             </div>
           </div>
 
           {/* Description for mobile */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <div className="text-primary">
               <strong>Description: </strong>
               {data.longDescription}
@@ -109,10 +102,10 @@ const ProjectInfo = ({ data }) => {
           </div>
 
           {/* Other info */}
-          <ProjectDetails data={data} className="hidden md:block" />
+          <ProjectDetails data={data} className="hidden lg:block" />
 
           {/* Details for desktop */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <div className="text-primary">
               <strong>Description: </strong>
               {data.longDescription}
@@ -126,10 +119,7 @@ const ProjectInfo = ({ data }) => {
         </div>
 
         {/* Other info for mobile */}
-        <ProjectDetails
-          data={data}
-          className={`md:hidden flex flex-col gap-5 dark:text-gray-300 text-gray-700`}
-        />
+        <ProjectDetails data={data} className={`lg:hidden flex flex-col gap-5 dark:text-gray-300 text-gray-700`} />
       </div>
     </section>
   );
