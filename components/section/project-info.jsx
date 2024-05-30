@@ -3,16 +3,7 @@ import ExternalTextLink from "../ui/external-text-link";
 import ImageLists from "../ui/images-list";
 import { YoutubeVideo } from "../ui/youtube-video";
 import BlurImage from "../ui/blur";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../ui/carousel";
-import CustomImage from "../ui/customImage";
-import { Card, CardContent } from "../ui/card";
-import Image from "next/image";
+import CustomCarousel from "../ui/customCarousel";
 
 const ProjectDetails = ({ data, className }) => (
   <div className={className}>
@@ -75,84 +66,6 @@ const ProjectDetails = ({ data, className }) => (
   </div>
 );
 
-const CarouselSection = ({ data, className }) => {
-  const carouselImages = data.images.filter((image) => image.isCarousel);
-  if (carouselImages.length === 0) return null;
-  return (
-    // <Carousel className={className}>
-    //   <CarouselContent>
-    //     <CarouselItem>
-    //       <div className="flex flex-col items-center p-2">
-    //         <Image
-    //           alt="Landscape"
-    //           className="aspect-video object-cover rounded-lg"
-    //           src="https://freight.cargo.site/w/2750/i/b49c1c726655b2f18f70364355b986d0d9071d531af1fcc672461fa5706e88bd/MONGREL-ASSEMBLIES_ANIMATION_PROVINANCE-MAPPING_V04.jpg"
-    //           height={1920}
-    //           width={1080}
-    //         />
-    //         <p className="text-sm mt-2.5">Landscape</p>
-    //       </div>
-    //     </CarouselItem>
-    //     <CarouselItem>
-    //       <div className="flex flex-col items-center p-2">
-    //         <Image
-    //           alt="Portrait"
-    //           className="aspect-video object-cover rounded-lg"
-    //           height={1920}
-    //           src="https://freight.cargo.site/w/1500/i/bb98ce4c2b6276122c92a6bd7d0dd32fbb4becdfc980d8d32e690d7266b6b9f2/foreoi-website-copy2.jpg"
-    //           width={1080}
-    //         />
-    //         <p className="text-sm mt-2.5">Portrait</p>
-    //       </div>
-    //     </CarouselItem>
-    //     <CarouselItem>
-    //       <div className="flex flex-col items-center p-2">
-    //         <Image
-    //           alt="Abstract"
-    //           className="aspect-video object-cover rounded-lg"
-    //           height={1920}
-    //           src="https://freight.cargo.site/w/2750/i/82664724a75fd3347e92384ec19a0836d270a341c7c1096c086922ecaaf3d5a1/A-Wild-Hope_-material-schedule-3-copy.jpg"
-    //           width={1080}
-    //         />
-    //         <p className="text-sm mt-2.5">Abstract</p>
-    //       </div>
-    //     </CarouselItem>
-    //   </CarouselContent>
-    //   <CarouselPrevious />
-    //   <CarouselNext />
-    // </Carousel>
-    <Carousel className={className}>
-      <CarouselContent>
-        {carouselImages.map((image, i) => (
-          <CarouselItem key={i}>
-            <div className="flex flex-col items-center">
-              <Image
-                key={i}
-                src={image.src}
-                alt={image.alt}
-                className="aspect-video object-cover"
-                width={1920}
-                height={1080}
-              />
-              <p className="text-sm mt-2.5">{image.caption}</p>
-              {image.credit && (
-                <>
-                  <p className="text-sm mt-2.5 text-gray-500">
-                    Credit:{" "}
-                    <ExternalTextLink href={image.credit.url}>{image.credit.text}</ExternalTextLink>
-                  </p>
-                </>
-              )}
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
-  );
-};
-
 const ProjectInfo = ({ data }) => {
   const heroImage = data.images.find((image) => image.isHero == true);
   return (
@@ -211,7 +124,7 @@ const ProjectInfo = ({ data }) => {
         {/* Images */}
         <div className="col-span-9">
           <ImageLists data={data} />
-          <CarouselSection data={data} className={"w-full py-4"} />
+          <CustomCarousel data={data} className={"w-full py-4"} />
         </div>
 
         {/* Other info for mobile */}
