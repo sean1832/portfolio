@@ -13,7 +13,7 @@ import ExternalTextLink from "../ui/external-text-link";
 
 const CustomCarousel = ({ data, className }) => {
   const carouselImages = data.images.filter((image) => image.isCarousel);
-  const plugin = React.useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
+  const plugin = React.useRef(Autoplay({ delay: 4000, stopOnInteraction: true }));
   if (carouselImages.length === 0) return null;
   return (
     <Carousel className={className} plugins={[plugin.current]}>
