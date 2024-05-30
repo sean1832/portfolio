@@ -62,26 +62,28 @@
         "alt": "Shara Clarke | Image 1"
       },
       {
-        "src": "/projects/sharaClarke/03.webp",
-        "alt": "Shara Clarke | Image 3"
-      },
-      {
         "src": "/projects/sharaClarke/02.webp",
         "alt": "Shara Clarke | Image 2"
       },
       {
+        "src": "/projects/sharaClarke/03.webp",
+        "alt": "Shara Clarke | Image 3",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/sharaClarke/07.webp",
+        "alt": "Shara Clarke | Image 4",
+        "isCarousel": true
+      },
+      {
         "src": "/projects/sharaClarke/05.webp",
         "alt": "Shara Clarke | Image 4",
-        "className": "md:col-span-1 col-span-2"
+        "isCarousel": true
       },
       {
         "src": "/projects/sharaClarke/06.webp",
         "alt": "Shara Clarke | Image 4",
-        "className": "md:col-span-1 col-span-2"
-      },
-      {
-        "src": "/projects/sharaClarke/07.webp",
-        "alt": "Shara Clarke | Image 4"
+        "isCarousel": true
       }
     ]
   },
@@ -377,22 +379,26 @@
         "className": "md:col-span-1 col-span-2"
       },
       {
-        "src": "/projects/terraForm/5.webp",
-        "alt": "Terra Form | Image 5"
+        "src": "/projects/terraForm/6.webp",
+        "alt": "Terra Form | Image 6",
+        "isCarousel": true
       },
       {
-        "src": "/projects/terraForm/6.webp",
-        "alt": "Terra Form | Image 6"
+        "src": "/projects/terraForm/5.webp",
+        "alt": "Terra Form | Image 5",
+        "isCarousel": true
       },
       {
         "src": "/projects/terraForm/7.webp",
         "alt": "Terra Form | Image 7",
-        "isAdaptive": true
+        "isAdaptive": true,
+        "isCarousel": true
       },
       {
         "src": "/projects/terraForm/8.webp",
         "alt": "Terra Form | Image 8",
-        "isAdaptive": true
+        "isAdaptive": true,
+        "isCarousel": true
       },
       {
         "src": "/projects/terraForm/9.webp",
