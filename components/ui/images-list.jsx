@@ -4,7 +4,7 @@ import CustomImage from "./customImage";
 const ImageLists = ({ data }) => {
   const showHero = data.video && data.video.src;
   const imagesToShow = showHero
-    ? data.images
+    ? data.images.filter((image) => !image.isCarousel)
     : data.images.filter((image) => !image.isHero && !image.isCarousel);
 
   return (
