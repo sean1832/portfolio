@@ -141,17 +141,33 @@
             "caption": {
               "type": "string"
             },
+            "credit": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              }
+            },
             "isHero": {
-              "type": "boolean"
+              "type": "boolean",
+              "default": true
             },
             "isAdaptive": {
-              "type": "boolean"
+              "type": "boolean",
+              "default": true
             },
             "isCarousel": {
-              "type": "boolean"
+              "type": "boolean",
+              "default": true
             },
             "isExternal": {
-              "type": "boolean"
+              "type": "boolean",
+              "default": true
             }
           },
           "required": ["src"]

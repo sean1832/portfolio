@@ -451,6 +451,37 @@
         "src": "/projects/mongrelAssembly/2.webp",
         "alt": "Mongrel Assembly | Image 2",
         "isAdaptive": true
+      },
+      {
+        "src": "https://freight.cargo.site/w/2750/i/b49c1c726655b2f18f70364355b986d0d9071d531af1fcc672461fa5706e88bd/MONGREL-ASSEMBLIES_ANIMATION_PROVINANCE-MAPPING_V04.jpg",
+        "alt": "Mongrel Assembly | Image 3",
+        "credit": {
+          "text": "Mongrel Assemblies Official Website",
+          "url": "https://mongrelassemblies.com/"
+        },
+        "isExternal": true,
+        "isCarousel": true
+      },
+      {
+        "src": "https://freight.cargo.site/w/1500/i/bb98ce4c2b6276122c92a6bd7d0dd32fbb4becdfc980d8d32e690d7266b6b9f2/foreoi-website-copy2.jpg",
+        "alt": "Mongrel Assembly | Image 4",
+        "credit": {
+          "text": "Mongrel Assemblies Official Website",
+          "url": "https://mongrelassemblies.com/"
+        },
+        "isExternal": true,
+        "isAdaptive": true,
+        "isCarousel": true
+      },
+      {
+        "src": "https://freight.cargo.site/w/2750/i/82664724a75fd3347e92384ec19a0836d270a341c7c1096c086922ecaaf3d5a1/A-Wild-Hope_-material-schedule-3-copy.jpg",
+        "alt": "Mongrel Assembly | Image 5",
+        "credit": {
+          "text": "Mongrel Assemblies Official Website",
+          "url": "https://mongrelassemblies.com/"
+        },
+        "isExternal": true,
+        "isCarousel": true
       }
     ]
   }
