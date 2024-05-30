@@ -124,6 +124,7 @@
         "type": "array",
         "items": {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
             "src": {
               "type": "string"
@@ -140,16 +141,16 @@
             "caption": {
               "type": "string"
             },
-            "hero": {
+            "isHero": {
               "type": "boolean"
             },
-            "adaptive": {
+            "isAdaptive": {
               "type": "boolean"
             },
-            "carousel": {
+            "isCarousel": {
               "type": "boolean"
             },
-            "external": {
+            "isExternal": {
               "type": "boolean"
             }
           },
