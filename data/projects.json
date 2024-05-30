@@ -55,7 +55,7 @@
       {
         "src": "/projects/sharaClarke/main.webp",
         "alt": "Shara Clarke Aboriginal Cultural & Education Centre",
-        "hero": true
+        "isHero": true
       },
       {
         "src": "/projects/sharaClarke/01.webp",
@@ -120,27 +120,27 @@
       {
         "src": "/projects/modular/main.webp",
         "alt": "Modular: Natural - Build",
-        "hero": true
+        "isHero": true
       },
       {
         "src": "/projects/modular/1.webp",
         "alt": "Modular: Natural - Build | Image 1",
-        "adaptive": true
+        "isAdaptive": true
       },
       {
         "src": "/projects/modular/2.webp",
         "alt": "Modular: Natural - Build | Image 2",
-        "adaptive": true
+        "isAdaptive": true
       },
       {
         "src": "/projects/modular/3.webp",
         "alt": "Modular: Natural - Build | Image 3",
-        "adaptive": true
+        "isAdaptive": true
       },
       {
         "src": "/projects/modular/4.webp",
         "alt": "Modular: Natural - Build | Image 4",
-        "adaptive": true
+        "isAdaptive": true
       }
     ]
   },
@@ -179,7 +179,7 @@
       {
         "src": "/projects/syntheticDunescapes/main.webp",
         "alt": "AI Dune",
-        "hero": true
+        "isHero": true
       },
       {
         "src": "/projects/syntheticDunescapes/1.webp",
@@ -260,7 +260,7 @@
       {
         "src": "/projects/jakartaRising/main.webp",
         "alt": "Jakarta Rising",
-        "hero": true
+        "isHero": true
       },
       {
         "src": "/projects/jakartaRising/1.webp",
@@ -350,7 +350,7 @@
       {
         "src": "/projects/terraForm/main.webp",
         "alt": "Terra//Form",
-        "hero": true
+        "isHero": true
       },
       {
         "src": "/projects/terraForm/10.webp",
@@ -387,12 +387,12 @@
       {
         "src": "/projects/terraForm/7.webp",
         "alt": "Terra Form | Image 7",
-        "adaptive": true
+        "isAdaptive": true
       },
       {
         "src": "/projects/terraForm/8.webp",
         "alt": "Terra Form | Image 8",
-        "adaptive": true
+        "isAdaptive": true
       },
       {
         "src": "/projects/terraForm/9.webp",
@@ -440,17 +440,17 @@
       {
         "src": "/projects/mongrelAssembly/main.webp",
         "alt": "Mongrel Assembly",
-        "hero": true
+        "isHero": true
       },
       {
         "src": "/projects/mongrelAssembly/1.webp",
         "alt": "Mongrel Assembly | Image 1",
-        "adaptive": true
+        "isAdaptive": true
       },
       {
         "src": "/projects/mongrelAssembly/2.webp",
         "alt": "Mongrel Assembly | Image 2",
-        "adaptive": true
+        "isAdaptive": true
       }
     ]
   }

@@ -7,7 +7,7 @@ const ImageLists = ({ data }) => {
   const showHero = data.video && data.video.src; // Show hero image if there is no video
 
   // Filter images to exclude the hero image if a video is present
-  const imagesToShow = showHero ? data.images : data.images.filter((image) => !image.hero);
+  const imagesToShow = showHero ? data.images : data.images.filter((image) => !image.isHero);
 
   return (
     <>
@@ -15,12 +15,12 @@ const ImageLists = ({ data }) => {
         <div className="grid gap-5 grid-cols-2">
           {imagesToShow.map((image, i) => {
             // Conditional rendering based on data.imageAttributes.adaptive
-            if (image.adaptive) {
+            if (image.isAdaptive) {
               // Perform the adaptive action
               return (
                 <div key={i} className={cn("relative w-full col-span-2", image.className)}>
                   {/* if image is external link, do not use BlurImage */}
-                  {image.external ? (
+                  {image.isExternal ? (
                     <Image
                       src={image.src}
                       alt={image.alt}
@@ -50,7 +50,7 @@ const ImageLists = ({ data }) => {
                   )}
                 >
                   {/* if image is external link, do not use BlurImage */}
-                  {image.external ? (
+                  {image.isExternal ? (
                     <Image
                       src={image.src}
                       alt={image.alt}
