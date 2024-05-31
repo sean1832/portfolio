@@ -21,7 +21,7 @@ const ExpandableText = ({ maxLength, children }) => {
       <div className={`relative overflow-hidden ${!isExpanded ? "h-48" : "h-auto"}`}>
         <p>{isExpanded ? text : `${text.substring(0, maxLength)}...`}</p>
         {!isExpanded && (
-          <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-b from-transparent to-white"></div>
+          <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-b from-transparent to-background"></div>
         )}
       </div>
       <div className="flex justify-center mt-2">
