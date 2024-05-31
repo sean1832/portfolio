@@ -3,7 +3,7 @@ import ExternalTextLink from "../ui/external-text-link";
 import ImageLists from "../ui/images-list";
 import { YoutubeVideo } from "../ui/youtube-video";
 import BlurImage from "../ui/blur";
-import CustomCarousel from "../ui/customCarousel";
+import Gallery from "../ui/gallery";
 
 const ProjectDetails = ({ data, className }) => (
   <div className={className}>
@@ -65,6 +65,12 @@ const ProjectDetails = ({ data, className }) => (
     </div>
   </div>
 );
+
+const CustomCarousel = ({ data }) => {
+  const carouselImages = data.images.filter((image) => image.isCarousel);
+  if (carouselImages.length === 0) return null;
+  return <Gallery images={carouselImages} />;
+};
 
 const ProjectInfo = ({ data }) => {
   const heroImage = data.images.find((image) => image.isHero == true);
