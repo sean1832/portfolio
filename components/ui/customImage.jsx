@@ -2,11 +2,16 @@ import React from "react";
 import Image from "next/image";
 import BlurImage from "./blur";
 import { cn } from "@/utils/cn";
+import { YoutubeVideo } from "./youtube-video";
 
 const CustomImage = ({ image }) => {
-  // Determine the style based on whether the image is part of a carousel or not
-  const carouselStyle = "object-contain object-center w-full h-full";
-
+  if (image.isVideo) {
+    return (
+      <div className={cn("relative w-full col-span-2", image.className)}>
+        <YoutubeVideo src={image.src} alt={image.alt} className={image.className} />
+      </div>
+    );
+  }
   if (image.isAdaptive) {
     return (
       <div className={cn("relative w-full col-span-2", image.className)}>
