@@ -5,6 +5,7 @@ import { YoutubeVideo } from "../ui/youtube-video";
 import BlurImage from "../ui/blur";
 import Gallery from "../ui/gallery";
 import ScrollToTopButton from "../ui/scrollToTopButton";
+import ExpandableText from "../ui/expandableText";
 
 const ProjectDetails = ({ data, className }) => (
   <div className={className}>
@@ -112,14 +113,14 @@ const ProjectInfo = ({ data }) => {
           <div className="lg:hidden">
             <div className="text-primary">
               <strong>Description: </strong>
-              {data.longDescription}
+              <ExpandableText maxLength={500}>{data.longDescription}</ExpandableText>
             </div>
           </div>
 
           {/* Other info for Desktop */}
           <ProjectDetails data={data} className="hidden lg:block" />
 
-          {/* Details for desktop */}
+          {/* Description for desktop */}
           <div className="hidden lg:block">
             <div className="text-primary">
               <strong>Description: </strong>

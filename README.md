@@ -49,9 +49,8 @@ Currently the content is stored in `data` folder. You can modify the content in 
 - [x] Detailed project pages
   - [x] Carousel
   - [x] Mobile view
-- [ ] UI/UX improvements
-  - [ ] Loading progress bar
-  - [ ] Long text ellipsis
+- [x] UI/UX improvements
+  - [x] Long text ellipsis
   - [x] Scroll to top button
   - [x] Navigation button improvements
 - [ ] Resume download
