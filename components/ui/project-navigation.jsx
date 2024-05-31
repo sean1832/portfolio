@@ -1,18 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
+import { Button } from "./button";
+import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 
 const ProjectNavigationButton = ({ name, href, direction }) => {
   return (
     <div>
       {direction === "next" ? (
-        <Link href={href} className="text-primary underline-offset-4 hover:underline">
-          {name.toUpperCase()} →
-        </Link>
+        <Button variant="ghost" asChild>
+          <Link href={href} className="text-primary">
+            {name.toUpperCase()} <ChevronRightIcon className="ml-2 h-5 w-5" />
+          </Link>
+        </Button>
       ) : (
-        <Link href={href} className="text-primary underline-offset-4 hover:underline">
-          ← {name.toUpperCase()}
-        </Link>
+        <Button variant="ghost" asChild>
+          <Link href={href} className="text-primary">
+            <ChevronLeftIcon className="mr-2 h-5 w-5" /> {name.toUpperCase()}
+          </Link>
+        </Button>
       )}
     </div>
   );
