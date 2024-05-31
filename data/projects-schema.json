@@ -168,6 +168,10 @@
             "isExternal": {
               "type": "boolean",
               "default": true
+            },
+            "isVideo": {
+              "type": "boolean",
+              "default": true
             }
           },
           "required": ["src"]

@@ -180,18 +180,24 @@
     "images": [
       {
         "src": "/projects/syntheticDunescapes/main.webp",
-        "alt": "AI Dune",
+        "alt": "Synthetic Dunescapes | Hero",
         "isHero": true
       },
       {
         "src": "/projects/syntheticDunescapes/1.webp",
-        "alt": "Synthetic Dunescapes | Image 1",
-        "className": "md:col-span-1 col-span-2"
+        "alt": "Synthetic Dunescapes | Image 1"
+      },
+      {
+        "src": "https://www.youtube.com/embed/TLXvgVk_tls?si=D9RoU_2Hczisxaj_",
+        "alt": "Synthetic Dunescapes | Aggregation Animation",
+        "className": "md:col-span-1 col-span-2",
+        "isVideo": true
       },
       {
         "src": "/projects/syntheticDunescapes/2.webp",
         "alt": "Synthetic Dunescapes | Image 2",
-        "className": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2",
+        "isAdaptive": true
       },
       {
         "src": "/projects/syntheticDunescapes/3.webp",
@@ -216,16 +222,62 @@
       {
         "src": "/projects/syntheticDunescapes/7.webp",
         "alt": "Synthetic Dunescapes | Image 7",
-        "className": "md:col-span-1 col-span-2"
+        "className": "object-bottom"
       },
       {
         "src": "/projects/syntheticDunescapes/8.webp",
         "alt": "Synthetic Dunescapes | Image 8",
-        "className": "md:col-span-1 col-span-2"
+        "isCarousel": true
       },
       {
         "src": "/projects/syntheticDunescapes/9.webp",
-        "alt": "Synthetic Dunescapes | Image 9"
+        "alt": "Synthetic Dunescapes | Image 9",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/10.webp",
+        "alt": "Synthetic Dunescapes | Image 10",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/11.webp",
+        "alt": "Synthetic Dunescapes | Image 11",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/12.webp",
+        "alt": "Synthetic Dunescapes | Image 12",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/13.webp",
+        "alt": "Synthetic Dunescapes | Image 13",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/14.webp",
+        "alt": "Synthetic Dunescapes | Image 14",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/15.webp",
+        "alt": "Synthetic Dunescapes | Image 15",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/16.webp",
+        "alt": "Synthetic Dunescapes | Image 16",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/17.webp",
+        "alt": "Synthetic Dunescapes | Image 17",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/18.webp",
+        "alt": "Synthetic Dunescapes | Image 18",
+        "isCarousel": true
       }
     ]
   },
