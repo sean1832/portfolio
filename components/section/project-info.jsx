@@ -4,6 +4,7 @@ import ImageLists from "../ui/images-list";
 import { YoutubeVideo } from "../ui/youtube-video";
 import BlurImage from "../ui/blur";
 import Gallery from "../ui/gallery";
+import ScrollToTopButton from "../ui/scrollToTopButton";
 
 const ProjectDetails = ({ data, className }) => (
   <div className={className}>
@@ -139,6 +140,7 @@ const ProjectInfo = ({ data }) => {
           className={`lg:hidden flex flex-col gap-5 dark:text-gray-300 text-gray-700`}
         />
       </div>
+      <ScrollToTopButton />
     </section>
   );
 };
