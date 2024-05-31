@@ -53,6 +53,6 @@ Currently the content is stored in `data` folder. You can modify the content in 
   - [ ] Loading progress bar
   - [ ] Long text ellipsis
   - [x] Scroll to top button
-  - [ ] Navigation button improvements
+  - [x] Navigation button improvements
 - [ ] Resume download
 - [ ] Coding projects section
