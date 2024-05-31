@@ -318,7 +318,8 @@
       },
       {
         "src": "/projects/jakartaRising/1.webp",
-        "alt": "Jakarta Rising | Image 1"
+        "alt": "Jakarta Rising | Image 1",
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/jakartaRising/2.webp",
@@ -332,12 +333,12 @@
       },
       {
         "src": "/projects/jakartaRising/4.webp",
-        "alt": "Jakarta Rising | Image 4"
+        "alt": "Jakarta Rising | Image 4",
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/jakartaRising/5.webp",
-        "alt": "Jakarta Rising | Image 5",
-        "className": "md:col-span-1 col-span-2"
+        "alt": "Jakarta Rising | Image 5"
       },
       {
         "src": "/projects/jakartaRising/6.webp",
@@ -346,22 +347,28 @@
       },
       {
         "src": "/projects/jakartaRising/7.webp",
-        "alt": "Jakarta Rising | Image 7"
+        "alt": "Jakarta Rising | Image 7",
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/jakartaRising/8.webp",
         "alt": "Jakarta Rising | Image 8",
-        "className": "md:col-span-1 col-span-2"
+        "isCarousel": true
       },
       {
         "src": "/projects/jakartaRising/9.webp",
         "alt": "Jakarta Rising | Image 9",
-        "className": "md:col-span-1 col-span-2"
+        "isCarousel": true
       },
       {
         "src": "/projects/jakartaRising/10.webp",
         "alt": "Jakarta Rising | Image 10",
-        "className": "object-bottom"
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/jakartaRising/11.webp",
+        "alt": "Jakarta Rising | Image 11",
+        "isCarousel": true
       }
     ]
   },
