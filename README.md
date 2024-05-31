@@ -46,13 +46,12 @@ Currently the content is stored in `data` folder. You can modify the content in 
 - [x] Dark mode
 - [x] Open graph meta
 - [x] SEO optimization
-- [ ] Detailed project pages
-  - [ ] Carousel
+- [x] Detailed project pages
+  - [x] Carousel
   - [x] Mobile view
+- [x] UI/UX improvements
+  - [x] Long text ellipsis
+  - [x] Scroll to top button
+  - [x] Navigation button improvements
 - [ ] Resume download
 - [ ] Coding projects section
-- [ ] UI/UX improvements
-  - [ ] Loading progress bar
-  - [ ] Long text ellipsis
-  - [ ] Scroll to top button
-  - [ ] Navigation button improvements
