@@ -41,7 +41,9 @@ const Gallery = ({ images }) => {
           onClick={() => handleClick(index)}
         >
           <Image
-            className={`${index === current ? "" : "opacity-70 hover:opacity-90"} p-1`}
+            className={`${
+              index === current ? "" : "opacity-70 hover:opacity-90"
+            } p-1 cursor-pointer`}
             src={image.src}
             fill
             alt={`Carousel Thumbnail Image ${index + 1}`}
@@ -49,6 +51,7 @@ const Gallery = ({ images }) => {
           />
         </CarouselItem>
       )),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [images, current]
   );
 
