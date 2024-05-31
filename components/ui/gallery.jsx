@@ -89,6 +89,13 @@ const Gallery = ({ images }) => {
 
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
+  const center = () => {
+    if (images.length < 5) {
+      return "flex justify-center";
+    }
+    return "";
+  };
+
   return (
     <div className="py-4">
       <Carousel
@@ -100,7 +107,7 @@ const Gallery = ({ images }) => {
         <CarouselContent className="m-1">{mainImage}</CarouselContent>
       </Carousel>
       <Carousel setApi={setThumbnailApi}>
-        <CarouselContent className="m-1">{thumbnailImages}</CarouselContent>
+        <CarouselContent className={`m-1 ${center()}`}>{thumbnailImages}</CarouselContent>
         <div className="hidden lg:block">
           <CarouselPrevious />
           <CarouselNext />
