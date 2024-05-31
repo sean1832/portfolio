@@ -124,6 +124,7 @@
         "type": "array",
         "items": {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
             "src": {
               "type": "string"
@@ -140,17 +141,37 @@
             "caption": {
               "type": "string"
             },
-            "hero": {
-              "type": "boolean"
+            "credit": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              }
             },
-            "adaptive": {
-              "type": "boolean"
+            "isHero": {
+              "type": "boolean",
+              "default": true
             },
-            "carousel": {
-              "type": "boolean"
+            "isAdaptive": {
+              "type": "boolean",
+              "default": true
             },
-            "external": {
-              "type": "boolean"
+            "isCarousel": {
+              "type": "boolean",
+              "default": true
+            },
+            "isExternal": {
+              "type": "boolean",
+              "default": true
+            },
+            "isVideo": {
+              "type": "boolean",
+              "default": true
             }
           },
           "required": ["src"]

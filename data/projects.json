@@ -55,33 +55,35 @@
       {
         "src": "/projects/sharaClarke/main.webp",
         "alt": "Shara Clarke Aboriginal Cultural & Education Centre",
-        "hero": true
+        "isHero": true
       },
       {
         "src": "/projects/sharaClarke/01.webp",
         "alt": "Shara Clarke | Image 1"
       },
       {
-        "src": "/projects/sharaClarke/03.webp",
-        "alt": "Shara Clarke | Image 3"
-      },
-      {
         "src": "/projects/sharaClarke/02.webp",
         "alt": "Shara Clarke | Image 2"
       },
       {
+        "src": "/projects/sharaClarke/03.webp",
+        "alt": "Shara Clarke | Image 3",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/sharaClarke/07.webp",
+        "alt": "Shara Clarke | Image 4",
+        "isCarousel": true
+      },
+      {
         "src": "/projects/sharaClarke/05.webp",
         "alt": "Shara Clarke | Image 4",
-        "className": "md:col-span-1 col-span-2"
+        "isCarousel": true
       },
       {
         "src": "/projects/sharaClarke/06.webp",
         "alt": "Shara Clarke | Image 4",
-        "className": "md:col-span-1 col-span-2"
-      },
-      {
-        "src": "/projects/sharaClarke/07.webp",
-        "alt": "Shara Clarke | Image 4"
+        "isCarousel": true
       }
     ]
   },
@@ -120,27 +122,27 @@
       {
         "src": "/projects/modular/main.webp",
         "alt": "Modular: Natural - Build",
-        "hero": true
+        "isHero": true
       },
       {
         "src": "/projects/modular/1.webp",
         "alt": "Modular: Natural - Build | Image 1",
-        "adaptive": true
+        "isAdaptive": true
       },
       {
         "src": "/projects/modular/2.webp",
         "alt": "Modular: Natural - Build | Image 2",
-        "adaptive": true
+        "isAdaptive": true
       },
       {
         "src": "/projects/modular/3.webp",
         "alt": "Modular: Natural - Build | Image 3",
-        "adaptive": true
+        "isAdaptive": true
       },
       {
         "src": "/projects/modular/4.webp",
         "alt": "Modular: Natural - Build | Image 4",
-        "adaptive": true
+        "isAdaptive": true
       }
     ]
   },
@@ -178,18 +180,24 @@
     "images": [
       {
         "src": "/projects/syntheticDunescapes/main.webp",
-        "alt": "AI Dune",
-        "hero": true
+        "alt": "Synthetic Dunescapes | Hero",
+        "isHero": true
       },
       {
         "src": "/projects/syntheticDunescapes/1.webp",
-        "alt": "Synthetic Dunescapes | Image 1",
-        "className": "md:col-span-1 col-span-2"
+        "alt": "Synthetic Dunescapes | Image 1"
+      },
+      {
+        "src": "https://www.youtube.com/embed/TLXvgVk_tls?si=D9RoU_2Hczisxaj_",
+        "alt": "Synthetic Dunescapes | Aggregation Animation",
+        "className": "md:col-span-1 col-span-2",
+        "isVideo": true
       },
       {
         "src": "/projects/syntheticDunescapes/2.webp",
         "alt": "Synthetic Dunescapes | Image 2",
-        "className": "md:col-span-1 col-span-2"
+        "className": "md:col-span-1 col-span-2",
+        "isAdaptive": true
       },
       {
         "src": "/projects/syntheticDunescapes/3.webp",
@@ -214,16 +222,62 @@
       {
         "src": "/projects/syntheticDunescapes/7.webp",
         "alt": "Synthetic Dunescapes | Image 7",
-        "className": "md:col-span-1 col-span-2"
+        "className": "object-bottom"
       },
       {
         "src": "/projects/syntheticDunescapes/8.webp",
         "alt": "Synthetic Dunescapes | Image 8",
-        "className": "md:col-span-1 col-span-2"
+        "isCarousel": true
       },
       {
         "src": "/projects/syntheticDunescapes/9.webp",
-        "alt": "Synthetic Dunescapes | Image 9"
+        "alt": "Synthetic Dunescapes | Image 9",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/10.webp",
+        "alt": "Synthetic Dunescapes | Image 10",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/11.webp",
+        "alt": "Synthetic Dunescapes | Image 11",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/12.webp",
+        "alt": "Synthetic Dunescapes | Image 12",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/13.webp",
+        "alt": "Synthetic Dunescapes | Image 13",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/14.webp",
+        "alt": "Synthetic Dunescapes | Image 14",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/15.webp",
+        "alt": "Synthetic Dunescapes | Image 15",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/16.webp",
+        "alt": "Synthetic Dunescapes | Image 16",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/17.webp",
+        "alt": "Synthetic Dunescapes | Image 17",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/18.webp",
+        "alt": "Synthetic Dunescapes | Image 18",
+        "isCarousel": true
       }
     ]
   },
@@ -260,11 +314,12 @@
       {
         "src": "/projects/jakartaRising/main.webp",
         "alt": "Jakarta Rising",
-        "hero": true
+        "isHero": true
       },
       {
         "src": "/projects/jakartaRising/1.webp",
-        "alt": "Jakarta Rising | Image 1"
+        "alt": "Jakarta Rising | Image 1",
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/jakartaRising/2.webp",
@@ -278,12 +333,12 @@
       },
       {
         "src": "/projects/jakartaRising/4.webp",
-        "alt": "Jakarta Rising | Image 4"
+        "alt": "Jakarta Rising | Image 4",
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/jakartaRising/5.webp",
-        "alt": "Jakarta Rising | Image 5",
-        "className": "md:col-span-1 col-span-2"
+        "alt": "Jakarta Rising | Image 5"
       },
       {
         "src": "/projects/jakartaRising/6.webp",
@@ -292,22 +347,28 @@
       },
       {
         "src": "/projects/jakartaRising/7.webp",
-        "alt": "Jakarta Rising | Image 7"
+        "alt": "Jakarta Rising | Image 7",
+        "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/jakartaRising/8.webp",
         "alt": "Jakarta Rising | Image 8",
-        "className": "md:col-span-1 col-span-2"
+        "isCarousel": true
       },
       {
         "src": "/projects/jakartaRising/9.webp",
         "alt": "Jakarta Rising | Image 9",
-        "className": "md:col-span-1 col-span-2"
+        "isCarousel": true
       },
       {
         "src": "/projects/jakartaRising/10.webp",
         "alt": "Jakarta Rising | Image 10",
-        "className": "object-bottom"
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/jakartaRising/11.webp",
+        "alt": "Jakarta Rising | Image 11",
+        "isCarousel": true
       }
     ]
   },
@@ -350,7 +411,7 @@
       {
         "src": "/projects/terraForm/main.webp",
         "alt": "Terra//Form",
-        "hero": true
+        "isHero": true
       },
       {
         "src": "/projects/terraForm/10.webp",
@@ -377,22 +438,26 @@
         "className": "md:col-span-1 col-span-2"
       },
       {
-        "src": "/projects/terraForm/5.webp",
-        "alt": "Terra Form | Image 5"
+        "src": "/projects/terraForm/6.webp",
+        "alt": "Terra Form | Image 6",
+        "isCarousel": true
       },
       {
-        "src": "/projects/terraForm/6.webp",
-        "alt": "Terra Form | Image 6"
+        "src": "/projects/terraForm/5.webp",
+        "alt": "Terra Form | Image 5",
+        "isCarousel": true
       },
       {
         "src": "/projects/terraForm/7.webp",
         "alt": "Terra Form | Image 7",
-        "adaptive": true
+        "isAdaptive": true,
+        "isCarousel": true
       },
       {
         "src": "/projects/terraForm/8.webp",
         "alt": "Terra Form | Image 8",
-        "adaptive": true
+        "isAdaptive": true,
+        "isCarousel": true
       },
       {
         "src": "/projects/terraForm/9.webp",
@@ -440,17 +505,47 @@
       {
         "src": "/projects/mongrelAssembly/main.webp",
         "alt": "Mongrel Assembly",
-        "hero": true
+        "isHero": true
       },
       {
         "src": "/projects/mongrelAssembly/1.webp",
         "alt": "Mongrel Assembly | Image 1",
-        "adaptive": true
+        "isAdaptive": true
       },
       {
         "src": "/projects/mongrelAssembly/2.webp",
         "alt": "Mongrel Assembly | Image 2",
-        "adaptive": true
+        "isAdaptive": true
+      },
+      {
+        "src": "https://freight.cargo.site/w/2750/i/b49c1c726655b2f18f70364355b986d0d9071d531af1fcc672461fa5706e88bd/MONGREL-ASSEMBLIES_ANIMATION_PROVINANCE-MAPPING_V04.jpg",
+        "alt": "Mongrel Assembly | Image 3",
+        "credit": {
+          "text": "Mongrel Assemblies Official Website",
+          "url": "https://mongrelassemblies.com/"
+        },
+        "isExternal": true,
+        "isCarousel": true
+      },
+      {
+        "src": "https://freight.cargo.site/w/1500/i/bb98ce4c2b6276122c92a6bd7d0dd32fbb4becdfc980d8d32e690d7266b6b9f2/foreoi-website-copy2.jpg",
+        "alt": "Mongrel Assembly | Image 4",
+        "credit": {
+          "text": "Mongrel Assemblies Official Website",
+          "url": "https://mongrelassemblies.com/"
+        },
+        "isExternal": true,
+        "isCarousel": true
+      },
+      {
+        "src": "https://freight.cargo.site/w/2750/i/82664724a75fd3347e92384ec19a0836d270a341c7c1096c086922ecaaf3d5a1/A-Wild-Hope_-material-schedule-3-copy.jpg",
+        "alt": "Mongrel Assembly | Image 5",
+        "credit": {
+          "text": "Mongrel Assemblies Official Website",
+          "url": "https://mongrelassemblies.com/"
+        },
+        "isExternal": true,
+        "isCarousel": true
       }
     ]
   }

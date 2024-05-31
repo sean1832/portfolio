@@ -49,9 +49,10 @@ Currently the content is stored in `data` folder. You can modify the content in 
 - [ ] Detailed project pages
   - [ ] Carousel
   - [x] Mobile view
-- [ ] Blog section
-  - [ ] Implement markdown
 - [ ] Resume download
-- [ ] Contact form
-- [ ] Skills section
-- [ ] TinaCMS integration
+- [ ] Coding projects section
+- [ ] UI/UX improvements
+  - [ ] Loading progress bar
+  - [ ] Long text ellipsis
+  - [ ] Scroll to top button
+  - [ ] Navigation button improvements

@@ -15,7 +15,7 @@ const ProjectsGallery = async () => {
               if (!project.images) {
                 throw new Error(`Project "${project.name}" does not have images property.`);
               }
-              heroImage = project.images.find((image) => image.hero);
+              heroImage = project.images.find((image) => image.isHero);
               if (!heroImage) {
                 throw new Error(`Project "${project.name}" does not have a hero image.`);
               }
