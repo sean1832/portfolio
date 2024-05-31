@@ -33,7 +33,7 @@ ProjectNavigationButton.propTypes = {
 
 const ProjectNavigation = ({ projectData, index }) => {
   return (
-    <div className="flex justify-between w-full p-10">
+    <div className="flex justify-between w-full lg:p-10">
       {index > 0 && (
         <ProjectNavigationButton
           name={projectData[index - 1].name}
