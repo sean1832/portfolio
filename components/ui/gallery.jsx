@@ -42,7 +42,7 @@ const Gallery = ({ images }) => {
         >
           <Image
             className={`${
-              index === current ? "" : "opacity-70 hover:opacity-90"
+              index === current ? "" : "opacity-70 hover:opacity-90 scale-90 duration-300 "
             } p-1 cursor-pointer`}
             src={image.src}
             fill
