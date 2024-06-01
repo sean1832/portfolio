@@ -57,10 +57,7 @@ const NavBar = () => {
       className="fixed top-0 left-0 right-0 z-40 bg-background"
     >
       <div className="flex items-center justify-between h-16 px-4 md:px-6 w-full">
-        <div
-          style={{ maxWidth: "1920px" }}
-          className="w-full mx-auto flex justify-between items-center"
-        >
+        <div className="w-full mx-auto flex justify-between items-center max-w-[1920px]">
           <Link className="flex items-center gap-2" href="/#home">
             <ZekeLogoIcon className="w-8 h-8" />
           </Link>

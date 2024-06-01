@@ -33,24 +33,26 @@ ProjectNavigationButton.propTypes = {
 
 const ProjectNavigation = ({ projectData, index }) => {
   return (
-    <div className="flex justify-between w-full lg:p-10 pt-10">
-      {index > 0 && (
-        <ProjectNavigationButton
-          name={projectData[index - 1].name}
-          href={projectData[index - 1].href}
-          direction="last"
-        />
-      )}
-      {index === 0 && <div className="flex-grow"></div>}{" "}
-      {/* Placeholder to push "next" button to the right */}
-      {index < projectData.length - 1 && (
-        <ProjectNavigationButton
-          name={projectData[index + 1].name}
-          href={projectData[index + 1].href}
-          direction="next"
-          className={index === 0 ? "ml-auto" : ""}
-        />
-      )}
+    <div className="w-full mx-auto flex justify-between items-center max-w-[2048px]">
+      <div className="flex justify-between w-full lg:p-10 pt-10">
+        {index > 0 && (
+          <ProjectNavigationButton
+            name={projectData[index - 1].name}
+            href={projectData[index - 1].href}
+            direction="last"
+          />
+        )}
+        {index === 0 && <div className="flex-grow"></div>}{" "}
+        {/* Placeholder to push "next" button to the right */}
+        {index < projectData.length - 1 && (
+          <ProjectNavigationButton
+            name={projectData[index + 1].name}
+            href={projectData[index + 1].href}
+            direction="next"
+            className={index === 0 ? "ml-auto" : ""}
+          />
+        )}
+      </div>
     </div>
   );
 };
