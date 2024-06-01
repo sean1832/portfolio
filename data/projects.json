@@ -62,6 +62,33 @@
         "alt": "Shara Clarke | Image 1"
       },
       {
+        "src": "/projects/sharaClarke/diagram_1.webp",
+        "alt": "Shara Clarke | Diagram 1",
+        "isAdaptive": true
+      },
+      {
+        "src": "/projects/sharaClarke/diagram_2.webp",
+        "alt": "Shara Clarke | Diagram 2",
+        "className": "md:col-span-1 col-span-2",
+        "isAdaptive": true
+      },
+      {
+        "src": "https://www.youtube.com/embed/9m0n3p4oGuM?si=jqiFEiP3uotYyXx2",
+        "alt": "Shara Clarke | Boundary Expansion Diagram",
+        "className": "md:col-span-1 col-span-2",
+        "isVideo": true
+      },
+      {
+        "src": "/projects/sharaClarke/diagram_3.webp",
+        "alt": "Shara Clarke | Diagram 3",
+        "isAdaptive": true
+      },
+      {
+        "src": "/projects/sharaClarke/diagram_4.webp",
+        "alt": "Shara Clarke | Diagram 4",
+        "isAdaptive": true
+      },
+      {
         "src": "/projects/sharaClarke/02.webp",
         "alt": "Shara Clarke | Image 2"
       },
