@@ -13,7 +13,7 @@ const Footer = () => {
         {/* Source code Links */}
         <div className="flex items-center space-x-4">
           <ExternalTextLink
-            href="https://github.com/sean1832/zeke-zhang-portfolio"
+            href="https://github.com/sean1832/portfolio"
             className={`text-gray-600 dark:text-gray-400 text-sm uppercase text-center`}
           >
             Source Code
