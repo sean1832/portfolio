@@ -9,7 +9,7 @@ export const BentoGrid = ({ className, children }) => {
       delay={0}
       interval={0}
       duration={500}
-      className={cn("grid md:auto-rows-[18rem] grid-cols-1 md:grid-cols-3 gap-4 ", className)}
+      className={cn("grid md:auto-rows-[18rem] grid-cols-1 lg:grid-cols-3 gap-4 ", className)}
     >
       {children}
     </RevealListClient>
