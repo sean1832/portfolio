@@ -29,7 +29,7 @@ const About = () => {
             />
           </div>
           <div className="max-w-2xl w-full px-4 flex flex-col gap-3">
-            <h2 className="text-2xl md:text-4xl font-bold">ZEKE ZHANG</h2>
+            <h2 className="text-responsive2xl-4xl font-bold">ZEKE ZHANG</h2>
             <p>{profile.about}</p>
             <div className="py-4 gap-9 flex justify-left ">
               <Link

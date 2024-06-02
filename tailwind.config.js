@@ -97,6 +97,7 @@ module.exports = {
       "7xl": "14rem",
       "8xl": "16rem",
       "9xl": "18rem",
+      "responsive2xl-4xl": "clamp(2rem, 4vw + 1rem, 4rem)",
     },
   },
   plugins: [require("tailwindcss-animate")],
