@@ -37,21 +37,21 @@ const About = () => {
                 className={buttonVariants({ variant: "ghost" })}
                 target="_blank"
               >
-                <GitHubLogoIcon />
+                <GitHubLogoIcon className="h-6 w-6" />
               </Link>
               <Link
                 href={profile.social.instagram}
                 className={buttonVariants({ variant: "ghost" })}
                 target="_blank"
               >
-                <InstagramLogoIcon />
+                <InstagramLogoIcon className="h-6 w-6" />
               </Link>
               <Link
                 href={profile.social.youtube}
                 className={buttonVariants({ variant: "ghost" })}
                 target="_blank"
               >
-                <IoLogoYoutube />
+                <IoLogoYoutube className="h-6 w-6" />
               </Link>
             </div>
           </div>
