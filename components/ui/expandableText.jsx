@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "./button";
 
-const ExpandableText = ({ maxLength, children }) => {
+const ExpandableText = ({ children }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpansion = () => {
@@ -11,25 +11,26 @@ const ExpandableText = ({ maxLength, children }) => {
 
   const text = children;
 
-  // if text is less than maxLength, show the full text without the "Show More" button
-  if (text.length <= maxLength) {
-    return <div>{text}</div>;
-  }
-
   return (
-    <div>
-      <div className={`relative overflow-hidden ${!isExpanded ? "h-48" : "h-auto"}`}>
-        <p>{isExpanded ? text : `${text.substring(0, maxLength)}...`}</p>
-        {!isExpanded && (
-          <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-b from-transparent to-background"></div>
-        )}
+    <>
+      {/* mobile view */}
+      <div className="lg:hidden block">
+        <div className={`relative overflow-hidden ${!isExpanded ? "h-48" : "h-auto"}`}>
+          <p>{text}</p>
+          {!isExpanded && (
+            <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-b from-transparent to-background"></div>
+          )}
+        </div>
+        <div className="flex justify-center mt-2">
+          <Button onClick={toggleExpansion} className="px-4 py-2">
+            {isExpanded ? "Show Less" : "Show More"}
+          </Button>
+        </div>
       </div>
-      <div className="flex justify-center mt-2">
-        <Button onClick={toggleExpansion} className="px-4 py-2">
-          {isExpanded ? "Show Less" : "Show More"}
-        </Button>
-      </div>
-    </div>
+
+      {/* desktop view */}
+      <div className="hidden lg:block">{text}</div>
+    </>
   );
 };
 
