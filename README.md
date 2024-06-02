@@ -55,3 +55,13 @@ Currently the content is stored in `data` folder. You can modify the content in 
   - [x] Navigation button improvements
 - [ ] Resume download
 - [ ] Coding projects section
+
+## Improvements
+Improvements from reddit feedback: 
+
+[Feedback 1](https://www.reddit.com/r/webdev/comments/1d5ssym/comment/l6nws0g/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
+- [ ] Vertical padding issue for smaller screens
+- [ ] Enlarge about section icon size
+- [ ] Optimize for tablet and laptop screen larger than 1024px, smaller than 1600px in project description section
+- [ ] Theme toggle button as rectangular to match rest of the design
+- [ ] System theme detection
