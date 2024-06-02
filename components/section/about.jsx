@@ -13,10 +13,11 @@ const About = () => {
       <RevealListClient
         className=" grid grid-cols-1 md:grid-cols-2 items-center gap-4"
         origin="bottom"
+        distance={"35px"}
         opacity={0}
-        delay={200}
+        delay={0}
         interval={300}
-        duration={1500}
+        duration={800}
       >
         <div className="max-w-2xl w-full flex justify-center">
           <Image

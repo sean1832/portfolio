@@ -11,6 +11,7 @@ const RevealListClient = ({
   delay,
   interval,
   duration,
+  distance,
 }) => {
   return (
     <RevealList
@@ -20,6 +21,7 @@ const RevealListClient = ({
       delay={delay}
       interval={interval}
       duration={duration}
+      distance={distance}
     >
       {children}
     </RevealList>

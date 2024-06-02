@@ -5,6 +5,7 @@ export const BentoGrid = ({ className, children }) => {
   return (
     <RevealListClient
       origin="bottom"
+      distance={"35px"}
       opacity={0}
       delay={0}
       interval={0}
