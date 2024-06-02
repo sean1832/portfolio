@@ -64,4 +64,4 @@ Improvements from reddit feedback:
 - [x] Enlarge about section icon size
 - [ ] Optimize for tablet and laptop screen larger than 1024px, smaller than 1600px in project description section
 - [ ] Theme toggle button as rectangular to match rest of the design
-- [ ] System theme detection
+- [x] System theme detection
