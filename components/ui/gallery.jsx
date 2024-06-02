@@ -20,7 +20,7 @@ const Gallery = ({ images }) => {
   const mainImage = useMemo(
     () =>
       images.map((image, index) => (
-        <CarouselItem key={index} className="relative w-full h-[600px]">
+        <CarouselItem key={index} className="relative w-full sm:h-[600px] h-[300px]">
           <Image
             src={image.src}
             alt={`Carousel Main Image ${index + 1}`}
