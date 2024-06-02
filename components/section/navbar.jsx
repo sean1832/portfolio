@@ -46,7 +46,7 @@ const NavBar = () => {
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
     // if the user is scrolling down and the scroll position is greater than 100px
-    setHidden(latest > previous && latest > 100);
+    setHidden(latest > previous && latest > 350);
   });
 
   return (
