@@ -46,7 +46,7 @@ const NavBar = () => {
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
     // if the user is scrolling down and the scroll position is greater than 100px
-    setHidden(latest > previous && latest > 100);
+    setHidden(latest > previous && latest > 350);
   });
 
   return (
@@ -58,21 +58,24 @@ const NavBar = () => {
     >
       <div className="flex items-center justify-between h-16 px-4 md:px-6 w-full">
         <div className="w-full mx-auto flex justify-between items-center max-w-[1920px]">
+          {/* Logo */}
           <Link className="flex items-center gap-2" href="/#home">
             <ZekeLogoIcon className="w-8 h-8" />
           </Link>
 
+          {/* Desktop navigation */}
           <nav className="items-center gap-4">
             <div className="hidden md:flex items-center gap-10">
               <NavbarLinks navbarData={navbarData} className="navbar-link" />
               <ModeToggle />
             </div>
 
+            {/* Burger menu */}
             <div className="md:hidden flex justify-end">
               <Sheet>
                 <SheetTrigger asChild>
                   <button>
-                    <MenuIcon className="h-6 w-6" />
+                    <MenuIcon className="h-8 w-8" />
                   </button>
                 </SheetTrigger>
                 <SheetContent side="right">

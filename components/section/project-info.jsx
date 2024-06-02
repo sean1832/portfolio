@@ -98,7 +98,7 @@ const ProjectInfo = ({ data }) => {
       </div>
 
       {/* Project info */}
-      <div className="flex flex-col lg:grid lg:grid-cols-12 max-w-9xl mx-auto gap-4 px-4">
+      <div className="flex flex-col xlg:grid lg:grid-cols-12 max-w-9xl mx-auto gap-4 px-4">
         <div className="flex flex-col gap-5 col-span-3 dark:text-gray-300 text-gray-700">
           <div>
             <div className="text-2xl lg:text-3xl font-semibold text-primary">
@@ -110,7 +110,7 @@ const ProjectInfo = ({ data }) => {
           </div>
 
           {/* Description for mobile */}
-          <div className="lg:hidden">
+          <div className="xlg:hidden">
             <div className="text-primary">
               <strong>Description: </strong>
               <ExpandableText maxLength={500}>{data.longDescription}</ExpandableText>
@@ -118,10 +118,10 @@ const ProjectInfo = ({ data }) => {
           </div>
 
           {/* Other info for Desktop */}
-          <ProjectDetails data={data} className="hidden lg:block" />
+          <ProjectDetails data={data} className="hidden xlg:block" />
 
           {/* Description for desktop */}
-          <div className="hidden lg:block">
+          <div className="hidden xlg:block">
             <div className="text-primary">
               <strong>Description: </strong>
               {data.longDescription}

@@ -11,7 +11,7 @@
     "description": "Aboriginal Cultural & Education Centre",
     "longDescription": "Working with the Kirrae Wurrung community, we designed a music center of international standards and educational facilities. The design emerges from the landscape, acknowledging and reflecting the indigenous cultures and history of the site. Inspired by indigenous arts and the experience of deep listening, the colourful mosaic pattern, present both inside and outside, invites the local community and artisans to participate in the design. Deep listening, a traditional memory code, is based on respect for nature and includes individual inner awareness of the site's features. The materiality and formality of the project introduce stories of the ancient volcanic activities that shaped today's topographical characteristics.",
     "bentoAttributes": {
-      "className": "md:col-span-3"
+      "className": "lg:col-span-3"
     },
     "group": ["Chukang Liang"],
     "tutors": [
@@ -126,7 +126,7 @@
     "description": "Low-tech, bamboo-based modular housing system in Senegal",
     "longDescription": "The project proposed a low-tech, bamboo-based modular housing system designed to address critical housing shortages in Tanaff, a remote town in southern Senegal. Bamboo is selected for its local availability and structural properties, enabling self-construction without the need for heavy machinery, which is vital given the limited infrastructure and isolation of the area. The system's design emphasizes flexibility and scalability, incorporating local materials and traditional techniques to enhance community participation and adaptability to the local context. Implemented in an area plagued by environmental challenges, the project aims to validate its effectiveness under harsh conditions and offer a sustainable, scalable model for similar global settings.",
     "bentoAttributes": {
-      "className": "md:col-span-3"
+      "className": "lg:col-span-3"
     },
     "group": ["Chukang Liang", "Wanyue Peng"],
     "awards": [
@@ -184,7 +184,7 @@
     "description": "AI-accelerated resilient habitat in desert regions",
     "longDescription": "The project speculates a future where population growth, resource scarcity, and climate change drive human migration to uninhabitable regions like deserts. To address these challenges, we propose a cellular, self-organizing system where each 'cell' autonomously adapts, transforms, and self-replicates. These cells, made from genetically engineered mycelium with exceptional structural strength and piezoelectric properties, serve as the fundamental building blocks of the habitat. This adaptability stems from the collective intelligence of the cellular agents, which dynamically respond to their surroundings by observing, acting, and evaluating the result. Drawing insights from thinkers like Jeremy Rifkin and Benjamin Bratton, the project seeks to merge design, technology, and ecology to transform challenging landscapes into viable habitats for very large buildings designed with 80% nonhuman and 20% human programming.",
     "bentoAttributes": {
-      "className": "md:col-span-4"
+      "className": "lg:col-span-4"
     },
     "group": ["Luyao Jiang", "Kang Liu"],
     "tutors": [
@@ -320,7 +320,7 @@
     "description": "Sustainable superblocks with algae-driven solution in Jakarta",
     "longDescription": "This project is designed to confront the escalating challenges of rising sea levels and extreme weather in Jakarta by 2044, utilizing innovative algae technology and recycled ocean plastics to transform abandoned structures into functional public and commercial spaces. Central to this approach is the creation of a sustainable closed-loop system that diminishes dependence on conventional energy sources, enhances air and water quality, and significantly reduces oceanic waste and pollution. Furthermore, it addresses the socio-emotional and physical hardships faced by displaced populations, enhancing community resilience. By seamlessly integrating these facilities, the project not only strengthens environmental sustainability but also bolsters the social fabric of the community, ameliorating living conditions and substantially decreasing the environmental carbon footprint, supporting Jakarta's burgeoning population in a sustainable manner.",
     "bentoAttributes": {
-      "className": "md:col-span-2"
+      "className": "lg:col-span-2"
     },
     "group": ["JingChen Lin", "Yao Xiao", "Jacqueline Pionan"],
     "tutors": [
@@ -411,7 +411,7 @@
     "description": "Sustainable superblocks with algae-driven solution in Jakarta",
     "longDescription": "The project emerges as a pioneering architectural endeavor in the heart of Dharavi, Mumbai, addressing the critical issue of relocation and environmental degradation. Focused on preserving the socio-economic fabric of the community, this initiative introduces a sustainable water treatment facility to provide clean water, while also reimagining living spaces that integrate seamlessly with the natural environment. The design of the five structures is deeply informed by the growth patterns of mycelium, observed and cultivated in petri dishes. These organic patterns are digitally scanned and processed through sophisticated algorithms to shape the building forms, promoting a unique symbiosis between architectural innovation and biological inspiration. This approach not only supports the creation of microclimates conducive to local biodiversity but also transforms the buildings into living ecosystems that enhance urban air quality and foster a dynamic interaction between humans and nature.",
     "bentoAttributes": {
-      "className": "md:col-span-2"
+      "className": "lg:col-span-2"
     },
     "group": ["Eu Yeo"],
     "tutors": [
@@ -504,7 +504,7 @@
     "description": "Intelligent Assembly of Recycled Materials Through Machine Learning",
     "longDescription": "This research proposed an innovative approach to sustainable architecture by developing a system for the intelligent assembly of recycled materials, which inherently vary in geometry, size, and form. The project created a comprehensive material database to catalog the properties of salvaged materials, serving as the foundation for training reinforcement learning algorithms. These algorithms optimized the assembly process, aiming for structural integrity and aesthetic quality through discrete aggregation simulations. By integrating machine learning with recycled material usage, this project not only addressed environmental sustainability by reducing construction waste but also enhanced architectural design processes, potentially leading to more innovative and cost-effective construction practices. The ultimate goal was to demonstrate that sustainable methods can be effectively aligned with architectural innovation, pushing the boundaries of technology in design.",
     "bentoAttributes": {
-      "className": "md:col-span-4"
+      "className": "lg:col-span-4"
     },
     "tutors": [
       {

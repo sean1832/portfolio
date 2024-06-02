@@ -5,11 +5,12 @@ export const BentoGrid = ({ className, children }) => {
   return (
     <RevealListClient
       origin="bottom"
+      distance={"35px"}
       opacity={0}
       delay={0}
       interval={0}
       duration={500}
-      className={cn("grid md:auto-rows-[18rem] grid-cols-1 md:grid-cols-3 gap-4 ", className)}
+      className={cn("grid md:auto-rows-[18rem] grid-cols-1 lg:grid-cols-3 gap-4 ", className)}
     >
       {children}
     </RevealListClient>
@@ -19,7 +20,7 @@ export const BentoGrid = ({ className, children }) => {
 export const BentoGridItem = ({ className, title, description, header, icon }) => {
   return (
     <div
-      className={`row-span-1 border dark:border-background hover:dark:border-primary hover:border-black rounded-none group/bento hover:shadow-xl transition duration-500 shadow-input dark:shadow-none p-4  border-transparent justify-between flex flex-col space-y-4 ${className}`}
+      className={`row-span-1 border dark:border-background hover:dark:border-primary hover:border-black rounded-none group/bento hover:shadow-xl transition duration-300 shadow-input dark:shadow-none p-4  border-transparent justify-between flex flex-col space-y-4 ${className}`}
     >
       {header}
 
