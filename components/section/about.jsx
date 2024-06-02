@@ -10,7 +10,7 @@ import Link from "next/link";
 const About = () => {
   return (
     <div id="about">
-      <section className="flex flex-col justify-center items-center h-screen w-full">
+      <section className="flex flex-col justify-center items-center md:h-screen w-full">
         <RevealListClient
           className=" grid grid-cols-1 md:grid-cols-2 items-center gap-4"
           origin="bottom"
