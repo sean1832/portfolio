@@ -545,6 +545,58 @@
         "isAdaptive": true
       },
       {
+        "src": "/projects/mongrelAssembly/3.webp",
+        "alt": "Mongrel Assembly | Image 3",
+        "isAdaptive": true
+      },
+      {
+        "src": "https://www.youtube.com/embed/TwejWaHOx3Q?si=DhLvhsljq9CSON7E",
+        "alt": "Mongrel Assembly | ML-Agents in Unity with Grasshopper for Discrete Aggregation and Finite Element Analysis",
+        "isVideo": true
+      },
+      {
+        "src": "/projects/mongrelAssembly/4.webp",
+        "alt": "Mongrel Assembly | Image 4",
+        "isAdaptive": true,
+        "className": "md:col-span-1 col-span-2"
+      },
+      {
+        "src": "/projects/mongrelAssembly/5.webp",
+        "alt": "Mongrel Assembly | Image 5",
+        "isAdaptive": true,
+        "className": "md:col-span-1 col-span-2"
+      },
+      {
+        "src": "/projects/mongrelAssembly/6.webp",
+        "alt": "Mongrel Assembly | Image 6",
+        "isAdaptive": true
+      },
+      {
+        "src": "/projects/mongrelAssembly/7.webp",
+        "alt": "Mongrel Assembly | Image 7",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/mongrelAssembly/8.webp",
+        "alt": "Mongrel Assembly | Image 8",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/mongrelAssembly/9.webp",
+        "alt": "Mongrel Assembly | Image 9",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/mongrelAssembly/10.webp",
+        "alt": "Mongrel Assembly | Image 10",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/mongrelAssembly/11.webp",
+        "alt": "Mongrel Assembly | Image 11",
+        "isCarousel": true
+      },
+      {
         "src": "https://freight.cargo.site/w/2750/i/b49c1c726655b2f18f70364355b986d0d9071d531af1fcc672461fa5706e88bd/MONGREL-ASSEMBLIES_ANIMATION_PROVINANCE-MAPPING_V04.jpg",
         "alt": "Mongrel Assembly | Image 3",
         "credit": {
@@ -557,16 +609,6 @@
       {
         "src": "https://freight.cargo.site/w/1500/i/bb98ce4c2b6276122c92a6bd7d0dd32fbb4becdfc980d8d32e690d7266b6b9f2/foreoi-website-copy2.jpg",
         "alt": "Mongrel Assembly | Image 4",
-        "credit": {
-          "text": "Mongrel Assemblies Official Website",
-          "url": "https://mongrelassemblies.com/"
-        },
-        "isExternal": true,
-        "isCarousel": true
-      },
-      {
-        "src": "https://freight.cargo.site/w/2750/i/82664724a75fd3347e92384ec19a0836d270a341c7c1096c086922ecaaf3d5a1/A-Wild-Hope_-material-schedule-3-copy.jpg",
-        "alt": "Mongrel Assembly | Image 5",
         "credit": {
           "text": "Mongrel Assemblies Official Website",
           "url": "https://mongrelassemblies.com/"
