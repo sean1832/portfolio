@@ -75,7 +75,7 @@
       {
         "src": "https://www.youtube.com/embed/9m0n3p4oGuM?si=jqiFEiP3uotYyXx2",
         "alt": "Shara Clarke | Boundary Expansion Diagram",
-        "className": "md:col-span-1 col-span-2",
+        "className": "md:col-span-1 col-span-2 md:h-auto",
         "isVideo": true
       },
       {
@@ -217,7 +217,7 @@
       {
         "src": "https://www.youtube.com/embed/TLXvgVk_tls?si=D9RoU_2Hczisxaj_",
         "alt": "Synthetic Dunescapes | Aggregation Animation",
-        "className": "md:col-span-1 col-span-2",
+        "className": "md:col-span-1 col-span-2 md:h-auto",
         "isVideo": true
       },
       {
