@@ -45,7 +45,7 @@ const Gallery = ({ images }) => {
           {image.credit && (
             <div className="text-center w-full mt-2">
               <p className="italic text-sm">
-                Credit:{" "}
+                Image credit:{" "}
                 {image.credit.url ? (
                   <ExternalTextLink href={image.credit.url}>{image.credit.text}</ExternalTextLink>
                 ) : (
