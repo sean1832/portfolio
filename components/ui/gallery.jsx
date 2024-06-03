@@ -23,40 +23,38 @@ const Gallery = ({ images }) => {
       images.map((image, index) => (
         <CarouselItem
           key={index}
-          className="relative w-full sm:h-[600px] h-[300px] flex flex-col items-center justify-start"
+          className={`${
+            image.caption || image.credit
+              ? "relative w-full sm:h-[550px] h-[300px]"
+              : "relative w-full sm:h-[600px] h-[300px]"
+          }`}
         >
-          <div className="w-full h-full relative">
-            <Image
-              src={image.src}
-              alt={`Carousel Main Image ${index + 1}`}
-              fill
-              style={{ objectFit: "contain" }}
-            />
-          </div>
-
-          {/* Caption */}
-          {image.caption && (
-            <div className="text-center w-full mt-2">
-              <p className="text-sm">{image.caption}</p>
-            </div>
-          )}
-
-          {/* Credit */}
-          {image.credit && (
-            <div className="text-center w-full mt-2">
-              <p className="italic text-sm">
-                Image credit:{" "}
-                {image.credit.url ? (
-                  <ExternalTextLink href={image.credit.url}>{image.credit.text}</ExternalTextLink>
-                ) : (
-                  image.credit.text
-                )}
-              </p>
-            </div>
-          )}
+          <Image
+            src={image.src}
+            alt={`Carousel Main Image ${index + 1}`}
+            fill
+            style={{ objectFit: "contain" }}
+          />
         </CarouselItem>
       )),
     [images]
+  );
+
+  const descriptionText = useMemo(
+    () =>
+      images.map((image, index) => (
+        <div key={index} className="text-center">
+          {index === current && image.caption && (
+            <p className="text-sm text-gray-500">{image.caption}</p>
+          )}
+          {index === current && image.credit && (
+            <ExternalTextLink href={image.credit.url} className="text-sm text-gray-500 italic">
+              Image credit: {image.credit.text}
+            </ExternalTextLink>
+          )}
+        </div>
+      )),
+    [images, current]
   );
 
   const thumbnailImages = useMemo(
@@ -136,10 +134,14 @@ const Gallery = ({ images }) => {
         onMouseEnter={plugin.current.stop}
         onMouseLeave={plugin.current.reset}
       >
-        <CarouselContent className="m-1">{mainImage}</CarouselContent>
+        <div className="sm:h-[600px] h-[300px]">
+          <CarouselContent className="m-1">{mainImage}</CarouselContent>
+          <div className="hidden lg:block">{descriptionText}</div>
+        </div>
       </Carousel>
+
       <Carousel setApi={setThumbnailApi}>
-        <CarouselContent className={`m-1 ${center()}`}>{thumbnailImages}</CarouselContent>
+        <CarouselContent className={`m-1 pt-4 ${center()}`}>{thumbnailImages}</CarouselContent>
         <div className="hidden lg:block">
           <CarouselPrevious />
           <CarouselNext />
