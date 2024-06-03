@@ -9,6 +9,7 @@ import {
 } from "../ui/carousel";
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
+import ExternalTextLink from "./external-text-link";
 
 // Reference
 // https://www.reddit.com/r/nextjs/comments/1cgktu9/shadcnui_image_carousel_with_thumbnail_images/
@@ -20,13 +21,32 @@ const Gallery = ({ images }) => {
   const mainImage = useMemo(
     () =>
       images.map((image, index) => (
-        <CarouselItem key={index} className="relative w-full sm:h-[600px] h-[300px]">
-          <Image
-            src={image.src}
-            alt={`Carousel Main Image ${index + 1}`}
-            fill
-            style={{ objectFit: "contain" }}
-          />
+        <CarouselItem
+          key={index}
+          className="relative w-full sm:h-[600px] h-[300px] flex flex-col items-center justify-start"
+        >
+          <div className="w-full h-full relative">
+            <Image
+              src={image.src}
+              alt={`Carousel Main Image ${index + 1}`}
+              fill
+              style={{ objectFit: "contain" }}
+            />
+          </div>
+          
+          {/* Credit */}
+          {image.credit && (
+            <div className="text-center w-full mt-2">
+              <p className="italic text-sm">
+                Credit:{" "}
+                {image.credit.url ? (
+                  <ExternalTextLink href={image.credit.url}>{image.credit.text}</ExternalTextLink>
+                ) : (
+                  image.credit.text
+                )}
+              </p>
+            </div>
+          )}
         </CarouselItem>
       )),
     [images]
