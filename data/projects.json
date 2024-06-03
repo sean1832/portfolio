@@ -75,7 +75,7 @@
       {
         "src": "https://www.youtube.com/embed/9m0n3p4oGuM?si=jqiFEiP3uotYyXx2",
         "alt": "Shara Clarke | Boundary Expansion Diagram",
-        "className": "md:col-span-1 col-span-2",
+        "className": "md:col-span-1 col-span-2 md:h-auto",
         "isVideo": true
       },
       {
@@ -217,7 +217,7 @@
       {
         "src": "https://www.youtube.com/embed/TLXvgVk_tls?si=D9RoU_2Hczisxaj_",
         "alt": "Synthetic Dunescapes | Aggregation Animation",
-        "className": "md:col-span-1 col-span-2",
+        "className": "md:col-span-1 col-span-2 md:h-auto",
         "isVideo": true
       },
       {
@@ -545,8 +545,66 @@
         "isAdaptive": true
       },
       {
+        "src": "/projects/mongrelAssembly/3.webp",
+        "alt": "Mongrel Assembly | Image 3",
+        "isAdaptive": true
+      },
+      {
+        "src": "https://www.youtube.com/embed/TwejWaHOx3Q?si=DhLvhsljq9CSON7E",
+        "alt": "Mongrel Assembly | ML-Agents in Unity with Grasshopper for Discrete Aggregation and Finite Element Analysis",
+        "isVideo": true
+      },
+      {
+        "src": "/projects/mongrelAssembly/4.webp",
+        "alt": "Mongrel Assembly | Image 4",
+        "isAdaptive": true,
+        "className": "md:col-span-1 col-span-2"
+      },
+      {
+        "src": "/projects/mongrelAssembly/5.webp",
+        "alt": "Mongrel Assembly | Image 5",
+        "isAdaptive": true,
+        "className": "md:col-span-1 col-span-2"
+      },
+      {
+        "src": "/projects/mongrelAssembly/6.webp",
+        "alt": "Mongrel Assembly | Image 6",
+        "isAdaptive": true
+      },
+      {
+        "src": "/projects/mongrelAssembly/7.webp",
+        "alt": "Mongrel Assembly | Image 7",
+        "isCarousel": true,
+        "caption": "Material database infrastructure system for recycled materials data collection"
+      },
+      {
+        "src": "/projects/mongrelAssembly/8.webp",
+        "alt": "Mongrel Assembly | Image 8",
+        "isCarousel": true,
+        "caption": "Web interface for material database"
+      },
+      {
+        "src": "/projects/mongrelAssembly/9.webp",
+        "alt": "Mongrel Assembly | Image 9",
+        "isCarousel": true,
+        "caption": "Inventory of recycled materials includes geometry and metadata"
+      },
+      {
+        "src": "/projects/mongrelAssembly/10.webp",
+        "alt": "Mongrel Assembly | Image 10",
+        "isCarousel": true,
+        "caption": "Google Firebase for data storage and retrieval"
+      },
+      {
+        "src": "/projects/mongrelAssembly/11.webp",
+        "alt": "Mongrel Assembly | Image 11",
+        "isCarousel": true,
+        "caption": "ML-Agents training results"
+      },
+      {
         "src": "https://freight.cargo.site/w/2750/i/b49c1c726655b2f18f70364355b986d0d9071d531af1fcc672461fa5706e88bd/MONGREL-ASSEMBLIES_ANIMATION_PROVINANCE-MAPPING_V04.jpg",
         "alt": "Mongrel Assembly | Image 3",
+        "caption": "Aggretation of recycled timber with reinforcement learning algorithms | Exhibition at Wild Hope, Melbourne, 2023",
         "credit": {
           "text": "Mongrel Assemblies Official Website",
           "url": "https://mongrelassemblies.com/"
@@ -557,6 +615,7 @@
       {
         "src": "https://freight.cargo.site/w/1500/i/bb98ce4c2b6276122c92a6bd7d0dd32fbb4becdfc980d8d32e690d7266b6b9f2/foreoi-website-copy2.jpg",
         "alt": "Mongrel Assembly | Image 4",
+        "caption": "Assembly details | Exhibition at Wild Hope, Melbourne, 2023",
         "credit": {
           "text": "Mongrel Assemblies Official Website",
           "url": "https://mongrelassemblies.com/"
@@ -565,11 +624,11 @@
         "isCarousel": true
       },
       {
-        "src": "https://freight.cargo.site/w/2750/i/82664724a75fd3347e92384ec19a0836d270a341c7c1096c086922ecaaf3d5a1/A-Wild-Hope_-material-schedule-3-copy.jpg",
-        "alt": "Mongrel Assembly | Image 5",
+        "src": "https://www.theprojects.com.au/wp-content/uploads/2023/10/These-Are-the-Projects-We-Do-Together-Quarry-TV-Installation-Image-WILD-HOPE-RMIT-Design-Hub-Gallery-2023-Photo-by-Tobias-Titz-1280x887.jpg",
+        "alt": "Mongrel Assembly | Image 4",
         "credit": {
-          "text": "Mongrel Assemblies Official Website",
-          "url": "https://mongrelassemblies.com/"
+          "text": "WILD HOPE Conversations for a Planetary Commons | The Projects We Do Together",
+          "url": "https://www.theprojects.com.au/wild-hope-exhibition/"
         },
         "isExternal": true,
         "isCarousel": true
