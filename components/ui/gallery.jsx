@@ -33,7 +33,14 @@ const Gallery = ({ images }) => {
               style={{ objectFit: "contain" }}
             />
           </div>
-          
+
+          {/* Caption */}
+          {image.caption && (
+            <div className="text-center w-full mt-2">
+              <p className="text-sm">{image.caption}</p>
+            </div>
+          )}
+
           {/* Credit */}
           {image.credit && (
             <div className="text-center w-full mt-2">
