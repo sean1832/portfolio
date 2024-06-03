@@ -8,6 +8,11 @@ const nextConfig = {
         hostname: "freight.cargo.site",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "www.theprojects.com.au",
+        pathname: "**",
+      },
     ],
   },
 };
