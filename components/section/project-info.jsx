@@ -3,7 +3,7 @@ import ExternalTextLink from "../ui/external-text-link";
 import ImageLists from "../ui/images-list";
 import { YoutubeVideo } from "../ui/youtube-video";
 import BlurImage from "../ui/blur";
-import Gallery from "../ui/carousel/galleryLegacy";
+import Gallery from "../ui/carousel/gallery";
 import ScrollToTopButton from "../ui/scrollToTopButton";
 import ExpandableText from "../ui/expandableText";
 
@@ -71,7 +71,7 @@ const ProjectDetails = ({ data, className }) => (
 const CustomCarousel = ({ data }) => {
   const carouselImages = data.images.filter((image) => image.isCarousel);
   if (carouselImages.length === 0) return null;
-  return <Gallery images={carouselImages} />;
+  return <Gallery images={carouselImages} className="pt-4" />;
 };
 
 const ProjectInfo = ({ data }) => {

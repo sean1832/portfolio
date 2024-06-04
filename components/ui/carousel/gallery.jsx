@@ -1,0 +1,93 @@
+import React from "react";
+import {
+  Carousel,
+  CarouselMainContainer,
+  CarouselNext,
+  CarouselPrevious,
+  SliderMainItem,
+  CarouselThumbsContainer,
+  SliderThumbItem,
+  CarouselIndicator,
+  CarouselDescription,
+} from "@/components/ui/carousel/carousel";
+import Image from "next/image";
+import ExternalTextLink from "@/components/ui/external-text-link";
+
+const Gallery = ({ images, className }) => {
+  return (
+    <Carousel className={className}>
+      <div className="relative">
+        {/* Ensure this div is positioned relatively */}
+        <div className="hidden sm:block">
+          <CarouselNext className="border-none absolute right-0 top-1/2 transform -translate-y-1/2 shadow-none" />
+          <CarouselPrevious className="border-none absolute left-0 top-1/2 transform -translate-y-1/2 shadow-none" />
+        </div>
+
+        <CarouselMainContainer>
+          {images.map((image, index) => (
+            <SliderMainItem
+              key={index}
+              className={`${
+                image.caption || image.credit
+                  ? "relative w-full sm:h-[550px] h-[300px]"
+                  : "relative w-full sm:h-[600px] h-[300px]"
+              }`}
+            >
+              <Image
+                src={image.src}
+                alt={`Carousel Main Image ${index + 1}`}
+                fill
+                style={{ objectFit: "contain" }}
+              />
+            </SliderMainItem>
+          ))}
+        </CarouselMainContainer>
+        {images.map((image, index) => (
+          <CarouselDescription
+            key={index}
+            index={index}
+            className={`${
+              image.credit || image.caption ? "h-[40px]" : "hidden"
+            } hidden sm:block pt-1`}
+          >
+            {image.caption && <p className="text-sm text-gray-500 ">{image.caption}</p>}
+            {image.credit && (
+              <ExternalTextLink href={image.credit.url} className="text-sm text-gray-500 italic">
+                Image credit: {image.credit.text}
+              </ExternalTextLink>
+            )}
+          </CarouselDescription>
+        ))}
+      </div>
+
+      <div className="hidden sm:block">
+        <CarouselThumbsContainer>
+          {images.map((image, index) => (
+            <SliderThumbItem
+              key={index}
+              index={index}
+              className="relative aspect-square w-full md:basis-1/6 basis-1/4 "
+            >
+              <Image
+                className={`p-1 cursor-pointer`}
+                src={image.src}
+                fill
+                alt={`Carousel Thumbnail Image ${index + 1}`}
+                style={{ objectFit: "cover" }}
+              />
+            </SliderThumbItem>
+          ))}
+        </CarouselThumbsContainer>
+      </div>
+      <div className="flex justify-center sm:hidden ">
+        <CarouselThumbsContainer className="gap-x-1">
+          {images.map((_, index) => (
+            <CarouselIndicator key={index} index={index} />
+          ))}
+        </CarouselThumbsContainer>
+      </div>
+    </Carousel>
+  );
+};
+
+export default Gallery;
