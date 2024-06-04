@@ -1,6 +1,7 @@
 import React from "react";
 import { Separator } from "../ui/separator";
 import ExternalTextLink from "../ui/external-text-link";
+import manifest from "@/data/manifest";
 
 const Footer = () => {
   return (
@@ -13,10 +14,18 @@ const Footer = () => {
         {/* Source code Links */}
         <div className="flex items-center space-x-4">
           <ExternalTextLink
-            href="https://github.com/sean1832/portfolio"
+            href={manifest.repository.url}
             className={`text-gray-600 dark:text-gray-400 text-sm uppercase text-center`}
           >
             Source Code
+          </ExternalTextLink>
+
+          {/* Version */}
+          <ExternalTextLink
+            href={manifest.repository.latestRelease}
+            className={`text-gray-600 dark:text-gray-400 text-sm uppercase text-center`}
+          >
+            Version: {manifest.version}
           </ExternalTextLink>
         </div>
       </footer>

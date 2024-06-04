@@ -2,10 +2,11 @@ import React from "react";
 import FloatingButton from "./floatingButton";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
+import manifest from "@/data/manifest";
 
 const GithubFloatingButton = () => {
   return (
-    <Link href="https://github.com/sean1832/portfolio" target="_blank">
+    <Link href={manifest.repository.url} target="_blank">
       <FloatingButton
         scrollOffset={300}
         className="h-8 md:w-[152px] w-8 opacity-80 hover:opacity-100"
