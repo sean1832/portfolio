@@ -34,7 +34,7 @@ const FloatingButton = ({ scrollOffset, onClick, children, className }) => {
           size="icon"
           onClick={onClick}
           className={cn(
-            "rounded-full border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground md:border-none",
+            "rounded-full border border-input bg-background hover:bg-accent hover:text-accent-foreground md:border-none",
             className
           )}
         >
@@ -45,7 +45,7 @@ const FloatingButton = ({ scrollOffset, onClick, children, className }) => {
           variant="ghost"
           size="icon"
           className={cn(
-            "rounded-full border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground md:border-none md:bg-transparent",
+            "rounded-full border border-input bg-background hover:bg-accent hover:text-accent-foreground md:border-none md:bg-transparent",
             className
           )}
         >
