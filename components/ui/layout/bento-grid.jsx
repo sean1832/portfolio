@@ -20,15 +20,23 @@ export const BentoGrid = ({ className, children }) => {
 export const BentoGridItem = ({ className, title, description, header, icon }) => {
   return (
     <div
-      className={`row-span-1 border dark:border-background hover:dark:border-primary hover:border-black rounded-none group/bento hover:shadow-xl transition duration-300 shadow-input dark:shadow-none p-4  border-transparent justify-between flex flex-col space-y-4 ${className}`}
+      className={`row-span-1 border dark:border-background hover:dark:border-primary hover:border-black rounded-none group/bento hover:shadow-xl transition duration-300 shadow-input dark:shadow-none p-4 border-transparent justify-between flex flex-col space-y-4 ${className}`}
     >
       {header}
 
-      <div className="group-hover/bento:translate-x-2 transition duration-500">
-        {icon}
-        <div className="font-sans font-bold mb-2 mt-2">{title}</div>
-        <div className="font-sans font-normal text-xs text-gray-600 dark:text-gray-300">
-          {description}
+      <div
+        className="transition-transform duration-500"
+        style={{ transform: "translateX(0)", willChange: "transform" }}
+      >
+        <div
+          className="group-hover/bento:translate-x-2"
+          style={{ transition: "transform 0.5s ease", willChange: "transform" }}
+        >
+          {icon}
+          <div className="font-sans font-bold mb-2 mt-2">{title}</div>
+          <div className="font-sans font-normal text-xs text-gray-600 dark:text-gray-300">
+            {description}
+          </div>
         </div>
       </div>
     </div>
