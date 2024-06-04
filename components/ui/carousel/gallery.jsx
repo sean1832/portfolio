@@ -13,6 +13,12 @@ import Image from "next/image";
 import ExternalTextLink from "@/components/ui/external-text-link";
 
 const Gallery = ({ images, className }) => {
+  const center = () => {
+    if (images.length < 5) {
+      return "flex justify-center";
+    }
+    return "";
+  };
   return (
     <Carousel className={className}>
       <div className="relative">
@@ -59,7 +65,7 @@ const Gallery = ({ images, className }) => {
         ))}
       </div>
 
-      <CarouselThumbsContainer>
+      <CarouselThumbsContainer className={center()}>
         {images.map((image, index) => (
           <SliderThumbItem
             key={index}

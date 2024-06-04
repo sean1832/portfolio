@@ -9,13 +9,13 @@ const ProjectNavigationButton = ({ name, href, direction }) => {
     <div>
       {direction === "next" ? (
         <Button variant="ghost" asChild>
-          <Link href={href} className=" md:text-xl text-wrap text-right">
+          <Link href={href} className=" md:text-xl font-light text-wrap text-right">
             {name.toUpperCase()} <ChevronRightIcon className="ml-2 h-5 w-5 md:h-8 md:w-8" />
           </Link>
         </Button>
       ) : (
         <Button variant="ghost" asChild>
-          <Link href={href} className=" md:text-xl text-wrap text-left">
+          <Link href={href} className=" md:text-xl font-light text-wrap text-left">
             <ChevronLeftIcon className="mr-2 h-5 w-5 md:h-8 md:w-8" /> {name.toUpperCase()}
           </Link>
         </Button>

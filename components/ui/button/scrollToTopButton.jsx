@@ -11,7 +11,7 @@ const ScrollToTopButton = () => {
   };
 
   return (
-    <FloatingButton scrollOffset={300} onClick={scrollToTop} className="md:w-16 md:h-16 w-8 h-8">
+    <FloatingButton scrollOffset={300} onClick={scrollToTop} className="md:w-10 md:h-10 w-8 h-8">
       <ChevronUpIcon className="h-16 w-16" />
     </FloatingButton>
   );

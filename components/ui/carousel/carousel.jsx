@@ -234,7 +234,7 @@ const SliderThumbItem = forwardRef(({ className, index, children, ...props }, re
     >
       <div
         className={`relative aspect-square w-full opacity-40 rounded-md transition-opacity ${
-          isSlideActive ? "!opacity-100" : ""
+          isSlideActive ? "!opacity-100" : " hover:opacity-80"
         }`}
       >
         {children}
