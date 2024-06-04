@@ -24,7 +24,7 @@ const FloatingButton = ({ scrollOffset, onClick, children, className }) => {
 
   return (
     <div
-      className={`fixed md:right-[120px] right-[20px] duration-300 ${
+      className={`fixed md:right-[60px] right-[20px] duration-300 ${
         !isVisible ? "opacity-0 bottom-[60px]" : "opacity-100 bottom-[70px]"
       }`}
     >
@@ -34,7 +34,7 @@ const FloatingButton = ({ scrollOffset, onClick, children, className }) => {
           size="icon"
           onClick={onClick}
           className={cn(
-            "rounded-full border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground md:border-none md:bg-transparent",
+            "rounded-full border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground md:border-none",
             className
           )}
         >
