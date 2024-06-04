@@ -4,7 +4,7 @@ import ImageLists from "../ui/images-list";
 import { YoutubeVideo } from "../ui/youtube-video";
 import BlurImage from "../ui/blur";
 import Gallery from "../ui/carousel/gallery";
-import ScrollToTopButton from "../ui/scrollToTopButton";
+import ScrollToTopButton from "../ui/button/scrollToTopButton";
 import ExpandableText from "../ui/expandableText";
 
 const ProjectDetails = ({ data, className }) => (
