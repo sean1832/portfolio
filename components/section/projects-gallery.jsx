@@ -2,7 +2,7 @@ import React from "react";
 import { BentoGrid, BentoGridItem } from "@/components/ui/layout/bento-grid";
 import projects from "@/data/projects.json";
 import Link from "next/link";
-import BlurImage from "../ui/blur";
+import BlurImage from "../ui/media/blur";
 
 const ProjectsGallery = async () => {
   return (

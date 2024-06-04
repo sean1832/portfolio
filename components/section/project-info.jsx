@@ -1,8 +1,8 @@
 import React from "react";
 import ExternalTextLink from "../ui/external-text-link";
-import ImageLists from "../ui/images-list";
-import { YoutubeVideo } from "../ui/youtube-video";
-import BlurImage from "../ui/blur";
+import ImageLists from "../ui/media/images-list";
+import { YoutubeVideo } from "../ui/media/youtube-video";
+import BlurImage from "../ui/media/blur";
 import Gallery from "../ui/carousel/gallery";
 import ScrollToTopButton from "../ui/button/scrollToTopButton";
 import ExpandableText from "../ui/expandableText";

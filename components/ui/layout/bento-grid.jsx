@@ -1,5 +1,5 @@
 import { cn } from "@/utils/cn";
-import RevealListClient from "@/components/ui/reveal-list-client";
+import RevealListClient from "@/components/animation/reveal-list-client";
 
 export const BentoGrid = ({ className, children }) => {
   return (
