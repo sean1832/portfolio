@@ -3,7 +3,7 @@ import ExternalTextLink from "../ui/external-text-link";
 import ImageLists from "../ui/images-list";
 import { YoutubeVideo } from "../ui/youtube-video";
 import BlurImage from "../ui/blur";
-import Gallery from "../ui/gallery";
+import Gallery from "../ui/carousel/galleryLegacy";
 import ScrollToTopButton from "../ui/scrollToTopButton";
 import ExpandableText from "../ui/expandableText";
 
