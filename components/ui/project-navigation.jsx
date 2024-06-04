@@ -9,14 +9,14 @@ const ProjectNavigationButton = ({ name, href, direction }) => {
     <div>
       {direction === "next" ? (
         <Button variant="ghost" asChild>
-          <Link href={href} className="text-primary">
-            {name.toUpperCase()} <ChevronRightIcon className="ml-2 h-5 w-5" />
+          <Link href={href} className=" md:text-xl text-wrap text-right">
+            {name.toUpperCase()} <ChevronRightIcon className="ml-2 h-5 w-5 md:h-8 md:w-8" />
           </Link>
         </Button>
       ) : (
         <Button variant="ghost" asChild>
-          <Link href={href} className="text-primary">
-            <ChevronLeftIcon className="mr-2 h-5 w-5" /> {name.toUpperCase()}
+          <Link href={href} className=" md:text-xl text-wrap text-left">
+            <ChevronLeftIcon className="mr-2 h-5 w-5 md:h-8 md:w-8" /> {name.toUpperCase()}
           </Link>
         </Button>
       )}
@@ -33,8 +33,8 @@ ProjectNavigationButton.propTypes = {
 
 const ProjectNavigation = ({ projectData, index }) => {
   return (
-    <div className="w-full mx-auto flex justify-between items-center max-w-[2048px]">
-      <div className="flex justify-between w-full lg:p-10 pt-10">
+    <div className="w-full mx-auto flex justify-between items-center max-w-[2048px] ">
+      <div className="flex justify-between w-full lg:p-10 pt-10 ">
         {index > 0 && (
           <ProjectNavigationButton
             name={projectData[index - 1].name}
