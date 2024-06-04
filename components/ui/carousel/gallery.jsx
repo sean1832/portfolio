@@ -60,32 +60,23 @@ const Gallery = ({ images, className }) => {
         ))}
       </div>
 
-      <div className="hidden sm:block">
-        <CarouselThumbsContainer>
-          {images.map((image, index) => (
-            <SliderThumbItem
-              key={index}
-              index={index}
-              className="relative aspect-square w-full md:basis-1/6 basis-1/4 "
-            >
-              <Image
-                className={`p-1 cursor-pointer`}
-                src={image.src}
-                fill
-                alt={`Carousel Thumbnail Image ${index + 1}`}
-                style={{ objectFit: "cover" }}
-              />
-            </SliderThumbItem>
-          ))}
-        </CarouselThumbsContainer>
-      </div>
-      <div className="flex justify-center sm:hidden ">
-        <CarouselThumbsContainer className="gap-x-1">
-          {images.map((_, index) => (
-            <CarouselIndicator key={index} index={index} />
-          ))}
-        </CarouselThumbsContainer>
-      </div>
+      <CarouselThumbsContainer>
+        {images.map((image, index) => (
+          <SliderThumbItem
+            key={index}
+            index={index}
+            className="relative aspect-square w-full md:basis-1/6 basis-1/4 "
+          >
+            <Image
+              className={`p-1 cursor-pointer`}
+              src={image.src}
+              fill
+              alt={`Carousel Thumbnail Image ${index + 1}`}
+              style={{ objectFit: "cover" }}
+            />
+          </SliderThumbItem>
+        ))}
+      </CarouselThumbsContainer>
     </Carousel>
   );
 };
