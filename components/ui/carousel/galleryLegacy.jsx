@@ -6,10 +6,10 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "../ui/carousel";
+} from "./carouselLegacy";
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
-import ExternalTextLink from "./external-text-link";
+import ExternalTextLink from "../external-text-link";
 
 // Reference
 // https://www.reddit.com/r/nextjs/comments/1cgktu9/shadcnui_image_carousel_with_thumbnail_images/

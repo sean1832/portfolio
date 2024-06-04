@@ -1,6 +1,7 @@
 import About from "@/components/section/about";
 import Landing from "@/components/section/landing";
 import ProjectsGallery from "@/components/section/projects-gallery";
+import GithubFloatingButton from "@/components/ui/button/githubFloatingButton";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
         <Landing />
         <About />
         <ProjectsGallery />
+        <GithubFloatingButton />
       </div>
     </main>
   );

@@ -5,13 +5,6 @@ import { cn } from "@/utils/cn";
 import { YoutubeVideo } from "./youtube-video";
 
 const CustomImage = ({ image }) => {
-  if (image.isVideo) {
-    return (
-      <div className={cn("relative w-full col-span-2 h-[300px] md:h-[600px]", image.className)}>
-        <YoutubeVideo src={image.src} alt={image.alt} />
-      </div>
-    );
-  }
   if (image.isAdaptive) {
     return (
       <div className={cn("relative w-full col-span-2", image.className)}>
