@@ -7,7 +7,6 @@ import {
   SliderMainItem,
   CarouselThumbsContainer,
   SliderThumbItem,
-  CarouselIndicator,
   CarouselDescription,
 } from "@/components/ui/carousel/carousel";
 import Image from "next/image";
