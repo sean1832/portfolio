@@ -110,9 +110,11 @@ const ProjectInfo = ({ data }) => {
           </div>
 
           {/* Description for mobile */}
-          <div className="text-primary">
-            <strong>Description: </strong>
-            <ExpandableText breakpoint="sm">{data.longDescription}</ExpandableText>
+          <div className="xlg:hidden">
+            <div className="text-primary">
+              <strong>Description: </strong>
+              <ExpandableText breakpoint="sm">{data.longDescription}</ExpandableText>
+            </div>
           </div>
 
           {/* Other info for Desktop */}
