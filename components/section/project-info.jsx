@@ -113,7 +113,7 @@ const ProjectInfo = ({ data }) => {
           <div className="xlg:hidden">
             <div className="text-primary">
               <strong>Description: </strong>
-              <ExpandableText maxLength={500}>{data.longDescription}</ExpandableText>
+              <ExpandableText breakpoint="sm">{data.longDescription}</ExpandableText>
             </div>
           </div>
 
