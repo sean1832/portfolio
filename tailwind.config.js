@@ -6,7 +6,7 @@ module.exports = {
     "./components/**/*.{js,jsx}",
     "./app/**/*.{js,jsx}",
     "./src/**/*.{js,jsx}",
-    "./data/**/*.{js,jsx,json}",
+    "./src/data/**/*.{js,jsx,json}",
   ],
   prefix: "",
   theme: {

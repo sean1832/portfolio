@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import BlurImage from "./blur";
 import { cn } from "@/utils/cn";
-import { YoutubeVideo } from "./youtube-video";
 
 const CustomImage = ({ image }) => {
   if (image.isAdaptive) {
