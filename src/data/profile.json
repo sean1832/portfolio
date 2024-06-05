@@ -6,23 +6,6 @@
     "alt": "Zeke Zhang"
   },
   "keywords": ["Architecture", "Machine Learning", "Intelligent Assembly"],
-  "education": [
-    {
-      "degree": "Master of Architecture",
-      "university": "RMIT University",
-      "graduation": "2024"
-    },
-    {
-      "degree": "Bachelor of Architecture and Urban Design",
-      "university": "RMIT University",
-      "graduation": "2022"
-    },
-    {
-      "degree": "Advanced Diploma of Building Design",
-      "university": "RMIT TAFE",
-      "graduation": "2020"
-    }
-  ],
   "social": {
     "instagram": "https://www.instagram.com/seanzhang9266/",
     "github": "https://www.github.com/sean1832",
@@ -30,12 +13,5 @@
   },
   "contact": {
     "email": "zekezhang@gmail.com"
-  },
-  "skills": [
-    {
-      "category": "Design",
-      "name": "Rhino3D",
-      "level": 90
-    }
-  ]
+  }
 }
