@@ -36,6 +36,7 @@ export const metadata = {
       default: "Zeke Zhang | Intelligent Synthesis",
       template: "Zeke Zhang | %s",
     },
+    images: ["/opengraph-image.jpg"],
     description:
       "Melbourne based designer and researcher specializing machine learning, algorithmic design, and low-tech assembly craft in architecture.",
     type: "website",
