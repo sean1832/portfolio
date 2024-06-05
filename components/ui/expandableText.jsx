@@ -1,22 +1,44 @@
 "use client";
 import { useState } from "react";
 import { Button } from "./button";
+import props from "prop-types";
 
-const ExpandableText = ({ children }) => {
+const ExpandableText = ({ children, breakpoint }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpansion = () => {
     setIsExpanded(!isExpanded);
   };
 
-  const text = children;
+  const breakpointVariants = {
+    sm: {
+      mobile: "sm:hidden block",
+      desktop: "hidden sm:block",
+    },
+    md: {
+      mobile: "md:hidden block",
+      desktop: "hidden md:block",
+    },
+    lg: {
+      mobile: "lg:hidden block",
+      desktop: "hidden lg:block",
+    },
+    xlg: {
+      mobile: "xlg:hidden block",
+      desktop: "hidden xlg:block",
+    },
+  };
+
+  const size = breakpointVariants[breakpoint];
+
+  console.log(size);
 
   return (
     <>
       {/* mobile view */}
-      <div className="lg:hidden block">
+      <div className={size.mobile}>
         <div className={`relative overflow-hidden ${!isExpanded ? "h-48" : "h-auto"}`}>
-          <p>{text}</p>
+          <p>{children}</p>
           {!isExpanded && (
             <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-b from-transparent to-background"></div>
           )}
@@ -29,9 +51,18 @@ const ExpandableText = ({ children }) => {
       </div>
 
       {/* desktop view */}
-      <div className="hidden lg:block">{text}</div>
+      <div className={size.desktop}>{children}</div>
     </>
   );
+};
+
+ExpandableText.propTypes = {
+  children: props.node.isRequired,
+  breakpoint: props.string.isRequired,
+};
+
+ExpandableText.defaultProps = {
+  breakpoint: "md",
 };
 
 export default ExpandableText;
