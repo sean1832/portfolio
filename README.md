@@ -263,8 +263,3 @@ Contributions to improve this project are welcome. Please follow the standard fo
 # 📄 License
 
 [Apache License 2.0](LICENSE)
-
-# 👏 Acknowledgments
-
-- Thanks to all the open-source tools and libraries that made this project possible.
-- Special thanks to [@sean1832](https://github.com/sean1832) for the initial setup.
