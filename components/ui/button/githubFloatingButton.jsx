@@ -6,13 +6,13 @@ import manifest from "@/data/manifest";
 
 const GithubFloatingButton = () => {
   return (
-    <Link href={manifest.repository.url} target="_blank">
+    <Link href={manifest.repository.url} target="_blank" className="hidden lg:block">
       <FloatingButton
         scrollOffset={300}
-        className="h-8 md:w-[152px] w-8 opacity-80 hover:opacity-100"
+        className="h-8 md:w-[152px] w-8 opacity-80 hover:opacity-100 "
       >
-        <GitHubLogoIcon className="h-6 w-6 md:h-4 md:w-4 md:mr-2" />
-        <div className="hidden md:block"> View on GitHub</div>
+        <GitHubLogoIcon className="h-6 w-6 md:h-4 md:w-4 md:mr-2 " />
+        View on GitHub
       </FloatingButton>
     </Link>
   );
