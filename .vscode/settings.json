@@ -2,15 +2,15 @@
   "json.schemas": [
     {
       "fileMatch": ["projects.json"],
-      "url": "/data/projects-schema.json"
+      "url": "/src/data/projects-schema.json"
     },
     {
       "fileMatch": ["profile.json"],
-      "url": "/data/profile-schema.json"
+      "url": "/src/data/profile-schema.json"
     },
     {
       "fileMatch": ["skills.json"],
-      "url": "/data/skills-schema.json"
+      "url": "/src/data/skills-schema.json"
     }
   ]
 }

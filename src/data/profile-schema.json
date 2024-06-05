@@ -25,23 +25,8 @@
         "type": "string"
       }
     },
-    "education": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "degree": {
-            "type": "string"
-          },
-          "university": {
-            "type": "string"
-          },
-          "graduation": {
-            "type": "string"
-          }
-        },
-        "required": ["degree", "university", "graduation"]
-      }
+    "slogan": {
+      "type": "string"
     },
     "social": {
       "type": "object",
@@ -73,5 +58,5 @@
       }
     }
   },
-  "required": ["name", "about", "education", "social", "contact"]
+  "required": ["name", "about", "social", "contact", "keywords", "slogan"]
 }

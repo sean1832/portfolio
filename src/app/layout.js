@@ -8,17 +8,17 @@ import Footer from "@/components/section/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  metadataBase: new URL("https://zekezhang.com"),
+  metadataBase: new URL("https://zekezhang.com"), // Your site URL
   title: {
-    default: "Zeke Zhang",
-    template: "%s | Zeke Zhang",
+    default: "Zeke Zhang", // Default title
+    template: "%s | Zeke Zhang", // Template title, %s will be replaced with the page title
   },
   description:
     "Melbourne based designer and researcher specializing machine learning, algorithmic design, and low-tech assembly craft in architecture.",
   icons: {
-    icon: ["/favicon.ico?v=4"],
-    apple: ["/apple-touch-icon.png?v=4"],
-    shortcut: ["/apple-touch-icon.png"],
+    icon: ["/favicon.ico?v=4"], // Favicon
+    apple: ["/apple-touch-icon.png?v=4"], // Apple touch icon
+    shortcut: ["/apple-touch-icon.png"], // Shortcut icon
   },
   keywords: [
     "Architecture",
@@ -28,20 +28,21 @@ export const metadata = {
     "algorithmic design",
     "diffusion tectonics",
   ],
-  creator: "Zeke Zhang",
-  manifest: "/site.webmanifest",
-  authors: [{ name: "Zeke Zhang" }],
-  openGraph: {
+  creator: "Zeke Zhang", // Website creator
+  manifest: "/site.webmanifest", // Path to site manifest
+  authors: [{ name: "Zeke Zhang" }], // Website authors
+  openGraph: { 
     title: {
-      default: "Zeke Zhang | Intelligent Synthesis",
-      template: "Zeke Zhang | %s",
+      default: "Zeke Zhang | Intelligent Synthesis", // Default title
+      template: "Zeke Zhang | %s", // Template title, %s will be replaced with the page title
     },
+    images: ["/opengraph-image.jpg"], // Open graph images
     description:
       "Melbourne based designer and researcher specializing machine learning, algorithmic design, and low-tech assembly craft in architecture.",
-    type: "website",
-    locale: "en_US",
-    url: "https://zekezhang.com",
-    siteName: "Zeke Zhang",
+    type: "website", // Open graph type
+    locale: "en_US", // Open graph locale
+    url: "https://zekezhang.com", // Website URL
+    siteName: "Zeke Zhang", // Website name
   },
 };
 
