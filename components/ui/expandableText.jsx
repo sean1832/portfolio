@@ -31,8 +31,6 @@ const ExpandableText = ({ children, breakpoint }) => {
 
   const size = breakpointVariants[breakpoint];
 
-  console.log(size);
-
   return (
     <>
       {/* mobile view */}
