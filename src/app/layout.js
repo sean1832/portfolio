@@ -1,9 +1,8 @@
 import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/ui/theme/theme-provider";
-import NavBar from "@/components/section/navbar";
-import Footer from "@/components/section/footer";
-// import PageAnimatePresence from "@/components/HOC/pageAnimatePresence";
+import NavBar from "@/components/layout/navbar";
+import Footer from "@/components/layout/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +30,7 @@ export const metadata = {
   creator: "Zeke Zhang", // Website creator
   manifest: "/site.webmanifest", // Path to site manifest
   authors: [{ name: "Zeke Zhang" }], // Website authors
-  openGraph: { 
+  openGraph: {
     title: {
       default: "Zeke Zhang | Intelligent Synthesis", // Default title
       template: "Zeke Zhang | %s", // Template title, %s will be replaced with the page title

@@ -1,5 +1,6 @@
 [
   {
+    "id": "shara-clarke",
     "name": "SHARA CLARKE",
     "type": "Design Studio",
     "year": "2021",
@@ -115,6 +116,7 @@
     ]
   },
   {
+    "id": "modular",
     "name": "MODULAR: NATURAL - BUILD",
     "type": "International Competition",
     "year": "2022",
@@ -174,6 +176,7 @@
     ]
   },
   {
+    "id": "synthetic-dunescapes",
     "name": "Synthetic Dunescapes",
     "type": "Design Studio / Research",
     "year": "2024",
@@ -309,6 +312,7 @@
     ]
   },
   {
+    "id": "jakarta-rising",
     "name": "Jakarta Rising",
     "year": "2022",
     "type": "Design Studio",
@@ -400,6 +404,7 @@
     ]
   },
   {
+    "id": "terra-form",
     "name": "Terra // Form",
     "type": "Design Studio",
     "year": "2021",
@@ -493,6 +498,7 @@
     ]
   },
   {
+    "id": "mongrel-assembly",
     "name": "Mongrel Assembly",
     "type": "Design Studio / Research",
     "year": "2023",
