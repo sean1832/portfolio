@@ -2,9 +2,11 @@ import Image from "next/image";
 import React from "react";
 import { getPlaiceholder } from "plaiceholder";
 import fs from "node:fs/promises";
+import path from "node:path";
 
 const BlurImage = async (image) => {
-  const buffer = await fs.readFile(`./public${image.src}`);
+  const filePath = path.join(process.cwd(), `/public${image.src}`);
+  const buffer = await fs.readFile(filePath);
   const { base64 } = await getPlaiceholder(buffer);
   return (
     <>
