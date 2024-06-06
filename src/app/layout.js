@@ -3,7 +3,6 @@ import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/ui/theme/theme-provider";
 import NavBar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
-// import PageAnimatePresence from "@/components/HOC/pageAnimatePresence";
 
 const inter = Inter({ subsets: ["latin"] });
 
