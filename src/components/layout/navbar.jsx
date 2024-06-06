@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import navbarData from "@/data/navbar";
-import { ZekeLogoIcon } from "../ui/svg";
+import { ZekeLogoIcon } from "../svg";
 import { Separator } from "../ui/separator";
 import { ModeToggle } from "@/components/ui/theme/mode-toggle";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
