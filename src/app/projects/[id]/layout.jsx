@@ -9,6 +9,11 @@ export async function generateMetadata({ params }) {
   const projectIndex = projectData.findIndex(
     (project) => project.id.toLowerCase() === id.toLowerCase()
   );
+
+  if (projectIndex === -1) {
+    return { notFound: true };
+  }
+
   const project = projectData[projectIndex];
   const heroImage = project.images.find((image) => image.isHero);
 
