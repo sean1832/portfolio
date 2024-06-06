@@ -5,7 +5,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 const BlurImage = async (image) => {
-  const filePath = path.join(process.cwd(), `/public${image.src}`);
+  const dir = path.resolve(process.cwd(), `public`);
+  const filePath = path.join(dir, image.src);
   const buffer = await fs.readFile(filePath);
   const { base64 } = await getPlaiceholder(buffer);
   return (
