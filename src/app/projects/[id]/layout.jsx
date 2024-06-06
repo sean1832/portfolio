@@ -10,11 +10,15 @@ export async function generateMetadata({ params }) {
     (project) => project.id.toLowerCase() === id.toLowerCase()
   );
   const project = projectData[projectIndex];
+  const heroImage = project.images.find((image) => image.isHero);
 
   // return metadata
   return {
     title: project.name,
     description: project.description,
+    openGraph: {
+      images: [heroImage.src],
+    },
   };
 }
 
