@@ -7,7 +7,7 @@ import { IoLogoYoutube } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
 
-const About = () => {
+const AboutSection = () => {
   return (
     <section id="about" className="flex flex-col justify-center items-center md:h-screen w-full">
       <RevealListClient
@@ -60,4 +60,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutSection;

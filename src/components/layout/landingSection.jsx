@@ -10,7 +10,7 @@ const TextDecodeCycle = dynamic(() => import("@/components/animation/text-decode
   ssr: false,
 });
 
-const Landing = () => {
+const LandingSection = () => {
   return (
     <section className="flex flex-col h-screen items-center justify-center" id="home">
       <div className="text-3xl sm:text-4xl m:text-5xl xl:text-5xl 2xl:text-6xl font-bold text-center flex flex-col gap-0">
@@ -25,4 +25,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default LandingSection;

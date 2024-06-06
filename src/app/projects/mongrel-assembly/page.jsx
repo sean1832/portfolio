@@ -1,6 +1,6 @@
 import React from "react";
 import projectData from "@/data/projects.json";
-import ProjectInfo from "@/components/section/project-info";
+import ProjectInfo from "@/components/layout/projectDetailSection";
 import { ProjectNavigation } from "@/components/ui/project-navigation";
 
 const projectName = "Mongrel Assembly";

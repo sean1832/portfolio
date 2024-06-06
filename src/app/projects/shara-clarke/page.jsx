@@ -1,4 +1,4 @@
-import ProjectInfo from "@/components/section/project-info";
+import ProjectInfo from "@/components/layout/projectDetailSection";
 import React from "react";
 import projectData from "@/data/projects.json";
 import { ProjectNavigation } from "@/components/ui/project-navigation";

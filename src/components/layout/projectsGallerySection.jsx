@@ -1,10 +1,10 @@
 import React from "react";
-import { BentoGrid, BentoGridItem } from "@/components/ui/layout/bento-grid";
+import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import projects from "@/data/projects.json";
 import Link from "next/link";
 import BlurImage from "../ui/media/blur";
 
-const ProjectsGallery = async () => {
+const ProjectsGallerySection = async () => {
   return (
     <div id="projects">
       <section>
@@ -61,4 +61,4 @@ const ImageHeader = ({ src, alt, href }) => (
   </Link>
 );
 
-export default ProjectsGallery;
+export default ProjectsGallerySection;

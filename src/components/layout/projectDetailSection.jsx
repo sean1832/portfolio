@@ -7,7 +7,7 @@ import Gallery from "../ui/carousel/gallery";
 import ScrollToTopButton from "../ui/button/scrollToTopButton";
 import ExpandableText from "../ui/expandableText";
 
-const ProjectDetails = ({ data, className }) => (
+const ProjectDetailsSection = ({ data, className }) => (
   <div className={className}>
     <div className="flex flex-col gap-y-4">
       {data.location.url ? (
@@ -118,7 +118,7 @@ const ProjectInfo = ({ data }) => {
           </div>
 
           {/* Other info for Desktop */}
-          <ProjectDetails data={data} className="hidden xlg:block" />
+          <ProjectDetailsSection data={data} className="hidden xlg:block" />
 
           {/* Description for desktop */}
           <div className="hidden xlg:block">
@@ -136,7 +136,7 @@ const ProjectInfo = ({ data }) => {
         </div>
 
         {/* Other info for mobile */}
-        <ProjectDetails
+        <ProjectDetailsSection
           data={data}
           className={`lg:hidden flex flex-col gap-5 dark:text-gray-300 text-gray-700`}
         />

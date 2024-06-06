@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import NavBar from "../section/navbar";
+import NavBar from "../layout/navbar";
 
 // reference: https://blog.olivierlarose.com/articles/nextjs-page-transition-guide
 const anim = (variants) => {

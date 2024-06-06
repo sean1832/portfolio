@@ -1,14 +1,14 @@
-import About from "@/components/section/about";
-import Landing from "@/components/section/landing";
-import ProjectsGallery from "@/components/section/projects-gallery";
+import AboutSection from "@/components/layout/aboutSection";
+import LandingSection from "@/components/layout/landingSection";
+import ProjectsGallerySection from "@/components/layout/projectsGallerySection";
 
 export default function Home() {
   return (
     <main>
       <div className="px-10">
-        <Landing />
-        <About />
-        <ProjectsGallery />
+        <LandingSection />
+        <AboutSection />
+        <ProjectsGallerySection />
       </div>
     </main>
   );
