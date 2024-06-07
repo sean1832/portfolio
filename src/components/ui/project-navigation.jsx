@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import { Button } from "./button";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
+import ConstructProjectHref from "@/lib/constructProjectHref";
 
 const ProjectNavigationButton = ({ name, href, direction }) => {
   return (
@@ -38,7 +39,7 @@ const ProjectNavigation = ({ projectData, index }) => {
         {index > 0 && (
           <ProjectNavigationButton
             name={projectData[index - 1].name}
-            href={projectData[index - 1].href}
+            href={ConstructProjectHref(projectData[index - 1].id)}
             direction="last"
           />
         )}
@@ -47,7 +48,7 @@ const ProjectNavigation = ({ projectData, index }) => {
         {index < projectData.length - 1 && (
           <ProjectNavigationButton
             name={projectData[index + 1].name}
-            href={projectData[index + 1].href}
+            href={ConstructProjectHref(projectData[index + 1].id)}
             direction="next"
             className={index === 0 ? "ml-auto" : ""}
           />

@@ -3,6 +3,7 @@ import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import projects from "@/data/projects.json";
 import Link from "next/link";
 import BlurImage from "../ui/media/blur";
+import ConstructProjectHref from "@/lib/constructProjectHref";
 
 const ProjectsGallerySection = async () => {
   return (
@@ -32,7 +33,13 @@ const ProjectsGallerySection = async () => {
               key={i}
               title={project.name}
               description={project.description}
-              header={<ImageHeader src={heroImage?.src} alt={heroImage?.alt} href={project.href} />}
+              header={
+                <ImageHeader
+                  src={heroImage?.src}
+                  alt={heroImage?.alt}
+                  href={ConstructProjectHref(project.id)}
+                />
+              }
               className={`${project.bentoAttributes.className} uppercase `}
             />
           );
