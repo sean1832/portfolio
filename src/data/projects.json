@@ -51,7 +51,7 @@
       "src": "https://www.youtube.com/embed/q15wEzLeKXw?si=N_EUmE4cvzq_bukx",
       "alt": "Shara Clarke | Video Presentation"
     },
-    "images": [
+    "media": [
       {
         "src": "/projects/sharaClarke/main.webp",
         "alt": "Shara Clarke Aboriginal Cultural & Education Centre",
@@ -145,7 +145,7 @@
         "url": "https://www.archdaily.com/1015545/how-can-modular-design-be-used-to-revolutionize-housing-architecture?ad_medium=gallery"
       }
     ],
-    "images": [
+    "media": [
       {
         "src": "/projects/modular/main.webp",
         "alt": "Modular: Natural - Build",
@@ -204,7 +204,7 @@
       "src": "https://www.youtube.com/embed/PNKjyfp9L2M?si=YKckKJ2IYIaZzzGH",
       "alt": "Synthetic Dunescapes | Video Presentation"
     },
-    "images": [
+    "media": [
       {
         "src": "/projects/syntheticDunescapes/main.webp",
         "alt": "Synthetic Dunescapes | Hero",
@@ -337,7 +337,7 @@
       "src": "https://www.youtube.com/embed/ov6RFqihmLQ?si=dZVZYMSjo_UtNDIV",
       "alt": "Jakarta Rising | Video Presentation"
     },
-    "images": [
+    "media": [
       {
         "src": "/projects/jakartaRising/main.webp",
         "alt": "Jakarta Rising",
@@ -434,7 +434,7 @@
       "src": "https://www.youtube.com/embed/ffDNh79mnEE?si=RPGW12y582pP_6ck",
       "alt": "Terra//Form | Video Presentation"
     },
-    "images": [
+    "media": [
       {
         "src": "/projects/terraForm/main.webp",
         "alt": "Terra//Form",
@@ -528,7 +528,7 @@
         "url": "https://mongrelassemblies.com/"
       }
     ],
-    "images": [
+    "media": [
       {
         "src": "/projects/mongrelAssembly/main.webp",
         "alt": "Mongrel Assembly",

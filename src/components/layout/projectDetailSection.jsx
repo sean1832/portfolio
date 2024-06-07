@@ -69,13 +69,13 @@ const ProjectDetailsSection = ({ data, className }) => (
 );
 
 const CustomCarousel = ({ data }) => {
-  const carouselImages = data.images.filter((image) => image.isCarousel);
+  const carouselImages = data.media.filter((image) => image.isCarousel);
   if (carouselImages.length === 0) return null;
   return <ProjectSlider images={carouselImages} className="pt-4" />;
 };
 
 const ProjectInfo = ({ data }) => {
-  const heroImage = data.images.find((image) => image.isHero == true);
+  const heroImage = data.media.find((image) => image.isHero == true);
   return (
     <section className="flex flex-col gap-10">
       {/* Hero image */}

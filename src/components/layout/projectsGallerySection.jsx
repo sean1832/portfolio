@@ -12,10 +12,10 @@ const ProjectsGallerySection = async () => {
         {projects.map((project, i) => {
           let heroImage = null;
           try {
-            if (!project.images) {
+            if (!project.media) {
               throw new Error(`Project "${project.name}" does not have images property.`);
             }
-            heroImage = project.images.find((image) => image.isHero);
+            heroImage = project.media.find((image) => image.isHero);
             if (!heroImage) {
               throw new Error(`Project "${project.name}" does not have a hero image.`);
             }

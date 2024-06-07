@@ -15,7 +15,7 @@ export async function generateMetadata({ params }) {
   }
 
   const project = projectData[projectIndex];
-  const heroImage = project.images.find((image) => image.isHero);
+  const heroImage = project.media.find((image) => image.isHero);
 
   // return metadata
   return {
