@@ -36,9 +36,6 @@
       "year": {
         "type": "string"
       },
-      "href": {
-        "type": "string"
-      },
       "description": {
         "type": "string"
       },
@@ -189,8 +186,7 @@
       "description",
       "longDescription",
       "location",
-      "bentoAttributes",
-      "href"
+      "bentoAttributes"
     ]
   }
 }
