@@ -96,7 +96,7 @@
           "required": ["name", "url"]
         }
       },
-      "bentoAttributes": {
+      "gallery": {
         "type": "object",
         "properties": {
           "className": {
@@ -186,7 +186,7 @@
       "description",
       "longDescription",
       "location",
-      "bentoAttributes"
+      "gallery"
     ]
   }
 }

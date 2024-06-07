@@ -40,7 +40,7 @@ const ProjectsGallerySection = async () => {
                   href={ConstructProjectHref(project.id)}
                 />
               }
-              className={`${project.bentoAttributes.className} uppercase `}
+              className={`${project.gallery.className} uppercase `}
             />
           );
         })}
