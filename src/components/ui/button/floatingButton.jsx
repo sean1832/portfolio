@@ -57,9 +57,13 @@ const FloatingButton = ({ scrollOffset, onClick, children, className }) => {
 };
 
 FloatingButton.propTypes = {
-  scrollOffset: props.number == 300,
+  scrollOffset: props.number,
   onClick: props.func,
   children: props.node.isRequired,
+};
+
+FloatingButton.defaultProps = {
+  scrollOffset: 300,
 };
 
 export default FloatingButton;
