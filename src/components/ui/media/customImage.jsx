@@ -1,6 +1,7 @@
 import React from "react";
 import BlurImage from "./blur";
 import { cn } from "@/utils/cn";
+import {ConstructImageAltText} from "@/lib/constructAltText";
 
 const CustomImage = ({ image }) => {
   if (image.isAdaptive) {
@@ -8,7 +9,7 @@ const CustomImage = ({ image }) => {
       <div className={cn("relative w-full col-span-2", image.className)}>
         <BlurImage
           src={image.src}
-          alt={image.alt}
+          alt={image.alt || ConstructImageAltText(image.src)}
           style={{ objectFit: "cover", width: "100%", height: "auto" }}
           width={image.width || 1920}
           height={image.height || 1080}
@@ -23,7 +24,7 @@ const CustomImage = ({ image }) => {
       >
         <BlurImage
           src={image.src}
-          alt={image.alt}
+          alt={image.alt || ConstructImageAltText(image.src)}
           className={cn("object-cover object-center w-full h-full", image.className)}
           fill
           isExternal={image.isExternal}
