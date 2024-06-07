@@ -9,11 +9,10 @@ import {
   SliderThumbItem,
   CarouselDescription,
 } from "@/components/ui/carousel/carousel";
-import Image from "next/image";
 import BlurImage from "../media/blur";
 import ExternalTextLink from "@/components/ui/external-text-link";
 
-const Gallery = ({ images, className }) => {
+const ProjectSlider = ({ images, className }) => {
   const center = () => {
     if (images.length < 5) {
       return "flex justify-center";
@@ -89,4 +88,4 @@ const Gallery = ({ images, className }) => {
   );
 };
 
-export default Gallery;
+export default ProjectSlider;
