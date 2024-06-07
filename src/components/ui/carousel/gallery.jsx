@@ -10,6 +10,7 @@ import {
   CarouselDescription,
 } from "@/components/ui/carousel/carousel";
 import Image from "next/image";
+import BlurImage from "../media/blur";
 import ExternalTextLink from "@/components/ui/external-text-link";
 
 const Gallery = ({ images, className }) => {
@@ -38,11 +39,12 @@ const Gallery = ({ images, className }) => {
                   : "relative w-full sm:h-[600px] h-[300px]"
               }`}
             >
-              <Image
+              <BlurImage
                 src={image.src}
                 alt={`Carousel Main Image ${index + 1}`}
                 fill
                 style={{ objectFit: "contain" }}
+                isExternal={image.isExternal}
               />
             </SliderMainItem>
           ))}
@@ -72,12 +74,13 @@ const Gallery = ({ images, className }) => {
             index={index}
             className="relative aspect-square w-full md:basis-1/6 basis-1/4 "
           >
-            <Image
+            <BlurImage
               className={`p-1 cursor-pointer`}
               src={image.src}
               fill
               alt={`Carousel Thumbnail Image ${index + 1}`}
               style={{ objectFit: "cover" }}
+              isExternal={image.isExternal}
             />
           </SliderThumbItem>
         ))}
