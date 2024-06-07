@@ -3,7 +3,7 @@ import ExternalTextLink from "../ui/external-text-link";
 import ImageLists from "../ui/media/images-list";
 import { YoutubeVideo } from "../ui/media/youtube-video";
 import BlurImage from "../ui/media/blur";
-import Gallery from "../ui/carousel/gallery";
+import ProjectSlider from "../ui/carousel/projectSlider";
 import ScrollToTopButton from "../ui/button/scrollToTopButton";
 import ExpandableText from "../ui/expandableText";
 
@@ -69,13 +69,13 @@ const ProjectDetailsSection = ({ data, className }) => (
 );
 
 const CustomCarousel = ({ data }) => {
-  const carouselImages = data.images.filter((image) => image.isCarousel);
+  const carouselImages = data.media.filter((image) => image.isCarousel);
   if (carouselImages.length === 0) return null;
-  return <Gallery images={carouselImages} className="pt-4" />;
+  return <ProjectSlider images={carouselImages} className="pt-4" />;
 };
 
 const ProjectInfo = ({ data }) => {
-  const heroImage = data.images.find((image) => image.isHero == true);
+  const heroImage = data.media.find((image) => image.isHero == true);
   return (
     <section className="flex flex-col gap-10">
       {/* Hero image */}

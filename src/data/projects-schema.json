@@ -36,9 +36,6 @@
       "year": {
         "type": "string"
       },
-      "href": {
-        "type": "string"
-      },
       "description": {
         "type": "string"
       },
@@ -99,7 +96,7 @@
           "required": ["name", "url"]
         }
       },
-      "bentoAttributes": {
+      "gallery": {
         "type": "object",
         "properties": {
           "className": {
@@ -123,7 +120,7 @@
           "required": ["name", "url"]
         }
       },
-      "images": {
+      "media": {
         "type": "array",
         "items": {
           "type": "object",
@@ -189,8 +186,8 @@
       "description",
       "longDescription",
       "location",
-      "bentoAttributes",
-      "href"
+      "gallery",
+      "media"
     ]
   }
 }
