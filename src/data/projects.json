@@ -211,8 +211,9 @@
         "isHero": true
       },
       {
-        "src": "/projects/syntheticDunescapes/1.webp",
-        "alt": "Synthetic Dunescapes | Image 1"
+        "src": "/projects/syntheticDunescapes/19.webp",
+        "alt": "Synthetic Dunescapes | Image 19",
+        "className": "object-bottom"
       },
       {
         "src": "https://www.youtube.com/embed/TLXvgVk_tls?si=D9RoU_2Hczisxaj_",
@@ -254,6 +255,11 @@
       {
         "src": "/projects/syntheticDunescapes/8.webp",
         "alt": "Synthetic Dunescapes | Image 8",
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/1.webp",
+        "alt": "Synthetic Dunescapes | Image 1",
         "isCarousel": true
       },
       {
