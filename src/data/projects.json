@@ -195,9 +195,8 @@
     ],
     "publications": [
       {
-        "name": "Synthetic Dunescape | ISSUU",
-        "url": "",
-        "img": ""
+        "name": "Synthetic Dunescape | HEYZINE",
+        "url": "https://heyzine.com/flip-book/ae42799b33.html"
       }
     ],
     "video": {
@@ -228,6 +227,12 @@
         "isAdaptive": true
       },
       {
+        "src": "/projects/syntheticDunescapes/workflow.webp",
+        "alt": "Synthetic Dunescapes | Workflow",
+        "className": "dark:invert",
+        "isAdaptive": true
+      },
+      {
         "src": "/projects/syntheticDunescapes/3.webp",
         "alt": "Synthetic Dunescapes | Image 3",
         "className": "md:col-span-1 col-span-2"
@@ -248,9 +253,9 @@
         "className": "md:col-span-1 col-span-2"
       },
       {
-        "src": "/projects/syntheticDunescapes/7.webp",
-        "alt": "Synthetic Dunescapes | Image 7",
-        "className": "object-bottom"
+        "src": "/projects/syntheticDunescapes/section.webp",
+        "alt": "Synthetic Dunescapes | Section Collage",
+        "isAdaptive": true
       },
       {
         "src": "/projects/syntheticDunescapes/8.webp",
