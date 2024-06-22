@@ -182,7 +182,7 @@
       "name": "Desert Region, Middle East"
     },
     "description": "AI-accelerated resilient habitat in desert regions",
-    "longDescription": "The project speculates a future where population growth, resource scarcity, and climate change drive human migration to uninhabitable regions like deserts. To address these challenges, we propose a cellular, self-organizing system where each 'cell' autonomously adapts, transforms, and self-replicates. These cells, made from genetically engineered mycelium with exceptional structural strength and piezoelectric properties, serve as the fundamental building blocks of the habitat. This adaptability stems from the collective intelligence of the cellular agents, which dynamically respond to their surroundings by observing, acting, and evaluating the result. Drawing insights from thinkers like Jeremy Rifkin and Benjamin Bratton, the project seeks to merge design, technology, and ecology to transform challenging landscapes into viable habitats for very large buildings designed with 80% nonhuman and 20% human programming.",
+    "longDescription": "The project envisions a future where rapid population growth, resource scarcity, and climate change force humans to inhabit previously uninhabitable regions such as deserts. To address this challenge, we propose an adaptive, self-organizing system composed of autonomous, self-assembled modular robotic units. These units, functioning both individually and collectively, can autonomously adapt and transform to create sustainable living conditions by integrating design, technology, and ecology. Drawing insights from thinkers like Jeremy Rifkin and Benjamin Bratton, the project seeks to merge design, technology, and ecology to transform challenging landscapes into viable habitats for very large buildings designed with 80% nonhuman and 20% human programming.",
     "gallery": {
       "className": "lg:col-span-4"
     },
@@ -195,9 +195,8 @@
     ],
     "publications": [
       {
-        "name": "Synthetic Dunescape | ISSUU",
-        "url": "",
-        "img": ""
+        "name": "Synthetic Dunescape | HEYZINE",
+        "url": "https://heyzine.com/flip-book/ae42799b33.html"
       }
     ],
     "video": {
@@ -228,6 +227,12 @@
         "isAdaptive": true
       },
       {
+        "src": "/projects/syntheticDunescapes/workflow.webp",
+        "alt": "Synthetic Dunescapes | Workflow",
+        "className": "dark:invert",
+        "isAdaptive": true
+      },
+      {
         "src": "/projects/syntheticDunescapes/3.webp",
         "alt": "Synthetic Dunescapes | Image 3",
         "className": "md:col-span-1 col-span-2"
@@ -248,9 +253,9 @@
         "className": "md:col-span-1 col-span-2"
       },
       {
-        "src": "/projects/syntheticDunescapes/7.webp",
-        "alt": "Synthetic Dunescapes | Image 7",
-        "className": "object-bottom"
+        "src": "/projects/syntheticDunescapes/section.webp",
+        "alt": "Synthetic Dunescapes | Section Collage",
+        "isAdaptive": true
       },
       {
         "src": "/projects/syntheticDunescapes/8.webp",
