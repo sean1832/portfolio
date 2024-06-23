@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, Suspense } from "react";
 import {
   Carousel,
   CarouselMainContainer,
@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/carousel/carousel";
 import BlurImage from "../media/blur";
 import ExternalTextLink from "@/components/ui/external-text-link";
+import { Lightbox } from "./lightbox";
+import Image from "next/image";
 
 const CustomCarousel = ({ data, className }) => {
   const { carouselImages, indexMap } = useMemo(() => {
@@ -52,13 +54,14 @@ const CustomCarousel = ({ data, className }) => {
                   : "relative w-full sm:h-[600px] h-[300px]"
               }`}
             >
-              <BlurImage
-                src={image.src}
-                alt={`Carousel Main Image ${index + 1}`}
-                fill
-                style={{ objectFit: "contain" }}
-                isExternal={image.isExternal}
-              />
+              <Lightbox images={data.media} index={indexMap.get(index)}>
+                <Image
+                  src={image.src}
+                  alt={`Carousel Main Image ${index + 1}`}
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
+              </Lightbox>
             </SliderMainItem>
           ))}
         </CarouselMainContainer>
