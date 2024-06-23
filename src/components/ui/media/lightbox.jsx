@@ -72,8 +72,16 @@ const Lightbox = ({ images, index, children }) => {
             <DialogHeader className={"col-span-1 flex justify-center align-middle"}>
               <div className="grid grid-cols-6">
                 <div className="col-span-5 p-8">
-                  <DialogTitle className="text-xl font-bold">this is a title</DialogTitle>
-                  <DialogDescription className="text-base">this is a description</DialogDescription>
+                  {images.map((image, i) => (
+                    <CarouselDescription key={i} index={i} className="text-left">
+                      <DialogTitle className="text-xl font-bold">
+                        {image.alt.toUpperCase()}
+                      </DialogTitle>
+                      {image.longDescription && (
+                        <DialogDescription>{image.longDescription}</DialogDescription>
+                      )}
+                    </CarouselDescription>
+                  ))}
                 </div>
                 <CarouselThumbsContainer className={cn("h-screen", center())}>
                   {images.map((image, i) => (
