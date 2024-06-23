@@ -73,7 +73,7 @@ const Lightbox = ({ images, index, children }) => {
                     <SliderThumbItem key={i} index={i} className="flex items-start w-full basis-1">
                       {image.isVideo ? (
                         <Image
-                          className={`p-1 cursor-pointer`}
+                          className={`cursor-pointer`}
                           src={GetYoutubeThumbnail(image.src, "sd")}
                           fill
                           alt={`Carousel Thumbnail Image ${i + 1}`}
@@ -81,7 +81,7 @@ const Lightbox = ({ images, index, children }) => {
                         />
                       ) : (
                         <Image
-                          className={`p-1 cursor-pointer`}
+                          className={`cursor-pointer`}
                           src={image.src}
                           fill
                           alt={`Carousel Thumbnail Image ${i + 1}`}

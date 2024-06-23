@@ -74,7 +74,7 @@ const ProjectSlider = ({ images, className }) => {
             className="relative aspect-square w-full md:basis-1/6 basis-1/4 "
           >
             <BlurImage
-              className={`p-1 cursor-pointer`}
+              className={`cursor-pointer`}
               src={image.src}
               fill
               alt={`Carousel Thumbnail Image ${index + 1}`}
