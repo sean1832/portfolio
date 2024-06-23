@@ -72,8 +72,8 @@ const Lightbox = ({ images, index, children }) => {
             <DialogHeader className={"col-span-1 flex justify-center align-middle"}>
               <div className="grid grid-cols-6">
                 <div className="col-span-5 p-8">
-                  <DialogTitle>this is a title</DialogTitle>
-                  <DialogDescription>this is a description</DialogDescription>
+                  <DialogTitle className="text-xl font-bold">this is a title</DialogTitle>
+                  <DialogDescription className="text-base">this is a description</DialogDescription>
                 </div>
                 <CarouselThumbsContainer className={cn("h-screen", center())}>
                   {images.map((image, i) => (
