@@ -5,6 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
 import { createContext } from "react";
+import propType from "prop-types";
 
 // Component from
 // https://shadcn-extension.vercel.app/docs/carousel
@@ -24,7 +25,16 @@ const CarouselContext = createContext(null);
 
 const Carousel = forwardRef(
   (
-    { carouselOptions, orientation = "horizontal", dir, plugins, children, className, ...props },
+    {
+      carouselOptions,
+      orientation = "horizontal",
+      dir,
+      plugins,
+      initIndex = 0, // initial index
+      children,
+      className,
+      ...props
+    },
     ref
   ) => {
     const [emblaMainRef, emblaMainApi] = useEmblaCarousel(
@@ -32,6 +42,7 @@ const Carousel = forwardRef(
         ...carouselOptions,
         axis: orientation === "vertical" ? "y" : "x",
         direction: carouselOptions?.direction ?? dir,
+        startIndex: initIndex, // set initial index
       },
       plugins
     );
@@ -43,13 +54,14 @@ const Carousel = forwardRef(
         direction: carouselOptions?.direction ?? dir,
         containScroll: "keepSnaps",
         dragFree: true,
+        startIndex: initIndex, // set initial index
       },
       plugins
     );
 
     const [canScrollPrev, setCanScrollPrev] = useState(false);
     const [canScrollNext, setCanScrollNext] = useState(false);
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [activeIndex, setActiveIndex] = useState(initIndex);
 
     const ScrollNext = useCallback(() => {
       if (!emblaMainApi) return;
