@@ -14,6 +14,19 @@ const DialogPortal = DialogPrimitive.Portal;
 
 const DialogClose = DialogPrimitive.Close;
 
+const CloseButton = ({ className, ...props }) => (
+  <DialogPrimitive.Close
+    className={cn(
+      "absolute z-50  opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground",
+      className
+    )}
+    {...props}
+  >
+    <Cross2Icon className="h-6 w-6" />
+    <span className="sr-only">Close</span>
+  </DialogPrimitive.Close>
+);
+
 const DialogOverlay = React.forwardRef(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
     ref={ref}
@@ -38,10 +51,10 @@ const DialogContent = React.forwardRef(({ className, children, ...props }, ref) 
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-        <Cross2Icon className="h-4 w-4" />
+      {/* <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+        <Cross2Icon className="h-6 w-6" />
         <span className="sr-only">Close</span>
-      </DialogPrimitive.Close>
+      </DialogPrimitive.Close> */}
     </DialogPrimitive.Content>
   </DialogPortal>
 ));
@@ -81,7 +94,7 @@ DialogDescription.displayName = DialogPrimitive.Description.displayName;
 const DialogImage = React.forwardRef(({ className, children, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("h-screen flex justify-center items-center p-6", className)}
+    className={cn("h-screen flex justify-center items-center p-6 relative", className)}
     {...props}
   >
     {children}
@@ -101,4 +114,5 @@ export {
   DialogTitle,
   DialogDescription,
   DialogImage,
+  CloseButton,
 };

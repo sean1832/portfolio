@@ -8,6 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogImage,
+  CloseButton,
 } from "@/components/ui/dialog";
 
 import {
@@ -27,8 +28,15 @@ import CustomVideo from "./customVideo";
 import { YoutubeVideo } from "./youtube-video";
 import { GetYoutubeThumbnail } from "@/lib/getYoutube";
 import { ConstructYoutubeAltText } from "@/lib/constructAltText";
+import { cn } from "@/lib/utils";
 
 const Lightbox = ({ images, index, children }) => {
+  const center = () => {
+    if (images.length < 15) {
+      return "flex justify-center";
+    }
+    return "";
+  };
   return (
     <>
       <Dialog>
@@ -36,8 +44,9 @@ const Lightbox = ({ images, index, children }) => {
           {children}
         </DialogTrigger>
         <DialogContent className="max-w-screen h-full p-0 m-0">
-          <Carousel className="px-8 grid grid-cols-6" initIndex={index} orientation="vertical">
-            <DialogImage className="col-span-5">
+          <Carousel className="px-6 grid grid-cols-6" initIndex={index} orientation="vertical">
+            <DialogImage className="col-span-5 relative">
+              <CloseButton className="right-8 top-8" />
               <CarouselMainContainer className="h-[1080px]">
                 {images.map((image, i) => (
                   <SliderMainItem key={i} className="flex items-center justify-center">
@@ -59,16 +68,14 @@ const Lightbox = ({ images, index, children }) => {
                   </SliderMainItem>
                 ))}
               </CarouselMainContainer>
-
-              <DialogClose className="cursor-pointer" />
             </DialogImage>
             <DialogHeader className={"col-span-1 flex justify-center align-middle"}>
               <div className="grid grid-cols-6">
-                <div className="col-span-5">
+                <div className="col-span-5 p-8">
                   <DialogTitle>this is a title</DialogTitle>
                   <DialogDescription>this is a description</DialogDescription>
                 </div>
-                <CarouselThumbsContainer className="h-screen flex">
+                <CarouselThumbsContainer className={cn("h-screen", center())}>
                   {images.map((image, i) => (
                     <SliderThumbItem key={i} index={i} className="flex w-full basis-1">
                       {image.isVideo ? (
