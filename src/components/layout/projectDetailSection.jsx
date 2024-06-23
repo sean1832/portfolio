@@ -3,9 +3,9 @@ import ExternalTextLink from "../ui/external-text-link";
 import ImageLists from "../ui/media/images-list";
 import { YoutubeVideo } from "../ui/media/youtube-video";
 import BlurImage from "../ui/media/blur";
-import ProjectSlider from "../ui/carousel/projectSlider";
 import ScrollToTopButton from "../ui/button/scrollToTopButton";
 import ExpandableText from "../ui/expandableText";
+import CustomCarousel from "../ui/media/customCarousel";
 
 const ProjectDetailsSection = ({ data, className }) => (
   <div className={className}>
@@ -67,12 +67,6 @@ const ProjectDetailsSection = ({ data, className }) => (
     </div>
   </div>
 );
-
-const CustomCarousel = ({ data }) => {
-  const carouselImages = data.media.filter((image) => image.isCarousel);
-  if (carouselImages.length === 0) return null;
-  return <ProjectSlider images={carouselImages} className="pt-4" />;
-};
 
 const ProjectInfo = ({ data }) => {
   const heroImage = data.media.find((image) => image.isHero == true);

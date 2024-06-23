@@ -12,13 +12,17 @@ import {
 import BlurImage from "../media/blur";
 import ExternalTextLink from "@/components/ui/external-text-link";
 
-const ProjectSlider = ({ images, className }) => {
+const CustomCarousel = ({ data, className }) => {
+  const carouselImages = data.media.filter((image) => image.isCarousel);
+  if (carouselImages.length === 0) return null;
+  
   const center = () => {
-    if (images.length < 5) {
+    if (carouselImages.length < 5) {
       return "flex justify-center";
     }
     return "";
   };
+
   return (
     <Carousel className={className}>
       <div className="relative">
@@ -29,7 +33,7 @@ const ProjectSlider = ({ images, className }) => {
         </div>
 
         <CarouselMainContainer>
-          {images.map((image, index) => (
+          {carouselImages.map((image, index) => (
             <SliderMainItem
               key={index}
               className={`${
@@ -48,7 +52,7 @@ const ProjectSlider = ({ images, className }) => {
             </SliderMainItem>
           ))}
         </CarouselMainContainer>
-        {images.map((image, index) => (
+        {carouselImages.map((image, index) => (
           <CarouselDescription
             key={index}
             index={index}
@@ -67,7 +71,7 @@ const ProjectSlider = ({ images, className }) => {
       </div>
 
       <CarouselThumbsContainer className={center()}>
-        {images.map((image, index) => (
+        {carouselImages.map((image, index) => (
           <SliderThumbItem
             key={index}
             index={index}
@@ -88,4 +92,4 @@ const ProjectSlider = ({ images, className }) => {
   );
 };
 
-export default ProjectSlider;
+export default CustomCarousel;
