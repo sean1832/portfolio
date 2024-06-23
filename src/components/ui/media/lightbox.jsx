@@ -26,6 +26,7 @@ import Image from "next/image";
 import CustomVideo from "./customVideo";
 import { YoutubeVideo } from "./youtube-video";
 import { GetYoutubeThumbnail } from "@/lib/getYoutube";
+import { ConstructYoutubeAltText } from "@/lib/constructAltText";
 
 const Lightbox = ({ images, index, children }) => {
   return (
@@ -35,9 +36,9 @@ const Lightbox = ({ images, index, children }) => {
           {children}
         </DialogTrigger>
         <DialogContent className="max-w-screen h-full p-0 m-0">
-          <Carousel className="p-8 grid grid-cols-6" initIndex={index}>
+          <Carousel className="p-8 grid grid-cols-6" initIndex={index} orientation="vertical">
             <DialogImage className="col-span-5">
-              <CarouselMainContainer>
+              <CarouselMainContainer className="h-[1080px]">
                 {images.map((image, i) => (
                   <SliderMainItem key={i} className="flex items-center justify-center">
                     {image.isVideo ? (
@@ -52,7 +53,7 @@ const Lightbox = ({ images, index, children }) => {
                         alt={image.alt}
                         width={image.width || 1920}
                         height={image.height || 1080}
-                        className="w-auto h-auto max-w-full max-h-[80vh] object-contain"
+                        className="max-w-full max-h-[80vh] object-contain"
                       />
                     )}
                   </SliderMainItem>
@@ -62,35 +63,35 @@ const Lightbox = ({ images, index, children }) => {
               <DialogClose className="cursor-pointer" />
             </DialogImage>
             <DialogHeader className={"col-span-1 flex justify-center align-middle"}>
-              <DialogTitle>this is a title</DialogTitle>
-              <DialogDescription>this is a description</DialogDescription>
-              <CarouselThumbsContainer>
-                {images.map((image, i) => (
-                  <SliderThumbItem
-                    key={i}
-                    index={i}
-                    className="relative aspect-square w-full md:basis-1/6 basis-1/4 "
-                  >
-                    {image.isVideo ? (
-                      <Image
-                        className={`p-1 cursor-pointer`}
-                        src={GetYoutubeThumbnail(image.src, "hq")}
-                        fill
-                        alt={`Carousel Thumbnail Image ${i + 1}`}
-                        style={{ objectFit: "cover" }}
-                      />
-                    ) : (
-                      <Image
-                        className={`p-1 cursor-pointer`}
-                        src={image.src}
-                        fill
-                        alt={`Carousel Thumbnail Image ${i + 1}`}
-                        style={{ objectFit: "cover" }}
-                      />
-                    )}
-                  </SliderThumbItem>
-                ))}
-              </CarouselThumbsContainer>
+              <div className="grid grid-cols-6">
+                <div className="col-span-5">
+                  <DialogTitle>this is a title</DialogTitle>
+                  <DialogDescription>this is a description</DialogDescription>
+                </div>
+                <CarouselThumbsContainer className="h-screen justify-center flex">
+                  {images.map((image, i) => (
+                    <SliderThumbItem key={i} index={i} className="flex items-start w-full basis-1">
+                      {image.isVideo ? (
+                        <Image
+                          className={`p-1 cursor-pointer`}
+                          src={GetYoutubeThumbnail(image.src, "sd")}
+                          fill
+                          alt={`Carousel Thumbnail Image ${i + 1}`}
+                          style={{ objectFit: "cover" }}
+                        />
+                      ) : (
+                        <Image
+                          className={`p-1 cursor-pointer`}
+                          src={image.src}
+                          fill
+                          alt={`Carousel Thumbnail Image ${i + 1}`}
+                          style={{ objectFit: "cover" }}
+                        />
+                      )}
+                    </SliderThumbItem>
+                  ))}
+                </CarouselThumbsContainer>
+              </div>
             </DialogHeader>
           </Carousel>
         </DialogContent>
