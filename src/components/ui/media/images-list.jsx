@@ -1,6 +1,7 @@
 import React from "react";
 import CustomImage from "./customImage";
 import CustomVideo from "./customVideo";
+import { Lightbox } from "./lightbox";
 
 const ImageLists = ({ data }) => {
   const showHero = data.video && data.video.src;
@@ -16,7 +17,9 @@ const ImageLists = ({ data }) => {
             media.isVideo ? (
               <CustomVideo key={i} video={media} />
             ) : (
-              <CustomImage key={i} image={media} />
+              <Lightbox key={i} images={imagesToShow} index={i}>
+                <CustomImage key={i} image={media} />
+              </Lightbox>
             )
           )}
         </div>
