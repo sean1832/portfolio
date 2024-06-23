@@ -36,7 +36,7 @@ const Lightbox = ({ images, index, children }) => {
           {children}
         </DialogTrigger>
         <DialogContent className="max-w-screen h-full p-0 m-0">
-          <Carousel className="p-8 grid grid-cols-6" initIndex={index} orientation="vertical">
+          <Carousel className="px-8 grid grid-cols-6" initIndex={index} orientation="vertical">
             <DialogImage className="col-span-5">
               <CarouselMainContainer className="h-[1080px]">
                 {images.map((image, i) => (
@@ -68,9 +68,9 @@ const Lightbox = ({ images, index, children }) => {
                   <DialogTitle>this is a title</DialogTitle>
                   <DialogDescription>this is a description</DialogDescription>
                 </div>
-                <CarouselThumbsContainer className="h-screen justify-center flex">
+                <CarouselThumbsContainer className="h-screen flex">
                   {images.map((image, i) => (
-                    <SliderThumbItem key={i} index={i} className="flex items-start w-full basis-1">
+                    <SliderThumbItem key={i} index={i} className="flex w-full basis-1">
                       {image.isVideo ? (
                         <Image
                           className={`cursor-pointer`}
