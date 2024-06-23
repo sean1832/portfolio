@@ -13,6 +13,11 @@ const nextConfig = {
         hostname: "www.theprojects.com.au",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "img.youtube.com",
+        pathname: "**",
+      },
     ],
   },
 };
