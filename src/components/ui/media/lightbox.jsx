@@ -97,11 +97,11 @@ const Lightbox = ({ images, index, children }) => {
       <>
         <DialogHeader className={className}>
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2">
-            <CarouselThumbsContainer className="gap-x-1 ">
+            <div className="gap-x-1 flex">
               {Array.from({ length: images.length }).map((_, index) => (
                 <CarouselIndicator key={index} index={index} className="w-1 h-1" />
               ))}
-            </CarouselThumbsContainer>
+            </div>
           </div>
           <Drawer>
             {images.map((image, i) => (
