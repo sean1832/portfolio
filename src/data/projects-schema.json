@@ -153,6 +153,9 @@
                 }
               }
             },
+            "longDescription": {
+              "type": "string"
+            },
             "isHero": {
               "type": "boolean",
               "default": true

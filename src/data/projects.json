@@ -206,115 +206,120 @@
     "media": [
       {
         "src": "/projects/syntheticDunescapes/main.webp",
-        "alt": "Synthetic Dunescapes | Hero",
+        "alt": "tectonic threashold",
+        "longDescription": "The threshold functions as a liminal space mediating the interface between the harsh desert landscape and the synthetic habitat. This transitional zone, situated at the surface level, serves as a critical juncture where natural and artificial systems converge. It acts as a permeable boundary, facilitating human interaction with the environment while regulating ingress and egress to the subterranean complex.",
         "isHero": true
       },
       {
         "src": "/projects/syntheticDunescapes/19.webp",
-        "alt": "Synthetic Dunescapes | Image 19",
+        "alt": "modulation adaption",
+        "longDescription": "The cyclical fluctuations of extreme temperatures, wind patterns, and sand movements necessitate a dynamic structural approach. A modular systems allow for rapid reconfiguration and optimization of the built form in response to these volatile conditions.",
         "className": "object-bottom"
       },
       {
         "src": "https://www.youtube.com/embed/TLXvgVk_tls?si=D9RoU_2Hczisxaj_",
-        "alt": "Synthetic Dunescapes | Aggregation Animation",
+        "alt": "Atomic discrete Aggregation",
+        "longDescription": "The aggregation process is driven by a series of atomic discrete units that self-assemble into larger structures. This process is informed by the principles of swarm intelligence, where individual agents interact with their environment and each other to achieve a collective goal. The aggregation algorithm is designed to optimize the distribution of units, ensuring structural stability and adaptability to changing environmental conditions.",
         "className": "md:col-span-1 col-span-2 md:h-auto",
         "isVideo": true
       },
       {
         "src": "/projects/syntheticDunescapes/2.webp",
-        "alt": "Synthetic Dunescapes | Image 2",
+        "alt": "autonomous system of robotic units",
+        "longDescription": "The individual robotic units, inspired by the 3D self-reconfiguration and locomotion modular robot developed at EPFL, are designed to be autonomous, self-assembling, and self-organizing. Each unit is equipped with sensors, actuators, and communication devices that enable it to interact with its environment and other units. The units can aggregate to form larger structures, disassemble to adapt to changing conditions, and reconfigure to optimize their performance. This adaptive system allows for the rapid construction of complex architectural forms in challenging environments.",
         "className": "md:col-span-1 col-span-2",
         "isAdaptive": true
       },
       {
         "src": "/projects/syntheticDunescapes/workflow.webp",
-        "alt": "Synthetic Dunescapes | Workflow",
+        "alt": "AI Synthesis workflow",
+        "longDescription": "The AI-driven workflow integrates multiple generative models, primarily utilizing Stable Diffusion and Midjourney for visualization. To address Midjourney's output instability, selected images train a LoRA model for Stable Diffusion. Results undergo iterative refinement through Midjourney, creating a feedback loop. This developable workflow overcomes a significant challenge in AI-driven design: the difficulty in consistently refining and reproducing specific design iterations. By enabling systematic, incremental development akin to hereditary processes, the method allows for continuous refinement of architectural language across successive generations, enhancing the ability to evolve and materialize conceptual designs.",
         "className": "dark:invert",
         "isAdaptive": true
       },
       {
         "src": "/projects/syntheticDunescapes/3.webp",
-        "alt": "Synthetic Dunescapes | Image 3",
+        "alt": "habitat | library",
         "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/syntheticDunescapes/4.webp",
-        "alt": "Synthetic Dunescapes | Image 4",
+        "alt": "habitat | ritual hub",
         "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/syntheticDunescapes/5.webp",
-        "alt": "Synthetic Dunescapes | Image 5",
+        "alt": "vertical smart farm",
         "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/syntheticDunescapes/6.webp",
-        "alt": "Synthetic Dunescapes | Image 6",
+        "alt": "cloud of machines",
         "className": "md:col-span-1 col-span-2"
       },
       {
         "src": "/projects/syntheticDunescapes/section.webp",
-        "alt": "Synthetic Dunescapes | Section Collage",
+        "alt": "multi resolution tectonic",
         "isAdaptive": true
       },
       {
         "src": "/projects/syntheticDunescapes/8.webp",
-        "alt": "Synthetic Dunescapes | Image 8",
+        "alt": "External view 1",
         "isCarousel": true
       },
       {
         "src": "/projects/syntheticDunescapes/1.webp",
-        "alt": "Synthetic Dunescapes | Image 1",
+        "alt": "External view 2",
         "isCarousel": true
       },
       {
         "src": "/projects/syntheticDunescapes/9.webp",
-        "alt": "Synthetic Dunescapes | Image 9",
+        "alt": "External view 3",
         "isCarousel": true
       },
       {
         "src": "/projects/syntheticDunescapes/10.webp",
-        "alt": "Synthetic Dunescapes | Image 10",
+        "alt": "External view 4",
         "isCarousel": true
       },
       {
         "src": "/projects/syntheticDunescapes/11.webp",
-        "alt": "Synthetic Dunescapes | Image 11",
+        "alt": "threashold",
         "isCarousel": true
       },
       {
         "src": "/projects/syntheticDunescapes/12.webp",
-        "alt": "Synthetic Dunescapes | Image 12",
+        "alt": "Internal view 1",
         "isCarousel": true
       },
       {
         "src": "/projects/syntheticDunescapes/13.webp",
-        "alt": "Synthetic Dunescapes | Image 13",
+        "alt": "Internal view 2",
         "isCarousel": true
       },
       {
         "src": "/projects/syntheticDunescapes/14.webp",
-        "alt": "Synthetic Dunescapes | Image 14",
+        "alt": "Internal view 3",
         "isCarousel": true
       },
       {
         "src": "/projects/syntheticDunescapes/15.webp",
-        "alt": "Synthetic Dunescapes | Image 15",
+        "alt": "exhibition hub 1",
         "isCarousel": true
       },
       {
         "src": "/projects/syntheticDunescapes/16.webp",
-        "alt": "Synthetic Dunescapes | Image 16",
+        "alt": "exhibition hub 2",
         "isCarousel": true
       },
       {
         "src": "/projects/syntheticDunescapes/17.webp",
-        "alt": "Synthetic Dunescapes | Image 17",
+        "alt": "terrance agora",
         "isCarousel": true
       },
       {
         "src": "/projects/syntheticDunescapes/18.webp",
-        "alt": "Synthetic Dunescapes | Image 18",
+        "alt": "machine factory & datafarm",
         "isCarousel": true
       }
     ]
