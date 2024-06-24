@@ -2,13 +2,13 @@ import React from "react";
 import { Separator } from "../ui/separator";
 import ExternalTextLink from "../ui/external-text-link";
 import manifest from "@/data/manifest";
-import { FetchLatestUrl, FetchLatestVersion, FetchRepoUrl } from "@/lib/fetchGithub";
+import { GetLatestUrl, GetRepoUrl } from "@/lib/getGithub";
 
-const Footer = async () => {
+const Footer = () => {
   const repo = manifest.repository.id;
-  const versionNum = await FetchLatestVersion(repo);
-  const repoUrl = await FetchRepoUrl(repo);
-  const latestUrl = await FetchLatestUrl(repo);
+  const version = manifest.version;
+  const repoUrl = GetRepoUrl(repo);
+  const latestUrl = GetLatestUrl(repo);
 
   return (
     <div id="footer" className="flex flex-col pt-10">
@@ -32,7 +32,7 @@ const Footer = async () => {
             href={latestUrl}
             className="text-gray-600 dark:text-gray-400 text-sm uppercase text-center"
           >
-            Version: {versionNum}
+            Version: {version}
           </ExternalTextLink>
         </div>
       </footer>
