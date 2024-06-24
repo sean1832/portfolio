@@ -20,6 +20,7 @@ import {
   CarouselThumbsContainer,
   SliderThumbItem,
   CarouselDescription,
+  CarouselIndicator,
 } from "@/components/ui/carousel/carousel";
 
 import {
@@ -94,15 +95,22 @@ const Lightbox = ({ images, index, children }) => {
     return (
       <>
         <DialogHeader className={className}>
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2">
+            <CarouselThumbsContainer className="gap-x-1 ">
+              {Array.from({ length: images.length }).map((_, index) => (
+                <CarouselIndicator key={index} index={index} className="w-1 h-1" />
+              ))}
+            </CarouselThumbsContainer>
+          </div>
           <Drawer>
             {images.map((image, i) => (
-              <CarouselDescription key={i} index={i} className="">
+              <CarouselDescription key={i} index={i}>
                 <DrawerTrigger className=" font-bold text-center">
                   {image.alt.toUpperCase()}
                 </DrawerTrigger>
                 <DrawerContent>
                   <DrawerHeader>
-                    <DrawerTitle>{image.alt.toUpperCase()}</DrawerTitle>
+                    <DrawerTitle className="text-center">{image.alt.toUpperCase()}</DrawerTitle>
                     {image.longDescription && (
                       <DrawerDescription className="py-3 text-left">
                         {image.longDescription}
@@ -152,6 +160,7 @@ const Lightbox = ({ images, index, children }) => {
                 ))}
               </CarouselMainContainer>
             </DialogImage>
+
             {desktopInfoBlock({ className: "md:block hidden" })}
             {mobileInfoBlock({ className: "md:hidden block" })}
           </CarouselWraper>
