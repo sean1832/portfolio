@@ -1,24 +1,39 @@
 import React from "react";
 import CustomImage from "./customImage";
 import CustomVideo from "./customVideo";
+import { Lightbox } from "./lightbox";
 
 const ImageLists = ({ data }) => {
   const showHero = data.video && data.video.src;
-  const imagesToShow = showHero
-    ? data.media.filter((image) => !image.isCarousel)
-    : data.media.filter((image) => !image.isHero && !image.isCarousel);
+
+  // Instead of filtering, get the indices of the items to show
+  const indicesToShow = data.media.reduce((acc, media, index) => {
+    if (showHero) {
+      if (!media.isCarousel) {
+        acc.push(index);
+      }
+    } else {
+      if (!media.isHero && !media.isCarousel) {
+        acc.push(index);
+      }
+    }
+    return acc;
+  }, []);
 
   return (
     <>
-      {imagesToShow && imagesToShow.length > 0 && (
+      {indicesToShow.length > 0 && (
         <div className="grid gap-5 grid-cols-2">
-          {imagesToShow.map((media, i) =>
-            media.isVideo ? (
-              <CustomVideo key={i} video={media} />
+          {indicesToShow.map((index) => {
+            const media = data.media[index];
+            return media.isVideo ? (
+              <CustomVideo key={index} video={media} />
             ) : (
-              <CustomImage key={i} image={media} />
-            )
-          )}
+              <Lightbox key={index} images={data.media} index={index}>
+                <CustomImage key={index} image={media} />
+              </Lightbox>
+            );
+          })}
         </div>
       )}
     </>
