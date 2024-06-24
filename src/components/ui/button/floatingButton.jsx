@@ -1,11 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Button } from "../button";
-import { ChevronUpIcon } from "@radix-ui/react-icons";
 import props from "prop-types";
 import { cn } from "@/lib/utils";
 
-const FloatingButton = ({ scrollOffset, onClick, children, className }) => {
+const FloatingButton = ({ scrollOffset = 300, onClick, children, className }) => {
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => {
     if (!isVisible && window.scrollY > scrollOffset) {
@@ -60,10 +59,6 @@ FloatingButton.propTypes = {
   scrollOffset: props.number,
   onClick: props.func,
   children: props.node.isRequired,
-};
-
-FloatingButton.defaultProps = {
-  scrollOffset: 300,
 };
 
 export default FloatingButton;
