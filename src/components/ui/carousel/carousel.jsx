@@ -75,6 +75,19 @@ const Carousel = forwardRef(
 
     const direction = carouselOptions?.direction ?? dir;
 
+    const handleMouseScroll = useCallback(
+      (event) => {
+        if (!emblaMainApi || orientation !== "vertical") return;
+        event.preventDefault();
+        if (event.deltaY > 0) {
+          ScrollNext();
+        } else {
+          ScrollPrev();
+        }
+      },
+      [emblaMainApi, orientation, ScrollNext, ScrollPrev]
+    );
+
     const handleKeyDown = useCallback(
       (event) => {
         event.preventDefault();
@@ -154,6 +167,7 @@ const Carousel = forwardRef(
           activeIndex,
           onThumbClick,
           handleKeyDown,
+          handleMouseScroll,
           carouselOptions,
           direction,
           orientation: orientation || (carouselOptions?.axis === "y" ? "vertical" : "horizontal"),
@@ -164,6 +178,7 @@ const Carousel = forwardRef(
           tabIndex={0}
           ref={ref}
           onKeyDownCapture={handleKeyDown}
+          onWheel={handleMouseScroll} // for vertical scroll
           className={cn("grid gap-2 w-full relative focus:outline-none", className)}
           dir={direction}
         >
