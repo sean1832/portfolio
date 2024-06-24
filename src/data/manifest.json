@@ -1,6 +1,6 @@
 {
   "name": "Zeke Zhang Portfolio",
-  "version": "0.5.1",
+  "version": "1.0.0",
   "description": "My personal portfolio website built with Next.js and Tailwind CSS. The website showcases my past projects, skills, and experiences.",
   "repository": {
     "type": "git",
