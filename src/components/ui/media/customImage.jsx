@@ -1,12 +1,13 @@
 import React from "react";
 import BlurImage from "./blur";
 import { cn } from "@/utils/cn";
-import {ConstructImageAltText} from "@/lib/constructAltText";
+import { ConstructImageAltText } from "@/lib/constructAltText";
 
 const CustomImage = ({ image }) => {
+  let inverted = image.isInverted ? "dark:invert" : "";
   if (image.isAdaptive) {
     return (
-      <div className={cn("relative w-full col-span-2", image.className)}>
+      <div className={cn("relative w-full col-span-2", image.className, inverted)}>
         <BlurImage
           src={image.src}
           alt={image.alt || ConstructImageAltText(image.src)}
@@ -25,7 +26,7 @@ const CustomImage = ({ image }) => {
         <BlurImage
           src={image.src}
           alt={image.alt || ConstructImageAltText(image.src)}
-          className={cn("object-cover object-center w-full h-full", image.className)}
+          className={cn("object-cover object-center w-full h-full", image.className, inverted)}
           fill
           isExternal={image.isExternal}
         />

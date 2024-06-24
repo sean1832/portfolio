@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, Suspense } from "react";
 import {
   Carousel,
   CarouselMainContainer,
@@ -11,46 +11,63 @@ import {
 } from "@/components/ui/carousel/carousel";
 import BlurImage from "../media/blur";
 import ExternalTextLink from "@/components/ui/external-text-link";
+import { Lightbox } from "./lightbox";
+import Image from "next/image";
 
-const ProjectSlider = ({ images, className }) => {
+const CustomCarousel = ({ data, className }) => {
+  const { carouselImages, indexMap } = useMemo(() => {
+    const images = [];
+    const indexMap = new Map();
+    data.media.forEach((image, originalIndex) => {
+      if (image.isCarousel) {
+        indexMap.set(images.length, originalIndex);
+        images.push(image);
+      }
+    });
+    return { carouselImages: images, indexMap };
+  }, [data.media]);
+
+  if (carouselImages.length === 0) return null;
+
   const center = () => {
-    if (images.length < 5) {
+    if (carouselImages.length < 5) {
       return "flex justify-center";
     }
     return "";
   };
+
   return (
     <Carousel className={className}>
       <div className="relative">
-        {/* Ensure this div is positioned relatively */}
         <div className="hidden sm:block">
           <CarouselNext className="border-none absolute right-0 top-1/2 transform -translate-y-1/2 shadow-none" />
           <CarouselPrevious className="border-none absolute left-0 top-1/2 transform -translate-y-1/2 shadow-none" />
         </div>
 
         <CarouselMainContainer>
-          {images.map((image, index) => (
+          {carouselImages.map((image, index) => (
             <SliderMainItem
-              key={index}
+              key={indexMap.get(index)}
               className={`${
                 image.caption || image.credit
                   ? "relative w-full sm:h-[550px] h-[300px]"
                   : "relative w-full sm:h-[600px] h-[300px]"
               }`}
             >
-              <BlurImage
-                src={image.src}
-                alt={`Carousel Main Image ${index + 1}`}
-                fill
-                style={{ objectFit: "contain" }}
-                isExternal={image.isExternal}
-              />
+              <Lightbox images={data.media} index={indexMap.get(index)}>
+                <Image
+                  src={image.src}
+                  alt={`Carousel Main Image ${index + 1}`}
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
+              </Lightbox>
             </SliderMainItem>
           ))}
         </CarouselMainContainer>
-        {images.map((image, index) => (
+        {carouselImages.map((image, index) => (
           <CarouselDescription
-            key={index}
+            key={indexMap.get(index)}
             index={index}
             className={`${
               image.credit || image.caption ? "h-[40px]" : "hidden"
@@ -67,14 +84,14 @@ const ProjectSlider = ({ images, className }) => {
       </div>
 
       <CarouselThumbsContainer className={center()}>
-        {images.map((image, index) => (
+        {carouselImages.map((image, index) => (
           <SliderThumbItem
-            key={index}
+            key={indexMap.get(index)}
             index={index}
             className="relative aspect-square w-full md:basis-1/6 basis-1/4 "
           >
             <BlurImage
-              className={`p-1 cursor-pointer`}
+              className={`cursor-pointer`}
               src={image.src}
               fill
               alt={`Carousel Thumbnail Image ${index + 1}`}
@@ -88,4 +105,4 @@ const ProjectSlider = ({ images, className }) => {
   );
 };
 
-export default ProjectSlider;
+export default CustomCarousel;

@@ -153,6 +153,9 @@
                 }
               }
             },
+            "longDescription": {
+              "type": "string"
+            },
             "isHero": {
               "type": "boolean",
               "default": true
@@ -166,6 +169,10 @@
               "default": true
             },
             "isExternal": {
+              "type": "boolean",
+              "default": true
+            },
+            "isInverted": {
               "type": "boolean",
               "default": true
             },
