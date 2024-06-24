@@ -22,6 +22,17 @@ import {
   CarouselDescription,
 } from "@/components/ui/carousel/carousel";
 
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer/drawer";
+
 import Image from "next/image";
 import { YoutubeVideo } from "./youtube-video";
 import { GetYoutubeThumbnail } from "@/lib/getYoutube";
@@ -37,6 +48,78 @@ const Lightbox = ({ images, index, children }) => {
     return "";
   };
 
+  const desktopInfoBlock = ({ className }) => {
+    return (
+      <DialogHeader className={className}>
+        <div className="flex justify-end">
+          <div className="p-8 w-[300px]">
+            {images.map((image, i) => (
+              <CarouselDescription key={i} index={i} className="text-left">
+                <DialogTitle className="text-xl font-bold">{image.alt.toUpperCase()}</DialogTitle>
+                {image.longDescription && (
+                  <DialogDescription className="py-3">{image.longDescription}</DialogDescription>
+                )}
+              </CarouselDescription>
+            ))}
+          </div>
+          <CarouselThumbsContainer className={cn("h-screen w-[76px]", center())}>
+            {images.map((image, i) => (
+              <SliderThumbItem key={i} index={i} className="flex w-full basis-1">
+                {image.isVideo ? (
+                  <Image
+                    className={`cursor-pointer`}
+                    src={GetYoutubeThumbnail(image.src, "sd")}
+                    fill
+                    alt={`Carousel Thumbnail Image ${i + 1}`}
+                    style={{ objectFit: "cover" }}
+                  />
+                ) : (
+                  <Image
+                    className={`cursor-pointer`}
+                    src={image.src}
+                    fill
+                    alt={`Carousel Thumbnail Image ${i + 1}`}
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
+              </SliderThumbItem>
+            ))}
+          </CarouselThumbsContainer>
+        </div>
+      </DialogHeader>
+    );
+  };
+
+  const mobileInfoBlock = ({ className }) => {
+    return (
+      <>
+        <DialogHeader className={className}>
+          <Drawer>
+            {images.map((image, i) => (
+              <CarouselDescription key={i} index={i} className="">
+                <DrawerTrigger className=" font-bold text-center">
+                  {image.alt.toUpperCase()}
+                </DrawerTrigger>
+                <DrawerContent>
+                  <DrawerHeader>
+                    <DrawerTitle>{image.alt.toUpperCase()}</DrawerTitle>
+                    {image.longDescription && (
+                      <DrawerDescription className="py-3 text-left">
+                        {image.longDescription}
+                      </DrawerDescription>
+                    )}
+                  </DrawerHeader>
+
+                  <DrawerFooter></DrawerFooter>
+                </DrawerContent>
+              </CarouselDescription>
+            ))}
+          </Drawer>
+        </DialogHeader>
+      </>
+    );
+  };
+
   return (
     <>
       <Dialog>
@@ -44,8 +127,8 @@ const Lightbox = ({ images, index, children }) => {
           {children}
         </DialogTrigger>
         <DialogContent className="max-w-screen h-full p-0 m-0">
-          <CarouselWraper className="px-6 flex" initIndex={index}>
-            <DialogImage className="relative w-full">
+          <CarouselWraper className="px-6 flex flex-col md:flex-row" initIndex={index}>
+            <DialogImage className="relative w-full h-auto md:h-screen">
               <CloseButton className="right-8 top-8" />
               <CarouselMainContainer className="h-[1080px]">
                 {images.map((image, i) => (
@@ -54,7 +137,7 @@ const Lightbox = ({ images, index, children }) => {
                       <YoutubeVideo
                         src={image.src}
                         alt={image.alt || ConstructYoutubeAltText(image.src)}
-                        className={"relative w-full md:max-h-[80vh] max-h-[60vh]"}
+                        className={"relative md:w-full w-[95%] md:max-h-[80vh] max-h-[60vh]"}
                       />
                     ) : (
                       <Image
@@ -69,47 +152,8 @@ const Lightbox = ({ images, index, children }) => {
                 ))}
               </CarouselMainContainer>
             </DialogImage>
-            <DialogHeader className={"md:block hidden"}>
-              <div className="flex justify-end">
-                <div className="p-8 w-[300px]">
-                  {images.map((image, i) => (
-                    <CarouselDescription key={i} index={i} className="text-left">
-                      <DialogTitle className="text-xl font-bold">
-                        {image.alt.toUpperCase()}
-                      </DialogTitle>
-                      {image.longDescription && (
-                        <DialogDescription className="py-3">
-                          {image.longDescription}
-                        </DialogDescription>
-                      )}
-                    </CarouselDescription>
-                  ))}
-                </div>
-                <CarouselThumbsContainer className={cn("h-screen w-[76px]", center())}>
-                  {images.map((image, i) => (
-                    <SliderThumbItem key={i} index={i} className="flex w-full basis-1">
-                      {image.isVideo ? (
-                        <Image
-                          className={`cursor-pointer`}
-                          src={GetYoutubeThumbnail(image.src, "sd")}
-                          fill
-                          alt={`Carousel Thumbnail Image ${i + 1}`}
-                          style={{ objectFit: "cover" }}
-                        />
-                      ) : (
-                        <Image
-                          className={`cursor-pointer`}
-                          src={image.src}
-                          fill
-                          alt={`Carousel Thumbnail Image ${i + 1}`}
-                          style={{ objectFit: "cover" }}
-                        />
-                      )}
-                    </SliderThumbItem>
-                  ))}
-                </CarouselThumbsContainer>
-              </div>
-            </DialogHeader>
+            {desktopInfoBlock({ className: "md:block hidden" })}
+            {mobileInfoBlock({ className: "md:hidden block" })}
           </CarouselWraper>
         </DialogContent>
       </Dialog>
