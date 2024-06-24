@@ -27,6 +27,7 @@ import { YoutubeVideo } from "./youtube-video";
 import { GetYoutubeThumbnail } from "@/lib/getYoutube";
 import { ConstructYoutubeAltText } from "@/lib/constructAltText";
 import { cn } from "@/lib/utils";
+import CarouselWraper from "../carousel/carouselWraper";
 
 const Lightbox = ({ images, index, children }) => {
   const center = () => {
@@ -43,7 +44,7 @@ const Lightbox = ({ images, index, children }) => {
           {children}
         </DialogTrigger>
         <DialogContent className="max-w-screen h-full p-0 m-0">
-          <Carousel className="px-6 flex" initIndex={index} orientation="vertical">
+          <CarouselWraper className="px-6 flex" initIndex={index}>
             <DialogImage className="relative w-full">
               <CloseButton className="right-8 top-8" />
               <CarouselMainContainer className="h-[1080px]">
@@ -53,7 +54,7 @@ const Lightbox = ({ images, index, children }) => {
                       <YoutubeVideo
                         src={image.src}
                         alt={image.alt || ConstructYoutubeAltText(image.src)}
-                        className={"relative w-full max-h-[80vh]"}
+                        className={"relative w-full md:max-h-[80vh] max-h-[60vh]"}
                       />
                     ) : (
                       <Image
@@ -68,7 +69,7 @@ const Lightbox = ({ images, index, children }) => {
                 ))}
               </CarouselMainContainer>
             </DialogImage>
-            <DialogHeader className={"flex "}>
+            <DialogHeader className={"md:block hidden"}>
               <div className="flex justify-end">
                 <div className="p-8 w-[300px]">
                   {images.map((image, i) => (
@@ -109,7 +110,7 @@ const Lightbox = ({ images, index, children }) => {
                 </CarouselThumbsContainer>
               </div>
             </DialogHeader>
-          </Carousel>
+          </CarouselWraper>
         </DialogContent>
       </Dialog>
     </>
