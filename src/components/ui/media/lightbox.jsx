@@ -53,7 +53,7 @@ const Lightbox = ({ images, index, children }) => {
                       <YoutubeVideo
                         src={image.src}
                         alt={image.alt || ConstructYoutubeAltText(image.src)}
-                        className={"relative w-full h-full"}
+                        className={"relative w-full max-h-[80vh]"}
                       />
                     ) : (
                       <Image
