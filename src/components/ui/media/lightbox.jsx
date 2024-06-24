@@ -135,7 +135,7 @@ const Lightbox = ({ images, index, children }) => {
           {children}
         </DialogTrigger>
         <DialogContent className="max-w-screen h-full p-0 m-0">
-          <CarouselWraper className="px-6 flex flex-col md:flex-row" initIndex={index}>
+          <CarouselWraper className="px-1 md:px-6 flex flex-col md:flex-row" initIndex={index}>
             <DialogImage className="relative w-full h-auto md:h-screen">
               <CloseButton className="right-8 top-8" />
               <CarouselMainContainer className="md:h-[80vh] h-[90vh]">
