@@ -78,7 +78,9 @@ const Lightbox = ({ images, index, children }) => {
                         {image.alt.toUpperCase()}
                       </DialogTitle>
                       {image.longDescription && (
-                        <DialogDescription>{image.longDescription}</DialogDescription>
+                        <DialogDescription className="py-3">
+                          {image.longDescription}
+                        </DialogDescription>
                       )}
                     </CarouselDescription>
                   ))}
