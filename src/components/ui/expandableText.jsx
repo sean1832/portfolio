@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "./button";
 import props from "prop-types";
 
-const ExpandableText = ({ children, breakpoint }) => {
+const ExpandableText = ({ children, breakpoint = "md" }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpansion = () => {
@@ -57,10 +57,6 @@ const ExpandableText = ({ children, breakpoint }) => {
 ExpandableText.propTypes = {
   children: props.node.isRequired,
   breakpoint: props.string.isRequired,
-};
-
-ExpandableText.defaultProps = {
-  breakpoint: "md",
 };
 
 export default ExpandableText;
