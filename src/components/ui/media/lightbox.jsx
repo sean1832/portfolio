@@ -105,7 +105,7 @@ const Lightbox = ({ images, index, children }) => {
           <Drawer>
             {images.map((image, i) => (
               <CarouselDescription key={i} index={i}>
-                <DrawerTrigger className=" font-bold text-center">
+                <DrawerTrigger className=" font-bold text-center absolute bottom-5 left-1/2 -translate-x-1/2">
                   {image.alt.toUpperCase()}
                 </DrawerTrigger>
                 <DrawerContent>
@@ -138,7 +138,7 @@ const Lightbox = ({ images, index, children }) => {
           <CarouselWraper className="px-6 flex flex-col md:flex-row" initIndex={index}>
             <DialogImage className="relative w-full h-auto md:h-screen">
               <CloseButton className="right-8 top-8" />
-              <CarouselMainContainer className="h-[1080px]">
+              <CarouselMainContainer className="md:h-[80vh] h-[90vh]">
                 {images.map((image, i) => (
                   <SliderMainItem key={i} className="flex items-center justify-center">
                     {image.isVideo ? (
