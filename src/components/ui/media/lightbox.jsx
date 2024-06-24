@@ -40,6 +40,7 @@ import { GetYoutubeThumbnail } from "@/lib/getYoutube";
 import { ConstructYoutubeAltText } from "@/lib/constructAltText";
 import { cn } from "@/lib/utils";
 import CarouselWraper from "../carousel/carouselWraper";
+import clsx from "clsx";
 
 const Lightbox = ({ images, index, children }) => {
   const center = () => {
@@ -76,7 +77,7 @@ const Lightbox = ({ images, index, children }) => {
                   />
                 ) : (
                   <Image
-                    className={`cursor-pointer`}
+                    className={clsx("cursor-pointer", { "dark:invert": image.isInverted })}
                     src={image.src}
                     fill
                     alt={`Carousel Thumbnail Image ${i + 1}`}
@@ -153,7 +154,9 @@ const Lightbox = ({ images, index, children }) => {
                         alt={image.alt}
                         width={image.width || 1920}
                         height={image.height || 1080}
-                        className="max-w-full max-h-[80vh] object-contain"
+                        className={clsx("max-w-full max-h-[80vh] object-contain", {
+                          "dark:invert": image.isInverted,
+                        })}
                       />
                     )}
                   </SliderMainItem>

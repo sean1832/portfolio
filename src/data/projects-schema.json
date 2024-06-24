@@ -172,6 +172,10 @@
               "type": "boolean",
               "default": true
             },
+            "isInverted": {
+              "type": "boolean",
+              "default": true
+            },
             "isVideo": {
               "type": "boolean",
               "default": true

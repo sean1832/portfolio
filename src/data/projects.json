@@ -234,7 +234,7 @@
         "src": "/projects/syntheticDunescapes/workflow.webp",
         "alt": "AI Synthesis workflow",
         "longDescription": "The AI-driven workflow integrates multiple generative models, primarily utilizing Stable Diffusion and Midjourney for visualization. To address Midjourney's output instability, selected images train a LoRA model for Stable Diffusion. Results undergo iterative refinement through Midjourney, creating a feedback loop. This developable workflow overcomes a significant challenge in AI-driven design: the difficulty in consistently refining and reproducing specific design iterations. By enabling systematic, incremental development akin to hereditary processes, the method allows for continuous refinement of architectural language across successive generations, enhancing the ability to evolve and materialize conceptual designs.",
-        "className": "dark:invert",
+        "isInverted": true,
         "isAdaptive": true
       },
       {
