@@ -24,7 +24,12 @@ const ImageLists = ({ data }) => {
   return (
     <>
       {indicesToShow.length > 0 && (
-        <div className={cn("grid gap-5 grid-cols-2", data.mediaContainer.className)}>
+        <div
+          className={cn(
+            "grid gap-5 grid-cols-2",
+            data.mediaContainer ? data.mediaContainer.className : ""
+          )}
+        >
           {indicesToShow.map((index) => {
             const media = data.media[index];
             return media.isVideo ? (
