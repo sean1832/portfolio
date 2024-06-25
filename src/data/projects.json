@@ -203,18 +203,10 @@
       "src": "https://www.youtube.com/embed/PNKjyfp9L2M?si=YKckKJ2IYIaZzzGH",
       "alt": "Synthetic Dunescapes | Video Presentation"
     },
+    "mediaContainer": {
+      "className": "grid-cols-6"
+    },
     "media": [
-      {
-        "src": "/projects/syntheticDunescapes/threashold.avif",
-        "alt": "tectonic threashold",
-        "longDescription": "The threshold functions as a liminal space mediating the interface between the harsh desert landscape and the synthetic habitat. This transitional zone, situated at the surface level, serves as a critical juncture where natural and artificial systems converge. It acts as a permeable boundary, facilitating human interaction with the environment while regulating ingress and egress to the subterranean complex.",
-        "credit": {
-          "text": "View Prompt",
-          "url": "https://www.midjourney.com/jobs/31447864-f19b-4d69-8579-6efa888ff278?index=0",
-          "isButton": true
-        },
-        "isHero": true
-      },
       {
         "src": "/projects/syntheticDunescapes/piezoelectric-wall.avif",
         "alt": "piezoelectric energy generations",
@@ -227,40 +219,44 @@
         "className": "object-top"
       },
       {
+        "src": "/projects/syntheticDunescapes/threashold.avif",
+        "alt": "tectonic threashold",
+        "longDescription": "The threshold functions as a liminal space mediating the interface between the harsh desert landscape and the synthetic habitat. This transitional zone, situated at the surface level, serves as a critical juncture where natural and artificial systems converge. It acts as a permeable boundary, facilitating human interaction with the environment while regulating ingress and egress to the subterranean complex.",
+        "credit": {
+          "text": "View Prompt",
+          "url": "https://www.midjourney.com/jobs/31447864-f19b-4d69-8579-6efa888ff278?index=0",
+          "isButton": true
+        },
+        "isHero": true
+      },
+      {
         "src": "https://www.youtube.com/embed/TLXvgVk_tls?si=D9RoU_2Hczisxaj_",
         "alt": "Atomic discrete Aggregation",
         "longDescription": "The aggregation process is driven by a series of atomic discrete units that self-assemble into larger structures. This process is informed by the principles of swarm intelligence, where individual agents interact with their environment and each other to achieve a collective goal. The aggregation algorithm is designed to optimize the distribution of units, ensuring structural stability and adaptability to changing environmental conditions.",
-        "className": "md:col-span-1 col-span-2 md:h-auto",
+        "className": "md:col-span-3 col-span-6 md:h-auto",
         "isVideo": true
       },
       {
         "src": "/projects/syntheticDunescapes/2.webp",
         "alt": "autonomous system of robotic units",
         "longDescription": "The individual robotic units, inspired by the 3D self-reconfiguration and locomotion modular robot developed at EPFL, are designed to be autonomous, self-assembling, and self-organizing. Each unit is equipped with sensors, actuators, and communication devices that enable it to interact with its environment and other units. The units can aggregate to form larger structures, disassemble to adapt to changing conditions, and reconfigure to optimize their performance. This adaptive system allows for the rapid construction of complex architectural forms in challenging environments.",
-        "className": "md:col-span-1 col-span-2",
+        "className": "md:col-span-3 col-span-6",
         "isAdaptive": true
       },
       {
-        "className": "grid grid-cols-3 gap-4",
-        "innerDiv": {
-          "media": [
-            {
-              "src": "/projects/syntheticDunescapes/modulation-light-1.avif",
-              "alt": "modulation of light 1",
-              "className": "sm:col-span-1 col-span-3"
-            },
-            {
-              "src": "/projects/syntheticDunescapes/modulation-light-2.avif",
-              "alt": "modulation of light 2",
-              "className": "sm:col-span-1 col-span-3"
-            },
-            {
-              "src": "/projects/syntheticDunescapes/modulation-light-3.avif",
-              "alt": "modulation of light 3",
-              "className": "sm:col-span-1 col-span-3"
-            }
-          ]
-        }
+        "src": "/projects/syntheticDunescapes/modulation-light-1.avif",
+        "alt": "modulation of light 1",
+        "className": "sm:col-span-2 col-span-6 sm:h-[300px] md:h-[500px]"
+      },
+      {
+        "src": "/projects/syntheticDunescapes/modulation-light-2.avif",
+        "alt": "modulation of light 2",
+        "className": "sm:col-span-2 col-span-6 sm:h-[300px] md:h-[500px]"
+      },
+      {
+        "src": "/projects/syntheticDunescapes/modulation-light-3.avif",
+        "alt": "modulation of light 3",
+        "className": "sm:col-span-2 col-span-6 sm:h-[300px] md:h-[500px]"
       },
       {
         "src": "/projects/syntheticDunescapes/library.avif",
@@ -270,7 +266,7 @@
           "url": "https://www.midjourney.com/jobs/e3111605-66e7-475e-9dd5-7a56b35e37af?index=0",
           "isButton": true
         },
-        "className": "md:col-span-1 col-span-2"
+        "className": "md:col-span-3 col-span-6 object-bottom"
       },
       {
         "src": "/projects/syntheticDunescapes/ritual-hub.avif",
@@ -281,7 +277,7 @@
           "url": "https://www.midjourney.com/jobs/ba386b18-89d1-4da1-985a-da6b230844b5?index=0",
           "isButton": true
         },
-        "className": "md:col-span-1 col-span-2"
+        "className": "md:col-span-3 col-span-6 object-bottom"
       },
       {
         "src": "/projects/syntheticDunescapes/food-factory.avif",
@@ -291,7 +287,7 @@
           "url": "https://www.midjourney.com/jobs/60eeeaf0-42ce-47b6-a3c5-11e3bced3a61?index=0",
           "isButton": true
         },
-        "className": "md:col-span-1 col-span-2"
+        "className": "md:col-span-3 col-span-6"
       },
       {
         "src": "/projects/syntheticDunescapes/exhibition.avif",
@@ -301,18 +297,20 @@
           "url": "https://www.midjourney.com/jobs/9d1e0efb-feb7-47ef-b33b-4bf2f0393ed6?index=0",
           "isButton": true
         },
-        "className": "md:col-span-1 col-span-2"
+        "className": "md:col-span-3 col-span-6 object-bottom"
       },
       {
         "src": "/projects/syntheticDunescapes/workflow.webp",
         "alt": "AI Synthesis workflow",
         "longDescription": "The AI-driven workflow integrates multiple generative models, primarily utilizing Stable Diffusion and Midjourney for visualization. To address Midjourney's output instability, selected images train a LoRA model for Stable Diffusion. Results undergo iterative refinement through Midjourney, creating a feedback loop. This developable workflow overcomes a significant challenge in AI-driven design: the difficulty in consistently refining and reproducing specific design iterations. By enabling systematic, incremental development akin to hereditary processes, the method allows for continuous refinement of architectural language across successive generations, enhancing the ability to evolve and materialize conceptual designs.",
+        "className": "col-span-6",
         "isInverted": true,
         "isAdaptive": true
       },
       {
         "src": "/projects/syntheticDunescapes/section.avif",
         "alt": "multi resolution tectonic",
+        "className": "col-span-6",
         "isAdaptive": true
       },
 

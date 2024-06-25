@@ -120,6 +120,14 @@
           "required": ["name", "url"]
         }
       },
+      "mediaContainer": {
+        "type": "object",
+        "properties": {
+          "className": {
+            "type": "string"
+          }
+        }
+      },
       "media": {
         "type": "array",
         "items": {
@@ -154,48 +162,6 @@
                 "isButton": {
                   "type": "boolean",
                   "default": true
-                }
-              }
-            },
-            "innerDiv": {
-              "type": "object",
-              "properties": {
-                "media": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                      "src": {
-                        "type": "string"
-                      },
-                      "alt": {
-                        "type": "string"
-                      },
-                      "className": {
-                        "type": "string"
-                      },
-                      "credit": {
-                        "type": "object",
-                        "additionalProperties": false,
-                        "properties": {
-                          "text": {
-                            "type": "string"
-                          },
-                          "url": {
-                            "type": "string"
-                          },
-                          "isButton": {
-                            "type": "boolean",
-                            "default": true
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "className": {
-                  "type": "string"
                 }
               }
             },
