@@ -246,16 +246,31 @@
       {
         "src": "/projects/syntheticDunescapes/modulation-light-1.avif",
         "alt": "modulation of light 1",
+        "credit": {
+          "text": "View Prompt",
+          "url": "https://www.midjourney.com/jobs/ca331b08-b3ef-4463-ae55-f34f0b34749f?index=0",
+          "isButton": true
+        },
         "className": "sm:col-span-2 col-span-6 sm:h-[300px] md:h-[500px]"
       },
       {
         "src": "/projects/syntheticDunescapes/modulation-light-2.avif",
         "alt": "modulation of light 2",
+        "credit": {
+          "text": "View Prompt",
+          "url": "https://www.midjourney.com/jobs/a54144f1-197f-4d0a-8dfd-9c6176b32a3c?index=0",
+          "isButton": true
+        },
         "className": "sm:col-span-2 col-span-6 sm:h-[300px] md:h-[500px]"
       },
       {
         "src": "/projects/syntheticDunescapes/modulation-light-3.avif",
         "alt": "modulation of light 3",
+        "credit": {
+          "text": "View Prompt",
+          "url": "https://www.midjourney.com/jobs/fd388373-1909-4bbe-a22c-ab985317905a?index=0",
+          "isButton": true
+        },
         "className": "sm:col-span-2 col-span-6 sm:h-[300px] md:h-[500px]"
       },
       {
