@@ -120,6 +120,14 @@
           "required": ["name", "url"]
         }
       },
+      "mediaContainer": {
+        "type": "object",
+        "properties": {
+          "className": {
+            "type": "string"
+          }
+        }
+      },
       "media": {
         "type": "array",
         "items": {
@@ -150,6 +158,10 @@
                 },
                 "url": {
                   "type": "string"
+                },
+                "isButton": {
+                  "type": "boolean",
+                  "default": true
                 }
               }
             },
@@ -180,8 +192,7 @@
               "type": "boolean",
               "default": true
             }
-          },
-          "required": ["src"]
+          }
         }
       }
     },

@@ -70,8 +70,10 @@ const CustomCarousel = ({ data, className }) => {
             key={indexMap.get(index)}
             index={index}
             className={`${
-              image.credit || image.caption ? "h-[40px]" : "hidden"
-            } hidden sm:block pt-1`}
+              (image.credit && !image.credit.isButton) || image.caption
+                ? "h-[40px] sm:block"
+                : "hidden"
+            } hidden pt-1`}
           >
             {image.caption && <p className="text-sm text-gray-500 ">{image.caption}</p>}
             {image.credit && (

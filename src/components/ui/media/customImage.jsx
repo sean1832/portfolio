@@ -20,9 +20,7 @@ const CustomImage = ({ image }) => {
     );
   } else {
     return (
-      <div
-        className={cn("relative h-[300px] md:h-[600px] md:col-span-2 col-span-2", image.className)}
-      >
+      <div className={cn("relative h-[300px] md:h-[600px] col-span-full", image.className)}>
         <BlurImage
           src={image.src}
           alt={image.alt || ConstructImageAltText(image.src)}
