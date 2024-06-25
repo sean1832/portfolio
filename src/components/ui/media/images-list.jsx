@@ -2,6 +2,7 @@ import React from "react";
 import CustomImage from "./customImage";
 import CustomVideo from "./customVideo";
 import { Lightbox } from "./lightbox";
+import { cn } from "@/utils/cn";
 
 const ImageLists = ({ data }) => {
   const showHero = data.video && data.video.src;
@@ -23,7 +24,7 @@ const ImageLists = ({ data }) => {
   return (
     <>
       {indicesToShow.length > 0 && (
-        <div className="grid gap-5 grid-cols-2">
+        <div className={cn("grid gap-5 grid-cols-2", data.mediaContainer.className)}>
           {indicesToShow.map((index) => {
             const media = data.media[index];
             return media.isVideo ? (
