@@ -205,16 +205,26 @@
     },
     "media": [
       {
-        "src": "/projects/syntheticDunescapes/main.webp",
+        "src": "/projects/syntheticDunescapes/threashold.avif",
         "alt": "tectonic threashold",
         "longDescription": "The threshold functions as a liminal space mediating the interface between the harsh desert landscape and the synthetic habitat. This transitional zone, situated at the surface level, serves as a critical juncture where natural and artificial systems converge. It acts as a permeable boundary, facilitating human interaction with the environment while regulating ingress and egress to the subterranean complex.",
+        "credit": {
+          "text": "View Prompt",
+          "url": "https://www.midjourney.com/jobs/31447864-f19b-4d69-8579-6efa888ff278?index=0",
+          "isButton": true
+        },
         "isHero": true
       },
       {
-        "src": "/projects/syntheticDunescapes/19.webp",
-        "alt": "modulation adaption",
-        "longDescription": "The cyclical fluctuations of extreme temperatures, wind patterns, and sand movements necessitate a dynamic structural approach. A modular systems allow for rapid reconfiguration and optimization of the built form in response to these volatile conditions.",
-        "className": "object-bottom"
+        "src": "/projects/syntheticDunescapes/piezoelectric-wall.avif",
+        "alt": "piezoelectric energy generations",
+        "longDescription": "site adaptive retaining walls use piezoelectric technology to dynamically harness wind energy and generate electricity.",
+        "credit": {
+          "text": "View Prompt",
+          "url": "https://www.midjourney.com/jobs/d1df5284-2390-46cf-848f-77c1fd77c5f9?index=0",
+          "isButton": true
+        },
+        "className": "object-top"
       },
       {
         "src": "https://www.youtube.com/embed/TLXvgVk_tls?si=D9RoU_2Hczisxaj_",
@@ -231,6 +241,69 @@
         "isAdaptive": true
       },
       {
+        "className": "grid grid-cols-3 gap-4",
+        "innerDiv": {
+          "media": [
+            {
+              "src": "/projects/syntheticDunescapes/modulation-light-1.avif",
+              "alt": "modulation of light 1",
+              "className": "sm:col-span-1 col-span-3"
+            },
+            {
+              "src": "/projects/syntheticDunescapes/modulation-light-2.avif",
+              "alt": "modulation of light 2",
+              "className": "sm:col-span-1 col-span-3"
+            },
+            {
+              "src": "/projects/syntheticDunescapes/modulation-light-3.avif",
+              "alt": "modulation of light 3",
+              "className": "sm:col-span-1 col-span-3"
+            }
+          ]
+        }
+      },
+      {
+        "src": "/projects/syntheticDunescapes/library.avif",
+        "alt": "habitat | library",
+        "credit": {
+          "text": "View Prompt",
+          "url": "https://www.midjourney.com/jobs/e3111605-66e7-475e-9dd5-7a56b35e37af?index=0",
+          "isButton": true
+        },
+        "className": "md:col-span-1 col-span-2"
+      },
+      {
+        "src": "/projects/syntheticDunescapes/ritual-hub.avif",
+        "alt": "habitat | ritual hub",
+        "longDescription": "",
+        "credit": {
+          "text": "View Prompt",
+          "url": "https://www.midjourney.com/jobs/ba386b18-89d1-4da1-985a-da6b230844b5?index=0",
+          "isButton": true
+        },
+        "className": "md:col-span-1 col-span-2"
+      },
+      {
+        "src": "/projects/syntheticDunescapes/food-factory.avif",
+        "alt": "vertical smart farm",
+        "credit": {
+          "text": "View Prompt",
+          "url": "https://www.midjourney.com/jobs/60eeeaf0-42ce-47b6-a3c5-11e3bced3a61?index=0",
+          "isButton": true
+        },
+        "className": "md:col-span-1 col-span-2"
+      },
+      {
+        "src": "/projects/syntheticDunescapes/exhibition.avif",
+        "alt": "cloud of machines",
+        "credit": {
+          "text": "View Prompt",
+          "url": "https://www.midjourney.com/jobs/9d1e0efb-feb7-47ef-b33b-4bf2f0393ed6?index=0",
+          "isButton": true
+        },
+        "className": "md:col-span-1 col-span-2"
+      },
+      {
         "src": "/projects/syntheticDunescapes/workflow.webp",
         "alt": "AI Synthesis workflow",
         "longDescription": "The AI-driven workflow integrates multiple generative models, primarily utilizing Stable Diffusion and Midjourney for visualization. To address Midjourney's output instability, selected images train a LoRA model for Stable Diffusion. Results undergo iterative refinement through Midjourney, creating a feedback loop. This developable workflow overcomes a significant challenge in AI-driven design: the difficulty in consistently refining and reproducing specific design iterations. By enabling systematic, incremental development akin to hereditary processes, the method allows for continuous refinement of architectural language across successive generations, enhancing the ability to evolve and materialize conceptual designs.",
@@ -238,88 +311,69 @@
         "isAdaptive": true
       },
       {
-        "src": "/projects/syntheticDunescapes/3.webp",
-        "alt": "habitat | library",
-        "className": "md:col-span-1 col-span-2"
-      },
-      {
-        "src": "/projects/syntheticDunescapes/4.webp",
-        "alt": "habitat | ritual hub",
-        "className": "md:col-span-1 col-span-2"
-      },
-      {
-        "src": "/projects/syntheticDunescapes/5.webp",
-        "alt": "vertical smart farm",
-        "className": "md:col-span-1 col-span-2"
-      },
-      {
-        "src": "/projects/syntheticDunescapes/6.webp",
-        "alt": "cloud of machines",
-        "className": "md:col-span-1 col-span-2"
-      },
-      {
-        "src": "/projects/syntheticDunescapes/section.webp",
+        "src": "/projects/syntheticDunescapes/section.avif",
         "alt": "multi resolution tectonic",
         "isAdaptive": true
       },
+
       {
-        "src": "/projects/syntheticDunescapes/8.webp",
-        "alt": "External view 1",
+        "src": "/projects/syntheticDunescapes/hydro-sponge.avif",
+        "alt": "hydro-sponge aquiferous tectonic",
+        "credit": {
+          "text": "View Prompt",
+          "url": "https://www.midjourney.com/jobs/211f2e99-45da-4dcf-ae36-0d7f4d9d9501?index=0",
+          "isButton": true
+        },
         "isCarousel": true
       },
       {
-        "src": "/projects/syntheticDunescapes/1.webp",
-        "alt": "External view 2",
-        "isCarousel": true
-      },
-      {
-        "src": "/projects/syntheticDunescapes/9.webp",
-        "alt": "External view 3",
-        "isCarousel": true
-      },
-      {
-        "src": "/projects/syntheticDunescapes/10.webp",
-        "alt": "External view 4",
-        "isCarousel": true
-      },
-      {
-        "src": "/projects/syntheticDunescapes/11.webp",
-        "alt": "threashold",
-        "isCarousel": true
-      },
-      {
-        "src": "/projects/syntheticDunescapes/12.webp",
-        "alt": "Internal view 1",
-        "isCarousel": true
-      },
-      {
-        "src": "/projects/syntheticDunescapes/13.webp",
-        "alt": "Internal view 2",
-        "isCarousel": true
-      },
-      {
-        "src": "/projects/syntheticDunescapes/14.webp",
-        "alt": "Internal view 3",
-        "isCarousel": true
-      },
-      {
-        "src": "/projects/syntheticDunescapes/15.webp",
-        "alt": "exhibition hub 1",
-        "isCarousel": true
-      },
-      {
-        "src": "/projects/syntheticDunescapes/16.webp",
-        "alt": "exhibition hub 2",
-        "isCarousel": true
-      },
-      {
-        "src": "/projects/syntheticDunescapes/17.webp",
-        "alt": "terrance agora",
-        "isCarousel": true
-      },
-      {
-        "src": "/projects/syntheticDunescapes/18.webp",
+        "src": "/projects/syntheticDunescapes/data-farm.avif",
         "alt": "machine factory & datafarm",
+        "credit": {
+          "text": "View Prompt",
+          "url": "https://www.midjourney.com/jobs/02b5727f-9346-4d1f-9767-1fd54ac80429?index=0",
+          "isButton": true
+        },
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/adaption-for-habitation.avif",
+        "alt": "Adaption for habitation",
+        "credit": {
+          "text": "View Prompt",
+          "url": "https://www.midjourney.com/jobs/3236b03d-29a3-407b-a42e-674f61944986?index=0",
+          "isButton": true
+        },
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/waterfall-of-light.avif",
+        "alt": "Waterfall of light",
+        "credit": {
+          "text": "View Prompt",
+          "url": "https://www.midjourney.com/jobs/d97c801b-d782-4796-bed7-dc0de8bb32a6?index=0",
+          "isButton": true
+        },
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/modulation-space.avif",
+        "alt": "Modulation of space",
+        "credit": {
+          "text": "View Prompt",
+          "url": "https://www.midjourney.com/jobs/34f9e1ea-7cca-443f-aede-b55ba27dc2a3?index=0",
+          "isButton": true
+        },
+        "isCarousel": true
+      },
+      {
+        "src": "/projects/syntheticDunescapes/amphitheater.avif",
+        "alt": "amphitheater",
+        "credit": {
+          "text": "View Prompt",
+          "url": "https://www.midjourney.com/jobs/1b3c6300-6bb7-4e55-8466-252adb7961ee?index=0",
+          "isButton": true
+        },
         "isCarousel": true
       }
     ]
