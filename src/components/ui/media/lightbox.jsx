@@ -41,6 +41,9 @@ import { ConstructYoutubeAltText } from "@/lib/constructAltText";
 import { cn } from "@/lib/utils";
 import CarouselWraper from "../carousel/carouselWraper";
 import clsx from "clsx";
+import { Button } from "../button";
+import Link from "next/link";
+import { Separator } from "../separator";
 
 const Lightbox = ({ images, index, children }) => {
   const center = () => {
@@ -53,16 +56,38 @@ const Lightbox = ({ images, index, children }) => {
   const desktopInfoBlock = ({ className }) => {
     return (
       <DialogHeader className={className}>
-        <div className="flex justify-end">
-          <div className="p-8 w-[300px]">
-            {images.map((image, i) => (
-              <CarouselDescription key={i} index={i} className="text-left">
-                <DialogTitle className="text-xl font-bold">{image.alt.toUpperCase()}</DialogTitle>
-                {image.longDescription && (
-                  <DialogDescription className="py-3">{image.longDescription}</DialogDescription>
-                )}
-              </CarouselDescription>
-            ))}
+        <div className="flex justify-end gap-3">
+          <div className="w-[320px] h-screen flex gap-4">
+            <Separator orientation="vertical" className="h-screen" />
+            <div className="flex flex-col py-8 w-full">
+              {images.map((image, i) => (
+                <CarouselDescription
+                  key={i}
+                  index={i}
+                  className="text-left flex flex-col flex-grow"
+                >
+                  <div className="flex-grow flex flex-col gap-3">
+                    <DialogTitle className="text-xl font-bold text-center ">
+                      {image.alt.toUpperCase()}
+                    </DialogTitle>
+                    {image.longDescription && (
+                      <DialogDescription className="py-3">
+                        {image.longDescription}
+                      </DialogDescription>
+                    )}
+                  </div>
+                  <div>
+                    {image.credit && image.credit.isButton && (
+                      <Link href={image.credit.url} target="_blank" rel="noreferrer">
+                        <Button variant="secondary" className="w-full rounded-none">
+                          {image.credit.text}
+                        </Button>
+                      </Link>
+                    )}
+                  </div>
+                </CarouselDescription>
+              ))}
+            </div>
           </div>
           <CarouselThumbsContainer className={cn("h-screen w-[76px]", center())}>
             {images.map((image, i) => (
