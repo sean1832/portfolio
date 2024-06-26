@@ -12,7 +12,7 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 
-const ZoomBox = ({ children }) => {
+const ZoomBox = ({ children, className }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenToggle = () => {
@@ -20,7 +20,7 @@ const ZoomBox = ({ children }) => {
   };
 
   return (
-    <>
+    <div className={className}>
       <Dialog onOpenChange={handleOpenToggle}>
         <DialogTrigger className="cursor-zoom-in">{children}</DialogTrigger>
         <DialogClose asChild>
@@ -33,7 +33,7 @@ const ZoomBox = ({ children }) => {
           </DialogContent>
         </DialogClose>
       </Dialog>
-    </>
+    </div>
   );
 };
 

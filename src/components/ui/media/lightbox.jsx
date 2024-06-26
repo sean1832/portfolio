@@ -175,17 +175,30 @@ const Lightbox = ({ images, index, children }) => {
                         className={"relative md:w-full w-[95%] md:max-h-[80vh] max-h-[60vh]"}
                       />
                     ) : (
-                      <ZoomBox>
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          width={image.width || 1920}
-                          height={image.height || 1080}
-                          className={clsx("max-w-full max-h-[80vh] object-contain", {
-                            "dark:invert": image.isInverted,
-                          })}
-                        />
-                      </ZoomBox>
+                      <>
+                        <ZoomBox className="md:block hidden">
+                          <Image
+                            src={image.src}
+                            alt={image.alt}
+                            width={image.width || 1920}
+                            height={image.height || 1080}
+                            className={clsx("max-w-full max-h-[80vh] object-contain", {
+                              "dark:invert": image.isInverted,
+                            })}
+                          />
+                        </ZoomBox>
+                        <div className="md:hidden block">
+                          <Image
+                            src={image.src}
+                            alt={image.alt}
+                            width={image.width || 1920}
+                            height={image.height || 1080}
+                            className={clsx("max-w-full max-h-[80vh] object-contain", {
+                              "dark:invert": image.isInverted,
+                            })}
+                          />
+                        </div>
+                      </>
                     )}
                   </SliderMainItem>
                 ))}
