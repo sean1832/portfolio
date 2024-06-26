@@ -1,0 +1,4 @@
+- [ ] Implement image optimization
+- [ ] Implement image skeleton loading
+- [ ] Complete image descriptions
+- [ ] View credit button for mobile
