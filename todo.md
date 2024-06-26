@@ -1,4 +1,12 @@
+# Optimization
+
 - [ ] Implement image optimization
 - [ ] Implement image skeleton loading
+
+# Data
+
 - [ ] Complete image descriptions
-- [ ] View credit button for mobile
+
+# Features
+
+- [ ] mobile navigation menu style fix

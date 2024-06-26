@@ -138,7 +138,15 @@ const Lightbox = ({ images, index, children }) => {
                     )}
                   </DrawerHeader>
 
-                  <DrawerFooter></DrawerFooter>
+                  <DrawerFooter>
+                    {image.credit && image.credit.isButton && (
+                      <Link href={image.credit.url} target="_blank" rel="noreferrer">
+                        <Button variant="secondary" className="w-full rounded-none">
+                          {image.credit.text}
+                        </Button>
+                      </Link>
+                    )}
+                  </DrawerFooter>
                 </DrawerContent>
               </CarouselDescription>
             ))}
