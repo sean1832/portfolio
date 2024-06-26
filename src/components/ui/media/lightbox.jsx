@@ -44,6 +44,7 @@ import clsx from "clsx";
 import { Button } from "../button";
 import Link from "next/link";
 import { Separator } from "../separator";
+import ZoomBox from "./zoomBox";
 
 const Lightbox = ({ images, index, children }) => {
   const center = () => {
@@ -174,15 +175,17 @@ const Lightbox = ({ images, index, children }) => {
                         className={"relative md:w-full w-[95%] md:max-h-[80vh] max-h-[60vh]"}
                       />
                     ) : (
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        width={image.width || 1920}
-                        height={image.height || 1080}
-                        className={clsx("max-w-full max-h-[80vh] object-contain", {
-                          "dark:invert": image.isInverted,
-                        })}
-                      />
+                      <ZoomBox>
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          width={image.width || 1920}
+                          height={image.height || 1080}
+                          className={clsx("max-w-full max-h-[80vh] object-contain", {
+                            "dark:invert": image.isInverted,
+                          })}
+                        />
+                      </ZoomBox>
                     )}
                   </SliderMainItem>
                 ))}
