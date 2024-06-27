@@ -15,6 +15,7 @@ const CustomImage = ({ image }) => {
           width={image.width || 1920}
           height={image.height || 1080}
           isExternal={image.isExternal}
+          blurDataURL={image.blurDataURL}
         />
       </div>
     );
@@ -27,6 +28,7 @@ const CustomImage = ({ image }) => {
           className={cn("object-cover object-center w-full h-full", image.className, inverted)}
           fill
           isExternal={image.isExternal}
+          blurDataURL={image.blurDataURL}
         />
       </div>
     );

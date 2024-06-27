@@ -168,6 +168,9 @@
             "longDescription": {
               "type": "string"
             },
+            "blurDataURL": {
+              "type": "string"
+            },
             "isHero": {
               "type": "boolean",
               "default": true

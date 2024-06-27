@@ -45,6 +45,7 @@ import { Button } from "../button";
 import Link from "next/link";
 import { Separator } from "../separator";
 import ZoomBox from "./zoomBox";
+import BlurImage from "./blur";
 
 const Lightbox = ({ images, index, children }) => {
   const center = () => {
@@ -185,18 +186,32 @@ const Lightbox = ({ images, index, children }) => {
                     ) : (
                       <>
                         <ZoomBox className="md:block hidden">
-                          <Image
-                            src={image.src}
-                            alt={image.alt}
-                            width={image.width || 1920}
-                            height={image.height || 1080}
-                            className={clsx("max-w-full max-h-[80vh] object-contain", {
-                              "dark:invert": image.isInverted,
-                            })}
-                          />
+                          {image.blurDataURL ? (
+                            <Image
+                              src={image.src}
+                              alt={image.alt}
+                              width={image.width || 1920}
+                              height={image.height || 1080}
+                              className={clsx("max-w-full max-h-[80vh] object-contain", {
+                                "dark:invert": image.isInverted,
+                              })}
+                              placeholder="blur"
+                              blurDataURL={image.blurDataURL}
+                            />
+                          ) : (
+                            <Image
+                              src={image.src}
+                              alt={image.alt}
+                              width={image.width || 1920}
+                              height={image.height || 1080}
+                              className={clsx("max-w-full max-h-[80vh] object-contain", {
+                                "dark:invert": image.isInverted,
+                              })}
+                            />
+                          )}
                         </ZoomBox>
                         <div className="md:hidden block">
-                          <Image
+                          <BlurImage
                             src={image.src}
                             alt={image.alt}
                             width={image.width || 1920}
@@ -204,6 +219,8 @@ const Lightbox = ({ images, index, children }) => {
                             className={clsx("max-w-full max-h-[80vh] object-contain", {
                               "dark:invert": image.isInverted,
                             })}
+                            blurDataURL={image.blurDataURL}
+                            isExternal={image.isExternal}
                           />
                         </div>
                       </>

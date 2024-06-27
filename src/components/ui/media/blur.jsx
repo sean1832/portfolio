@@ -64,34 +64,67 @@ const RemoteBlurImage = async (image) => {
   }
 };
 
-const BlurImage = async (image) => {
+const BlurImage = async ({
+  src,
+  alt,
+  width,
+  height,
+  className,
+  blurDataURL,
+  isExternal,
+  ...props
+}) => {
   try {
-    if (image.isExternal) {
+    // console.log("src", src, blurDataURL);
+    // return (
+    //   <Image
+    //     src={src}
+    //     alt={alt}
+    //     width={width}
+    //     height={height}
+    //     className={className}
+    //     placeholder="blur"
+    //     blurDataURL={blurDataURL}
+    //     {...props}
+    //   />
+    // );
+    if (blurDataURL) {
       return (
-        <RemoteBlurImage
-          src={image.src}
-          alt={image.alt}
-          fill={image.fill}
-          sizes={image.sizes}
-          style={image.style}
-          className={image.className}
-          width={image.width}
-          height={image.height}
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          className={className}
+          placeholder="blur"
+          blurDataURL={blurDataURL}
+          {...props}
         />
       );
     }
-    return (
-      <LocalBlurImage
-        src={image.src}
-        alt={image.alt}
-        fill={image.fill}
-        sizes={image.sizes}
-        style={image.style}
-        className={image.className}
-        width={image.width}
-        height={image.height}
-      />
-    );
+    if (isExternal) {
+      return (
+        <RemoteBlurImage
+          src={src}
+          alt={alt}
+          className={className}
+          width={width}
+          height={height}
+          {...props}
+        />
+      );
+    } else {
+      return (
+        <LocalBlurImage
+          src={src}
+          alt={alt}
+          className={className}
+          width={width}
+          height={height}
+          {...props}
+        />
+      );
+    }
   } catch (error) {
     console.error("[BlurImage]: ", error);
     return (

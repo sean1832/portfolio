@@ -85,6 +85,7 @@ const ProjectInfo = ({ data }) => {
                 alt={heroImage.alt}
                 fill
                 style={{ objectFit: "cover" }}
+                blurDataURL={heroImage.blurDataURL}
               />
             </a>
           )}
