@@ -37,3 +37,8 @@ next-env.d.ts
 
 # debug
 /src/app/test
+
+# python
+__pycache__/
+*.pyc
+venv/
