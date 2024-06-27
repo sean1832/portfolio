@@ -99,6 +99,7 @@ const CustomCarousel = ({ data, className }) => {
               alt={`Carousel Thumbnail Image ${index + 1}`}
               style={{ objectFit: "cover" }}
               isExternal={image.isExternal}
+              blurDataURL={image.blurDataURL}
             />
           </SliderThumbItem>
         ))}

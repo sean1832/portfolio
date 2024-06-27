@@ -44,6 +44,8 @@ import clsx from "clsx";
 import { Button } from "../button";
 import Link from "next/link";
 import { Separator } from "../separator";
+import ZoomBox from "./zoomBox";
+import BlurImage from "./blur";
 
 const Lightbox = ({ images, index, children }) => {
   const center = () => {
@@ -137,7 +139,15 @@ const Lightbox = ({ images, index, children }) => {
                     )}
                   </DrawerHeader>
 
-                  <DrawerFooter></DrawerFooter>
+                  <DrawerFooter>
+                    {image.credit && image.credit.isButton && (
+                      <Link href={image.credit.url} target="_blank" rel="noreferrer">
+                        <Button variant="secondary" className="w-full rounded-none">
+                          {image.credit.text}
+                        </Button>
+                      </Link>
+                    )}
+                  </DrawerFooter>
                 </DrawerContent>
               </CarouselDescription>
             ))}
@@ -174,15 +184,46 @@ const Lightbox = ({ images, index, children }) => {
                         className={"relative md:w-full w-[95%] md:max-h-[80vh] max-h-[60vh]"}
                       />
                     ) : (
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        width={image.width || 1920}
-                        height={image.height || 1080}
-                        className={clsx("max-w-full max-h-[80vh] object-contain", {
-                          "dark:invert": image.isInverted,
-                        })}
-                      />
+                      <>
+                        <ZoomBox className="md:block hidden">
+                          {image.blurDataURL ? (
+                            <Image
+                              src={image.src}
+                              alt={image.alt}
+                              width={image.width || 1920}
+                              height={image.height || 1080}
+                              className={clsx("max-w-full max-h-[80vh] object-contain", {
+                                "dark:invert": image.isInverted,
+                              })}
+                              placeholder="blur"
+                              blurDataURL={image.blurDataURL}
+                            />
+                          ) : (
+                            <Image
+                              src={image.src}
+                              alt={image.alt}
+                              width={image.width || 1920}
+                              height={image.height || 1080}
+                              className={clsx("max-w-full max-h-[80vh] object-contain", {
+                                "dark:invert": image.isInverted,
+                              })}
+                            />
+                          )}
+                        </ZoomBox>
+                        <div className="md:hidden block">
+                          <BlurImage
+                            src={image.src}
+                            alt={image.alt}
+                            width={image.width || 1920}
+                            height={image.height || 1080}
+                            className={clsx("max-w-full max-h-[80vh] object-contain", {
+                              "dark:invert": image.isInverted,
+                            })}
+                            blurDataURL={image.blurDataURL}
+                            isExternal={image.isExternal}
+                          />
+                        </div>
+                      </>
                     )}
                   </SliderMainItem>
                 ))}

@@ -38,6 +38,7 @@ const ProjectsGallerySection = async () => {
                   src={heroImage?.src}
                   alt={heroImage?.alt}
                   href={ConstructProjectHref(project.id)}
+                  blurDataURL={heroImage?.blurDataURL}
                 />
               }
               className={`${project.gallery.className} uppercase `}
@@ -49,7 +50,7 @@ const ProjectsGallerySection = async () => {
   );
 };
 
-const ImageHeader = ({ src, alt, href }) => (
+const ImageHeader = ({ src, alt, href, blurDataURL }) => (
   <Link
     className="relative w-full h-full dark:opacity-80 dark:hover:opacity-100 transition duration-200"
     href={href}
@@ -60,6 +61,7 @@ const ImageHeader = ({ src, alt, href }) => (
       fill
       style={{ objectFit: "cover", objectPosition: "bottom" }}
       className="transition duration-500"
+      blurDataURL={blurDataURL}
     />
   </Link>
 );
