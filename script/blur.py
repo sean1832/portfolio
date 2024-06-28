@@ -45,13 +45,13 @@ def write_json(json_path, data):
 if __name__ == '__main__':
   # ============= CONFIG =============
   SOURCE = "data/projects.json"
-  DESTINATION = "data/generated/imagesMeta.json"
+  DESTINATION = "data/generated/imageMetadata.json"
   SIZE = 16
   # ============= CONFIG =============
 
   data = read_json(SOURCE)
   isError = False
-  imageDatas = []
+  imageMeta = {}
   for project in data:
     for image in project["media"]:
       if "isVideo" in image and image["isVideo"]: continue
@@ -63,12 +63,7 @@ if __name__ == '__main__':
       try:
         print(f'{image["src"]}')
         blurUrl, width, height  = create_blur_url(path, SIZE)
-        imageDatas.append({
-          "src": image["src"],
-          "blurDataURL": blurUrl,
-          "width": width,
-          "height": height
-        })
+        imageMeta[image["src"]] = {"blurDataURL": blurUrl, "width": width, "height": height}
 
         
       except Exception as e:
@@ -81,7 +76,7 @@ if __name__ == '__main__':
   else:
     print("\n\nWrite to file...")
     pathlib.Path(DESTINATION).parent.mkdir(parents=True, exist_ok=True)
-    write_json(DESTINATION, imageDatas)
+    write_json(DESTINATION, imageMeta)
     print("Done!")
   
   
