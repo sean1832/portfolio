@@ -1,6 +1,6 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import profile from "@/data/profile.json";
+import profile from "@data/profile.json";
 
 const TextDecode = dynamic(() => import("@/components/animation/text-decode"), {
   ssr: false,

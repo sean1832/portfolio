@@ -2,7 +2,7 @@ import React from "react";
 import FloatingButton from "./floatingButton";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
-import manifest from "@/data/manifest";
+import manifest from "@data/manifest";
 
 const GithubFloatingButton = () => {
   return (

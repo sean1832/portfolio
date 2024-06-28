@@ -1,7 +1,7 @@
 import React from "react";
 import { Separator } from "../ui/separator";
 import ExternalTextLink from "../ui/external-text-link";
-import manifest from "@/data/manifest";
+import manifest from "@data/manifest";
 import { GetLatestUrl, GetRepoUrl } from "@/lib/getGithub";
 
 const Footer = () => {

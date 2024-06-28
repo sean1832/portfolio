@@ -1,9 +1,10 @@
 import React from "react";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
-import projects from "@/data/projects.json";
+import projects from "@data/projects.json";
 import Link from "next/link";
 import BlurImage from "../ui/media/blur";
 import ConstructProjectHref from "@/lib/constructProjectHref";
+import { cn } from "@/utils/cn";
 
 const ProjectsGallerySection = async () => {
   return (
@@ -41,7 +42,7 @@ const ProjectsGallerySection = async () => {
                   blurDataURL={heroImage?.blurDataURL}
                 />
               }
-              className={`${project.gallery.className} uppercase `}
+              className={cn("lg:col-span-3 uppercase", project.gallery.className)}
             />
           );
         })}
