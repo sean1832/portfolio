@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import navbarData from "@/data/navbar";
 import { ZekeLogoIcon } from "../svg";
 import { Separator } from "../ui/separator";
 import { ModeToggle } from "@/components/ui/theme/mode-toggle";
@@ -29,11 +28,13 @@ function MenuIcon(props) {
   );
 }
 
+const navbar = [{ title: "home" }, { title: "projects" }];
+
 const NavbarLinks = ({ navbarData, className }) =>
   navbarData.map((item, i) => (
     <Link
       key={`navbar-link-${i}`}
-      href={item.url}
+      href={`/#${item.title}`}
       className={`${className} text-xl font-medium transition-colors dark:hover:text-primary dark:text-muted-foreground hover:text-gray-500 dark:text-gray-300 text-primary`}
     >
       {item.title}
@@ -66,7 +67,7 @@ const NavBar = () => {
           {/* Desktop navigation */}
           <nav className="items-center gap-4">
             <div className="hidden md:flex items-center gap-10">
-              <NavbarLinks navbarData={navbarData} className="navbar-link" />
+              <NavbarLinks navbarData={navbar} className="navbar-link" />
               <ModeToggle />
             </div>
 
@@ -80,7 +81,7 @@ const NavBar = () => {
                 </SheetTrigger>
                 <SheetContent side="right">
                   <div className="flex flex-col gap-8 justify-center items-center text-2xl">
-                    <NavbarLinks navbarData={navbarData} className="navbar-link-mobile" />
+                    <NavbarLinks navbarData={navbar} className="navbar-link-mobile" />
                     <ModeToggle />
                   </div>
                 </SheetContent>
