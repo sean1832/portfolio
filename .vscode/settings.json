@@ -8,5 +8,6 @@
       "fileMatch": ["profile.json"],
       "url": "/data/schema/profile-schema.json"
     }
-  ]
+  ],
+  "gutterpreview.sourceFolder": "public"
 }
