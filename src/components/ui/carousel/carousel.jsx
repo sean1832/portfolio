@@ -175,7 +175,7 @@ const Carousel = forwardRef(
           tabIndex={0}
           ref={ref}
           onKeyDownCapture={handleKeyDown}
-          onWheel={handleMouseScroll} // for vertical scroll
+          // onWheel={handleMouseScroll} // for vertical scroll
           className={cn("grid gap-2 w-full relative focus:outline-none", className)}
           dir={direction}
         >
