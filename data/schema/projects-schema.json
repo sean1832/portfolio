@@ -165,6 +165,9 @@
                 }
               }
             },
+            "sizes": {
+              "type": "string"
+            },
             "longDescription": {
               "type": "string"
             },

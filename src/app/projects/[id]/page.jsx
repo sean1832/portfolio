@@ -1,13 +1,15 @@
 import React from "react";
-import projectData from "@/data/projects.json";
+import projectData from "@data/projects.json";
 import ProjectInfo from "@/components/layout/projectDetailSection";
 import { ProjectNavigation } from "@/components/ui/project-navigation";
 import { notFound } from "next/navigation";
+import AppendToMedia from "@/lib/appendMetadata";
+import imageMetadata from "@data/generated/imageMetadata.json";
 
 // dynamically generate page if params is not known during built time
 // set to true if you want to update the site content without rebuilding the site
 // see doc: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
-export const dynamicParams = false; 
+export const dynamicParams = false;
 
 // static generation of project page during built time based on project id
 // see doc: https://nextjs.org/docs/app/api-reference/functions/generate-static-params
@@ -27,6 +29,8 @@ const ProjectPage = ({ params }) => {
   if (projectIndex === -1) {
     notFound();
   }
+
+  AppendToMedia(projectData, imageMetadata);
 
   const data = projectData[projectIndex];
 

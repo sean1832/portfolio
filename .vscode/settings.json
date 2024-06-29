@@ -2,15 +2,12 @@
   "json.schemas": [
     {
       "fileMatch": ["projects.json"],
-      "url": "/src/data/projects-schema.json"
+      "url": "/data/schema/projects-schema.json"
     },
     {
       "fileMatch": ["profile.json"],
-      "url": "/src/data/profile-schema.json"
-    },
-    {
-      "fileMatch": ["skills.json"],
-      "url": "/src/data/skills-schema.json"
+      "url": "/data/schema/profile-schema.json"
     }
-  ]
+  ],
+  "gutterpreview.sourceFolder": "public"
 }

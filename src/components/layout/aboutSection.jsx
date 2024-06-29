@@ -1,6 +1,6 @@
 import React from "react";
 import RevealListClient from "../animation/reveal-list-client";
-import profile from "@/data/profile.json";
+import profile from "@data/profile.json";
 import { buttonVariants } from "@/components/ui/button";
 import { GitHubLogoIcon, InstagramLogoIcon } from "@radix-ui/react-icons";
 import { IoLogoYoutube } from "react-icons/io5";

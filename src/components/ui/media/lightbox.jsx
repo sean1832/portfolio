@@ -101,6 +101,7 @@ const Lightbox = ({ images, index, children }) => {
                     fill
                     alt={`Carousel Thumbnail Image ${i + 1}`}
                     style={{ objectFit: "cover" }}
+                    sizes="10vw"
                   />
                 ) : (
                   <Image
@@ -109,6 +110,7 @@ const Lightbox = ({ images, index, children }) => {
                     fill
                     alt={`Carousel Thumbnail Image ${i + 1}`}
                     style={{ objectFit: "cover" }}
+                    sizes="10vw"
                   />
                 )}
               </SliderThumbItem>
@@ -197,6 +199,7 @@ const Lightbox = ({ images, index, children }) => {
                               })}
                               placeholder="blur"
                               blurDataURL={image.blurDataURL}
+                              sizes="100vw"
                             />
                           ) : (
                             <Image
@@ -207,6 +210,7 @@ const Lightbox = ({ images, index, children }) => {
                               className={clsx("max-w-full max-h-[80vh] object-contain", {
                                 "dark:invert": image.isInverted,
                               })}
+                              sizes="100vw"
                             />
                           )}
                         </ZoomBox>

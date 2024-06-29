@@ -9,7 +9,7 @@ def write_json(json_path, data):
 
 
 if __name__ == '__main__':
-  data = read_json("src/data/projects.json")
+  data = read_json("data/projects.json")
   key = "blurDataURL"
 
   for project in data:
@@ -17,5 +17,5 @@ if __name__ == '__main__':
       if key in image:
         print(f"removing from: {image['src']}")
         del image[key]
-  write_json("src/data/projects.json", data)
+  write_json("data/projects.json", data)
   print("\n\ndone!")

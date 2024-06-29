@@ -16,6 +16,7 @@ const CustomImage = ({ image }) => {
           height={image.height || 1080}
           isExternal={image.isExternal}
           blurDataURL={image.blurDataURL}
+          sizes={image.sizes ? image.sizes : "(min-width: 865px) 50vw, 100vw"}
         />
       </div>
     );
@@ -29,6 +30,7 @@ const CustomImage = ({ image }) => {
           fill
           isExternal={image.isExternal}
           blurDataURL={image.blurDataURL}
+          sizes={image.sizes ? image.sizes : "(min-width: 865px) 50vw, 100vw"}
         />
       </div>
     );
