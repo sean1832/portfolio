@@ -13,9 +13,7 @@
     "gallery": {
       "className": "lg:col-span-3"
     },
-    "group": [
-      "Chukang Liang"
-    ],
+    "group": ["Chukang Liang"],
     "tutors": [
       {
         "name": "Dr. Christine Phillips",
@@ -130,10 +128,7 @@
     "gallery": {
       "className": "lg:col-span-3"
     },
-    "group": [
-      "Chukang Liang",
-      "Wanyue Peng"
-    ],
+    "group": ["Chukang Liang", "Wanyue Peng"],
     "awards": [
       {
         "name": "Modular Home / Edition #2  | Architecture Competitions ",
@@ -191,10 +186,7 @@
     "gallery": {
       "className": "lg:col-span-4"
     },
-    "group": [
-      "Luyao Jiang",
-      "Kang Liu"
-    ],
+    "group": ["Luyao Jiang", "Kang Liu"],
     "tutors": [
       {
         "name": "Dr. Alisa Andrasek",
@@ -242,6 +234,7 @@
         "alt": "Atomic discrete Aggregation",
         "longDescription": "The aggregation process is driven by a series of atomic discrete units that self-assemble into larger structures. This process is informed by the principles of swarm intelligence, where individual agents interact with their environment and each other to achieve a collective goal. The aggregation algorithm is designed to optimize the distribution of units, ensuring structural stability and adaptability to changing environmental conditions.",
         "className": "md:col-span-3 col-span-6 md:h-auto",
+        "sizes": "(min-width: 865x) 25vw, 100vw",
         "isVideo": true
       },
       {
@@ -249,6 +242,7 @@
         "alt": "autonomous system of robotic units",
         "longDescription": "The individual robotic units, inspired by the 3D self-reconfiguration and locomotion modular robot developed at EPFL, are designed to be autonomous, self-assembling, and self-organizing. Each unit is equipped with sensors, actuators, and communication devices that enable it to interact with its environment and other units. The units can aggregate to form larger structures, disassemble to adapt to changing conditions, and reconfigure to optimize their performance. This adaptive system allows for the rapid construction of complex architectural forms in challenging environments.",
         "className": "md:col-span-3 col-span-6",
+        "sizes": "(min-width: 865px) 25vw, 100vw",
         "isAdaptive": true
       },
       {
@@ -259,6 +253,7 @@
           "url": "https://www.midjourney.com/jobs/ca331b08-b3ef-4463-ae55-f34f0b34749f?index=0",
           "isButton": true
         },
+        "sizes": "(min-width: 865px) 25vw, 100vw",
         "className": "sm:col-span-2 col-span-6 sm:h-[300px] md:h-[500px]"
       },
       {
@@ -269,6 +264,7 @@
           "url": "https://www.midjourney.com/jobs/a54144f1-197f-4d0a-8dfd-9c6176b32a3c?index=0",
           "isButton": true
         },
+        "sizes": "(min-width: 865px) 25vw, 100vw",
         "className": "sm:col-span-2 col-span-6 sm:h-[300px] md:h-[500px]"
       },
       {
@@ -279,6 +275,7 @@
           "url": "https://www.midjourney.com/jobs/fd388373-1909-4bbe-a22c-ab985317905a?index=0",
           "isButton": true
         },
+        "sizes": "(min-width: 865px) 25vw, 100vw",
         "className": "sm:col-span-2 col-span-6 sm:h-[300px] md:h-[500px]"
       },
       {
@@ -300,6 +297,7 @@
           "url": "https://www.midjourney.com/jobs/ba386b18-89d1-4da1-985a-da6b230844b5?index=0",
           "isButton": true
         },
+        "sizes": "(min-width: 865px) 25vw, 100vw",
         "className": "md:col-span-3 col-span-6 object-bottom"
       },
       {
@@ -310,6 +308,7 @@
           "url": "https://www.midjourney.com/jobs/60eeeaf0-42ce-47b6-a3c5-11e3bced3a61?index=0",
           "isButton": true
         },
+        "sizes": "(min-width: 865px) 25vw, 100vw",
         "className": "md:col-span-3 col-span-6"
       },
       {
@@ -320,6 +319,7 @@
           "url": "https://www.midjourney.com/jobs/9d1e0efb-feb7-47ef-b33b-4bf2f0393ed6?index=0",
           "isButton": true
         },
+        "sizes": "(min-width: 865px) 25vw, 100vw",
         "className": "md:col-span-3 col-span-6 object-bottom"
       },
       {
@@ -412,11 +412,7 @@
     "gallery": {
       "className": "lg:col-span-2"
     },
-    "group": [
-      "JingChen Lin",
-      "Yao Xiao",
-      "Jacqueline Pionan"
-    ],
+    "group": ["JingChen Lin", "Yao Xiao", "Jacqueline Pionan"],
     "tutors": [
       {
         "name": "Dr. Alisa Andrasek",
@@ -507,9 +503,7 @@
     "gallery": {
       "className": "lg:col-span-2"
     },
-    "group": [
-      "Eu Yeo"
-    ],
+    "group": ["Eu Yeo"],
     "tutors": [
       {
         "name": "Dr. Natalie Alima",

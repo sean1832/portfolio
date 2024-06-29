@@ -60,6 +60,7 @@ const CustomCarousel = ({ data, className }) => {
                   alt={`Carousel Main Image ${index + 1}`}
                   fill
                   style={{ objectFit: "contain" }}
+                  sizes={image.sizes ? image.sizes : "(min-width: 865px) 35vw, 100vw"}
                 />
               </Lightbox>
             </SliderMainItem>
@@ -100,6 +101,7 @@ const CustomCarousel = ({ data, className }) => {
               style={{ objectFit: "cover" }}
               isExternal={image.isExternal}
               blurDataURL={image.blurDataURL}
+              sizes="10vw"
             />
           </SliderThumbItem>
         ))}

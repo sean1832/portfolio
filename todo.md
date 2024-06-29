@@ -1,6 +1,6 @@
 # Optimization
 
-- [ ] Implement image optimization
+- [x] Implement image optimization
 
 # Data
 
