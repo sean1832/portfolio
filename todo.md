@@ -6,8 +6,8 @@
 
 - [ ] Complete image descriptions
 - [ ] Refactor `project.json` data structure
-- [ ] Implement separate `blurhash.json` for image placeholders
-- [ ] Rename image files 
+- [x] Implement separate `blurhash.json` for image placeholders
+- [ ] Rename image files
 
 # UI
 
@@ -21,6 +21,6 @@
 
 # Fixes
 
-- [ ] fix `blur` image placeholder cover issue.
+- [x] fix `blur` image placeholder cover issue.
 
 # Features
