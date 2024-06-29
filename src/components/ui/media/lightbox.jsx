@@ -188,31 +188,16 @@ const Lightbox = ({ images, index, children }) => {
                     ) : (
                       <>
                         <ZoomBox className="md:block hidden">
-                          {image.blurDataURL ? (
-                            <Image
-                              src={image.src}
-                              alt={image.alt}
-                              width={image.width || 1920}
-                              height={image.height || 1080}
-                              className={clsx("max-w-full max-h-[80vh] object-contain", {
-                                "dark:invert": image.isInverted,
-                              })}
-                              placeholder="blur"
-                              blurDataURL={image.blurDataURL}
-                              sizes="100vw"
-                            />
-                          ) : (
-                            <Image
-                              src={image.src}
-                              alt={image.alt}
-                              width={image.width || 1920}
-                              height={image.height || 1080}
-                              className={clsx("max-w-full max-h-[80vh] object-contain", {
-                                "dark:invert": image.isInverted,
-                              })}
-                              sizes="100vw"
-                            />
-                          )}
+                          <Image
+                            src={image.src}
+                            alt={image.alt}
+                            width={image.width || 1920}
+                            height={image.height || 1080}
+                            className={clsx("max-w-full max-h-[80vh] object-contain", {
+                              "dark:invert": image.isInverted,
+                            })}
+                            sizes="100vw"
+                          />
                         </ZoomBox>
                         <div className="md:hidden block">
                           <BlurImage
@@ -225,6 +210,7 @@ const Lightbox = ({ images, index, children }) => {
                             })}
                             blurDataURL={image.blurDataURL}
                             isExternal={image.isExternal}
+                            sizes="100vw"
                           />
                         </div>
                       </>
