@@ -24,10 +24,10 @@ const ZoomBox = ({ children, className }) => {
       <Dialog onOpenChange={handleOpenToggle}>
         <DialogTrigger className="cursor-zoom-in">{children}</DialogTrigger>
         <DialogClose asChild>
-          <DialogContent className="max-w-screen h-dvh cursor-zoom-out p-0 m-0">
-            <div className="flex justify-center items-center">
+          <DialogContent className="max-w-screen h-dvh cursor-zoom-out p-0 m-0 overflow-auto">
+            <div className="flex justify-center items-center ">
               {React.cloneElement(children, {
-                className: cn(children.props.className, "max-h-screen object-contain"),
+                className: cn(children.props.className, "max-w-none max-h-none"),
               })}
             </div>
           </DialogContent>
