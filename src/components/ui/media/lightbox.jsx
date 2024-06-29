@@ -210,6 +210,7 @@ const Lightbox = ({ images, index, children }) => {
                             })}
                             blurDataURL={image.blurDataURL}
                             isExternal={image.isExternal}
+                            sizes="100vw"
                           />
                         </div>
                       </>
