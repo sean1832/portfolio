@@ -6,6 +6,8 @@ import { ModeToggle } from "@/components/ui/theme/mode-toggle";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Link from "next/link";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { cn } from "@/utils/cn";
+import CapitalizeFirstLetter from "@/lib/capitalizeFirstLetter";
 
 function MenuIcon(props) {
   return (
@@ -35,9 +37,12 @@ const NavbarLinks = ({ navbarData, className }) =>
     <Link
       key={`navbar-link-${i}`}
       href={`/#${item.title}`}
-      className={`${className} text-xl font-medium transition-colors dark:hover:text-primary dark:text-muted-foreground hover:text-gray-500 dark:text-gray-300 text-primary`}
+      className={cn(
+        `text-xl font-medium transition-colors dark:hover:text-primary dark:text-muted-foreground hover:text-gray-500 dark:text-gray-300 text-primary`,
+        className
+      )}
     >
-      {item.title}
+      {CapitalizeFirstLetter(item.title)}
     </Link>
   ));
 
@@ -67,7 +72,7 @@ const NavBar = () => {
           {/* Desktop navigation */}
           <nav className="items-center gap-4">
             <div className="hidden md:flex items-center gap-10">
-              <NavbarLinks navbarData={navbar} className="navbar-link" />
+              <NavbarLinks navbarData={navbar} className="" />
               <ModeToggle />
             </div>
 
@@ -79,9 +84,9 @@ const NavBar = () => {
                     <MenuIcon className="h-8 w-8" />
                   </button>
                 </SheetTrigger>
-                <SheetContent side="right">
-                  <div className="flex flex-col gap-8 justify-center items-center text-2xl">
-                    <NavbarLinks navbarData={navbar} className="navbar-link-mobile" />
+                <SheetContent side="right" className="flex flex-col justify-center">
+                  <div className="flex flex-col gap-8 items-center">
+                    <NavbarLinks navbarData={navbar} className="text-2xl" />
                     <ModeToggle />
                   </div>
                 </SheetContent>
