@@ -36,7 +36,7 @@ import {
 
 import Image from "next/image";
 import { YoutubeVideo } from "./youtube-video";
-import { GetYoutubeThumbnail } from "@/lib/getYoutube";
+import { GetYoutubeThumbnail } from "@/lib/youtubeUtil";
 import { ConstructYoutubeAltText } from "@/lib/constructAltText";
 import { cn } from "@/lib/utils";
 import CarouselWraper from "../carousel/carouselWraper";
