@@ -5,17 +5,18 @@ import BlurImage from "../ui/media/blur";
 import ConstructProjectHref from "@/lib/constructProjectHref";
 import { cn } from "@/utils/cn";
 
-const ProjectsGallerySection = async ({projects}) => {
+const ProjectsGallerySection = async ({ projects }) => {
   return (
     <section id="projects">
       <BentoGrid className={`auto-rows-[30rem] md:auto-rows-[50rem] lg:grid-cols-6`}>
         {projects.map((project, i) => {
+          const media = project.mediaContainer.media;
           let heroImage = null;
           try {
-            if (!project.media) {
+            if (!media) {
               throw new Error(`Project "${project.name}" does not have images property.`);
             }
-            heroImage = project.media.find((image) => image.isHero);
+            heroImage = media.find((image) => image.isHero);
             if (!heroImage) {
               throw new Error(`Project "${project.name}" does not have a hero image.`);
             }

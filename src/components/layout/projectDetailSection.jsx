@@ -69,7 +69,7 @@ const ProjectDetailsSection = ({ data, className }) => (
 );
 
 const ProjectInfo = ({ data }) => {
-  const heroImage = data.media.find((image) => image.isHero == true);
+  const heroImage = data.mediaContainer.media.find((image) => image.isHero == true);
   return (
     <section className="flex flex-col gap-10">
       {/* Hero image */}

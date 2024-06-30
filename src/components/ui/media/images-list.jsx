@@ -6,9 +6,10 @@ import { cn } from "@/utils/cn";
 
 const ImageLists = ({ data }) => {
   const showHero = data.video && data.video.src;
+  const mediaContainer = data.mediaContainer;
 
   // Instead of filtering, get the indices of the items to show
-  const indicesToShow = data.media.reduce((acc, media, index) => {
+  const indicesToShow = mediaContainer.media.reduce((acc, media, index) => {
     if (showHero) {
       if (!media.isCarousel) {
         acc.push(index);
@@ -27,15 +28,15 @@ const ImageLists = ({ data }) => {
         <div
           className={cn(
             "grid gap-5 grid-cols-2",
-            data.mediaContainer ? data.mediaContainer.className : ""
+            mediaContainer.className || ""
           )}
         >
           {indicesToShow.map((index) => {
-            const media = data.media[index];
+            const media = mediaContainer.media[index];
             return media.isVideo ? (
               <CustomVideo key={index} video={media} />
             ) : (
-              <Lightbox key={index} images={data.media} index={index}>
+              <Lightbox key={index} images={mediaContainer.media} index={index}>
                 <CustomImage key={index} image={media} />
               </Lightbox>
             );

@@ -6,6 +6,7 @@
 
 - [ ] Complete image descriptions
 - [ ] Refactor `project.json` data structure
+- [ ] Add description for each items in `projects-schema.json`
 - [x] Implement separate `blurhash.json` for image placeholders
 - [ ] Rename image files
 
@@ -18,6 +19,10 @@
 
 - [ ] Chinese
 - [ ] Japanese
+
+# Documentation
+
+- [ ] Update `README.md` with new features
 
 # Fixes
 
