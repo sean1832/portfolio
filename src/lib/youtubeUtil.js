@@ -27,4 +27,31 @@ const GetYoutubeThumbnail = (url, quality) => {
   return `https://img.youtube.com/vi/${id}/${imgName}.jpg`;
 };
 
-export { GetYoutubeId, GetYoutubeThumbnail };
+function SetYoutubeUrl(url, startTime = 0, isAutoPlay, isMutted, isLoop) {
+  isAutoPlay = isAutoPlay ? 1 : 0;
+  isMutted = isMutted ? 1 : 0;
+  isLoop = isLoop ? 1 : 0;
+  let playList = "";
+
+  const id = GetYoutubeId(url);
+  if (!id) {
+    console.error("Invalid Youtube URL");
+    return null;
+  }
+  const baseUrl = `https://www.youtube.com/embed/${id}`;
+
+  if (isAutoPlay && !isMutted) {
+    isMutted = 1;
+  }
+
+  if (isLoop) {
+    playList = id;
+  }
+
+  return (
+    `${baseUrl}?start=${startTime}&autoplay=${isAutoPlay}&mute=${isMutted}&loop=${isLoop}` +
+    (playList ? `&playlist=${playList}` : "")
+  );
+}
+
+export { GetYoutubeId, GetYoutubeThumbnail, SetYoutubeUrl };

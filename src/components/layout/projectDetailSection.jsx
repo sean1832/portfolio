@@ -6,6 +6,7 @@ import BlurImage from "../ui/media/blur";
 import ScrollToTopButton from "../ui/button/scrollToTopButton";
 import ExpandableText from "../ui/expandableText";
 import CustomCarousel from "../ui/media/customCarousel";
+import { ConvertMinutesToSeconds } from "@/lib/math";
 
 const ProjectDetailsSection = ({ data, className }) => (
   <div className={className}>
@@ -78,7 +79,14 @@ const ProjectInfo = ({ data }) => {
         <div className="flex relative max-w-[2560px] mx-auto md:h-[800px] h-[300px]">
           {/* If there is no video, show the image; otherwise, show the video */}
           {heroVideo ? (
-            <YoutubeVideo src={heroVideo.src} alt={heroVideo.alt} mute />
+            <YoutubeVideo
+              src={heroVideo.src}
+              alt={heroVideo.alt}
+              isAutoplay={true}
+              isMutted={true}
+              isLoop={true}
+              startTime={ConvertMinutesToSeconds(heroVideo.videoSettings?.startAt)}
+            />
           ) : (
             <a href={heroImage.src} target="_blank" rel="noopener noreferrer">
               <BlurImage
