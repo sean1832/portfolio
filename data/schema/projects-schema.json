@@ -162,9 +162,6 @@
                     }
                   }
                 },
-                "blurDataURL": {
-                  "type": "string"
-                },
                 "isHero": {
                   "type": "boolean",
                   "default": true
@@ -189,10 +186,54 @@
                   "type": "boolean",
                   "default": true
                 }
-              }
+              },
+              "required": ["src", "alt"],
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "isVideo": {
+                        "enum": [true]
+                      }
+                    },
+                    "required": ["isVideo"]
+                  },
+                  "then": {
+                    "properties": {
+                      "isInverted": {
+                        "const": false
+                      },
+                      "isAdaptive": {
+                        "const": false
+                      }
+                    },
+                    "not": {
+                      "required": ["sizes"]
+                    }
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "isExternal": {
+                        "enum": [true]
+                      }
+                    },
+                    "required": ["isExternal"]
+                  },
+                  "then": {
+                    "properties": {
+                      "src": {
+                        "format": "uri"
+                      }
+                    }
+                  }
+                }
+              ]
             }
           }
-        }
+        },
+        "required": ["media"]
       }
     },
     "required": [

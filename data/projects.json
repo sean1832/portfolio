@@ -253,7 +253,6 @@
             "text": "The aggregation process is driven by a series of atomic discrete units that self-assemble into larger structures. This process is informed by the principles of swarm intelligence, where individual agents interact with their environment and each other to achieve a collective goal. The aggregation algorithm is designed to optimize the distribution of units, ensuring structural stability and adaptability to changing environmental conditions."
           },
           "className": "md:col-span-3 col-span-6 md:h-auto",
-          "sizes": "(min-width: 865x) 25vw, 100vw",
           "isVideo": true
         },
         {
