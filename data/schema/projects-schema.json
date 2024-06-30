@@ -254,6 +254,33 @@
                   "type": "boolean",
                   "description": "Media is video?",
                   "default": true
+                },
+                "videoSettings": {
+                  "type": "object",
+                  "description": "Video settings",
+                  "additionalProperties": false,
+                  "properties": {
+                    "isAutoplay": {
+                      "type": "boolean",
+                      "description": "Autoplay video?",
+                      "default": true
+                    },
+                    "isMutted": {
+                      "type": "boolean",
+                      "description": "Mute video by default?",
+                      "default": true
+                    },
+                    "isLoop": {
+                      "type": "boolean",
+                      "description": "Loop video?",
+                      "default": true
+                    },
+                    "startAt": {
+                      "type": ["string", "number"],
+                      "description": "Start video at (in minutes or seconds)",
+                      "default": "0:00"
+                    }
+                  }
                 }
               },
               "required": ["src", "alt"],
@@ -285,6 +312,11 @@
                     },
                     "not": {
                       "required": ["sizes"]
+                    }
+                  },
+                  "else": {
+                    "not": {
+                      "required": ["videoSettings"]
                     }
                   }
                 },

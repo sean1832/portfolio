@@ -50,6 +50,11 @@
           "src": "https://www.youtube.com/embed/q15wEzLeKXw?si=N_EUmE4cvzq_bukx",
           "alt": "Shara Clarke | Video Presentation",
           "isVideo": true,
+          "videoSettings": {
+            "isAutoplay": true,
+            "isMutted": true,
+            "isLoop": true
+          },
           "isHero": true
         },
         {
@@ -76,7 +81,12 @@
           "src": "https://www.youtube.com/embed/9m0n3p4oGuM?si=jqiFEiP3uotYyXx2",
           "alt": "Shara Clarke | Boundary Expansion Diagram",
           "className": "md:col-span-1 col-span-2 md:h-auto",
-          "isVideo": true
+          "isVideo": true,
+          "videoSettings": {
+            "isAutoplay": true,
+            "isMutted": true,
+            "isLoop": true
+          }
         },
         {
           "src": "/projects/sharaClarke/diagram_3.webp",
@@ -215,7 +225,12 @@
           "src": "https://www.youtube.com/embed/6B2L0CH7QGg?si=YKckKJ2IYIaZzzGH",
           "alt": "Synthetic Dunescapes | Video Presentation",
           "isVideo": true,
-          "isHero": true
+          "isHero": true,
+          "videoSettings": {
+            "isAutoplay": true,
+            "isMutted": true,
+            "isLoop": true
+          }
         },
         {
           "src": "/projects/syntheticDunescapes/piezoelectric-wall.avif",
@@ -250,7 +265,12 @@
             "text": "The aggregation process is driven by a series of atomic discrete units that self-assemble into larger structures. This process is informed by the principles of swarm intelligence, where individual agents interact with their environment and each other to achieve a collective goal. The aggregation algorithm is designed to optimize the distribution of units, ensuring structural stability and adaptability to changing environmental conditions."
           },
           "className": "md:col-span-3 col-span-6 md:h-auto",
-          "isVideo": true
+          "isVideo": true,
+          "videoSettings": {
+            "isAutoplay": true,
+            "isMutted": true,
+            "isLoop": true
+          }
         },
         {
           "src": "/projects/syntheticDunescapes/2.webp",
@@ -449,7 +469,12 @@
           "src": "https://www.youtube.com/embed/ov6RFqihmLQ?si=dZVZYMSjo_UtNDIV",
           "alt": "Jakarta Rising | Video Presentation",
           "isVideo": true,
-          "isHero": true
+          "isHero": true,
+          "videoSettings": {
+            "isAutoplay": true,
+            "isMutted": true,
+            "isLoop": true
+          }
         },
         {
           "src": "/projects/jakartaRising/main.webp",
@@ -550,7 +575,13 @@
           "src": "https://www.youtube.com/embed/ffDNh79mnEE?si=RPGW12y582pP_6ck",
           "alt": "Terra//Form | Video Presentation",
           "isVideo": true,
-          "isHero": true
+          "isHero": true,
+          "videoSettings": {
+            "isAutoplay": true,
+            "isMutted": true,
+            "isLoop": true,
+            "startAt": "1:50"
+          }
         },
         {
           "src": "/projects/terraForm/main.webp",
@@ -671,7 +702,12 @@
         {
           "src": "https://www.youtube.com/embed/TwejWaHOx3Q?si=DhLvhsljq9CSON7E",
           "alt": "Mongrel Assembly | ML-Agents in Unity with Grasshopper for Discrete Aggregation and Finite Element Analysis",
-          "isVideo": true
+          "isVideo": true,
+          "videoSettings": {
+            "isAutoplay": true,
+            "isMutted": true,
+            "isLoop": true
+          }
         },
         {
           "src": "/projects/mongrelAssembly/4.webp",
