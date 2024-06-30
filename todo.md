@@ -6,7 +6,7 @@
 
 - [ ] Complete image descriptions
 - [x] Refactor `project.json` data structure
-- [ ] Add description for each items in `projects-schema.json`
+- [x] Add description for each items in `projects-schema.json`
 - [x] Implement separate `blurhash.json` for image placeholders
 - [ ] Rename image files
 
