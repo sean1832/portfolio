@@ -2,18 +2,22 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Project",
   "type": "array",
+  "uniqueItems": true,
   "items": {
     "type": "object",
     "additionalProperties": false,
     "properties": {
       "id": {
-        "type": "string"
+        "type": "string",
+        "description": "Unique identifier for the project (this will be part of the URL)"
       },
       "name": {
-        "type": "string"
+        "type": "string",
+        "description": "Name of the project"
       },
       "type": {
         "type": "string",
+        "description": "Type of the project",
         "enum": [
           "Design Studio",
           "International Competition",
@@ -23,45 +27,59 @@
         ]
       },
       "year": {
-        "type": "string"
+        "type": "string",
+        "description": "Year of the project"
       },
       "description": {
-        "type": "string"
+        "type": "string",
+        "description": "Short description of the project",
+        "maxLength": 120
       },
       "longDescription": {
-        "type": "string"
+        "type": "string",
+        "description": "Full description of the project"
       },
       "location": {
         "type": "object",
+        "description": "Location of the project",
+        "additionalProperties": false,
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Name of the location"
           },
           "url": {
-            "type": "string"
+            "type": "string",
+            "description": "Location URL. (e.g. Google Maps)",
+            "format": "uri"
           }
         },
         "required": ["name"]
       },
       "group": {
         "type": "array",
+        "description": "Group members of the project",
+        "uniqueItems": true,
         "items": {
           "type": "string"
         }
       },
       "awards": {
         "type": "array",
+        "description": "Awards, honourable mentions, shortlists of the project",
+        "uniqueItems": true,
         "items": {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
             "name": {
-              "type": "string"
+              "type": "string",
+              "description": "Name of the award"
             },
             "url": {
-              "type": "string"
-            },
-            "img": {
-              "type": "string"
+              "type": "string",
+              "format": "uri",
+              "description": "Award URL source if any (e.g. award website)"
             }
           },
           "required": ["name"]
@@ -69,17 +87,18 @@
       },
       "publications": {
         "type": "array",
+        "description": "Publications, articles, interviews of the project",
+        "uniqueItems": true,
         "items": {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
             "name": {
               "type": "string"
             },
             "url": {
-              "type": "string"
-            },
-            "img": {
-              "type": "string"
+              "type": "string",
+              "format": "uri"
             }
           },
           "required": ["name", "url"]
@@ -87,23 +106,32 @@
       },
       "gallery": {
         "type": "object",
+        "description": "Homepage project gallery properties",
+        "additionalProperties": false,
         "properties": {
           "className": {
-            "type": "string"
+            "type": "string",
+            "description": "Gallery container tailwindCSS className (e.g. lg:col-span-3)"
           }
         },
         "required": ["className"]
       },
       "tutors": {
         "type": "array",
+        "description": "Supervisors, tutors of the project if any",
+        "uniqueItems": true,
         "items": {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
             "name": {
-              "type": "string"
+              "type": "string",
+              "description": "Name of the tutor"
             },
             "url": {
-              "type": "string"
+              "type": "string",
+              "format": "uri",
+              "description": "Tutor URL if any (e.g. personal website, linkedin etc.)"
             }
           },
           "required": ["name", "url"]
@@ -111,88 +139,178 @@
       },
       "mediaContainer": {
         "type": "object",
+        "description": "Media container properties",
         "properties": {
           "className": {
-            "type": "string"
+            "type": "string",
+            "description": "Media container tailwindCSS className (e.g. grid-cols-3)"
           },
           "media": {
             "type": "array",
+            "description": "Media items of the project",
+            "uniqueItems": true,
             "items": {
               "type": "object",
               "additionalProperties": false,
               "properties": {
                 "src": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "Media source file path. `./public/` folder as root. (e.g. /images/project.jpg)"
                 },
                 "alt": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "Media alt text for accessibility"
                 },
                 "className": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "Media item tailwindCSS className (e.g. col-span-2)"
                 },
                 "credit": {
                   "type": "object",
+                  "description": "Media credit reference properties",
                   "additionalProperties": false,
                   "properties": {
                     "text": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "Credit text"
                     },
                     "url": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "uri",
+                      "description": "Credit source URL"
                     },
                     "isButton": {
                       "type": "boolean",
+                      "description": "Credit as button inside lightbox?",
                       "default": true
                     }
                   }
                 },
                 "sizes": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "Media sizes attribute for responsive images (e.g. '(min-width: 640px) 50vw, 100vw')"
                 },
                 "caption": {
                   "type": "object",
                   "additionalProperties": false,
                   "properties": {
                     "text": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "Detail image description text"
                     },
                     "isExpose": {
                       "type": "boolean",
+                      "description": "Expose caption outside of lightbox?",
                       "default": true
                     }
-                  }
-                },
-                "blurDataURL": {
-                  "type": "string"
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "isExpose": {
+                            "enum": [true]
+                          }
+                        },
+                        "required": ["isExpose"]
+                      },
+                      "then": {
+                        "properties": {
+                          "text": {
+                            "description": "Detail image description text (max 120 characters)",
+                            "maxLength": 120
+                          }
+                        }
+                      }
+                    }
+                  ]
                 },
                 "isHero": {
                   "type": "boolean",
+                  "description": "Image as hero image in project detail page? Gallery will show hero image. (one hero image per project must be set)",
                   "default": true
                 },
                 "isAdaptive": {
                   "type": "boolean",
+                  "description": "Media as adaptive image?",
                   "default": true
                 },
                 "isCarousel": {
                   "type": "boolean",
+                  "description": "Media inside carousel?",
                   "default": true
                 },
                 "isExternal": {
                   "type": "boolean",
+                  "description": "Media sourced from external URL?",
                   "default": true
                 },
                 "isInverted": {
                   "type": "boolean",
+                  "description": "Media as inverted image in dark mode?",
                   "default": true
                 },
                 "isVideo": {
                   "type": "boolean",
+                  "description": "Media is video?",
                   "default": true
                 }
-              }
+              },
+              "required": ["src", "alt"],
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "isVideo": {
+                        "enum": [true]
+                      }
+                    },
+                    "required": ["isVideo"]
+                  },
+                  "then": {
+                    "properties": {
+                      "src": {
+                        "description": "Video source URL (local video is not supported yet)",
+                        "format": "uri"
+                      },
+                      "isHero": {
+                        "description": "Video as hero video in project detail page? Gallery will still show hero image."
+                      },
+                      "isInverted": {
+                        "const": false
+                      },
+                      "isAdaptive": {
+                        "const": false
+                      }
+                    },
+                    "not": {
+                      "required": ["sizes"]
+                    }
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "isExternal": {
+                        "enum": [true]
+                      }
+                    },
+                    "required": ["isExternal"]
+                  },
+                  "then": {
+                    "properties": {
+                      "src": {
+                        "description": "External media source URL (e.g. https://www.example.com/image.jpg)",
+                        "format": "uri"
+                      }
+                    }
+                  }
+                }
+              ]
             }
           }
-        }
+        },
+        "required": ["media"]
       }
     },
     "required": [
