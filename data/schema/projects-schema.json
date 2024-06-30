@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Project",
   "type": "array",
+  "uniqueItems": true,
   "items": {
     "type": "object",
     "additionalProperties": false,
@@ -47,12 +48,14 @@
       },
       "group": {
         "type": "array",
+        "uniqueItems": true,
         "items": {
           "type": "string"
         }
       },
       "awards": {
         "type": "array",
+        "uniqueItems": true,
         "items": {
           "type": "object",
           "properties": {
@@ -69,6 +72,7 @@
       },
       "publications": {
         "type": "array",
+        "uniqueItems": true,
         "items": {
           "type": "object",
           "properties": {
@@ -94,6 +98,7 @@
       },
       "tutors": {
         "type": "array",
+        "uniqueItems": true,
         "items": {
           "type": "object",
           "properties": {
@@ -116,6 +121,7 @@
           },
           "media": {
             "type": "array",
+            "uniqueItems": true,
             "items": {
               "type": "object",
               "additionalProperties": false,
