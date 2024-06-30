@@ -4,6 +4,7 @@
   "type": "array",
   "items": {
     "type": "object",
+    "additionalProperties": false,
     "properties": {
       "id": {
         "type": "string"
@@ -141,12 +142,6 @@
                 "className": {
                   "type": "string"
                 },
-                "href": {
-                  "type": "string"
-                },
-                "caption": {
-                  "type": "string"
-                },
                 "credit": {
                   "type": "object",
                   "additionalProperties": false,
@@ -166,8 +161,18 @@
                 "sizes": {
                   "type": "string"
                 },
-                "longDescription": {
-                  "type": "string"
+                "caption": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    },
+                    "isExpose": {
+                      "type": "boolean",
+                      "default": true
+                    }
+                  }
                 },
                 "blurDataURL": {
                   "type": "string"

@@ -72,10 +72,8 @@ const Lightbox = ({ images, index, children }) => {
                     <DialogTitle className="text-xl font-bold text-center ">
                       {image.alt.toUpperCase()}
                     </DialogTitle>
-                    {image.longDescription && (
-                      <DialogDescription className="py-3">
-                        {image.longDescription}
-                      </DialogDescription>
+                    {image.caption?.text && (
+                      <DialogDescription className="py-3">{image.caption.text}</DialogDescription>
                     )}
                   </div>
                   <div>
@@ -134,9 +132,9 @@ const Lightbox = ({ images, index, children }) => {
                 <DrawerContent>
                   <DrawerHeader>
                     <DrawerTitle className="text-center">{image.alt.toUpperCase()}</DrawerTitle>
-                    {image.longDescription && (
+                    {image.caption?.text && (
                       <DrawerDescription className="py-3 text-left">
-                        {image.longDescription}
+                        {image.caption.text}
                       </DrawerDescription>
                     )}
                   </DrawerHeader>

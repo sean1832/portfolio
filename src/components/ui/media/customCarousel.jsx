@@ -76,7 +76,9 @@ const CustomCarousel = ({ data, className }) => {
                 : "hidden"
             } hidden pt-1`}
           >
-            {image.caption && <p className="text-sm text-gray-500 ">{image.caption}</p>}
+            {image.caption?.isExpose && (
+              <p className="text-sm text-gray-500 ">{image.caption.text}</p>
+            )}
             {image.credit && (
               <ExternalTextLink href={image.credit.url} className="text-sm text-gray-500 italic">
                 Image credit: {image.credit.text}
