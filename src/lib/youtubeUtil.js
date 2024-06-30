@@ -27,9 +27,11 @@ const GetYoutubeThumbnail = (url, quality) => {
   return `https://img.youtube.com/vi/${id}/${imgName}.jpg`;
 };
 
-function SetYoutubeUrl(url, startTime = 0, isAutoPlay, isMutted) {
+function SetYoutubeUrl(url, startTime = 0, isAutoPlay, isMutted, isLoop) {
   isAutoPlay = isAutoPlay ? 1 : 0;
   isMutted = isMutted ? 1 : 0;
+  isLoop = isLoop ? 1 : 0;
+  let playList = "";
 
   const id = GetYoutubeId(url);
   if (!id) {
@@ -42,7 +44,14 @@ function SetYoutubeUrl(url, startTime = 0, isAutoPlay, isMutted) {
     isMutted = 1;
   }
 
-  return `${baseUrl}?start=${startTime}&autoplay=${isAutoPlay}&mute=${isMutted}`;
+  if (isLoop) {
+    playList = id;
+  }
+
+  return (
+    `${baseUrl}?start=${startTime}&autoplay=${isAutoPlay}&mute=${isMutted}&loop=${isLoop}` +
+    (playList ? `&playlist=${playList}` : "")
+  );
 }
 
 export { GetYoutubeId, GetYoutubeThumbnail, SetYoutubeUrl };

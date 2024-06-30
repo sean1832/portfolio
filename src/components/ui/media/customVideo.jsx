@@ -8,9 +8,10 @@ const CustomVideo = ({ video }) => {
       <YoutubeVideo
         src={video.src}
         alt={video.alt || ConstructYoutubeAltText(video.src)}
-        isMuted={video.videoSettings?.isMuted || true}
-        isAutoPlay={video.videoSettings?.isAutoPlay || false}
-        startTime={video.videoSettings?.startTime || 0}
+        isMutted={video.videoSettings?.isMutted || true}
+        isAutoplay={video.videoSettings?.isAutoplay || false}
+        startTime={video.videoSettings?.startAt || 0}
+        isLoop={video.videoSettings?.isLoop || false}
       />
     </div>
   );
