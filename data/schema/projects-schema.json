@@ -26,7 +26,8 @@
         "type": "string"
       },
       "description": {
-        "type": "string"
+        "type": "string",
+        "maxLength": 120
       },
       "longDescription": {
         "type": "string"
@@ -38,7 +39,8 @@
             "type": "string"
           },
           "url": {
-            "type": "string"
+            "type": "string",
+            "format": "uri"
           }
         },
         "required": ["name"]
@@ -58,10 +60,8 @@
               "type": "string"
             },
             "url": {
-              "type": "string"
-            },
-            "img": {
-              "type": "string"
+              "type": "string",
+              "format": "uri"
             }
           },
           "required": ["name"]
@@ -76,10 +76,8 @@
               "type": "string"
             },
             "url": {
-              "type": "string"
-            },
-            "img": {
-              "type": "string"
+              "type": "string",
+              "format": "uri"
             }
           },
           "required": ["name", "url"]
@@ -103,7 +101,8 @@
               "type": "string"
             },
             "url": {
-              "type": "string"
+              "type": "string",
+              "format": "uri"
             }
           },
           "required": ["name", "url"]
