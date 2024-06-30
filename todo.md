@@ -11,7 +11,7 @@
 
 # UI
 
-- [ ] Simpler dark mode toggle
+- [x] Simpler dark mode toggle
 - [x] mobile navigation menu style fix
 
 # Internationalization
