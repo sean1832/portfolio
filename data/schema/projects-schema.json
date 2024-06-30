@@ -201,7 +201,27 @@
                       "description": "Expose caption outside of lightbox?",
                       "default": true
                     }
-                  }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "isExpose": {
+                            "enum": [true]
+                          }
+                        },
+                        "required": ["isExpose"]
+                      },
+                      "then": {
+                        "properties": {
+                          "text": {
+                            "description": "Detail image description text (max 120 characters)",
+                            "maxLength": 120
+                          }
+                        }
+                      }
+                    }
+                  ]
                 },
                 "isHero": {
                   "type": "boolean",
