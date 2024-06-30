@@ -12,7 +12,6 @@
 
 My architectural design portfolio website built with Next.js and Tailwind CSS, showcasing a range of projects and skills in a clean, minimalistic manor. It is fully responsive across all devices.
 
-
 <h3 align="center">
     🔹
     <a href="https://github.com/sean1832/portfolio/issues">Report Bug</a> &nbsp; &nbsp;
@@ -20,11 +19,10 @@ My architectural design portfolio website built with Next.js and Tailwind CSS, s
     <a href="https://github.com/sean1832/portfolio/issues">Request Feature</a>
 </h3>
 
-
 # 🌟 Features
 
 - **Responsive Design**: Works smoothly on mobile, tablet, and desktop.
-- **Customizable Content**: Easy to modify content to display your own projects and profile. (See [Managing Content](#managing-content). *This feature is still in development*)
+- **Customizable Content**: Easy to modify content to display your own projects and profile. (See [Managing Content](#managing-content). _This feature is still in development_)
 - **SEO Optimized**: Includes metadata setup for SEO.
 
 # 📋 Using This Repository
@@ -70,13 +68,13 @@ npm run start
 
 # 🛠 Managing Content
 
-Currently the content is stored in [`src/data`](./src/data/) folder. You can modify the content in the following files:
+Currently the content is stored in [`./data`](./data/) folder. You can modify the content in the following files:
 
-| filename                                    | description                   |
-| ------------------------------------------- | ----------------------------- |
-| [`projects.json`](./src/data/projects.json) | Featured projects information |
-| [`profile.json`](./src/data/profile.json)   | Personal profile information  |
-| [`navbar.json`](./src/data/navbar.json)     | Navbar links                  |
+| filename                                | description                   |
+| --------------------------------------- | ----------------------------- |
+| [`projects.json`](./data/projects.json) | Featured projects information |
+| [`profile.json`](./data/profile.json)   | Personal profile information  |
+| [`manifest.json`](./data/manifest.json) | Site manifest information     |
 
 ## Site Metadata
 
@@ -129,132 +127,124 @@ export const metadata = {
 
 ## Managing Projects
 
-The [`projects.json`](./src/data/projects.json) file located in the [`src/data`](./src/data/) directory plays a key role in managing the projects showcased on your portfolio website. Here's an in-depth guide on how to effectively update and manage this file.
+The [`projects.json`](./data/projects.json) file located in the [`./data`](./data/) directory plays a key role in managing the projects showcased on your portfolio website. Here's an in-depth guide on how to effectively update and manage this file.
 
-### Structure of [`projects.json`](./src/data/projects.json)
+### Structure of [`projects.json`](./data/projects.json)
 
 The JSON file is structured as an array of objects, each representing a project. Below is a detailed description of each field within a project object:
 
-
-```json
-{
-  "name": "The name of the project",
-  "type": "The type of project (e.g., Design Studio, Research) - must be one of predefined enum values",
-  "year": "The year the project was completed or published",
-  "description": "A short description of the project",
-  "longDescription": "A more detailed description of the project",
-  "href": "A URL link to more details about the project or an external site",
-  "video": {
-    "src": "URL to a video showcasing the project",
-    "alt": "Alternative text for the video"
-  },
-  "location": {
-    "name": "Name of the location relevant to the project",
-    "url": "Optional URL providing more details about the location"
-  },
-  "group": ["Array of strings used to tag or categorize the project"],
-  "awards": [
-    {
-      "name": "Name of the award",
-      "url": "URL to the award description",
-      "img": "URL to an image of the award"
-    }
-  ],
-  "publications": [
-    {
-      "name": "Name of the publication",
-      "url": "URL to the publication",
-      "img": "URL to an image of the publication cover"
-    }
-  ],
-  "bentoAttributes": {
-    "className": "CSS class for additional styling attributes"
-  },
-  "tutors": [
-    {
-      "name": "Name of a tutor or mentor involved in the project",
-      "url": "URL to tutor's professional profile"
-    }
-  ],
-  "images": [
-    {
-      "src": "URL to an image associated with the project",
-      "alt": "Alternative text for the image",
-      "className": "CSS class for styling the image",
-      "href": "Link to the source of the image",
-      "caption": "Caption for the image",
-      "credit": {
-        "text": "Text crediting the source of the image",
-        "url": "URL to the source of the image"
-      },
-      "isHero": "Boolean indicating if this is the main image for the project",
-      "isAdaptive": "Boolean indicating if the image is adaptive",
-      "isCarousel": "Boolean indicating if the image should be included in a carousel",
-      "isExternal": "Boolean indicating if the image is from an external source",
-      "isVideo": "Boolean indicating if the image is actually a video thumbnail"
-    }
+```yaml
+- projects (array of objects, required)
+  [
+    - id (string, required)
+    - name (string, required)
+    - type (string, required)
+      - Enum: ["Design Studio", "International Competition", "Design Studio / Research", "Research", "Research Assistanship"]
+    - year (string, required)
+    - description (string, required)
+    - longDescription (string, required)
+    - location (object, required)
+      - name (string, required)
+      - url (string, optional)
+    - group (array of strings, optional)
+    - awards (array of objects, optional)
+        [
+          - name (string, required)
+          - url (string, optional)
+          - img (string, optional)
+        ]
+    - publications (array of objects, optional)
+        [
+          - name (string, required)
+          - url (string, required)
+          - img (string, optional)
+        ]
+    - gallery (object, required)
+      - className (string, required)
+    - tutors (array of objects, optional)
+        [
+          - name (string, required)
+          - url (string, required)
+        ]
+    - mediaContainer (object, required)
+      - className (string, optional)
+      - media (array of objects, optional)
+          [
+            - src (string, optional)
+            - alt (string, optional)
+            - className (string, optional)
+            - credit (object, optional)
+              - text (string, optional)
+              - url (string, optional)
+              - isButton (boolean, optional)
+            - sizes (string, optional)
+            - caption (object, optional)
+              - text (string, optional)
+              - isExpose (boolean, optional)
+            - blurDataURL (string, optional)
+            - isHero (boolean, optional)
+            - isAdaptive (boolean, optional)
+            - isCarousel (boolean, optional)
+            - isExternal (boolean, optional)
+            - isInverted (boolean, optional)
+            - isVideo (boolean, optional)
+          ]
   ]
-}
 ```
+
+### Notes
+
+- The schema uses draft-07 of JSON Schema.
+- Additional properties are not allowed in the project objects.
+- The `location`, `gallery`, and `mediaContainer` objects are required for each project.
 
 ### Adding a New Project
 
-To add a new project, simply append a new object to the array in [`projects.json`](./src/data/projects.json) using the schema provided above. Ensure all required fields are included to maintain site functionality.
+To add a new project, simply append a new object to the array in [`projects.json`](./data/projects.json) using the schema provided above. Ensure all required fields are included to maintain site functionality.
 
 ## Managing Profile Information
 
-Profile information is managed through the [`profile.json`](./src/data/profile.json) file located in the [`src/data`](./src/data/) directory. This file is structured as a single JSON object representing your personal or professional profile.
+Profile information is managed through the [`profile.json`](./data/profile.json) file located in the [`./data`](./data/) directory. This file is structured as a single JSON object representing your personal or professional profile.
 
-### Structure of [`profile.json`](./src/data/profile.json)
+### Structure of [`profile.json`](./data/profile.json)
 
 Here’s what each field should contain:
 
-```json
-{
-  "name": "Your full name",
-  "about": "A brief introduction or biography",
-  "image": {
-    "src": "Path to your profile picture",
-    "alt": "Alternative text for the profile picture"
-  },
-  "keywords": [
-    "Relevant keywords to your profession or skills (This will be displayed as rotating text on the homepage)"
-  ],
-  "slogan": "A catchy or meaningful slogan (This will be displayed as a hero text on the homepage)",
-  "social": {
-    "instagram": "URL to your Instagram profile",
-    "github": "URL to your GitHub profile",
-    "youtube": "URL to your YouTube channel"
-  },
-  "contact": {
-    "email": "Your email address",
-    "phone": "Your phone number"
-  }
-}
+## 🏗️ Structure
+```yaml
+- Profile object
+  - name (string, required)
+    - Description: A brief description of yourself.
+  - about (string, required)
+    - Description: A brief description of yourself.
+  - image (object, optional)
+    - src (string, required)
+    - alt (string, optional)
+  - keywords (array of strings, required)
+  - slogan (string, required)
+  - social (object, required)
+    - instagram (string, optional)
+      - Format: URI
+    - github (string, optional)
+      - Format: URI
+    - youtube (string, optional)
+      - Format: URI
+  - contact (object, required)
+    - email (string, optional)
+      - Format: email
+    - phone (string, optional)
 ```
-
-## Navbar
-
-If for reasons you want to change the navbar links, you can do so by modifying the [`navbar.json`](./src/data/navbar.json) file located in the [`src/data`](./src/data/) directory. The file is structured as an array of objects, each representing a link in the navbar.
-
-```json
-[
-  {
-    "title": "Section 1",
-    "url": "/#section-1",
-    "id": "section-1"
-  },
-  {
-    "title": "Section 2",
-    "url": "/#section-2",
-    "id": "section-2"
-  }
-]
-```
+### Notes
+- The schema defines a single object with multiple properties.
+- Required fields: `name`, `about`, `social`, `contact`, `keywords`, and `slogan`.
+- The image object is optional, but if present, it must have a 'src' property.
+- Social media links and contact information are structured as nested objects.
+- All social media links should be valid URIs.
+- The email field, if provided, should be in a valid email format.
 
 ## Images
 
-Images are stored in the [`public`](./public/) folder. You can replace the images with your own images. Make sure to update the image paths in the [`projects.json`](./src/data/projects.json) file.
+Images are stored in the [`public`](./public/) folder. You can replace the images with your own images. Make sure to update the image paths in the [`projects.json`](./data/projects.json) file.
 
 # 🤝 Contributing
 
