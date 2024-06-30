@@ -2,7 +2,10 @@
 
 import * as React from "react";
 import { useTheme } from "next-themes";
-import { Switch } from "../switch";
+// import { Switch } from "../switch";
+import { HiMoon } from "react-icons/hi";
+import { HiOutlineSun } from "react-icons/hi2";
+import { Button } from "../button";
 
 export function ModeToggle() {
   const { theme, resolvedTheme, setTheme } = useTheme();
@@ -20,14 +23,21 @@ export function ModeToggle() {
   if (!mounted) return null;
 
   return (
-    <div className="flex items-center space-x-2">
-      <Switch
-        checked={resolvedTheme === "dark"}
-        onCheckedChange={handleToggle}
-        className="bg-primary"
-      />
-    </div>
+    <Button variant="ghost" size="icon" onClick={handleToggle}>
+      <HiOutlineSun className="h-6 w-6 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+      <HiMoon className="absolute h-6 w-6 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+    </Button>
   );
+
+  // return (
+  //   <div className="flex items-center space-x-2">
+  //     <Switch
+  //       checked={resolvedTheme === "dark"}
+  //       onCheckedChange={handleToggle}
+  //       className="bg-primary"
+  //     />
+  //   </div>
+  // );
 
   // return (
   //   <DropdownMenu>
