@@ -4,6 +4,7 @@
   "type": "array",
   "items": {
     "type": "object",
+    "additionalProperties": false,
     "properties": {
       "id": {
         "type": "string"
@@ -20,18 +21,6 @@
           "Research",
           "Research Assistanship"
         ]
-      },
-      "video": {
-        "type": "object",
-        "properties": {
-          "src": {
-            "type": "string"
-          },
-          "alt": {
-            "type": "string"
-          }
-        },
-        "required": ["src", "alt"]
       },
       "year": {
         "type": "string"
@@ -125,78 +114,82 @@
         "properties": {
           "className": {
             "type": "string"
-          }
-        }
-      },
-      "media": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "src": {
-              "type": "string"
-            },
-            "alt": {
-              "type": "string"
-            },
-            "className": {
-              "type": "string"
-            },
-            "href": {
-              "type": "string"
-            },
-            "caption": {
-              "type": "string"
-            },
-            "credit": {
+          },
+          "media": {
+            "type": "array",
+            "items": {
               "type": "object",
               "additionalProperties": false,
               "properties": {
-                "text": {
+                "src": {
                   "type": "string"
                 },
-                "url": {
+                "alt": {
                   "type": "string"
                 },
-                "isButton": {
+                "className": {
+                  "type": "string"
+                },
+                "credit": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "isButton": {
+                      "type": "boolean",
+                      "default": true
+                    }
+                  }
+                },
+                "sizes": {
+                  "type": "string"
+                },
+                "caption": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    },
+                    "isExpose": {
+                      "type": "boolean",
+                      "default": true
+                    }
+                  }
+                },
+                "blurDataURL": {
+                  "type": "string"
+                },
+                "isHero": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "isAdaptive": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "isCarousel": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "isExternal": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "isInverted": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "isVideo": {
                   "type": "boolean",
                   "default": true
                 }
               }
-            },
-            "sizes": {
-              "type": "string"
-            },
-            "longDescription": {
-              "type": "string"
-            },
-            "blurDataURL": {
-              "type": "string"
-            },
-            "isHero": {
-              "type": "boolean",
-              "default": true
-            },
-            "isAdaptive": {
-              "type": "boolean",
-              "default": true
-            },
-            "isCarousel": {
-              "type": "boolean",
-              "default": true
-            },
-            "isExternal": {
-              "type": "boolean",
-              "default": true
-            },
-            "isInverted": {
-              "type": "boolean",
-              "default": true
-            },
-            "isVideo": {
-              "type": "boolean",
-              "default": true
             }
           }
         }
@@ -211,7 +204,7 @@
       "longDescription",
       "location",
       "gallery",
-      "media"
+      "mediaContainer"
     ]
   }
 }

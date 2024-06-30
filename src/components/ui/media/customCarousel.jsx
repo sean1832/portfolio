@@ -18,14 +18,14 @@ const CustomCarousel = ({ data, className }) => {
   const { carouselImages, indexMap } = useMemo(() => {
     const images = [];
     const indexMap = new Map();
-    data.media.forEach((image, originalIndex) => {
+    data.mediaContainer.media.forEach((image, originalIndex) => {
       if (image.isCarousel) {
         indexMap.set(images.length, originalIndex);
         images.push(image);
       }
     });
     return { carouselImages: images, indexMap };
-  }, [data.media]);
+  }, [data.mediaContainer.media]);
 
   if (carouselImages.length === 0) return null;
 
@@ -54,7 +54,7 @@ const CustomCarousel = ({ data, className }) => {
                   : "relative w-full sm:h-[600px] h-[300px]"
               }`}
             >
-              <Lightbox images={data.media} index={indexMap.get(index)}>
+              <Lightbox images={data.mediaContainer.media} index={indexMap.get(index)}>
                 <Image
                   src={image.src}
                   alt={`Carousel Main Image ${index + 1}`}
@@ -76,7 +76,9 @@ const CustomCarousel = ({ data, className }) => {
                 : "hidden"
             } hidden pt-1`}
           >
-            {image.caption && <p className="text-sm text-gray-500 ">{image.caption}</p>}
+            {image.caption?.isExpose && (
+              <p className="text-sm text-gray-500 ">{image.caption.text}</p>
+            )}
             {image.credit && (
               <ExternalTextLink href={image.credit.url} className="text-sm text-gray-500 italic">
                 Image credit: {image.credit.text}

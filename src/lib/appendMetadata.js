@@ -2,9 +2,9 @@ function AppendToMedia(projects, ...dataSets) {
   // Iterate through each project
   projects.forEach((project) => {
     // Ensure the project has a media array
-    if (Array.isArray(project.media)) {
+    if (Array.isArray(project.mediaContainer.media)) {
       // Iterate through each media item in the project
-      project.media.forEach((media) => {
+      project.mediaContainer.media.forEach((media) => {
         dataSets.forEach((data) => {
           // Check if there is additional data for this media's src
           if (data[media.src]) {
