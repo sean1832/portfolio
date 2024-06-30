@@ -47,12 +47,14 @@
         "url": "https://issuu.com/rmitarchitecture/docs/phillipsmantzis_zhang_zeke_sem1_2021"
       }
     ],
-    "video": {
-      "src": "https://www.youtube.com/embed/q15wEzLeKXw?si=N_EUmE4cvzq_bukx",
-      "alt": "Shara Clarke | Video Presentation"
-    },
     "mediaContainer": {
       "media": [
+        {
+          "src": "https://www.youtube.com/embed/q15wEzLeKXw?si=N_EUmE4cvzq_bukx",
+          "alt": "Shara Clarke | Video Presentation",
+          "isVideo": true,
+          "isHero": true
+        },
         {
           "src": "/projects/sharaClarke/main.webp",
           "alt": "Shara Clarke Aboriginal Cultural & Education Centre",
@@ -209,13 +211,15 @@
         "url": "https://www.instagram.com/p/C8vhpFsyVCO/?img_index=3"
       }
     ],
-    "video": {
-      "src": "https://www.youtube.com/embed/6B2L0CH7QGg?si=YKckKJ2IYIaZzzGH",
-      "alt": "Synthetic Dunescapes | Video Presentation"
-    },
     "mediaContainer": {
       "className": "grid-cols-6",
       "media": [
+        {
+          "src": "https://www.youtube.com/embed/6B2L0CH7QGg?si=YKckKJ2IYIaZzzGH",
+          "alt": "Synthetic Dunescapes | Video Presentation",
+          "isVideo": true,
+          "isHero": true
+        },
         {
           "src": "/projects/syntheticDunescapes/piezoelectric-wall.avif",
           "alt": "piezoelectric energy generations",
@@ -443,12 +447,14 @@
         "url": "https://www.instagram.com/joshualye_/?hl=en"
       }
     ],
-    "video": {
-      "src": "https://www.youtube.com/embed/ov6RFqihmLQ?si=dZVZYMSjo_UtNDIV",
-      "alt": "Jakarta Rising | Video Presentation"
-    },
     "mediaContainer": {
       "media": [
+        {
+          "src": "https://www.youtube.com/embed/ov6RFqihmLQ?si=dZVZYMSjo_UtNDIV",
+          "alt": "Jakarta Rising | Video Presentation",
+          "isVideo": true,
+          "isHero": true
+        },
         {
           "src": "/projects/jakartaRising/main.webp",
           "alt": "Jakarta Rising",
@@ -542,12 +548,14 @@
         "url": "https://www.instagram.com/p/CWKc1kKNila/?img_index=4"
       }
     ],
-    "video": {
-      "src": "https://www.youtube.com/embed/ffDNh79mnEE?si=RPGW12y582pP_6ck",
-      "alt": "Terra//Form | Video Presentation"
-    },
     "mediaContainer": {
       "media": [
+        {
+          "src": "https://www.youtube.com/embed/ffDNh79mnEE?si=RPGW12y582pP_6ck",
+          "alt": "Terra//Form | Video Presentation",
+          "isVideo": true,
+          "isHero": true
+        },
         {
           "src": "/projects/terraForm/main.webp",
           "alt": "Terra//Form",

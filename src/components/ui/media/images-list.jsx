@@ -5,8 +5,9 @@ import { Lightbox } from "./lightbox";
 import { cn } from "@/utils/cn";
 
 const ImageLists = ({ data }) => {
-  const showHero = data.video && data.video.src;
   const mediaContainer = data.mediaContainer;
+  // const showHero = data.video && data.video.src;
+  const showHero = mediaContainer.media.some((media) => media.isHero && media.isVideo);
 
   // Instead of filtering, get the indices of the items to show
   const indicesToShow = mediaContainer.media.reduce((acc, media, index) => {
@@ -25,14 +26,11 @@ const ImageLists = ({ data }) => {
   return (
     <>
       {indicesToShow.length > 0 && (
-        <div
-          className={cn(
-            "grid gap-5 grid-cols-2",
-            mediaContainer.className || ""
-          )}
-        >
+        <div className={cn("grid gap-5 grid-cols-2", mediaContainer.className || "")}>
           {indicesToShow.map((index) => {
             const media = mediaContainer.media[index];
+            const skip = media.isHero && media.isVideo;
+            if (skip) return null;
             return media.isVideo ? (
               <CustomVideo key={index} video={media} />
             ) : (

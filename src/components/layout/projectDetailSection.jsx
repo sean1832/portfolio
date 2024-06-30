@@ -69,15 +69,16 @@ const ProjectDetailsSection = ({ data, className }) => (
 );
 
 const ProjectInfo = ({ data }) => {
-  const heroImage = data.mediaContainer.media.find((image) => image.isHero == true);
+  const heroVideo = data.mediaContainer.media.find((media) => media.isHero && media.isVideo);
+  const heroImage = data.mediaContainer.media.find((media) => media.isHero && !media.isVideo);
   return (
     <section className="flex flex-col gap-10">
       {/* Hero image */}
       <div className="pt-32">
         <div className="flex relative max-w-[2560px] mx-auto md:h-[800px] h-[300px]">
           {/* If there is no video, show the image; otherwise, show the video */}
-          {data.video ? (
-            <YoutubeVideo src={data.video.src} alt={data.video.alt} mute />
+          {heroVideo ? (
+            <YoutubeVideo src={heroVideo.src} alt={heroVideo.alt} mute />
           ) : (
             <a href={heroImage.src} target="_blank" rel="noopener noreferrer">
               <BlurImage

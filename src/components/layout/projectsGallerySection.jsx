@@ -16,7 +16,7 @@ const ProjectsGallerySection = async ({ projects }) => {
             if (!media) {
               throw new Error(`Project "${project.name}" does not have images property.`);
             }
-            heroImage = media.find((image) => image.isHero);
+            heroImage = media.find((image) => image.isHero && !image.isVideo);
             if (!heroImage) {
               throw new Error(`Project "${project.name}" does not have a hero image.`);
             }

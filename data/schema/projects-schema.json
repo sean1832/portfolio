@@ -22,18 +22,6 @@
           "Research Assistanship"
         ]
       },
-      "video": {
-        "type": "object",
-        "properties": {
-          "src": {
-            "type": "string"
-          },
-          "alt": {
-            "type": "string"
-          }
-        },
-        "required": ["src", "alt"]
-      },
       "year": {
         "type": "string"
       },
