@@ -73,11 +73,13 @@
           "additionalProperties": false,
           "properties": {
             "name": {
-              "type": "string"
+              "type": "string",
+              "description": "Name of the award"
             },
             "url": {
               "type": "string",
-              "format": "uri"
+              "format": "uri",
+              "description": "Award URL source if any (e.g. award website)"
             }
           },
           "required": ["name"]
@@ -153,7 +155,7 @@
               "properties": {
                 "src": {
                   "type": "string",
-                  "description": "Media source file path or URL. consider `./public/` folder as root for local files."
+                  "description": "Media source file path. `./public/` folder as root. (e.g. /images/project.jpg)"
                 },
                 "alt": {
                   "type": "string",
@@ -225,7 +227,7 @@
                 },
                 "isHero": {
                   "type": "boolean",
-                  "description": "Media as hero image or video?",
+                  "description": "Image as hero image in project detail page? Gallery will show hero image. (one hero image per project must be set)",
                   "default": true
                 },
                 "isAdaptive": {
@@ -267,6 +269,13 @@
                   },
                   "then": {
                     "properties": {
+                      "src": {
+                        "description": "Video source URL (local video is not supported yet)",
+                        "format": "uri"
+                      },
+                      "isHero": {
+                        "description": "Video as hero video in project detail page? Gallery will still show hero image."
+                      },
                       "isInverted": {
                         "const": false
                       },
@@ -291,6 +300,7 @@
                   "then": {
                     "properties": {
                       "src": {
+                        "description": "External media source URL (e.g. https://www.example.com/image.jpg)",
                         "format": "uri"
                       }
                     }
