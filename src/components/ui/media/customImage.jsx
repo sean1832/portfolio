@@ -7,11 +7,11 @@ const CustomImage = ({ image }) => {
   let inverted = image.isInverted ? "dark:invert" : "";
   if (image.isAdaptive) {
     return (
-      <div className={cn("relative w-full col-span-2", image.className, inverted)}>
+      <div className={cn("relative w-full col-span-2", image.className)}>
         <BlurImage
           src={image.src}
           alt={image.alt || ConstructImageAltText(image.src)}
-          style={{ objectFit: "cover", width: "100%", height: "auto" }}
+          className={cn("object-cover w-full h-auto", image.className, inverted)}
           width={image.width || 1920}
           height={image.height || 1080}
           isExternal={image.isExternal}
