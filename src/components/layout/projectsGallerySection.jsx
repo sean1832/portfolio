@@ -61,7 +61,7 @@ const ImageHeader = ({ src, alt, href, blurDataURL }) => (
       alt={alt}
       fill
       style={{ objectFit: "cover", objectPosition: "bottom" }}
-      className="transition duration-500"
+      className="transition duration-500 rounded-md md:rounded-none"
       blurDataURL={blurDataURL}
     />
   </Link>

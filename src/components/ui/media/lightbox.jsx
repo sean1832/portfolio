@@ -191,7 +191,7 @@ const Lightbox = ({ images, index, children }) => {
                             alt={image.alt}
                             width={image.width || 1920}
                             height={image.height || 1080}
-                            className={clsx("max-w-full max-h-[80vh] object-contain", {
+                            className={clsx("max-w-full max-h-[80vh] object-contain rounded-md", {
                               "dark:invert": image.isInverted,
                             })}
                             sizes="100vw"
@@ -203,7 +203,7 @@ const Lightbox = ({ images, index, children }) => {
                             alt={image.alt}
                             width={image.width || 1920}
                             height={image.height || 1080}
-                            className={clsx("max-w-full max-h-[80vh] object-contain", {
+                            className={clsx("max-w-full max-h-[80vh] object-contain rounded-md", {
                               "dark:invert": image.isInverted,
                             })}
                             blurDataURL={image.blurDataURL}

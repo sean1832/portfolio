@@ -7,11 +7,15 @@ const CustomImage = ({ image }) => {
   let inverted = image.isInverted ? "dark:invert" : "";
   if (image.isAdaptive) {
     return (
-      <div className={cn("relative w-full col-span-2", image.className)}>
+      <div className={cn("relative w-full col-span-2 ", image.className)}>
         <BlurImage
           src={image.src}
           alt={image.alt || ConstructImageAltText(image.src)}
-          className={cn("object-cover w-full h-auto", image.className, inverted)}
+          className={cn(
+            "object-cover w-full h-auto md:rounded-none rounded-md",
+            image.className,
+            inverted
+          )}
           width={image.width || 1920}
           height={image.height || 1080}
           isExternal={image.isExternal}
@@ -26,7 +30,11 @@ const CustomImage = ({ image }) => {
         <BlurImage
           src={image.src}
           alt={image.alt || ConstructImageAltText(image.src)}
-          className={cn("object-cover object-center w-full h-full", image.className, inverted)}
+          className={cn(
+            "object-cover object-center w-full h-full md:rounded-none rounded-md",
+            image.className,
+            inverted
+          )}
           fill
           isExternal={image.isExternal}
           blurDataURL={image.blurDataURL}
