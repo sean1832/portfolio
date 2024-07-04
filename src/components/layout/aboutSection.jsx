@@ -23,6 +23,7 @@ const AboutSection = () => {
           <Image
             src={profile.image.src}
             alt={profile.image.alt}
+            className="rounded-md md:rounded-none"
             style={{ width: "auto", objectFit: "cover", objectPosition: "bottom" }}
             width={400}
             height={350}
