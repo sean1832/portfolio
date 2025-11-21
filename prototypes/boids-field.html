@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Boids "Agentic" Flocking</title>
+		<style>
+			/* * 1. Remove all default margin/padding.
+         * 2. Set the background to a clean white.
+         * 3. Make the canvas fill the entire viewport.
+         * 4. 'overflow: hidden' prevents any scrollbars.
+         */
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+				height: 100%;
+				overflow: hidden;
+				background-color: #ffffff; /* Clean white background */
+				font-family: 'Inter', sans-serif;
+			}
+
+			#flow-canvas {
+				display: block;
+				width: 100vw;
+				height: 100vh;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- The single canvas element for our visualization -->
+		<canvas id="flow-canvas"></canvas>
+
+		<script>
+			// Wait for the DOM to be fully loaded before running the script
+			window.addEventListener('DOMContentLoaded', () => {
+				// --- 1. Configuration & State ---
+
+				const canvas = document.getElementById('flow-canvas');
+				const ctx = canvas.getContext('2d');
+
+				// --- Boid Configuration ---
+				const BOID_COUNT = 600; // Number of boids
+				const BOID_COLOR = '#000000'; // Boid color
+				const MAX_TRAIL_LENGTH = 80; // <-- This is your new "tail length param"
+				const MAX_SPEED = 2.5; // Increased speed to "draw" lines
+				const MAX_FORCE = 0.05; // How fast boids can steer
+
+				// --- Perception Radii ---
+				const SEPARATION_RADIUS = 25; // Radius to avoid flockmates
+				const ALIGNMENT_RADIUS = 50; // Radius to align with flockmates
+				const COHESION_RADIUS = 50; // Radius to cohere with flockmates
+
+				// --- Mouse Interaction ---
+				const MOUSE_VORTEX_RADIUS = 350; // Outer "vortex" ring
+				const MOUSE_REPEL_RADIUS = 50; // Inner "push" ring
+				const MOUSE_VORTEX_FORCE = 0.3; // How strong the vortex steering is
+				const MOUSE_REPEL_FORCE = 0.6; // How strong the repulsion steering is (stronger)
+
+				// --- State ---
+				let flock = [];
+				let mouse = {
+					x: -1000,
+					y: -1000
+				};
+
+				// --- 2. Vector2D Class ---
+				/**
+				 * A simple 2D Vector class for cleaner physics math.
+				 */
+				class Vector2D {
+					constructor(x = 0, y = 0) {
+						this.x = x;
+						this.y = y;
+					}
+					add(v) {
+						this.x += v.x;
+						this.y += v.y;
+						return this;
+					}
+					sub(v) {
+						this.x -= v.x;
+						this.y -= v.y;
+						return this;
+					}
+					mult(n) {
+						this.x *= n;
+						this.y *= n;
+						return this;
+					}
+					div(n) {
+						this.x /= n;
+						this.y /= n;
+						return this;
+					}
+					mag() {
+						return Math.sqrt(this.x * this.x + this.y * this.y);
+					}
+					normalize() {
+						let m = this.mag();
+						if (m > 0) {
+							this.div(m);
+						}
+						return this;
+					}
+					limit(max) {
+						if (this.mag() > max) {
+							this.normalize().mult(max);
+						}
+						return this;
+					}
+					static dist(v1, v2) {
+						let dx = v1.x - v2.x;
+						let dy = v1.y - v2.y;
+						return Math.sqrt(dx * dx + dy * dy);
+					}
+					heading() {
+						return Math.atan2(this.y, this.x);
+					}
+				}
+
+				// --- 3. Boid Class ---
+				/**
+				 * Represents a single "agent" in the flock.
+				 */
+				class Boid {
+					constructor(x, y) {
+						this.position = new Vector2D(x, y);
+						this.velocity = new Vector2D(Math.random() * 2 - 1, Math.random() * 2 - 1);
+						this.velocity.limit(MAX_SPEED);
+						this.acceleration = new Vector2D();
+						this.trail = []; // Holds the history of positions
+					}
+
+					/**
+					 * Applies a force to the boid's acceleration.
+					 */
+					applyForce(force) {
+						this.acceleration.add(force);
+					}
+
+					/**
+					 * Calculates all flocking forces (separation, alignment, cohesion).
+					 */
+					flock(boids) {
+						let sep = this.separation(boids);
+						let ali = this.alignment(boids);
+						let coh = this.cohesion(boids);
+
+						// Weight these forces
+						sep.mult(1.5); // Separation is most important
+						ali.mult(1.0);
+						coh.mult(1.0);
+
+						// Apply the forces
+						this.applyForce(sep);
+						this.applyForce(ali);
+						this.applyForce(coh);
+					}
+
+					/**
+					 * Calculates steering force to avoid flockmates.
+					 */
+					separation(boids) {
+						let steer = new Vector2D();
+						let count = 0;
+						for (const other of boids) {
+							let d = Vector2D.dist(this.position, other.position);
+							if (d > 0 && d < SEPARATION_RADIUS) {
+								let diff = new Vector2D(this.position.x, this.position.y).sub(other.position);
+								diff.normalize().div(d); // Weight by distance (closer = stronger)
+								steer.add(diff);
+								count++;
+							}
+						}
+						if (count > 0) {
+							steer.div(count);
+						}
+						if (steer.mag() > 0) {
+							steer.normalize().mult(MAX_SPEED);
+							steer.sub(this.velocity).limit(MAX_FORCE);
+						}
+						return steer;
+					}
+
+					/**
+					 * Calculates steering force to align with flockmates.
+					 */
+					alignment(boids) {
+						let avgVel = new Vector2D();
+						let count = 0;
+						for (const other of boids) {
+							let d = Vector2D.dist(this.position, other.position);
+							if (d > 0 && d < ALIGNMENT_RADIUS) {
+								avgVel.add(other.velocity);
+								count++;
+							}
+						}
+						if (count > 0) {
+							avgVel.div(count);
+							avgVel.normalize().mult(MAX_SPEED);
+							let steer = avgVel.sub(this.velocity).limit(MAX_FORCE);
+							return steer;
+						}
+						return new Vector2D();
+					}
+
+					/**
+					 * Calculates steering force to cohere with flockmates.
+					 */
+					cohesion(boids) {
+						let avgPos = new Vector2D();
+						let count = 0;
+						for (const other of boids) {
+							let d = Vector2D.dist(this.position, other.position);
+							if (d > 0 && d < COHESION_RADIUS) {
+								avgPos.add(other.position);
+								count++;
+							}
+						}
+						if (count > 0) {
+							avgPos.div(count);
+							// Steer towards the average position
+							let diff = avgPos.sub(this.position);
+							diff.normalize().mult(MAX_SPEED);
+							let steer = diff.sub(this.velocity).limit(MAX_FORCE);
+							return steer;
+						}
+						return new Vector2D();
+					}
+
+					/**
+					 * Calculates and applies a steering force based on mouse interaction.
+					 * Creates a "vortex" in an outer ring and "repels" from an inner ring.
+					 */
+					interactWithMouse(target) {
+						let d = Vector2D.dist(this.position, target);
+						let diff = new Vector2D(target.x, target.y).sub(this.position);
+
+						// Only do something if the boid is inside the largest influence radius
+						if (d < MOUSE_VORTEX_RADIUS) {
+							if (d < MOUSE_REPEL_RADIUS) {
+								// --- INNER RING (REPEL) ---
+								// Boid is too close, push it away.
+								// This force is radial (points directly away from the center).
+
+								// Calculate falloff: 1 at center (d=0), 0 at edge (d=MOUSE_REPEL_RADIUS)
+								let falloff = 1 - d / MOUSE_REPEL_RADIUS;
+
+								// Calculate desired velocity: pointing AWAY from the mouse
+								// We use 'diff' but inverted
+								let desired = diff.mult(-1);
+								desired.normalize().mult(MAX_SPEED * 2); // Base "desired" velocity (flee)
+								desired.mult(falloff); // Scale desired velocity by distance
+
+								// Calculate steering force, scaling by falloff
+								// Note: Using the stronger REPEL_FORCE
+								let steer = desired.sub(this.velocity).limit(MOUSE_REPEL_FORCE * falloff);
+								this.applyForce(steer);
+							} else {
+								// --- OUTER RING (VORTEX) ---
+								// Boid is in the "pull" zone, spin it.
+								// This force is tangential (perpendicular to the vector to the mouse).
+
+								// Calculate falloff: 1 at inner edge, 0 at outer edge
+								let range = MOUSE_VORTEX_RADIUS - MOUSE_REPEL_RADIUS;
+								let falloff = 1 - (d - MOUSE_REPEL_RADIUS) / range;
+
+								// Calculate the perpendicular "vortex" vector
+								// This is the key change: (-y, x) is a 90-degree rotation
+								let vortex = new Vector2D(-diff.y, diff.x);
+
+								// Set the desired velocity to be this vortex vector
+								vortex.normalize().mult(MAX_SPEED * 2); // Base "desired" velocity (spin)
+								vortex.mult(falloff); // Scale desired velocity by falloff
+
+								// Calculate steering force, scaling by falloff
+								// Note: Using the VORTEX_FORCE
+								let steer = vortex.sub(this.velocity).limit(MOUSE_VORTEX_FORCE * falloff);
+								this.applyForce(steer);
+							}
+						}
+					}
+
+					/**
+					 * Updates the boid's position and velocity.
+					 */
+					update() {
+						// 1. Add current position to the start of the trail
+						this.trail.unshift(new Vector2D(this.position.x, this.position.y));
+
+						// 2. Trim the trail if it's longer than the max length
+						if (this.trail.length > MAX_TRAIL_LENGTH) {
+							this.trail.pop(); // Remove the oldest (last) position
+						}
+
+						// 3. Update physics
+						this.velocity.add(this.acceleration);
+						this.velocity.limit(MAX_SPEED);
+						this.position.add(this.velocity);
+						this.acceleration.mult(0); // Reset acceleration each frame
+					}
+
+					/**
+					 * Wraps the boid around the screen edges.
+					 */
+					wrap(width, height) {
+						if (this.position.x < 0) {
+							this.position.x = width;
+							this.trail = []; // Clear trail on wrap to prevent drawing a line across the screen
+						}
+						if (this.position.x > width) {
+							this.position.x = 0;
+							this.trail = []; // Clear trail on wrap
+						}
+						if (this.position.y < 0) {
+							this.position.y = height;
+							this.trail = []; // Clear trail on wrap
+						}
+						if (this.position.y > height) {
+							this.position.y = 0;
+							this.trail = []; // Clear trail on wrap
+						}
+					}
+
+					/**
+					 * Draws the boid as a triangle pointing in its direction of travel.
+					 */
+					draw(ctx) {
+						// We now draw the trail, not just a dot.
+						// This creates the "decay" by reducing opacity for older segments.
+
+						if (this.trail.length < 2) {
+							return; // Need at least 2 points to draw a line
+						}
+
+						for (let i = 0; i < this.trail.length - 1; i++) {
+							const start = this.trail[i]; // Newer point
+							const end = this.trail[i + 1]; // Older point
+
+							// Calculate opacity based on age.
+							// 'i = 0' is the newest segment (full opacity).
+							// 'i = MAX_TRAIL_LENGTH' is the oldest (zero opacity).
+							const opacity = 1 - i / MAX_TRAIL_LENGTH;
+
+							ctx.beginPath();
+							ctx.moveTo(start.x, start.y);
+							ctx.lineTo(end.x, end.y);
+							ctx.strokeStyle = `rgba(0, 0, 0, ${opacity})`;
+							ctx.stroke();
+						}
+					}
+				}
+
+				// --- 4. Core Simulation & Rendering ---
+
+				/**
+				 * Sets up the canvas and initializes all boids.
+				 */
+				function setup() {
+					canvas.width = window.innerWidth;
+					canvas.height = window.innerHeight;
+
+					flock = []; // Clear old boids
+					for (let i = 0; i < BOID_COUNT; i++) {
+						flock.push(new Boid(Math.random() * canvas.width, Math.random() * canvas.height));
+					}
+				}
+
+				/**
+				 * The main animation loop.
+				 */
+				function animate() {
+					// 1. Clear the canvas completely.
+					// We are no longer using the "fade" rectangle.
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+					// 2. Set line width for all trails
+					ctx.lineWidth = 1;
+
+					// 3. Create a vector for the mouse position
+					let mouseVec = new Vector2D(mouse.x, mouse.y);
+
+					// 4. Update and draw all boids
+					for (const boid of flock) {
+						boid.flock(flock); // Apply flocking rules
+						boid.interactWithMouse(mouseVec); // Apply mouse vortex/repel
+						boid.update(); // Update position & trail history
+						boid.wrap(canvas.width, canvas.height); // Handle screen edges
+						boid.draw(ctx); // Draw the boid's trail
+					}
+
+					// 5. Request the next frame
+					requestAnimationFrame(animate);
+				}
+
+				// --- 5. Event Handlers ---
+
+				function handleMouseMove(e) {
+					mouse.x = e.clientX;
+					mouse.y = e.clientY;
+				}
+
+				function handleMouseOut() {
+					mouse.x = -1000;
+					mouse.y = -1000;
+				}
+
+				// --- 6. Initialization ---
+
+				window.addEventListener('resize', setup);
+				window.addEventListener('mousemove', handleMouseMove);
+				window.addEventListener('mouseout', handleMouseOut);
+
+				// Touch handlers
+				window.addEventListener(
+					'touchmove',
+					(e) => {
+						if (e.touches[0]) {
+							handleMouseMove(e.touches[0]);
+						}
+					},
+					{ passive: false }
+				);
+
+				window.addEventListener('touchend', handleMouseOut, { passive: false });
+
+				// Initial setup
+				setup();
+
+				// Start the animation loop
+				animate();
+			});
+		</script>
+	</body>
+</html>
