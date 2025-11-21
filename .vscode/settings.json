@@ -1,0 +1,8 @@
+{
+	"gutterpreview.paths": {
+		"/projects": "src/lib/assets/projects"
+	},
+	"path-intellisense.mappings": {
+		"/projects": "${workspaceFolder}/src/lib/assets/projects"
+	}
+}

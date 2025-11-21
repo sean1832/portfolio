@@ -9,7 +9,7 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		alias: {
-			$static: './static/*'
+			$assets: './src/lib/assets'
 		}
 	}
 };
