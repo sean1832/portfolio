@@ -1,5 +1,6 @@
 import type { Project } from '$lib/types/project';
 import { makeContribution } from '$lib/data/factories';
+import agentsPerspectiveVideo from '$lib/assets/projects/venice-bienale-2025/agents-perspective_10sec.mp4';
 
 export const data: Project = {
 	priority: 100,
@@ -31,7 +32,7 @@ export const data: Project = {
 	medias: [
 		{
 			type: 'video',
-			src: '/projects/venice-bienale-2025/agents-perspective_10sec.mp4',
+			src: agentsPerspectiveVideo,
 			alt: 'agentic architecture cover video 10sec',
 			isCover: true
 		}

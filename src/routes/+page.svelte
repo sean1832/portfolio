@@ -60,16 +60,14 @@
 				</h1>
 				<video
 					class="w-full max-w-[800px] lg:w-[800px]"
-					src={`/src/lib/assets${
-						featureProjectWithVideo.medias?.find((media) => media.isCover && media.type === 'video')
-							?.src
-					}`}
+					src={featureProjectWithVideo.medias?.find(
+						(media) => media.isCover && media.type === 'video'
+					)?.src}
 					autoplay
 					loop
 					muted
 					playsinline
 				></video>
-
 				<a href="/" class="w-full max-w-[800px] lg:w-auto">
 					<div
 						class="mt-4 min-w-100 cursor-pointer lg:absolute lg:bottom-0 lg:left-full lg:mt-0 lg:ml-8"
