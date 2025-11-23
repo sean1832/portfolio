@@ -143,36 +143,38 @@
 	});
 </script>
 
-<!--placeholder load first-->
-<img
-	bind:this={containerRef}
-	src={placeholder}
-	{alt}
-	aria-hidden="true"
-	class={cn(className)}
-	class:opacity-0={isLoaded}
-	style="image-rendering: pixelated;"
-/>
-
-<canvas
-	bind:this={canvas}
-	class={cn(className)}
-	class:hidden={!isLoaded || !isDecoded || isRevealed}
-	style="image-rendering: pixelated;"
-	aria-hidden="true"
-></canvas>
-
-<!--actual image - only load when shouldLoad is true-->
-{#if shouldLoad}
+<div class={cn('relative', className)}>
+	<!--placeholder load first (base layer, establishes dimensions)-->
 	<img
-		bind:this={imgRef}
-		{src}
-		{srcset}
-		{sizes}
+		bind:this={containerRef}
+		src={placeholder}
 		{alt}
-		decoding="async"
-		class={cn(className)}
-		class:opacity-0={!isRevealed}
-		onload={onMainImageLoad}
+		aria-hidden="true"
+		class={cn('h-full w-full object-cover', className)}
+		class:opacity-0={isLoaded}
+		style="image-rendering: pixelated;"
 	/>
-{/if}
+
+	<canvas
+		bind:this={canvas}
+		class="absolute inset-0 h-full w-full object-cover"
+		class:hidden={!isLoaded || !isDecoded || isRevealed}
+		style="image-rendering: pixelated;"
+		aria-hidden="true"
+	></canvas>
+
+	<!--actual image - only load when shouldLoad is true-->
+	{#if shouldLoad}
+		<img
+			bind:this={imgRef}
+			{src}
+			{srcset}
+			{sizes}
+			{alt}
+			decoding="async"
+			class="absolute inset-0 h-full w-full object-cover"
+			class:opacity-0={!isRevealed}
+			onload={onMainImageLoad}
+		/>
+	{/if}
+</div>
