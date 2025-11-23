@@ -3,6 +3,7 @@ import { makeContribution } from '$lib/data/factories';
 
 export const data: Project = {
 	priority: 60,
+	layout: 'standard',
 	slug: 'modular',
 	name: 'modular: natural - build',
 	year: 2022,
@@ -29,11 +30,12 @@ export const data: Project = {
 		}
 	],
 	contributions: [
-		makeContribution('grasshopper & automation code development', 100),
-		makeContribution('design & modeling', 100),
+		makeContribution('grasshopper & code development', 100),
+		makeContribution('design & modeling', 75),
 		makeContribution('rendering', 100),
 		makeContribution('details / assembly development', 50),
-		makeContribution('narrative & concept', 50)
+		makeContribution('narrative & concept', 50),
+		makeContribution('drawing & diagramming', 25)
 	],
 	medias: [
 		{

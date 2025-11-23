@@ -3,6 +3,7 @@ import { makeContribution } from '$lib/data/factories';
 
 export const data: Project = {
 	priority: 100,
+	layout: 'immersive-video',
 	isFeature: true,
 	slug: 'agentic-architecture',
 	name: 'agentic architecture: synthesising complexity for regenerative futures',

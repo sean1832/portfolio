@@ -2,6 +2,7 @@ import type { Project } from '$lib/types/project';
 
 export const data: Project = {
 	priority: 90,
+	layout: 'standard',
 	slug: 'tectonic-resilience',
 	name: 'tectonic resilience',
 	year: 2024,

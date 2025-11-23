@@ -3,6 +3,7 @@ import { makeContribution } from '$lib/data/factories';
 
 export const data: Project = {
 	priority: 80,
+	layout: 'standard',
 	slug: 'synthetic-dunescapes',
 	name: 'syntehtic dunescapes',
 	year: 2024,

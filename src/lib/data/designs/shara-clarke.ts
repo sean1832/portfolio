@@ -3,6 +3,7 @@ import { makeContribution } from '$lib/data/factories';
 
 export const data: Project = {
 	priority: 60,
+  layout: 'standard',
 	slug: 'shara-clarke',
 	name: 'shara clarke',
 	year: 2021,

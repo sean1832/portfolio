@@ -3,6 +3,7 @@ import { makeContribution } from '$lib/data/factories';
 
 export const data: Project = {
 	priority: 0,
+	layout: 'standard',
 	slug: 'terra-form',
 	name: 'terra // form',
 	year: 2021,

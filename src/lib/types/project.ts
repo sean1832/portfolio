@@ -1,5 +1,6 @@
 export interface Project {
 	slug: string;
+	layout: ProjectLayout;
 	name: string;
 	shortName?: string;
 	types: ProjectType[];
@@ -23,6 +24,7 @@ export interface Media {
 	src: string;
 	alt: string;
 	isCover?: boolean;
+	isHero?: boolean;
 }
 
 export interface ExternalLink {
@@ -61,3 +63,5 @@ export type Tool =
 	| 'mid-journey'
 	| 'stable diffusion'
 	| 'flux';
+
+export type ProjectLayout = 'standard' | 'immersive-video' | 'immersive-img';

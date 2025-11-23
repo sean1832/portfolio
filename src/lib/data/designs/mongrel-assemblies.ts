@@ -2,6 +2,7 @@ import type { Project } from '$lib/types/project';
 
 export const data: Project = {
 	priority: 70,
+	layout: 'standard',
 	slug: 'mongrel-assemblies',
 	name: 'mongrel assemblies',
 	year: 2023,
@@ -33,6 +34,17 @@ export const data: Project = {
 			src: '/projects/mongrel-assembly/component-composition.webp',
 			alt: 'mongreal assembly - 2023',
 			isCover: true
+		},
+		{
+			type: 'image',
+			src: '/projects/mongrel-assembly/diagram.png',
+			alt: 'mongrel assembly reinforcement learning training process diagram'
+		},
+		{
+			type: 'image',
+			src: '/projects/mongrel-assembly/trained-results.webp',
+			alt: 'mongrel assembly reinforcement learning training results gallery',
+			isHero: true
 		}
 	]
 };
