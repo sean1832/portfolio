@@ -51,6 +51,7 @@
 
 	<div class={cn('shrink-0 bg-white p-4', footerClass)}>
 		<Decoder
+			className="uppercase"
 			text={title}
 			trigger="manual"
 			bind:this={decoder}
