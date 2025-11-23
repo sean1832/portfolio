@@ -107,6 +107,7 @@
 				imageAlt={project.medias.find((media) => media.isCover)?.alt || ''}
 				title={project.name}
 				year={project.year.toString()}
+				href={`/projects/${project.slug}`}
 			/>
 		{/if}
 	{/each}
