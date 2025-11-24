@@ -25,6 +25,7 @@ export interface Media {
 	alt: string;
 	isCover?: boolean;
 	isHero?: boolean;
+	showAlt?: boolean;
 }
 
 export interface ExternalLink {

@@ -40,9 +40,34 @@ export const data: Project = {
 	medias: [
 		{
 			type: 'image',
+			src: '/projects/modular/render.webp',
+			alt: 'exterior render',
+			isHero: true
+		},
+		{
+			type: 'image',
+			src: '/projects/modular/drone-view.webp',
+			alt: 'drone view',
+			showAlt: true
+		},
+		{
+			type: 'image',
 			src: '/projects/modular/axo.webp',
-			alt: 'modular natural build 2022 - axo',
-			isCover: true
+			alt: 'module assembly details',
+			isCover: true,
+			showAlt: true
+		},
+		{
+			type: 'image',
+			src: '/projects/modular/plans.webp',
+			alt: 'spatial planing',
+			showAlt: true
+		},
+		{
+			type: 'image',
+			src: '/projects/modular/sections.webp',
+			alt: 'sections',
+			showAlt: true
 		}
 	]
 };
