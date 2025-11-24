@@ -4,6 +4,7 @@
 	import Decoder from '$lib/components/molecules/decoder.svelte';
 	import { ArrowUpRight, ArrowLeft } from '@lucide/svelte/icons';
 	import { cn } from '$lib/utils';
+	import ExternalLink from '../atoms/external-link.svelte';
 
 	let { project }: { project: Project } = $props();
 
@@ -143,16 +144,9 @@
 							{#each project.awards as award}
 								<li class="text-sm leading-normal">
 									{#if award.url}
-										<a
-											href={award.url}
-											target="_blank"
-											class="inline transition-colors hover:text-primary hover:underline"
-										>
+										<ExternalLink href={award.url}>
 											{award.text}
-											<span class="ml-1 inline-block align-middle leading-none">
-												<ArrowUpRight class="h-4 w-4" />
-											</span>
-										</a>
+										</ExternalLink>
 									{:else}
 										{award.text}
 									{/if}
@@ -213,14 +207,17 @@
 									filename={image.src}
 									alt={image.alt}
 									class="h-auto w-full object-cover transition-all duration-1000 ease-out"
+									sizes="75vm"
 								/>
 							</div>
-							<!-- Unified Caption Style -->
+							<!-- Captions -->
 							<div
 								class="mt-3 flex items-start justify-between border-t border-transparent pt-3 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
 							>
 								<span>FIG.{String(i + 1).padStart(2, '0')}</span>
-								<span class="line-clamp-1 max-w-[60%] text-right">{image.alt}</span>
+								{#if image.showAlt}
+									<span class="line-clamp-1 max-w-[60%] text-right">{image.alt}</span>
+								{/if}
 							</div>
 						</figure>
 					{/each}
