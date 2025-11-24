@@ -6,7 +6,7 @@ const fullImages = import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp}', 
 	query: {
 		as: 'srcset',
 		format: 'webp',
-		w: '320;640;1024;1440;1920;2560' // Generate widths
+		w: '640;1280;1366;1920;2560' // Generate widths
 	}
 });
 

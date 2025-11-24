@@ -226,7 +226,7 @@
 									filename={image.src}
 									alt={image.alt}
 									class="h-auto w-full "
-									sizes="50vw"
+									sizes="75vw"
 								/>
 							</div>
 							<!-- Captions -->
