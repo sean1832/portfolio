@@ -5,7 +5,7 @@
 	interface Props {
 		filename: string;
 		alt: string;
-		/**default '100vm'*/
+		/**default '100vw'*/
 		sizes?: string;
 		class?: string;
 	}

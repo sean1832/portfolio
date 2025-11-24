@@ -19,7 +19,7 @@
 		href,
 		imageSrc,
 		imageAlt,
-		imageSize = '50vm',
+		imageSize = '50vw',
 		title,
 		year,
 		imageClass,
