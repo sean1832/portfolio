@@ -155,6 +155,29 @@
 						</ul>
 					</div>
 				{/if}
+
+				<!--Publications-->
+				{#if project.publications && project.publications.length > 0}
+					<div class="flex flex-col gap-2">
+						<span
+							class="text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
+							>Publications</span
+						>
+						<ul class="space-y-2">
+							{#each project.publications as publication}
+								<li class="text-sm leading-normal">
+									{#if publication.url}
+										<ExternalLink href={publication.url}>
+											{publication.text}
+										</ExternalLink>
+									{:else}
+										{publication.text}
+									{/if}
+								</li>
+							{/each}
+						</ul>
+					</div>
+				{/if}
 			</div>
 		</aside>
 
