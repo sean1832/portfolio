@@ -2,8 +2,6 @@
 	import type { Project } from '$lib/types/project';
 	import LazyImage from '$lib/components/molecules/lazy-image.svelte';
 	import Decoder from '$lib/components/molecules/decoder.svelte';
-	import { ArrowUpRight, ArrowLeft } from '@lucide/svelte/icons';
-	import { cn } from '$lib/utils';
 	import ExternalLink from '../atoms/external-link.svelte';
 
 	let { project }: { project: Project } = $props();
@@ -185,16 +183,14 @@
 		<article class="flex flex-col gap-20 md:col-span-8">
 			<!-- Narrative & Specs -->
 			<section>
-				<!-- Narrative Text: Unified Font, Better Hierarchy -->
-				<div
-					class="prose prose-neutral dark:prose-invert max-w-none columns-1 gap-12 text-justify text-sm font-light md:columns-2 md:text-base"
-				>
+				<!-- Narrative Text:  -->
+				<div class="max-w-none columns-1 gap-12 text-justify text-sm font-light md:columns-2">
 					<p class="mt-0">{project.description}</p>
 				</div>
 
 				<!-- Contributions Grid -->
 				{#if project.contributions && project.contributions.length > 0}
-					<div class="mt-16">
+					<div class="mt-8">
 						<span
 							class="mb-6 block text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
 							>Contributions</span
@@ -229,8 +225,8 @@
 								<LazyImage
 									filename={image.src}
 									alt={image.alt}
-									class="h-auto w-full object-cover transition-all duration-1000 ease-out"
-									sizes="75vm"
+									class="h-auto w-full "
+									sizes="50vm"
 								/>
 							</div>
 							<!-- Captions -->
