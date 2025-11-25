@@ -1,9 +1,11 @@
 import type { Project } from '$lib/types/project';
 import { makeContribution } from '$lib/data/factories';
+import BoundaryExpansionVideo from '$lib/assets/projects/on-country/boundary-expansion_1024p_low.mp4';
+import ShortHeroVideo from '$lib/assets/projects/on-country/short-video_low_1080p.mp4';
 
 export const data: Project = {
 	priority: 60,
-  layout: 'standard',
+	layout: 'standard',
 	slug: 'shara-clarke',
 	name: 'shara clarke',
 	year: 2021,
@@ -52,10 +54,66 @@ export const data: Project = {
 	],
 	medias: [
 		{
+			type: 'video',
+			src: ShortHeroVideo,
+			alt: 'short video',
+			isHero: true
+		},
+		{
 			type: 'image',
-			src: '/projects/on-country/section.webp',
-			alt: 'shara clarke section - 2021',
-			isCover: true
+			src: '/projects/on-country/render-hero.avif',
+			alt: 'archie roach entrance',
+			showAlt: true
+		},
+		{
+			type: 'image',
+			src: '/projects/on-country/section.avif',
+			alt: 'sections & plans',
+			isCover: true,
+			showAlt: true
+		},
+		{
+			type: 'image',
+			src: '/projects/on-country/diagram-expansion.avif',
+			alt: 'boundary expansion'
+		},
+		{
+			type: 'image',
+			src: '/projects/on-country/diagram-rules.avif',
+			alt: 'rules',
+			groupId: 'diagrams'
+		},
+		{
+			type: 'video',
+			src: BoundaryExpansionVideo,
+			alt: 'boundary expansion',
+			groupId: 'diagrams'
+		},
+		{
+			type: 'image',
+			src: '/projects/on-country/multipurpose-a.avif',
+			alt: 'multi purpose room - configuration a',
+			showAlt: true,
+			groupId: 'multipurpose-views'
+		},
+		{
+			type: 'image',
+			src: '/projects/on-country/multipurpose-b.avif',
+			alt: 'multi purpose room - configuration b',
+			showAlt: true,
+			groupId: 'multipurpose-views'
+		},
+		{
+			type: 'image',
+			src: '/projects/on-country/multipurpose-exterior.avif',
+			alt: 'multi purpose room - exterior',
+			showAlt: true
+		},
+		{
+			type: 'image',
+			src: '/projects/on-country/resturant-exterior.avif',
+			alt: 'resturant exterior',
+			showAlt: true
 		}
 	]
 };

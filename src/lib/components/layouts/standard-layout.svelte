@@ -8,14 +8,56 @@
 
 	// Derived state for images
 	let heroImage = $derived(
-		project.medias?.find((media) => media.isHero && media.type === 'image') ||
-			project.medias?.find((media) => media.isCover && media.type === 'image')
+		project.medias?.find((media) => media.isHero) || project.medias?.find((media) => media.isCover)
+	);
+
+	let heroVideo = $derived(
+		project.medias?.find((media) => media.isHero && media.type === 'video') ||
+			project.medias?.find((media) => media.isCover && media.type === 'video')
 	);
 
 	// Filter out the hero image from the gallery list
-	let galleryImages = $derived(
-		project.medias?.filter((media) => media !== heroImage && media.type === 'image') || []
-	);
+	let galleryMedias = $derived(project.medias?.filter((media) => media !== heroImage) || []);
+
+	// Group media items by groupId
+	type MediaItem = NonNullable<Project['medias']>[number];
+	type MediaGroup = { type: 'group'; groupId: string; items: MediaItem[] };
+	type GalleryItem = MediaItem | MediaGroup;
+
+	let galleryItems = $derived.by(() => {
+		const items: GalleryItem[] = [];
+		const grouped = new Map<string, typeof galleryMedias>();
+
+		for (const media of galleryMedias) {
+			if (media.groupId) {
+				if (!grouped.has(media.groupId)) {
+					grouped.set(media.groupId, []);
+				}
+				grouped.get(media.groupId)!.push(media);
+			} else {
+				items.push(media);
+			}
+		}
+
+		// Merge groups back into items array in order of first appearance
+		const result: GalleryItem[] = [];
+		const processedGroups = new Set<string>();
+
+		for (const media of galleryMedias) {
+			if (media.groupId && !processedGroups.has(media.groupId)) {
+				result.push({
+					type: 'group',
+					groupId: media.groupId,
+					items: grouped.get(media.groupId)!
+				});
+				processedGroups.add(media.groupId);
+			} else if (!media.groupId) {
+				result.push(media);
+			}
+		}
+
+		return result;
+	});
 
 	$effect(() => {
 		if (!heroImage) {
@@ -27,8 +69,23 @@
 <div class="min-h-screen w-full">
 	<!-- HERO SECTION -->
 	<header class="relative h-[65vh] w-full overflow-hidden">
-		{#if heroImage}
+		{#if heroImage?.type === 'image'}
 			<LazyImage filename={heroImage.src} alt={heroImage.alt} class="h-full w-full object-cover " />
+		{:else if heroVideo?.type === 'video'}
+			<div class="relative h-full w-full">
+				<video
+					class="h-full w-full object-cover"
+					src={heroVideo.src}
+					autoplay
+					muted
+					loop
+					playsinline
+					controlsList="nodownload nofullscreen noremoteplayback"
+					disablePictureInPicture
+					oncontextmenu={(e) => e.preventDefault()}
+				></video>
+				<div class="absolute inset-0 z-10"></div>
+			</div>
 		{/if}
 	</header>
 
@@ -217,28 +274,92 @@
 			</section>
 
 			<!-- Gallery -->
-			{#if galleryImages.length > 0}
+			{#if galleryMedias.length > 0}
 				<section class="flex flex-col gap-24">
-					{#each galleryImages as image, i}
-						<figure class="group w-full">
-							<div class="relative overflow-hidden">
-								<LazyImage
-									filename={image.src}
-									alt={image.alt}
-									class="h-auto w-full "
-									sizes="75vw"
-								/>
+					{#each galleryItems as item}
+						{#if item.type === 'group'}
+							<!-- Media Group (side-by-side) -->
+							<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+								{#each item.items as media}
+									{@const mediaIndex = galleryMedias.indexOf(media)}
+									<figure class="group w-full">
+										<div class="relative overflow-hidden">
+											{#if media.type === 'image'}
+												<LazyImage
+													filename={media.src}
+													alt={media.alt}
+													class="h-auto w-full"
+													sizes="40vw"
+												/>
+											{:else if media.type === 'video'}
+												<div class="relative">
+													<video
+														class="h-auto w-full object-cover"
+														src={media.src}
+														autoplay
+														muted
+														loop
+														playsinline
+														controlsList="nodownload nofullscreen noremoteplayback"
+														disablePictureInPicture
+														oncontextmenu={(e) => e.preventDefault()}
+													></video>
+													<div class="absolute inset-0 z-10"></div>
+												</div>
+											{/if}
+										</div>
+										<!-- Captions -->
+										<div
+											class="mt-3 flex items-start justify-between border-t border-transparent pt-3 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
+										>
+											<span>FIG.{String(mediaIndex + 1).padStart(2, '0')}</span>
+											{#if media.showAlt}
+												<span class="line-clamp-1 max-w-[60%] text-right">{media.alt}</span>
+											{/if}
+										</div>
+									</figure>
+								{/each}
 							</div>
-							<!-- Captions -->
-							<div
-								class="mt-3 flex items-start justify-between border-t border-transparent pt-3 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
-							>
-								<span>FIG.{String(i + 1).padStart(2, '0')}</span>
-								{#if image.showAlt}
-									<span class="line-clamp-1 max-w-[60%] text-right">{image.alt}</span>
-								{/if}
-							</div>
-						</figure>
+						{:else}
+							<!-- Single Media -->
+							{@const mediaIndex = galleryMedias.indexOf(item)}
+							<figure class="group w-full">
+								<div class="relative overflow-hidden">
+									{#if item.type === 'image'}
+										<LazyImage
+											filename={item.src}
+											alt={item.alt}
+											class="h-auto w-full"
+											sizes="75vw"
+										/>
+									{:else if item.type === 'video'}
+										<div class="relative">
+											<video
+												class="pointer-events-none h-auto w-full object-cover"
+												src={item.src}
+												autoplay
+												muted
+												loop
+												playsinline
+												controlsList="nodownload nofullscreen noremoteplayback"
+												disablePictureInPicture
+												oncontextmenu={(e) => e.preventDefault()}
+											></video>
+											<div class="absolute inset-0 z-10"></div>
+										</div>
+									{/if}
+								</div>
+								<!-- Captions -->
+								<div
+									class="mt-3 flex items-start justify-between border-t border-transparent pt-3 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
+								>
+									<span>FIG.{String(mediaIndex + 1).padStart(2, '0')}</span>
+									{#if item.showAlt}
+										<span class="line-clamp-1 max-w-[60%] text-right">{item.alt}</span>
+									{/if}
+								</div>
+							</figure>
+						{/if}
 					{/each}
 				</section>
 			{/if}

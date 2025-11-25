@@ -1,17 +1,17 @@
 // import all image as high-res webp urls
-const fullImages = import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp}', {
+const fullImages = import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp,avif}', {
 	eager: true, // will bundle the images as part of the build
 
 	// 'as=srcset': Returns a string like "img-400.webp 400w, img-800.webp 800w..."
 	query: {
 		as: 'srcset',
-		format: 'webp',
+		format: 'avif',
 		w: '640;1280;1366;1920;2560' // Generate widths
 	}
 });
 
 // import all image as base64 strings
-const placeholders = import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp}', {
+const placeholders = import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp,avif}', {
 	eager: true, // will bundle the images as part of the build
 	query: { as: 'base64', format: 'png', w: '16' }
 });

@@ -26,6 +26,7 @@ export interface Media {
 	isCover?: boolean;
 	isHero?: boolean;
 	showAlt?: boolean;
+	groupId?: string; // media with same groupId will be rendered side-by-side
 }
 
 export interface ExternalLink {
