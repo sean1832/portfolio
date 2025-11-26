@@ -1,5 +1,11 @@
 import type { Project } from '$lib/types/project';
 import { makeContribution } from '$lib/data/factories';
+import HeroShorts from '$lib/assets/projects/terra-form/hero-shorts-1080p_2mbps.av1.webm';
+import HeroShortsFallback from '$lib/assets/projects/terra-form/hero-shorts-1080p_5mbps.h264.mp4';
+import PipeSystemVideo from '$lib/assets/projects/terra-form/pipe-system-formation_1074p_256kbps.av1.webm';
+import PipeSystemVideoFallback from '$lib/assets/projects/terra-form/pipe-system-formation_1074p_512kbps.h264.mp4';
+import ProcessFormVideo from '$lib/assets/projects/terra-form/process-form_1074p_1024kbps.av1.webm';
+import ProcessFormVideoFallback from '$lib/assets/projects/terra-form/process-form_1074p_4096kbps.h264.mp4';
 
 export const data: Project = {
 	priority: 0,
@@ -36,10 +42,110 @@ export const data: Project = {
 	],
 	medias: [
 		{
+			type: 'video',
+			src: HeroShorts,
+			fallbackSrc: HeroShortsFallback,
+			posterSrc: '/projects/terra-form/hero-shorts-1080p_5mbps.h264-poster.webp',
+			alt: 'hero render shorts',
+			isHero: true
+		},
+		{
 			type: 'image',
 			src: '/projects/terra-form/hero.webp',
 			alt: 'terra form - 2021',
 			isCover: true
+		},
+
+		{
+			type: 'image',
+			src: '/projects/terra-form/mycelium-photo.avif',
+			alt: 'mycelium growth in petri dish',
+			showAlt: true,
+			groupId: 'mycelium-study',
+			aspectRatio: '1/1'
+		},
+		{
+			type: 'image',
+			src: '/projects/terra-form/mycelium-scan.avif',
+			alt: 'digital scan of mycelium growth patterns',
+			showAlt: true,
+			groupId: 'mycelium-study',
+			aspectRatio: '1/1'
+		},
+		{
+			type: 'video',
+			src: PipeSystemVideo,
+			fallbackSrc: PipeSystemVideoFallback,
+			posterSrc: '/projects/terra-form/pipe-system-formation_1074p_512kbps.h264-poster.webp',
+			alt: 'water pipe system formation animation',
+			showAlt: true,
+			groupId: 'pipe-system',
+			aspectRatio: '4/3'
+		},
+		{
+			type: 'image',
+			src: '/projects/terra-form/pipe-system.avif',
+			alt: 'water pipe system diagram',
+			showAlt: true,
+			groupId: 'pipe-system',
+			aspectRatio: '4/3'
+		},
+		{
+			type: 'image',
+			src: '/projects/terra-form/texture-pallet-1.avif',
+			alt: 'material texture pallet a',
+			showAlt: true,
+			aspectRatio: '5/3',
+			groupId: 'texture-pallet'
+		},
+		{
+			type: 'image',
+			src: '/projects/terra-form/texture-pallet-2.avif',
+			alt: 'material texture pallet b',
+			showAlt: true,
+			aspectRatio: '5/3',
+			groupId: 'texture-pallet'
+		},
+		{
+			type: 'video',
+			src: ProcessFormVideo,
+			fallbackSrc: ProcessFormVideoFallback,
+			posterSrc: '/projects/terra-form/process-form_1074p_4096kbps.h264-poster.webp',
+			alt: 'process of form generation animation',
+			showAlt: true,
+			aspectRatio: '4/3'
+		},
+		{
+			type: 'image',
+			src: '/projects/terra-form/drone-view.avif',
+			alt: 'aerial overview of the site and structures',
+			showAlt: true
+		},
+		{
+			type: 'image',
+			src: '/projects/terra-form/detox-center-exterior.avif',
+			alt: 'detox center - exterior view',
+			showAlt: true
+		},
+		{
+			type: 'image',
+			src: '/projects/terra-form/washing-hub-stairs.avif',
+			alt: 'internal circulation',
+			showAlt: true
+		},
+		{
+			type: 'image',
+			src: '/projects/terra-form/urban-farm.avif',
+			alt: 'urban farm - exterior view',
+			aspectRatio: '1/1',
+			groupId: 'pallette'
+		},
+		{
+			type: 'image',
+			src: '/projects/terra-form/water-inlet.avif',
+			alt: 'water inlet',
+			aspectRatio: '1/1',
+			groupId: 'pallette'
 		}
 	]
 };
@@ -49,7 +155,7 @@ function getDescription() {
 endeavor in the heart of Dharavi, Mumbai, addressing 
 the critical issue of relocation and environmental degradation. 
 Focused on preserving the socio-economic fabric of the community, 
-this initiative introduces a sustainable water treatment facility to provide clean water, 
+this project introduces a sustainable water treatment facility to provide clean water, 
 while also reimagining living spaces that integrate seamlessly with the natural environment. 
 The design of the five structures is deeply informed by the growth patterns of mycelium, 
 observed and cultivated in petri dishes. These organic patterns are digitally scanned and 

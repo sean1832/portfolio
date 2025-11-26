@@ -270,7 +270,7 @@
 
 			<!-- Gallery -->
 			{#if galleryMedias.length > 0}
-				<section class="flex flex-col gap-24">
+				<section class="flex flex-col gap-16">
 					{#each galleryItems as item}
 						{#if item.type === 'group'}
 							<!-- Media Group (side-by-side) -->
@@ -303,9 +303,8 @@
 										</div>
 										<!-- Captions -->
 										<div
-											class="mt-3 flex items-start justify-between border-t border-transparent pt-3 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
+											class="mt-3 flex items-start justify-end border-t border-transparent pt-3 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
 										>
-											<span>FIG.{String(mediaIndex + 1).padStart(2, '0')}</span>
 											{#if media.showAlt}
 												<span class="line-clamp-1 max-w-[60%] text-right">{media.alt}</span>
 											{/if}
@@ -342,9 +341,8 @@
 								</div>
 								<!-- Captions -->
 								<div
-									class="mt-3 flex items-start justify-between border-t border-transparent pt-3 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
+									class="mt-3 flex items-start justify-end border-t border-transparent pt-3 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
 								>
-									<span>FIG.{String(mediaIndex + 1).padStart(2, '0')}</span>
 									{#if item.showAlt}
 										<span class="line-clamp-1 max-w-[60%] text-right">{item.alt}</span>
 									{/if}
