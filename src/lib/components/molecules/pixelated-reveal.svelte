@@ -9,6 +9,7 @@
 		placeholder: string;
 		alt: string;
 		class?: string;
+		style?: string;
 		durationMs?: number;
 	}
 
@@ -19,6 +20,7 @@
 		sizes,
 		alt,
 		class: className,
+		style,
 		durationMs = 600
 	}: Props = $props();
 
@@ -143,7 +145,7 @@
 	});
 </script>
 
-<div class={cn('relative', className)}>
+<div class={cn('relative', className)} {style}>
 	<!--placeholder load first (base layer, establishes dimensions)-->
 	<img
 		bind:this={containerRef}

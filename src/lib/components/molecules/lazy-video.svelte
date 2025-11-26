@@ -8,9 +8,10 @@
 	interface Props {
 		children: Snippet;
 		class?: string;
+		style?: string;
 		poster?: string;
 	}
-	let { children, class: className, poster }: Props = $props();
+	let { children, class: className, poster, style }: Props = $props();
 
 	const posterData = poster ? getImage(poster) : undefined;
 
@@ -56,7 +57,7 @@
 	};
 </script>
 
-<div class="relative h-full w-full overflow-hidden">
+<div class="relative h-full w-full overflow-hidden" {style}>
 	{#if posterData}
 		<div
 			class="pointer-events-none absolute inset-0 z-20 h-full w-full"

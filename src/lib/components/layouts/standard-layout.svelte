@@ -283,11 +283,15 @@
 												<LazyImage
 													filename={media.src}
 													alt={media.alt}
-													class="h-auto w-full"
+													class="w-full {media.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
 													sizes="40vw"
+													style={media.aspectRatio ? `aspect-ratio: ${media.aspectRatio};` : ''}
 												/>
 											{:else if media.type === 'video'}
-												<LazyVideo poster={media.posterSrc}>
+												<LazyVideo
+													poster={media.posterSrc}
+													style={media.aspectRatio ? `aspect-ratio: ${media.aspectRatio};` : ''}
+												>
 													{#if media.src && media.fallbackSrc}
 														<source src={media.src} type="video/webm" />
 														<source src={media.fallbackSrc} type="video/mp4" />
@@ -318,24 +322,22 @@
 										<LazyImage
 											filename={item.src}
 											alt={item.alt}
-											class="h-auto w-full"
-											sizes="75vw"
+											class="w-full {item.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
+											style={item.aspectRatio ? `aspect-ratio: ${item.aspectRatio};` : ''}
+											sizes="40vw"
 										/>
 									{:else if item.type === 'video'}
-										<div class="relative">
-											<video
-												class="pointer-events-none h-auto w-full object-cover"
-												src={item.src}
-												autoplay
-												muted
-												loop
-												playsinline
-												controlsList="nodownload nofullscreen noremoteplayback"
-												disablePictureInPicture
-												oncontextmenu={(e) => e.preventDefault()}
-											></video>
-											<div class="absolute inset-0 z-10"></div>
-										</div>
+										<LazyVideo
+											poster={item.posterSrc}
+											style={item.aspectRatio ? `aspect-ratio: ${item.aspectRatio};` : ''}
+										>
+											{#if item.src && item.fallbackSrc}
+												<source src={item.src} type="video/webm" />
+												<source src={item.fallbackSrc} type="video/mp4" />
+											{:else if item.src}
+												<source src={item.src} />
+											{/if}
+										</LazyVideo>
 									{/if}
 								</div>
 								<!-- Captions -->

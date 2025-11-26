@@ -22,11 +22,14 @@ export interface Project {
 export interface Media {
 	type: 'video' | 'image';
 	src: string;
+	fallbackSrc?: string; // for video fallback (h264 mp4)
+	posterSrc?: string; // for video poster image
 	alt: string;
 	isCover?: boolean;
 	isHero?: boolean;
 	showAlt?: boolean;
 	groupId?: string; // media with same groupId will be rendered side-by-side
+	aspectRatio?: string; // e.g. "16/9", "4/3"
 }
 
 export interface ExternalLink {

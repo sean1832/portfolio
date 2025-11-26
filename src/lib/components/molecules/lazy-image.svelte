@@ -8,9 +8,10 @@
 		/**default '100vw'*/
 		sizes?: string;
 		class?: string;
+		style?: string;
 	}
 
-	let { filename, alt, class: className, sizes }: Props = $props();
+	let { filename, alt, class: className, sizes, style }: Props = $props();
 
 	// get data synchronously
 	const image = getImage(filename);
@@ -23,6 +24,7 @@
 		placeholder={image.placeholder}
 		{sizes}
 		{alt}
+		{style}
 		class={className}
 	/>
 {:else}
