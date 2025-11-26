@@ -171,6 +171,8 @@
 			{srcset}
 			{sizes}
 			{alt}
+			loading="eager"
+			fetchpriority="high"
 			decoding="async"
 			class="absolute inset-0 h-full w-full object-cover"
 			class:opacity-0={!isRevealed}

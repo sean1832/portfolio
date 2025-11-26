@@ -3,6 +3,7 @@
 	import LazyImage from '$lib/components/molecules/lazy-image.svelte';
 	import Decoder from '$lib/components/molecules/decoder.svelte';
 	import ExternalLink from '../atoms/external-link.svelte';
+	import LazyVideo from '../molecules/lazy-video.svelte';
 
 	let { project }: { project: Project } = $props();
 
@@ -72,20 +73,14 @@
 		{#if heroImage?.type === 'image'}
 			<LazyImage filename={heroImage.src} alt={heroImage.alt} class="h-full w-full object-cover " />
 		{:else if heroVideo?.type === 'video'}
-			<div class="relative h-full w-full">
-				<video
-					class="h-full w-full object-cover"
-					src={heroVideo.src}
-					autoplay
-					muted
-					loop
-					playsinline
-					controlsList="nodownload nofullscreen noremoteplayback"
-					disablePictureInPicture
-					oncontextmenu={(e) => e.preventDefault()}
-				></video>
-				<div class="absolute inset-0 z-10"></div>
-			</div>
+			<LazyVideo poster={heroVideo.posterSrc}>
+				{#if heroVideo.src && heroVideo.fallbackSrc}
+					<source src={heroVideo.src} type="video/webm" />
+					<source src={heroVideo.fallbackSrc} type="video/mp4" />
+				{:else if heroVideo.src}
+					<source src={heroVideo.src} />
+				{/if}
+			</LazyVideo>
 		{/if}
 	</header>
 
@@ -292,20 +287,14 @@
 													sizes="40vw"
 												/>
 											{:else if media.type === 'video'}
-												<div class="relative">
-													<video
-														class="h-auto w-full object-cover"
-														src={media.src}
-														autoplay
-														muted
-														loop
-														playsinline
-														controlsList="nodownload nofullscreen noremoteplayback"
-														disablePictureInPicture
-														oncontextmenu={(e) => e.preventDefault()}
-													></video>
-													<div class="absolute inset-0 z-10"></div>
-												</div>
+												<LazyVideo poster={media.posterSrc}>
+													{#if media.src && media.fallbackSrc}
+														<source src={media.src} type="video/webm" />
+														<source src={media.fallbackSrc} type="video/mp4" />
+													{:else if media.src}
+														<source src={media.src} />
+													{/if}
+												</LazyVideo>
 											{/if}
 										</div>
 										<!-- Captions -->
