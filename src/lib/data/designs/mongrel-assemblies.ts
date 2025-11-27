@@ -7,12 +7,31 @@ export const data: Project = {
 	name: 'mongrel assemblies',
 	year: 2023,
 	description: getDescription(),
-	types: ['design studio', 'research'],
+	types: ['research'],
 	location: 'Queen Victoria Market, Melbourne, Australia',
 	directors: [
 		{
 			text: 'Caitlyn Parry',
 			url: 'https://www.rmit.edu.au/contact/staff-contacts/academic-staff/p/parry-ms-caitlyn'
+		},
+		{
+			text: 'Halen Duong',
+			url: 'https://architecture.rmit.edu.au/staff/helen-duong/'
+		}
+	],
+	collaborators: ['Sam Torre', 'Alex Moorrees'],
+	contributions: [
+		{
+			description: 'machine learning development',
+			percent: 75
+		},
+		{
+			description: 'database prototyping',
+			percent: 50
+		},
+		{
+			description: 'material offcut optimisation',
+			percent: 100
 		}
 	],
 	awards: [
@@ -31,20 +50,36 @@ export const data: Project = {
 	medias: [
 		{
 			type: 'image',
-			src: '/projects/mongrel-assembly/component-composition.webp',
-			alt: 'mongreal assembly - 2023',
-			isCover: true
-		},
-		{
-			type: 'image',
-			src: '/projects/mongrel-assembly/diagram.png',
-			alt: 'mongrel assembly reinforcement learning training process diagram'
-		},
-		{
-			type: 'image',
-			src: '/projects/mongrel-assembly/trained-results.webp',
-			alt: 'mongrel assembly reinforcement learning training results gallery',
+			src: '/projects/mongrel-assembly/composition-catalogue.avif',
+			alt: 'reinforcement learning training results gallery',
 			isHero: true
+		},
+		{
+			type: 'image',
+			src: '/projects/mongrel-assembly/component-composition-01.avif',
+			alt: 'mongrel assembly - 2023',
+			showAlt: true,
+			isCover: true,
+			groupId: 'component-compositions',
+			aspectRatio: '5/4'
+		},
+		{
+			type: 'image',
+			src: '/projects/mongrel-assembly/component-composition-02.avif',
+			alt: 'mongrel assembly - 2023',
+			showAlt: true,
+			groupId: 'component-compositions',
+			aspectRatio: '5/4'
+		},
+		{
+			type: 'image',
+			src: '/projects/mongrel-assembly/composition-catalogue.avif',
+			alt: 'reinforcement learning training results gallery'
+		},
+		{
+			type: 'image',
+			src: '/projects/mongrel-assembly/diagram.avif',
+			alt: 'reinforcement learning training logic flowchart'
 		}
 	]
 };
