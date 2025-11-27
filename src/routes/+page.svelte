@@ -4,6 +4,7 @@
 	import DistortionField from '$lib/components/organisms/distortion-field/distortion-field.svelte';
 	import ArrowRight from '@lucide/svelte/icons/arrow-right';
 	import { designProjects, featureProjectWithVideo } from '$lib/data/designs';
+	import LazyVideo from '$lib/components/molecules/lazy-video.svelte';
 
 	let decoder: Decoder;
 
@@ -19,6 +20,10 @@
 		gridSpacing = 35;
 		pointSize = 3;
 	}
+
+	const featureVideoMedia = featureProjectWithVideo?.medias?.find(
+		(media) => media.isCover && media.type === 'video'
+	);
 </script>
 
 <!--hero-->
@@ -58,16 +63,15 @@
 				<h1 class="mb-4 text-lg lg:absolute lg:top-0 lg:right-full lg:mr-8 lg:mb-0">
 					{featureProjectWithVideo.year}
 				</h1>
-				<video
-					class="w-full max-w-[800px] lg:w-[800px]"
-					src={featureProjectWithVideo.medias?.find(
-						(media) => media.isCover && media.type === 'video'
-					)?.src}
-					autoplay
-					loop
-					muted
-					playsinline
-				></video>
+				{#if featureVideoMedia}
+					<LazyVideo
+						primarySrc={featureVideoMedia.src}
+						fallbackSrc={featureVideoMedia.fallbackSrc || ''}
+						posterSrc={featureVideoMedia.posterSrc || ''}
+						alt={featureVideoMedia.alt}
+						class="w-full max-w-[800px] lg:w-[800px]"
+					/>
+				{/if}
 				<a href="/" class="w-full max-w-[800px] lg:w-auto">
 					<div
 						class="mt-4 min-w-100 cursor-pointer lg:absolute lg:bottom-0 lg:left-full lg:mt-0 lg:ml-8"

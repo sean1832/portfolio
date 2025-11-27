@@ -1,91 +1,113 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
-	import type { Snippet } from 'svelte';
-	import type { Action } from 'svelte/action';
+	import { getVideo } from '$lib/helpers/video-registry';
+	import VideoPlayer from './video-player.svelte';
 	import PixelatedReveal from './pixelated-reveal.svelte';
-	import { getImage } from '$lib/helpers/image-registry';
+	import { onMount } from 'svelte';
 
 	interface Props {
-		children: Snippet;
+		/** Path to primary video (e.g., "/projects/my-video.av1.webm") */
+		primarySrc: string;
+		/** Path to fallback video (e.g., "/projects/my-video.h264.mp4") */
+		fallbackSrc?: string;
+		/** Optional poster image path (e.g., "/projects/my-video-poster.webp") */
+		posterSrc?: string;
+		alt: string;
 		class?: string;
 		style?: string;
-		poster?: string;
 	}
-	let { children, class: className, poster, style }: Props = $props();
 
-	const posterData = poster ? getImage(poster) : undefined;
+	let { primarySrc, fallbackSrc, posterSrc, alt, class: className, style }: Props = $props();
 
-	let isPlaying = $state(false);
-	const lazyPlay: Action<HTMLVideoElement> = (node) => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						// force browser to load the source
-						node.preload = 'auto';
+	// State for async loading
+	let primaryUrl = $state<string | null>(null);
+	let fallbackUrl = $state<string | null>(null);
+	let isLoading = $state(true);
+	let hasError = $state(false);
 
-						// play the video
-						node
-							.play()
-							.then(() => {
-								isPlaying = true;
-							})
-							.catch(() => {
-								// Silent catch: Auto-play policies or
-								// Low Power Mode interactions are expected failures.
-							});
+	// Get video asset from registry
+	const videoAsset = getVideo(primarySrc, fallbackSrc, posterSrc);
 
-						// stop observing for performance optimization
-						observer.unobserve(node);
-						observer.disconnect();
-					}
-				});
-			},
-			{
-				rootMargin: '200px', // start loading 200px before it enters the screen
-				threshold: 0.01 // Trigger as soon as 1% is visible
-			}
-		);
+	/**
+	 * Detect MIME type from file extension
+	 */
+	function getMimeType(filename: string): string {
+		const ext = filename.split('.').pop()?.toLowerCase();
+		switch (ext) {
+			case 'webm':
+				return 'video/webm';
+			case 'mp4':
+				return 'video/mp4';
+			case 'ogg':
+			case 'ogv':
+				return 'video/ogg';
+			default:
+				return 'video/mp4'; // Default fallback
+		}
+	}
 
-		observer.observe(node);
+	// Detect MIME types from filenames
+	const primaryMimeType = getMimeType(primarySrc);
+	let fallbackMimeType = $state<string | null>(null);
+	if (fallbackSrc) {
+		fallbackMimeType = getMimeType(fallbackSrc);
+	}
 
-		return {
-			destroy() {
-				observer.disconnect();
-			}
-		};
-	};
+	onMount(async () => {
+		if (!videoAsset) {
+			console.error('[lazy-video] videoAsset is null');
+			hasError = true;
+			isLoading = false;
+			return;
+		}
+
+		try {
+			// Load video URLs in parallel
+			const urls = await Promise.all([
+				videoAsset.src(),
+				videoAsset.fallbackSrc ? videoAsset.fallbackSrc() : Promise.resolve(null)
+			]);
+			primaryUrl = urls[0];
+			fallbackUrl = urls[1];
+			isLoading = false;
+		} catch (error) {
+			console.error('[lazy-video] Failed to load video URLs:', error);
+			hasError = true;
+			isLoading = false;
+		}
+	});
 </script>
 
-<div class="relative h-full w-full overflow-hidden" {style}>
-	{#if posterData}
-		<div
-			class="pointer-events-none absolute inset-0 z-20 h-full w-full"
-			class:opacity-0={isPlaying}
-		>
-			<PixelatedReveal
-				src={posterData.fallbackSrc}
-				srcset={posterData.srcset}
-				placeholder={posterData.placeholder}
-				alt="Video Poster"
-				class="h-full w-full"
-			/>
-		</div>
-	{/if}
-	<video
-		use:lazyPlay
-		class={cn('h-full w-full object-cover', className)}
-		preload="none"
-		muted
-		loop
-		playsinline
-		disablePictureInPicture
-		tabindex="-1"
-		aria-hidden="true"
-		controlsList="nodownload nofullscreen noremoteplayback"
-		oncontextmenu={(e) => e.preventDefault()}
+{#if hasError}
+	<!-- Fallback UI for missing/failed videos -->
+	<div
+		class="flex items-center justify-center bg-muted text-xs text-destructive {className}"
+		{style}
 	>
-		{@render children()}
-	</video>
-	<div class="absolute inset-0 z-10 bg-transparent"></div>
-</div>
+		<div class="p-4 text-center">
+			<p class="font-semibold">Video Not Found</p>
+			<p class="mt-1 text-[10px] text-muted-foreground">{primarySrc}</p>
+		</div>
+	</div>
+{:else if isLoading}
+	<!-- Loading state: Show poster or placeholder -->
+	{#if videoAsset?.poster}
+		<PixelatedReveal
+			src={videoAsset.poster.fallbackSrc}
+			srcset={videoAsset.poster.srcset}
+			placeholder={videoAsset.poster.placeholder}
+			{alt}
+			class={className}
+			{style}
+		/>
+	{:else}
+		<div class="animate-pulse bg-muted {className}" {style}></div>
+	{/if}
+{:else if primaryUrl}
+	<!-- Render actual video once URLs are loaded -->
+	<VideoPlayer poster={posterSrc} class={className} {style}>
+		<source src={primaryUrl} type={primaryMimeType} />
+		{#if fallbackUrl && fallbackMimeType}
+			<source src={fallbackUrl} type={fallbackMimeType} />
+		{/if}
+	</VideoPlayer>
+{/if}

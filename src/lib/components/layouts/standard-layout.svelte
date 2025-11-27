@@ -4,6 +4,7 @@
 	import Decoder from '$lib/components/molecules/decoder.svelte';
 	import ExternalLink from '../atoms/external-link.svelte';
 	import LazyVideo from '../molecules/lazy-video.svelte';
+	import VideoPlayer from '../molecules/video-player.svelte';
 
 	let { project }: { project: Project } = $props();
 
@@ -73,14 +74,21 @@
 		{#if heroImage?.type === 'image'}
 			<LazyImage filename={heroImage.src} alt={heroImage.alt} class="h-full w-full object-cover " />
 		{:else if heroVideo?.type === 'video'}
-			<LazyVideo poster={heroVideo.posterSrc}>
-				{#if heroVideo.src && heroVideo.fallbackSrc}
-					<source src={heroVideo.src} type="video/webm" />
-					<source src={heroVideo.fallbackSrc} type="video/mp4" />
-				{:else if heroVideo.src}
-					<source src={heroVideo.src} />
-				{/if}
-			</LazyVideo>
+			{#if heroVideo.src && heroVideo.fallbackSrc}
+				<!-- NEW: Path-based video (uses registry) -->
+				<LazyVideo
+					primarySrc={heroVideo.src}
+					fallbackSrc={heroVideo.fallbackSrc}
+					posterSrc={heroVideo.posterSrc}
+					alt={heroVideo.alt}
+					class="h-full w-full object-cover"
+				/>
+			{:else}
+				<!-- Missing Video Fallback or src -->
+				<div class="flex h-48 w-full items-center justify-center bg-muted text-xs text-destructive">
+					Missing video source or fallback source
+				</div>
+			{/if}
 		{/if}
 	</header>
 
@@ -288,17 +296,23 @@
 													style={media.aspectRatio ? `aspect-ratio: ${media.aspectRatio};` : ''}
 												/>
 											{:else if media.type === 'video'}
-												<LazyVideo
-													poster={media.posterSrc}
-													style={media.aspectRatio ? `aspect-ratio: ${media.aspectRatio};` : ''}
-												>
-													{#if media.src && media.fallbackSrc}
-														<source src={media.src} type="video/webm" />
-														<source src={media.fallbackSrc} type="video/mp4" />
-													{:else if media.src}
-														<source src={media.src} />
-													{/if}
-												</LazyVideo>
+												{#if media.src && media.fallbackSrc}
+													<LazyVideo
+														primarySrc={media.src}
+														fallbackSrc={media.fallbackSrc}
+														posterSrc={media.posterSrc}
+														alt={media.alt}
+														class="w-full {media.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
+														style={media.aspectRatio ? `aspect-ratio: ${media.aspectRatio};` : ''}
+													/>
+												{:else}
+													<!-- Missing Video Fallback or src -->
+													<div
+														class="flex h-48 w-full items-center justify-center bg-muted text-xs text-destructive"
+													>
+														Missing video source or fallback source
+													</div>
+												{/if}
 											{/if}
 										</div>
 										<!-- Captions -->
@@ -326,17 +340,23 @@
 											sizes="40vw"
 										/>
 									{:else if item.type === 'video'}
-										<LazyVideo
-											poster={item.posterSrc}
-											style={item.aspectRatio ? `aspect-ratio: ${item.aspectRatio};` : ''}
-										>
-											{#if item.src && item.fallbackSrc}
-												<source src={item.src} type="video/webm" />
-												<source src={item.fallbackSrc} type="video/mp4" />
-											{:else if item.src}
-												<source src={item.src} />
-											{/if}
-										</LazyVideo>
+										{#if item.src && item.fallbackSrc}
+											<LazyVideo
+												primarySrc={item.src}
+												fallbackSrc={item.fallbackSrc}
+												posterSrc={item.posterSrc}
+												alt={item.alt}
+												class="w-full {item.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
+												style={item.aspectRatio ? `aspect-ratio: ${item.aspectRatio};` : ''}
+											/>
+										{:else}
+											<!-- Missing Video Fallback or src -->
+											<div
+												class="flex h-48 w-full items-center justify-center bg-muted text-xs text-destructive"
+											>
+												Missing video source or fallback source
+											</div>
+										{/if}
 									{/if}
 								</div>
 								<!-- Captions -->

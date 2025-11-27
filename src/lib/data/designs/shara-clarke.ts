@@ -1,9 +1,5 @@
 import type { Project } from '$lib/types/project';
 import { makeContribution } from '$lib/data/factories';
-import BoundaryExpansionVideo from '$lib/assets/projects/on-country/boundary-expansion_1080p_128kbps.av1.webm';
-import BoundaryExpansionVideoFallback from '$lib/assets/projects/on-country/boundary-expansion_1080p_768kbps.h264.mp4';
-import ShortHeroVideo from '$lib/assets/projects/on-country/short-video_1080p_2mbps.av1.webm';
-import ShortHeroVideoFallback from '$lib/assets/projects/on-country/short-video_1080p_4mbps.h264.mp4';
 
 export const data: Project = {
 	priority: 60,
@@ -57,8 +53,8 @@ export const data: Project = {
 	medias: [
 		{
 			type: 'video',
-			src: ShortHeroVideo,
-			fallbackSrc: ShortHeroVideoFallback,
+			src: '/projects/on-country/short-video_1080p_2mbps.av1.webm',
+			fallbackSrc: '/projects/on-country/short-video_1080p_4mbps.h264.mp4',
 			posterSrc: '/projects/on-country/short-video_1080p_4mbps.h264-poster.webp',
 			alt: 'short video',
 			isHero: true
@@ -89,8 +85,8 @@ export const data: Project = {
 		},
 		{
 			type: 'video',
-			src: BoundaryExpansionVideo,
-			fallbackSrc: BoundaryExpansionVideoFallback,
+			src: '/projects/on-country/boundary-expansion_1080p_128kbps.av1.webm',
+			fallbackSrc: '/projects/on-country/boundary-expansion_1080p_768kbps.h264.mp4',
 			posterSrc: '/projects/on-country/boundary-expansion_1080p_768kbps.h264-poster.webp',
 			alt: 'boundary expansion',
 			groupId: 'diagrams'

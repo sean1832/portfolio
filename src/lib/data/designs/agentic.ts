@@ -1,6 +1,5 @@
 import type { Project } from '$lib/types/project';
 import { makeContribution } from '$lib/data/factories';
-import agentsPerspectiveVideo from '$lib/assets/projects/venice-bienale-2025/agents-perspective_10sec.mp4';
 
 export const data: Project = {
 	priority: 100,
@@ -32,7 +31,8 @@ export const data: Project = {
 	medias: [
 		{
 			type: 'video',
-			src: agentsPerspectiveVideo,
+			src: '/projects/venice-bienale-2025/agents-perspective_1080p_2048kbps.h264.mp4',
+			posterSrc: '/projects/venice-bienale-2025/agents-perspective_1080p_2048kbps.h264-poster.webp',
 			alt: 'agentic architecture cover video 10sec',
 			isCover: true
 		}

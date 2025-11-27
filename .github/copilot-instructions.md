@@ -129,6 +129,72 @@ const placeholders = import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp}'
 3. Component automatically gets srcset, placeholder, and fallback from registry
 4. Images are progressively revealed via `pixelated-reveal.svelte` with mosaic effect
 
+### Video Registry System
+
+**Critical**: Videos use `video-registry.ts` for **URL resolution only** (NO optimization—videos must be pre-encoded):
+
+```typescript
+// In video-registry.ts
+const videos = import.meta.glob('/src/lib/assets/**/*.{mp4,webm}', {
+    eager: false,  // Lazy load to avoid bundle bloat
+    import: 'default'
+});
+
+export function getVideo(primaryFilename: string, fallbackFilename: string, posterFilename?: string): VideoAsset | null
+```
+
+**Usage pattern** (NEW - recommended for consistency):
+
+1. **Pre-encode videos** externally (AV1 WebM + H.264 MP4 for browser compatibility)
+2. Place videos in `src/lib/assets/projects/[project-name]/`
+3. Generate posters: `npm run build:vid` (creates WebP posters via ffmpeg)
+4. Reference via **path strings** in project data files:
+   ```typescript
+   {
+       type: 'video',
+       src: '/projects/boundary-expansion.av1.webm',
+       fallbackSrc: '/projects/boundary-expansion.h264.mp4',
+       posterSrc: '/projects/boundary-expansion-poster.webp',
+       alt: 'video description'
+   }
+   ```
+5. Layout components auto-detect path-based videos and use `lazy-video-registry.svelte`
+
+**Constraints**:
+
+- **No build-time optimization** (unlike images—`vite-imagetools` doesn't support video)
+- **Dual-codec required**: Must provide both `src` and `fallbackSrc` (any combination: WebM, MP4, OGG)
+- **MIME types auto-detected**: Component detects video format from file extension (.webm → video/webm, .mp4 → video/mp4, .ogg/.ogv → video/ogg)
+- **Manual encoding workflow**: Use ffmpeg/HandBrake pre-build for desired quality/bitrate
+- **Posters integrated**: `posterSrc` uses existing `image-registry.ts` for optimization
+
+**Legacy pattern** (backward compatible):
+
+```typescript
+// ESM imports (still supported for existing projects)
+import video from '$lib/assets/projects/my-video.av1.webm';
+import videoFallback from '$lib/assets/projects/my-video.h264.mp4';
+
+{
+    type: 'video',
+    src: video,  // Vite-resolved URL
+    fallbackSrc: videoFallback
+}
+```
+
+**Video encoding recommendations**:
+
+- **Primary codec options**:
+  - **AV1 WebM** (`.av1.webm`): Lower bitrate, modern browsers (Chrome, Firefox, Edge)
+  - **VP9 WebM** (`.webm`): Good compression, wide support
+  - **H.264 MP4** (`.h264.mp4`): Universal compatibility
+- **Fallback codec**: Always provide H.264 MP4 for Safari/older browsers
+- **Naming convention** (flexible): `[name]_[resolution]_[bitrate].[codec].[ext]`
+  - Example: `boundary-expansion_1080p_128kbps.av1.webm` (primary)
+  - Example: `boundary-expansion_1080p_768kbps.h264.mp4` (fallback)
+- **Poster naming**: `[video-name]-poster.webp` (auto-generated via `npm run build:vid`)
+- **No naming assumptions**: Registry requires explicit `fallbackSrc` parameter (no auto-pairing)
+
 ### Strategy Pattern
 
 Used for algorithm variations (see `text-animator.ts`):
@@ -235,8 +301,13 @@ import { toggleMode } from 'mode-watcher';
 ## Key Files Reference
 
 - `src/lib/algorithms/text-animator.ts` - Strategy pattern implementation
-- `src/lib/helpers/image-registry.ts` - vite-imagetools integration
+- `src/lib/helpers/image-registry.ts` - vite-imagetools integration for images
+- `src/lib/helpers/video-registry.ts` - Lazy glob-based video URL resolution
 - `src/lib/components/molecules/decoder.svelte` - Algorithm/component integration example
+- `src/lib/components/molecules/lazy-image.svelte` - Image component using registry (path-based)
+- `src/lib/components/molecules/lazy-video.svelte` - Video component using registry (path-based, mirrors lazy-image)
+- `src/lib/components/molecules/video-player.svelte` - Low-level video player (takes <source> children, used internally)
 - `src/lib/components/organisms/distortion-field/distortion-field.svelte` - Canvas animation pattern
 - `src/lib/components/molecules/pixelated-reveal.svelte` - Progressive image loading
+- `src/lib/types/project.ts` - Media interface with JSDoc for video patterns
 - `src/lib/utils.ts` - Tailwind merge utility + type helpers

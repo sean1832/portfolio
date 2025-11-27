@@ -1,11 +1,5 @@
 import type { Project } from '$lib/types/project';
 import { makeContribution } from '$lib/data/factories';
-import HeroShorts from '$lib/assets/projects/terra-form/hero-shorts-1080p_2mbps.av1.webm';
-import HeroShortsFallback from '$lib/assets/projects/terra-form/hero-shorts-1080p_5mbps.h264.mp4';
-import PipeSystemVideo from '$lib/assets/projects/terra-form/pipe-system-formation_1074p_256kbps.av1.webm';
-import PipeSystemVideoFallback from '$lib/assets/projects/terra-form/pipe-system-formation_1074p_512kbps.h264.mp4';
-import ProcessFormVideo from '$lib/assets/projects/terra-form/process-form_1074p_1024kbps.av1.webm';
-import ProcessFormVideoFallback from '$lib/assets/projects/terra-form/process-form_1074p_4096kbps.h264.mp4';
 
 export const data: Project = {
 	priority: 0,
@@ -43,8 +37,8 @@ export const data: Project = {
 	medias: [
 		{
 			type: 'video',
-			src: HeroShorts,
-			fallbackSrc: HeroShortsFallback,
+			src: '/projects/terra-form/hero-shorts-1080p_2mbps.av1.webm',
+			fallbackSrc: '/projects/terra-form/hero-shorts-1080p_5mbps.h264.mp4',
 			posterSrc: '/projects/terra-form/hero-shorts-1080p_5mbps.h264-poster.webp',
 			alt: 'hero render shorts',
 			isHero: true
@@ -74,8 +68,8 @@ export const data: Project = {
 		},
 		{
 			type: 'video',
-			src: PipeSystemVideo,
-			fallbackSrc: PipeSystemVideoFallback,
+			src: '/projects/terra-form/pipe-system-formation_1074p_256kbps.av1.webm',
+			fallbackSrc: '/projects/terra-form/pipe-system-formation_1074p_512kbps.h264.mp4',
 			posterSrc: '/projects/terra-form/pipe-system-formation_1074p_512kbps.h264-poster.webp',
 			alt: 'water pipe system formation animation',
 			showAlt: true,
@@ -108,8 +102,8 @@ export const data: Project = {
 		},
 		{
 			type: 'video',
-			src: ProcessFormVideo,
-			fallbackSrc: ProcessFormVideoFallback,
+			src: '/projects/terra-form/process-form_1074p_1024kbps.av1.webm',
+			fallbackSrc: '/projects/terra-form/process-form_1074p_4096kbps.h264.mp4',
 			posterSrc: '/projects/terra-form/process-form_1074p_4096kbps.h264-poster.webp',
 			alt: 'process of form generation animation',
 			showAlt: true,
