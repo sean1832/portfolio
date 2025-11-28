@@ -21,31 +21,8 @@ export interface Project {
 
 export interface Media {
 	type: 'video' | 'image';
-	/**
-	 * Media source path or URL.
-	 *
-	 * **For images:**
-	 * - Path string: `/projects/my-image.webp` (resolved via image-registry.ts)
-	 *
-	 * **For videos (two patterns supported):**
-	 * - Path string: `/projects/my-video.av1.webm` (NEW - resolved via video-registry.ts)
-	 *
-	 * @example
-	 * { type: 'video', src: '/projects/boundary-expansion.av1.webm', fallbackSrc: '/projects/boundary-expansion.h264.mp4' }
-	 */
 	src: string;
-	/**
-	 * Fallback video source (REQUIRED for videos).
-	 * - Path string: `/projects/my-video.h264.mp4` (NEW - resolved via video-registry.ts)
-	 *
-	 * Must be provided explicitly, 
-	 * MIME type auto-detected from file extension (.webm, .mp4, .ogg).
-	 */
 	fallbackSrc?: string;
-	/**
-	 * Poster image path (for videos only).
-	 * - Path string: `/projects/my-video-poster.webp` (resolved via image-registry.ts)
-	 */
 	posterSrc?: string;
 	alt: string;
 	isCover?: boolean;
@@ -53,6 +30,7 @@ export interface Media {
 	showAlt?: boolean;
 	groupId?: string; // media with same groupId will be rendered side-by-side
 	aspectRatio?: string; // e.g. "16/9", "4/3"
+	description?: string; // longer description for media
 }
 
 export interface ExternalLink {
@@ -74,6 +52,7 @@ export type ProjectType =
 	| 'major project'
 	| 'design studio'
 	| 'research'
+	| 'research assistance'
 	| 'installation'
 	| 'international competition';
 

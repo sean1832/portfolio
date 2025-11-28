@@ -7,8 +7,7 @@ export const data: Project = {
 	name: 'mongrel assemblies',
 	year: 2023,
 	description: getDescription(),
-	types: ['research'],
-	location: 'Queen Victoria Market, Melbourne, Australia',
+	types: ['research assistance'],
 	directors: [
 		{
 			text: 'Caitlyn Parry',
@@ -57,8 +56,7 @@ export const data: Project = {
 		{
 			type: 'image',
 			src: '/projects/mongrel-assembly/component-composition-01.avif',
-			alt: 'mongrel assembly - 2023',
-			showAlt: true,
+			alt: 'Assembly artifact generated through reinforcement learning',
 			isCover: true,
 			groupId: 'component-compositions',
 			aspectRatio: '5/4'
@@ -66,7 +64,7 @@ export const data: Project = {
 		{
 			type: 'image',
 			src: '/projects/mongrel-assembly/component-composition-02.avif',
-			alt: 'mongrel assembly - 2023',
+			alt: 'Assembly artifact',
 			showAlt: true,
 			groupId: 'component-compositions',
 			aspectRatio: '5/4'
@@ -74,12 +72,60 @@ export const data: Project = {
 		{
 			type: 'image',
 			src: '/projects/mongrel-assembly/composition-catalogue.avif',
-			alt: 'reinforcement learning training results gallery'
+			alt: 'Reinforcement Learning-Optimized Component Compositions',
+			showAlt: true
+		},
+
+		{
+			type: 'video',
+			src: '/projects/mongrel-assembly/ml-training_1080p_512kbps.av1.webm',
+			fallbackSrc: '/projects/mongrel-assembly/ml-training_1080p_2048kbps.h264.mp4',
+			posterSrc: '/projects/mongrel-assembly/ml-training_1080p_2048kbps.h264-poster.webp',
+			alt: 'reinforcement learning with inter-process communication (unity & grasshopper)',
+			showAlt: true
+		},
+		{
+			type: 'image',
+			src: '/projects/mongrel-assembly/unity-gh-infrastructure-sketch.avif',
+			alt: 'Cross-Platform Unity-Grasshopper RL Interoperability Workflow',
+			description: `
+				Cross-platform infrastructure establishes closed-loop interoperability between 
+				Unity and Grasshopper via UDP. Unity-hosted ML-Agents transmit action vectors 
+				for geometry generation and discrete aggregation via WASP. Multi-physics simulations 
+				(Karamba, Ladybug) subsequently derive weighted performance metrics, returning stress, 
+				deformation, and shadow area data as state observations and reward signals to complete 
+				the training cycle.
+			`.trim(),
+			showAlt: true
 		},
 		{
 			type: 'image',
 			src: '/projects/mongrel-assembly/diagram.avif',
-			alt: 'reinforcement learning training logic flowchart'
+			alt: 'Discrete-Continuous Policy Execution and Weighted Reward Synthesis',
+			description: `
+				Episodic decision-making topology maps action spaces-continuous rotation 
+				and discrete spawning to environmental observation vectors. State representation 
+				logic incorporates spawn pool availability, neighbor distances, and 
+				bounding box constraints. A multi-objective reward function aggregates 
+				weighted parameters, including aggregation density and structural stress, 
+				to drive policy optimization during training.
+			`.trim(),
+			showAlt: true
+		},
+		{
+			type: 'image',
+			src: '/projects/mongrel-assembly/installation-01.avif',
+			alt: 'RMIT Design Hub Exhibition Installation',
+			groupId: 'installation-views',
+			aspectRatio: '4/3'
+		},
+		{
+			type: 'image',
+			src: '/projects/mongrel-assembly/installation-02.avif',
+			alt: 'Photographs by Tobias Titz (2023)',
+			groupId: 'installation-views',
+			aspectRatio: '4/3',
+			showAlt: true
 		}
 	]
 };

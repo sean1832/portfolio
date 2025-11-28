@@ -123,14 +123,16 @@
 
 			<!-- Metadata Group -->
 			<div class="flex flex-col gap-8">
-				<!-- Location -->
-				<div class="flex flex-col gap-1">
-					<span
-						class="text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
-						>Location</span
-					>
-					<span class="text-sm font-normal tracking-wide">{project.location || 'N/A'}</span>
-				</div>
+				{#if project.location}
+					<!-- Location -->
+					<div class="flex flex-col gap-1">
+						<span
+							class="text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
+							>Location</span
+						>
+						<span class="text-sm font-normal tracking-wide">{project.location}</span>
+					</div>
+				{/if}
 
 				<!-- Team -->
 				{#if (project.directors && project.directors.length > 0) || (project.collaborators && project.collaborators.length > 0)}
@@ -279,31 +281,37 @@
 			<!-- Gallery -->
 			{#if galleryMedias.length > 0}
 				<section class="flex flex-col gap-16">
-					{#each galleryItems as item}
-						{#if item.type === 'group'}
+					{#each galleryItems as media}
+						{#if media.type === 'group'}
 							<!-- Media Group (side-by-side) -->
 							<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-								{#each item.items as media}
-									{@const mediaIndex = galleryMedias.indexOf(media)}
+								{#each media.items as groupMedia}
+									{@const mediaIndex = galleryMedias.indexOf(groupMedia)}
 									<figure class="group w-full">
 										<div class="relative overflow-hidden">
-											{#if media.type === 'image'}
+											{#if groupMedia.type === 'image'}
 												<LazyImage
-													filename={media.src}
-													alt={media.alt}
-													class="w-full {media.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
+													filename={groupMedia.src}
+													alt={groupMedia.alt}
+													class="w-full {groupMedia.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
 													sizes="40vw"
-													style={media.aspectRatio ? `aspect-ratio: ${media.aspectRatio};` : ''}
+													style={groupMedia.aspectRatio
+														? `aspect-ratio: ${groupMedia.aspectRatio};`
+														: ''}
 												/>
-											{:else if media.type === 'video'}
-												{#if media.src && media.fallbackSrc}
+											{:else if groupMedia.type === 'video'}
+												{#if groupMedia.src && groupMedia.fallbackSrc}
 													<LazyVideo
-														primarySrc={media.src}
-														fallbackSrc={media.fallbackSrc}
-														posterSrc={media.posterSrc}
-														alt={media.alt}
-														class="w-full {media.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
-														style={media.aspectRatio ? `aspect-ratio: ${media.aspectRatio};` : ''}
+														primarySrc={groupMedia.src}
+														fallbackSrc={groupMedia.fallbackSrc}
+														posterSrc={groupMedia.posterSrc}
+														alt={groupMedia.alt}
+														class="w-full {groupMedia.aspectRatio
+															? 'h-full object-cover'
+															: 'h-auto'}"
+														style={groupMedia.aspectRatio
+															? `aspect-ratio: ${groupMedia.aspectRatio};`
+															: ''}
 													/>
 												{:else}
 													<!-- Missing Video Fallback or src -->
@@ -315,12 +323,20 @@
 												{/if}
 											{/if}
 										</div>
-										<!-- Captions -->
-										<div
-											class="mt-3 flex items-start justify-end border-t border-transparent pt-3 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
-										>
-											{#if media.showAlt}
-												<span class="line-clamp-1 max-w-[60%] text-right">{media.alt}</span>
+										<!-- Captions & Description -->
+										<div class="mt-3 flex flex-col gap-2">
+											<div
+												class="flex items-start justify-between border-t border-transparent pt-3 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
+											>
+												FIG.{mediaIndex + 1}
+												{#if groupMedia.showAlt}
+													<span class="line-clamp-1 max-w-[60%] text-right">{groupMedia.alt}</span>
+												{/if}
+											</div>
+											{#if groupMedia.description}
+												<p class="text-justify text-xs leading-relaxed text-muted-foreground">
+													{groupMedia.description}
+												</p>
 											{/if}
 										</div>
 									</figure>
@@ -328,26 +344,26 @@
 							</div>
 						{:else}
 							<!-- Single Media -->
-							{@const mediaIndex = galleryMedias.indexOf(item)}
+							{@const mediaIndex = galleryMedias.indexOf(media)}
 							<figure class="group w-full">
 								<div class="relative overflow-hidden">
-									{#if item.type === 'image'}
+									{#if media.type === 'image'}
 										<LazyImage
-											filename={item.src}
-											alt={item.alt}
-											class="w-full {item.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
-											style={item.aspectRatio ? `aspect-ratio: ${item.aspectRatio};` : ''}
-											sizes="40vw"
+											filename={media.src}
+											alt={media.alt}
+											class="w-full {media.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
+											style={media.aspectRatio ? `aspect-ratio: ${media.aspectRatio};` : ''}
+											sizes="65vw"
 										/>
-									{:else if item.type === 'video'}
-										{#if item.src && item.fallbackSrc}
+									{:else if media.type === 'video'}
+										{#if media.src && media.fallbackSrc}
 											<LazyVideo
-												primarySrc={item.src}
-												fallbackSrc={item.fallbackSrc}
-												posterSrc={item.posterSrc}
-												alt={item.alt}
-												class="w-full {item.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
-												style={item.aspectRatio ? `aspect-ratio: ${item.aspectRatio};` : ''}
+												primarySrc={media.src}
+												fallbackSrc={media.fallbackSrc}
+												posterSrc={media.posterSrc}
+												alt={media.alt}
+												class="w-full {media.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
+												style={media.aspectRatio ? `aspect-ratio: ${media.aspectRatio};` : ''}
 											/>
 										{:else}
 											<!-- Missing Video Fallback or src -->
@@ -359,12 +375,21 @@
 										{/if}
 									{/if}
 								</div>
-								<!-- Captions -->
-								<div
-									class="mt-3 flex items-start justify-end border-t border-transparent pt-3 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
-								>
-									{#if item.showAlt}
-										<span class="line-clamp-1 max-w-[60%] text-right">{item.alt}</span>
+								<!-- Captions & Description -->
+								<div class="mt-3 flex flex-col gap-2">
+									<div
+										class="flex items-start justify-between border-t border-transparent pt-3 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
+									>
+										FIG.{mediaIndex + 1}
+										{#if media.showAlt}
+											<span class="line-clamp-1 max-w-[60%] text-right">{media.alt}</span>
+										{/if}
+									</div>
+
+									{#if media.description}
+										<p class="text-justify text-xs leading-relaxed text-muted-foreground">
+											{media.description}
+										</p>
 									{/if}
 								</div>
 							</figure>
