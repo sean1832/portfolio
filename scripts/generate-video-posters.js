@@ -1,13 +1,15 @@
 /**
  * Scans src/lib/assets/projects for video files and generates WebP posters.
- * * Usage:
+ * Uses a centralized cache file to support incremental builds.
+ *
+ * Usage:
  * node scripts/generate-posters.js --target on-country
- * node scripts/generate-posters.js --overwrite
+ * node scripts/generate-posters.js --force
  * node scripts/generate-posters.js --dry-run
  */
 import { spawnSync } from 'node:child_process';
-import { existsSync, readdirSync, statSync } from 'node:fs';
-import { join, basename, relative, dirname } from 'node:path';
+import { existsSync, readdirSync, statSync, readFileSync, writeFileSync } from 'node:fs';
+import { join, basename, relative, dirname, resolve } from 'node:path';
 
 // ==========================================
 // 1. STYLE & LOGGING UTILS
@@ -20,33 +22,30 @@ const STYLE = {
 	green: '\x1b[32m',
 	yellow: '\x1b[33m',
 	cyan: '\x1b[36m',
-	magenta: '\x1b[35m'
+	magenta: '\x1b[35m',
+	blue: '\x1b[34m'
 };
 
 const fmt = (color, text) => `${STYLE[color]}${text}${STYLE.reset}`;
 
 const Logger = {
-	header: (scope, ext, overwrite, dry) => {
-		console.log(`\n${fmt('bright', 'Poster Generator')}`);
+	header: (scope, ext, force, dry) => {
+		console.log(`\n${fmt('bright', 'Poster Generator (Incremental)')}`);
 		console.log(`   Scope:     ${fmt('cyan', scope)}`);
 		console.log(`   Ext:       ${fmt('cyan', ext)}`);
-		console.log(`   Overwrite: ${overwrite ? fmt('yellow', 'YES') : fmt('dim', 'NO')}`);
 		console.log(
-			`   Mode:      ${dry ? fmt('magenta', 'DRY RUN (Read-only)') : fmt('green', 'LIVE (Write enabled)')}\n`
+			`   Force:     ${force ? fmt('yellow', 'YES (Ignoring Cache)') : fmt('dim', 'NO')}`
 		);
+		console.log(`   Mode:      ${dry ? fmt('magenta', 'DRY RUN') : fmt('green', 'LIVE')}\n`);
 	},
-
-	skip: (name) => console.log(`${fmt('dim', '   [SKIP]')} ${name}`),
-
+	skip: (name, reason) =>
+		console.log(`${fmt('dim', '   [SKIP]')} ${name} ${fmt('dim', `(${reason})`)}`),
 	process: (relPath, dry) => {
 		const tag = dry ? fmt('magenta', '[DRY]') : fmt('green', '[GEN]');
 		process.stdout.write(`   ${tag} ${relPath}... `);
 	},
-
 	success: (dry) => console.log(dry ? fmt('cyan', '(simulated)') : fmt('green', 'DONE')),
-
 	fail: (err) => console.log(`${fmt('red', 'FAILED')} ${err || ''}`),
-
 	summary: (stats) => {
 		console.log(`\n${fmt('dim', '------------------------------------------------')}`);
 		console.log(
@@ -61,6 +60,7 @@ const Logger = {
 // ==========================================
 const CONFIG = {
 	baseDir: './src/lib/assets/projects',
+	cacheFile: './scripts/.poster-cache.json', // Centralized Cache
 	ffmpegCmd: 'ffmpeg',
 	ffmpegArgs: (input, output) => [
 		'-y',
@@ -87,12 +87,65 @@ const getArg = (flag, fallback) => {
 const OPTIONS = {
 	ext: getArg('--ext', '.mp4'),
 	target: getArg('--target', ''),
-	overwrite: process.argv.includes('--overwrite'),
+	force: process.argv.includes('--force') || process.argv.includes('--overwrite'),
 	dryRun: process.argv.includes('--dry-run')
 };
 
 // ==========================================
-// 3. FILE SYSTEM OPS
+// 3. CACHE SYSTEM
+// ==========================================
+const Cache = {
+	data: {},
+	path: resolve(CONFIG.cacheFile),
+
+	load() {
+		try {
+			if (existsSync(this.path)) {
+				this.data = JSON.parse(readFileSync(this.path, 'utf-8'));
+			}
+		} catch (e) {
+			console.warn(fmt('yellow', `[WARN] Cache file corrupted, rebuilding: ${e.message}`));
+			this.data = {}; // Reset on corruption
+		}
+	},
+
+	save() {
+		if (OPTIONS.dryRun) return;
+		try {
+			writeFileSync(this.path, JSON.stringify(this.data, null, 2));
+		} catch (e) {
+			console.error(fmt('red', `[WARN] Could not save cache: ${e.message}`));
+		}
+	},
+
+	/**
+	 * Generates a signature for the file.
+	 * Strategy: FileSize + MTime.
+	 * Note: For pure content hashing (slower but strictly robust), read the file buffer.
+	 */
+	getSignature(filePath) {
+		const stat = statSync(filePath);
+		// Combine size and last modified time (ms) for a unique signature
+		return `${stat.size}-${stat.mtimeMs}`;
+
+		// STRICT CONTENT HASH (Slower for large files)
+		// const content = readFileSync(filePath);
+		// return createHash('md5').update(content).digest('hex');
+	},
+
+	shouldProcess(relPath, currentSig) {
+		if (OPTIONS.force) return true;
+		const cachedSig = this.data[relPath];
+		return cachedSig !== currentSig;
+	},
+
+	update(relPath, sig) {
+		this.data[relPath] = sig;
+	}
+};
+
+// ==========================================
+// 4. FILE SYSTEM OPS
 // ==========================================
 function findFiles(dir, ext) {
 	let results = [];
@@ -123,7 +176,7 @@ function generatePoster(inputPath, outputPath) {
 }
 
 // ==========================================
-// 4. MAIN ORCHESTRATION
+// 5. MAIN ORCHESTRATION
 // ==========================================
 function run() {
 	const searchRoot = OPTIONS.target ? join(CONFIG.baseDir, OPTIONS.target) : CONFIG.baseDir;
@@ -133,7 +186,8 @@ function run() {
 		process.exit(1);
 	}
 
-	Logger.header(searchRoot, OPTIONS.ext, OPTIONS.overwrite, OPTIONS.dryRun);
+	Cache.load();
+	Logger.header(searchRoot, OPTIONS.ext, OPTIONS.force, OPTIONS.dryRun);
 
 	const videos = findFiles(searchRoot, OPTIONS.ext);
 	const stats = { processed: 0, skipped: 0, errors: 0 };
@@ -146,16 +200,23 @@ function run() {
 	for (const videoPath of videos) {
 		const outputName = basename(videoPath, OPTIONS.ext) + '-poster.webp';
 		const outputPath = join(dirname(videoPath), outputName);
-		const relPath = relative(CONFIG.baseDir, videoPath);
+		const relPath = relative(CONFIG.baseDir, videoPath); // Key for cache
 
-		// Skip Logic
-		if (existsSync(outputPath) && !OPTIONS.overwrite) {
-			Logger.skip(relPath);
+		// 1. Calculate current signature
+		const currentSig = Cache.getSignature(videoPath);
+
+		// 2. Determine if skip needed
+		const outputExists = existsSync(outputPath);
+		const isStale = Cache.shouldProcess(relPath, currentSig);
+
+		// Logic: Skip if output exists AND cache matches
+		if (outputExists && !isStale) {
+			Logger.skip(relPath, 'Up to date');
 			stats.skipped++;
 			continue;
 		}
 
-		// Process Logic
+		// 3. Process
 		Logger.process(relPath, OPTIONS.dryRun);
 
 		if (OPTIONS.dryRun) {
@@ -168,6 +229,7 @@ function run() {
 
 		if (success) {
 			Logger.success(false);
+			Cache.update(relPath, currentSig); // Update cache on success
 			stats.processed++;
 		} else {
 			Logger.fail(error);
@@ -175,6 +237,7 @@ function run() {
 		}
 	}
 
+	Cache.save();
 	Logger.summary(stats);
 }
 
