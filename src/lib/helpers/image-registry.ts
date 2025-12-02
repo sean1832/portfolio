@@ -1,44 +1,132 @@
-// import all image as high-res webp urls
-const fullImages = import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp,avif}', {
-	eager: true, // will bundle the images as part of the build
+// Check if we're in development mode
+const isDev = import.meta.env.DEV;
 
-	// 'as=srcset': Returns a string like "img-400.webp 400w, img-800.webp 800w..."
-	query: {
-		as: 'srcset',
-		format: 'avif',
-		w: '640;1280;1366;1920;2560' // Generate widths
-	}
-});
+// ============================================================================
+// PRODUCTION MODE: Full image optimization via vite-imagetools
+// ============================================================================
 
-// import all image as base64 strings
-const placeholders = import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp,avif}', {
-	eager: true, // will bundle the images as part of the build
-	query: { as: 'base64', format: 'png', w: '16' }
-});
+// Responsive srcset (AVIF - modern, efficient)
+const fullImages = isDev
+	? {}
+	: import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp,avif}', {
+			eager: true,
+			query: {
+				as: 'srcset',
+				format: 'avif',
+				w: '1280;1920;2560'
+			}
+		});
+
+// High-fidelity metadata (original dimensions + highest quality URL)
+const highFidelityImages = isDev
+	? {}
+	: import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp,avif}', {
+			eager: true,
+			query: {
+				as: 'metadata',
+				format: 'avif'
+			}
+		});
+
+// Low-quality placeholders (prevents layout shift)
+const placeholders = isDev
+	? {}
+	: import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp,avif}', {
+			eager: true,
+			query: { as: 'base64', format: 'png', w: '16' }
+		});
+
+// ============================================================================
+// DEVELOPMENT MODE: Fast, unoptimized images (no vite-imagetools processing)
+// ============================================================================
+
+// Simple URL imports for dev mode (no transformation)
+const devImages = isDev
+	? import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp,avif}', {
+			eager: true,
+			import: 'default'
+		})
+	: {};
+
+type ViteModule<T> = { default: T } | T;
+export interface ImageMetadata {
+	src: string;
+	width: number;
+	height: number;
+	format: string;
+}
 
 export interface ImageAsset {
-	srcset: string;
+	srcset: string; // Combined: Responsive set + High-Fi at end
 	placeholder: string;
-	fallbackSrc: string; // a standard url for `src` attribute as backup
+	fallbackSrc: string; // Smallest AVIF from srcset (1280px)
+	originalSrc: string; // High-Fi AVIF URL (original dimensions)
+	width: number; // Native width
+	height: number; // Native height
 }
 
 export function getImage(filename: string): ImageAsset | null {
-	// match the keys
 	const key = `/src/lib/assets${filename}`;
-	const fullModule = fullImages[key] as { default: string } | string;
-	const placeholderModule = placeholders[key] as { default: string } | string;
 
-	if (!fullModule || !placeholderModule) {
+	// ========================================================================
+	// DEVELOPMENT MODE: Return unoptimized original image
+	// ========================================================================
+	if (isDev) {
+		const devMod = devImages[key] as string | undefined;
+
+		if (!devMod) {
+			console.warn(`[ImageRegistry] Image not found: ${filename}`);
+			return null;
+		}
+
+		// In dev mode, use the original image as placeholder too
+		// This preserves aspect ratio without needing vite-imagetools processing
+		// The pixelated-reveal component will show the image immediately (no animation delay)
+		return {
+			srcset: devMod, // Single image, no responsive variants
+			placeholder: devMod, // Use same image as placeholder to preserve aspect ratio
+			fallbackSrc: devMod,
+			originalSrc: devMod,
+			width: 0, // Unknown in dev mode (not used for layout)
+			height: 0
+		};
+	}
+
+	// ========================================================================
+	// PRODUCTION MODE: Full optimization via vite-imagetools
+	// ========================================================================
+
+	// Retrieve Modules
+	const fullMod = fullImages[key] as ViteModule<string>;
+	const highFiMod = highFidelityImages[key] as ViteModule<ImageMetadata>;
+	const placeholderMod = placeholders[key] as ViteModule<string>;
+
+	// Guard Clause
+	if (!fullMod || !highFiMod || !placeholderMod) {
+		console.warn(`[ImageRegistry] Missing asset generation for: ${filename}`);
 		return null;
 	}
 
-	const srcset = typeof fullModule === 'object' ? fullModule.default : fullModule;
-	const placeholder =
-		typeof placeholderModule === 'object' ? placeholderModule.default : placeholderModule;
+	// Extract Data
+	const responsiveSrcset = typeof fullMod === 'object' ? fullMod.default : fullMod;
+	const placeholder = typeof placeholderMod === 'object' ? placeholderMod.default : placeholderMod;
+	const highFiData =
+		typeof highFiMod === 'object' && 'default' in highFiMod
+			? highFiMod.default
+			: (highFiMod as ImageMetadata);
 
-	// extract largest image from srcset and use as fallback src
-	const lastEntry = srcset.split(',').pop()?.trim() || '';
-	const fallbackSrc = lastEntry.split(' ')[0] || '';
+	// Extract fallback from srcset (first/smallest image = 1280px AVIF)
+	const fallbackSrc = responsiveSrcset.split(',')[0].trim().split(' ')[0];
 
-	return { srcset, placeholder, fallbackSrc };
+	// Construct Combined Srcset (responsive sizes + original high-fi)
+	const combinedSrcset = `${responsiveSrcset}, ${highFiData.src} ${highFiData.width}w`;
+
+	return {
+		srcset: combinedSrcset,
+		placeholder,
+		fallbackSrc,
+		originalSrc: highFiData.src,
+		width: highFiData.width,
+		height: highFiData.height
+	};
 }
