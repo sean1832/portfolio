@@ -57,7 +57,7 @@
 	};
 </script>
 
-<div class="relative h-full w-full overflow-hidden" {style}>
+<div class="relative h-full w-full overflow-hidden">
 	{#if posterData}
 		<div
 			class="pointer-events-none absolute inset-0 z-20 h-full w-full"
@@ -69,12 +69,14 @@
 				placeholder={posterData.placeholder}
 				alt="Video Poster"
 				class="h-full w-full"
+				{style}
 			/>
 		</div>
 	{/if}
 	<video
 		use:lazyPlay
 		class={cn('h-full w-full object-cover', className)}
+		{style}
 		preload="none"
 		muted
 		loop

@@ -145,7 +145,7 @@
 	});
 </script>
 
-<div class={cn('relative', className)} {style}>
+<div class={cn('relative', className)}>
 	<!--placeholder load first (base layer, establishes dimensions)-->
 	<img
 		bind:this={containerRef}
@@ -154,14 +154,14 @@
 		aria-hidden="true"
 		class={cn('h-full w-full object-cover', className)}
 		class:opacity-0={isLoaded}
-		style="image-rendering: pixelated;"
+		style="image-rendering: pixelated; {style || ''}"
 	/>
 
 	<canvas
 		bind:this={canvas}
 		class="absolute inset-0 h-full w-full object-cover"
 		class:hidden={!isLoaded || !isDecoded || isRevealed}
-		style="image-rendering: pixelated;"
+		style="image-rendering: pixelated; {style || ''}"
 		aria-hidden="true"
 	></canvas>
 
@@ -178,6 +178,7 @@
 			decoding="async"
 			class="absolute inset-0 h-full w-full object-cover"
 			class:opacity-0={!isRevealed}
+			{style}
 			onload={onMainImageLoad}
 		/>
 	{/if}

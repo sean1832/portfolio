@@ -4,7 +4,6 @@
 	import Decoder from '$lib/components/molecules/decoder.svelte';
 	import ExternalLink from '../atoms/external-link.svelte';
 	import LazyVideo from '../molecules/lazy-video.svelte';
-	import VideoPlayer from '../molecules/video-player.svelte';
 
 	let { project }: { project: Project } = $props();
 
@@ -60,6 +59,27 @@
 
 		return result;
 	});
+
+	// helper functions
+	function getMediaStyle(media: MediaItem): string {
+		const styles: string[] = [];
+
+		// handle aspect ratio
+		if (media.aspectRatio) {
+			styles.push(`aspect-ratio: ${media.aspectRatio}`);
+		}
+
+		// handle object-position for image/video alignment within container
+		// this controls which part of the media is visible when cropped by object-fit: cover
+		const justify = media.justify || 'center';
+		const align = media.align || 'center';
+
+		// Map align values: 'top' -> 'top', 'center' -> 'center', 'bottom' -> 'bottom'
+		// Map justify values: 'left' -> 'left', 'center' -> 'center', 'right' -> 'right'
+		styles.push(`object-position: ${justify} ${align}`);
+
+		return styles.join('; ');
+	}
 
 	$effect(() => {
 		if (!heroImage) {
@@ -280,7 +300,7 @@
 
 			<!-- Gallery -->
 			{#if galleryMedias.length > 0}
-				<section class="flex flex-col gap-16">
+				<section class="flex flex-col gap-8">
 					{#each galleryItems as media}
 						{#if media.type === 'group'}
 							<!-- Media Group (side-by-side) -->
@@ -295,9 +315,7 @@
 													alt={groupMedia.alt}
 													class="w-full {groupMedia.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
 													sizes="40vw"
-													style={groupMedia.aspectRatio
-														? `aspect-ratio: ${groupMedia.aspectRatio};`
-														: ''}
+													style={getMediaStyle(groupMedia)}
 												/>
 											{:else if groupMedia.type === 'video'}
 												{#if groupMedia.src && groupMedia.fallbackSrc}
@@ -309,9 +327,7 @@
 														class="w-full {groupMedia.aspectRatio
 															? 'h-full object-cover'
 															: 'h-auto'}"
-														style={groupMedia.aspectRatio
-															? `aspect-ratio: ${groupMedia.aspectRatio};`
-															: ''}
+														style={getMediaStyle(groupMedia)}
 													/>
 												{:else}
 													<!-- Missing Video Fallback or src -->
@@ -326,7 +342,7 @@
 										<!-- Captions & Description -->
 										<div class="mt-3 flex flex-col gap-2">
 											<div
-												class="flex items-start justify-between border-t border-transparent pt-3 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
+												class="flex items-start justify-between border-t border-transparent pt-1 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
 											>
 												FIG.{mediaIndex + 1}
 												{#if groupMedia.showAlt}
@@ -352,7 +368,7 @@
 											filename={media.src}
 											alt={media.alt}
 											class="w-full {media.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
-											style={media.aspectRatio ? `aspect-ratio: ${media.aspectRatio};` : ''}
+											style={getMediaStyle(media)}
 											sizes="65vw"
 										/>
 									{:else if media.type === 'video'}
@@ -363,7 +379,7 @@
 												posterSrc={media.posterSrc}
 												alt={media.alt}
 												class="w-full {media.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
-												style={media.aspectRatio ? `aspect-ratio: ${media.aspectRatio};` : ''}
+												style={getMediaStyle(media)}
 											/>
 										{:else}
 											<!-- Missing Video Fallback or src -->
@@ -378,7 +394,7 @@
 								<!-- Captions & Description -->
 								<div class="mt-3 flex flex-col gap-2">
 									<div
-										class="flex items-start justify-between border-t border-transparent pt-3 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
+										class="flex items-start justify-between border-t border-transparent pt-1 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
 									>
 										FIG.{mediaIndex + 1}
 										{#if media.showAlt}
