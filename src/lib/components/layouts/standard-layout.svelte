@@ -310,116 +310,61 @@
 			{#if galleryMedias.length > 0}
 				<section class="flex flex-col gap-8">
 					{#each galleryItems as media}
-						{#if media.type === 'group'}
-							<!-- Media Group (side-by-side) -->
-							<div
-								class={`grid grid-cols-1 gap-6 ${columnsByCount[media.items.length] || 'md:grid-cols-4'}`}
-							>
-								{#each media.items as groupMedia}
-									{@const mediaIndex = galleryMedias.indexOf(groupMedia)}
-									<figure class="group w-full">
-										<div class="relative overflow-hidden">
-											{#if groupMedia.type === 'image'}
-												<LazyImage
-													filename={groupMedia.src}
+						{@const items = media.type === 'group' ? media.items : [media]}
+						<div
+							class={`grid grid-cols-1 gap-6 ${columnsByCount[items.length] || 'md:grid-cols-4'}`}
+						>
+							{#each items as groupMedia}
+								{@const mediaIndex = galleryMedias.indexOf(groupMedia)}
+								<figure class="group w-full">
+									<div class="relative overflow-hidden">
+										{#if groupMedia.type === 'image'}
+											<LazyImage
+												filename={groupMedia.src}
+												alt={groupMedia.alt}
+												class="w-full {groupMedia.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
+												sizes={items.length === 1 ? '65vw' : '40vw'}
+												style={getMediaStyle(groupMedia)}
+											/>
+										{:else if groupMedia.type === 'video'}
+											{#if groupMedia.src && groupMedia.fallbackSrc}
+												<LazyVideo
+													primarySrc={groupMedia.src}
+													fallbackSrc={groupMedia.fallbackSrc}
+													posterSrc={groupMedia.posterSrc}
 													alt={groupMedia.alt}
 													class="w-full {groupMedia.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
-													sizes="40vw"
 													style={getMediaStyle(groupMedia)}
 												/>
-											{:else if groupMedia.type === 'video'}
-												{#if groupMedia.src && groupMedia.fallbackSrc}
-													<LazyVideo
-														primarySrc={groupMedia.src}
-														fallbackSrc={groupMedia.fallbackSrc}
-														posterSrc={groupMedia.posterSrc}
-														alt={groupMedia.alt}
-														class="w-full {groupMedia.aspectRatio
-															? 'h-full object-cover'
-															: 'h-auto'}"
-														style={getMediaStyle(groupMedia)}
-													/>
-												{:else}
-													<!-- Missing Video Fallback or src -->
-													<div
-														class="flex h-48 w-full items-center justify-center bg-muted text-xs text-destructive"
-													>
-														Missing video source or fallback source
-													</div>
-												{/if}
+											{:else}
+												<!-- Missing Video Fallback or src -->
+												<div
+													class="flex h-48 w-full items-center justify-center bg-muted text-xs text-destructive"
+												>
+													Missing video source or fallback source
+												</div>
 											{/if}
-										</div>
-										<!-- Captions & Description -->
-										<div class="mt-3 flex flex-col gap-2">
-											<div
-												class="flex items-start justify-between border-t border-transparent pt-1 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
-											>
-												FIG.{mediaIndex + 1}
-												{#if groupMedia.showAlt}
-													<span class="line-clamp-1 max-w-[60%] text-right">{groupMedia.alt}</span>
-												{/if}
-											</div>
-											{#if groupMedia.description}
-												<p class="text-justify text-xs leading-relaxed text-muted-foreground">
-													{groupMedia.description}
-												</p>
-											{/if}
-										</div>
-									</figure>
-								{/each}
-							</div>
-						{:else}
-							<!-- Single Media -->
-							{@const mediaIndex = galleryMedias.indexOf(media)}
-							<figure class="group w-full">
-								<div class="relative overflow-hidden">
-									{#if media.type === 'image'}
-										<LazyImage
-											filename={media.src}
-											alt={media.alt}
-											class="w-full {media.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
-											style={getMediaStyle(media)}
-											sizes="65vw"
-										/>
-									{:else if media.type === 'video'}
-										{#if media.src && media.fallbackSrc}
-											<LazyVideo
-												primarySrc={media.src}
-												fallbackSrc={media.fallbackSrc}
-												posterSrc={media.posterSrc}
-												alt={media.alt}
-												class="w-full {media.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
-												style={getMediaStyle(media)}
-											/>
-										{:else}
-											<!-- Missing Video Fallback or src -->
-											<div
-												class="flex h-48 w-full items-center justify-center bg-muted text-xs text-destructive"
-											>
-												Missing video source or fallback source
-											</div>
-										{/if}
-									{/if}
-								</div>
-								<!-- Captions & Description -->
-								<div class="mt-3 flex flex-col gap-2">
-									<div
-										class="flex items-start justify-between border-t border-transparent pt-1 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
-									>
-										FIG.{mediaIndex + 1}
-										{#if media.showAlt}
-											<span class="line-clamp-1 max-w-[60%] text-right">{media.alt}</span>
 										{/if}
 									</div>
-
-									{#if media.description}
-										<p class="text-justify text-xs leading-relaxed text-muted-foreground">
-											{media.description}
-										</p>
-									{/if}
-								</div>
-							</figure>
-						{/if}
+									<!-- Captions & Description -->
+									<div class="mt-3 flex flex-col gap-2">
+										<div
+											class="flex items-start justify-between border-t border-transparent pt-1 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
+										>
+											FIG.{mediaIndex + 1}
+											{#if groupMedia.showAlt}
+												<span class="line-clamp-1 max-w-[60%] text-right">{groupMedia.alt}</span>
+											{/if}
+										</div>
+										{#if groupMedia.description}
+											<p class="text-justify text-xs leading-relaxed text-muted-foreground">
+												{groupMedia.description}
+											</p>
+										{/if}
+									</div>
+								</figure>
+							{/each}
+						</div>
 					{/each}
 				</section>
 			{/if}
