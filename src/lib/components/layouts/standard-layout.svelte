@@ -81,6 +81,14 @@
 		return styles.join('; ');
 	}
 
+	// media columns
+	const columnsByCount: Record<number, string> = {
+		1: 'md:grid-cols-1',
+		2: 'md:grid-cols-2',
+		3: 'md:grid-cols-3',
+		4: 'md:grid-cols-4'
+	};
+
 	$effect(() => {
 		if (!heroImage) {
 			console.warn('No hero or cover image found for project ' + project.slug);
@@ -304,7 +312,9 @@
 					{#each galleryItems as media}
 						{#if media.type === 'group'}
 							<!-- Media Group (side-by-side) -->
-							<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+							<div
+								class={`grid grid-cols-1 gap-6 ${columnsByCount[media.items.length] || 'md:grid-cols-4'}`}
+							>
 								{#each media.items as groupMedia}
 									{@const mediaIndex = galleryMedias.indexOf(groupMedia)}
 									<figure class="group w-full">
