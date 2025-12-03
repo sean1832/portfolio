@@ -63,22 +63,26 @@
 				<h1 class="mb-4 text-lg lg:absolute lg:top-0 lg:right-full lg:mr-8 lg:mb-0">
 					{featureProjectWithVideo.year}
 				</h1>
-				{#if featureVideoMedia}
-					<LazyVideo
-						primarySrc={featureVideoMedia.src}
-						fallbackSrc={featureVideoMedia.fallbackSrc || ''}
-						posterSrc={featureVideoMedia.posterSrc || ''}
-						alt={featureVideoMedia.alt}
-						class="w-full max-w-[800px] lg:w-[800px]"
-					/>
-				{/if}
-				<a href="/" class="w-full max-w-[800px] lg:w-auto">
+				<a
+					href="/projects/{featureProjectWithVideo.slug}"
+					class="w-full max-w-[800px] lg:w-auto"
+					tabindex="0"
+					role="button"
+					onmouseenter={() => decoder?.start()}
+					onmouseleave={() => decoder?.stop()}
+				>
+					{#if featureVideoMedia}
+						<LazyVideo
+							primarySrc={featureVideoMedia.src}
+							fallbackSrc={featureVideoMedia.fallbackSrc || ''}
+							posterSrc={featureVideoMedia.posterSrc || ''}
+							alt={featureVideoMedia.alt}
+							class="w-full max-w-[800px] lg:w-[800px]"
+						/>
+					{/if}
+
 					<div
 						class="mt-4 min-w-100 cursor-pointer lg:absolute lg:bottom-0 lg:left-full lg:mt-0 lg:ml-8"
-						role="button"
-						tabindex="0"
-						onmouseenter={() => decoder?.start()}
-						onmouseleave={() => decoder?.stop()}
 					>
 						<hr class="border-primary" />
 						<div class="flex items-center justify-between">
