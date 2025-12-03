@@ -100,7 +100,12 @@
 	<!-- HERO SECTION -->
 	<header class="relative h-[65vh] w-full overflow-hidden">
 		{#if heroImage?.type === 'image'}
-			<LazyImage filename={heroImage.src} alt={heroImage.alt} class="h-full w-full object-cover " />
+			<LazyImage
+				filename={heroImage.src}
+				alt={heroImage.alt}
+				class="h-full w-full object-cover "
+				style={getMediaStyle(heroImage)}
+			/>
 		{:else if heroVideo?.type === 'video'}
 			{#if heroVideo.src && heroVideo.fallbackSrc}
 				<!-- NEW: Path-based video (uses registry) -->
@@ -110,6 +115,7 @@
 					posterSrc={heroVideo.posterSrc}
 					alt={heroVideo.alt}
 					class="h-full w-full object-cover"
+					style={getMediaStyle(heroVideo)}
 				/>
 			{:else}
 				<!-- Missing Video Fallback or src -->
