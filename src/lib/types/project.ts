@@ -31,8 +31,8 @@ export interface Media {
 	groupId?: string; // media with same groupId will be rendered side-by-side
 	aspectRatio?: string; // e.g. "16/9", "4/3"
 	description?: string; // longer description for media
-	justify?: 'left' | 'center' | 'right'; // horizontal position of visible area when cropped (object-position x)
-	align?: 'top' | 'center' | 'bottom'; // vertical position of visible area when cropped (object-position y)
+	justify?: 'left' | 'center' | 'right' | (string & {}); // horizontal position of visible area when cropped (object-position x)
+	align?: 'top' | 'center' | 'bottom' | (string & {}); // vertical position of visible area when cropped (object-position y)
 }
 
 export interface ExternalLink {
