@@ -40,19 +40,21 @@
 			project.medias?.find((media) => media.isCover && media.type === 'video')
 	);
 
-	// Filter out the hero image from the gallery list
-	let galleryMedias = $derived(project.medias?.filter((media) => media !== heroImage) || []);
-
 	// Group media items by groupId
 	type MediaItem = NonNullable<Project['medias']>[number];
 	type MediaGroup = { type: 'group'; groupId: string; items: MediaItem[] };
 	type GalleryItem = MediaItem | MediaGroup;
 
+	// Filter out the hero image from the gallery list
+	let visibleGalleryMedias = $derived(
+		project.medias?.filter((media) => media !== heroImage && !media.isHiddenGallery) || []
+	);
+
 	let galleryItems = $derived.by(() => {
 		const items: GalleryItem[] = [];
-		const grouped = new Map<string, typeof galleryMedias>();
+		const grouped = new Map<string, typeof visibleGalleryMedias>();
 
-		for (const media of galleryMedias) {
+		for (const media of visibleGalleryMedias) {
 			if (media.groupId) {
 				if (!grouped.has(media.groupId)) {
 					grouped.set(media.groupId, []);
@@ -67,7 +69,7 @@
 		const result: GalleryItem[] = [];
 		const processedGroups = new Set<string>();
 
-		for (const media of galleryMedias) {
+		for (const media of visibleGalleryMedias) {
 			if (media.groupId && !processedGroups.has(media.groupId)) {
 				result.push({
 					type: 'group',
@@ -273,7 +275,7 @@
 			</section>
 
 			<!-- Gallery -->
-			{#if galleryMedias.length > 0}
+			{#if visibleGalleryMedias.length > 0}
 				<section class="flex flex-col gap-8">
 					{#each galleryItems as media}
 						{@const items = media.type === 'group' ? media.items : [media]}
@@ -281,58 +283,54 @@
 							class={`grid grid-cols-1 gap-6 ${columnsByCount[items.length] || 'md:grid-cols-4'}`}
 						>
 							{#each items as groupMedia}
-								{#if !groupMedia.isHiddenGallery}
-									{@const mediaIndex = galleryMedias.indexOf(groupMedia)}
-									<figure class="group w-full">
-										<div class="relative overflow-hidden">
-											{#if groupMedia.type === 'image'}
-												<LazyImage
-													filename={groupMedia.src}
+								{@const mediaIndex = visibleGalleryMedias.indexOf(groupMedia)}
+								<figure class="group w-full">
+									<div class="relative overflow-hidden">
+										{#if groupMedia.type === 'image'}
+											<LazyImage
+												filename={groupMedia.src}
+												alt={groupMedia.alt}
+												class="w-full {groupMedia.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
+												sizes={items.length === 1 ? '65vw' : '40vw'}
+												style={getMediaStyle(groupMedia)}
+											/>
+										{:else if groupMedia.type === 'video'}
+											{#if groupMedia.src && groupMedia.fallbackSrc}
+												<LazyVideo
+													primarySrc={groupMedia.src}
+													fallbackSrc={groupMedia.fallbackSrc}
+													posterSrc={groupMedia.posterSrc}
 													alt={groupMedia.alt}
 													class="w-full {groupMedia.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
-													sizes={items.length === 1 ? '65vw' : '40vw'}
 													style={getMediaStyle(groupMedia)}
 												/>
-											{:else if groupMedia.type === 'video'}
-												{#if groupMedia.src && groupMedia.fallbackSrc}
-													<LazyVideo
-														primarySrc={groupMedia.src}
-														fallbackSrc={groupMedia.fallbackSrc}
-														posterSrc={groupMedia.posterSrc}
-														alt={groupMedia.alt}
-														class="w-full {groupMedia.aspectRatio
-															? 'h-full object-cover'
-															: 'h-auto'}"
-														style={getMediaStyle(groupMedia)}
-													/>
-												{:else}
-													<!-- Missing Video Fallback or src -->
-													<div
-														class="flex h-48 w-full items-center justify-center bg-muted text-xs text-destructive"
-													>
-														Missing video source or fallback source
-													</div>
-												{/if}
+											{:else}
+												<!-- Missing Video Fallback or src -->
+												<div
+													class="flex h-48 w-full items-center justify-center bg-muted text-xs text-destructive"
+												>
+													Missing video source or fallback source
+												</div>
+											{/if}
+										{/if}
+									</div>
+									<!-- Captions & Description -->
+									<div class="mt-3 flex flex-col gap-2">
+										<div
+											class="flex items-start justify-between border-t border-transparent pt-1 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
+										>
+											FIG.{mediaIndex + 1}
+											{#if groupMedia.showAlt}
+												<span class="line-clamp-1 max-w-[60%] text-right">{groupMedia.alt}</span>
 											{/if}
 										</div>
-										<!-- Captions & Description -->
-										<div class="mt-3 flex flex-col gap-2">
-											<div
-												class="flex items-start justify-between border-t border-transparent pt-1 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
-											>
-												FIG.{mediaIndex + 1}
-												{#if groupMedia.showAlt}
-													<span class="line-clamp-1 max-w-[60%] text-right">{groupMedia.alt}</span>
-												{/if}
-											</div>
-											{#if groupMedia.description}
-												<p class="text-justify text-xs leading-relaxed text-muted-foreground">
-													{groupMedia.description}
-												</p>
-											{/if}
-										</div>
-									</figure>
-								{/if}
+										{#if groupMedia.description}
+											<p class="text-justify text-xs leading-relaxed text-muted-foreground">
+												{groupMedia.description}
+											</p>
+										{/if}
+									</div>
+								</figure>
 							{/each}
 						</div>
 					{/each}
