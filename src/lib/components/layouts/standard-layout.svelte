@@ -96,6 +96,34 @@
 	});
 </script>
 
+{#snippet metadataSection(title: string, items: any[] | undefined)}
+	{#if items && items.length > 0}
+		<div class="flex flex-col gap-2">
+			<span
+				class="mb-1 text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
+			>
+				{title}
+			</span>
+			<ul class="flex flex-col gap-1">
+				{#each items as item}
+					{@const text = typeof item === 'string' ? item : item.text}
+					{@const url = typeof item === 'object' ? item.url : undefined}
+
+					<li class="text-sm leading-normal font-normal tracking-wide">
+						{#if url}
+							<ExternalLink href={url}>
+								{text}
+							</ExternalLink>
+						{:else}
+							{text}
+						{/if}
+					</li>
+				{/each}
+			</ul>
+		</div>
+	{/if}
+{/snippet}
+
 <div class="min-h-screen w-full">
 	<!-- HERO SECTION -->
 	<header class="relative h-[65vh] w-full overflow-hidden">
@@ -107,8 +135,7 @@
 				style={getMediaStyle(heroImage)}
 			/>
 		{:else if heroVideo?.type === 'video'}
-			{#if heroVideo.src && heroVideo.fallbackSrc}
-				<!-- NEW: Path-based video (uses registry) -->
+			{#if heroVideo.src}
 				<LazyVideo
 					primarySrc={heroVideo.src}
 					fallbackSrc={heroVideo.fallbackSrc}
@@ -117,11 +144,6 @@
 					class="h-full w-full object-cover"
 					style={getMediaStyle(heroVideo)}
 				/>
-			{:else}
-				<!-- Missing Video Fallback or src -->
-				<div class="flex h-48 w-full items-center justify-center bg-muted text-xs text-destructive">
-					Missing video source or fallback source
-				</div>
 			{/if}
 		{/if}
 	</header>
@@ -169,109 +191,16 @@
 				{/if}
 
 				<!-- Team -->
-				{#if (project.directors && project.directors.length > 0) || (project.collaborators && project.collaborators.length > 0)}
+				{#if project.directors?.length || project.collaborators?.length}
 					<div class="flex flex-col gap-6">
-						{#if project.directors && project.directors.length > 0}
-							<div>
-								<span
-									class="mb-2 block text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
-									>Director</span
-								>
-								<ul class="flex flex-col gap-1">
-									{#each project.directors as dir}
-										<li class="text-sm font-normal tracking-wide">
-											{#if typeof dir === 'object' && dir.url}
-												<a
-													href={dir.url}
-													target="_blank"
-													rel="noreferrer"
-													class="decoration-1 underline-offset-4 transition-all hover:underline"
-												>
-													{dir.text}
-												</a>
-											{:else}
-												{typeof dir === 'string' ? dir : dir.text}
-											{/if}
-										</li>
-									{/each}
-								</ul>
-							</div>
-						{/if}
-
-						{#if project.collaborators && project.collaborators.length > 0}
-							<div>
-								<span
-									class="mb-2 block text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
-									>Collaborators</span
-								>
-								<ul class="flex flex-col gap-1">
-									{#each project.collaborators as col}
-										<li class="text-sm font-normal tracking-wide text-muted-foreground">
-											{#if typeof col === 'object' && col.url}
-												<a
-													href={col.url}
-													target="_blank"
-													rel="noreferrer"
-													class="transition-colors hover:text-foreground"
-												>
-													{col.text}
-												</a>
-											{:else}
-												{typeof col === 'string' ? col : col.text}
-											{/if}
-										</li>
-									{/each}
-								</ul>
-							</div>
-						{/if}
+						{@render metadataSection('Director', project.directors)}
+						{@render metadataSection('Collaborators', project.collaborators)}
 					</div>
 				{/if}
 
-				<!-- Awards -->
-				{#if project.awards && project.awards.length > 0}
-					<div class="flex flex-col gap-2">
-						<span
-							class="text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
-							>Recognition</span
-						>
-						<ul class="space-y-2">
-							{#each project.awards as award}
-								<li class="text-sm leading-normal">
-									{#if award.url}
-										<ExternalLink href={award.url}>
-											{award.text}
-										</ExternalLink>
-									{:else}
-										{award.text}
-									{/if}
-								</li>
-							{/each}
-						</ul>
-					</div>
-				{/if}
-
-				<!--Publications-->
-				{#if project.publications && project.publications.length > 0}
-					<div class="flex flex-col gap-2">
-						<span
-							class="text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
-							>Publications</span
-						>
-						<ul class="space-y-2">
-							{#each project.publications as publication}
-								<li class="text-sm leading-normal">
-									{#if publication.url}
-										<ExternalLink href={publication.url}>
-											{publication.text}
-										</ExternalLink>
-									{:else}
-										{publication.text}
-									{/if}
-								</li>
-							{/each}
-						</ul>
-					</div>
-				{/if}
+				{@render metadataSection('Supporters', project.supporters)}
+				{@render metadataSection('Recognitions', project.awards)}
+				{@render metadataSection('Publications', project.publications)}
 			</div>
 		</aside>
 
