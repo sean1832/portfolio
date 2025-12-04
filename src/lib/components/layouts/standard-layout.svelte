@@ -319,7 +319,7 @@
 										<div
 											class="flex items-start justify-between border-t border-transparent pt-1 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
 										>
-											FIG.{mediaIndex + 1}
+											[{mediaIndex + 1}]
 											{#if groupMedia.showAlt}
 												<span class="line-clamp-1 max-w-[60%] text-right">{groupMedia.alt}</span>
 											{/if}
