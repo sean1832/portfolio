@@ -1,6 +1,6 @@
 export interface Project {
 	slug: string;
-	layout: ProjectLayout;
+	layout: 'standard' | 'immersive-video' | 'immersive-img';
 	name: string;
 	shortName?: string;
 	types: ProjectType[];
@@ -8,6 +8,7 @@ export interface Project {
 	year: number;
 	// optional fields
 	collaborators?: ExternalLink[] | string[];
+	supporters?: ExternalLink[] | string[];
 	directors?: ExternalLink[] | string[];
 	contributions?: Contribution[];
 	tools?: Tool[];
@@ -26,6 +27,7 @@ export interface Media {
 	posterSrc?: string;
 	alt: string;
 	isCover?: boolean;
+	isHiddenGallery?: boolean; // media that is not shown in the gallery but can be used in other ways (e.g. as posterSrc)
 	isHero?: boolean;
 	showAlt?: boolean;
 	groupId?: string; // media with same groupId will be rendered side-by-side
@@ -72,5 +74,3 @@ export type Tool =
 	| 'mid-journey'
 	| 'stable diffusion'
 	| 'flux';
-
-export type ProjectLayout = 'standard' | 'immersive-video' | 'immersive-img';
