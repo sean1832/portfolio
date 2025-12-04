@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Error - Zeke Zhang</title>
+		<style>
+			:root {
+				--background: oklch(1 0 0);
+				--foreground: oklch(0.141 0.005 285.823);
+				--muted-foreground: oklch(0.552 0.016 285.938);
+				--border: oklch(0.92 0.004 286.32);
+			}
+
+			@media (prefers-color-scheme: dark) {
+				:root {
+					--background: oklch(0.141 0.005 285.823);
+					--foreground: oklch(0.985 0 0);
+					--muted-foreground: oklch(0.705 0.015 286.067);
+					--border: oklch(1 0 0 / 10%);
+				}
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+				background-color: var(--background);
+				color: var(--foreground);
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				padding: 2rem;
+			}
+
+			.error-container {
+				text-align: center;
+				max-width: 600px;
+			}
+
+			.error-code {
+				font-size: clamp(80px, 20vw, 180px);
+				font-weight: 700;
+				line-height: 1;
+				letter-spacing: -0.05em;
+				margin-bottom: 1rem;
+				position: relative;
+			}
+
+			.error-code::after {
+				content: '';
+				position: absolute;
+				bottom: -0.5rem;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 60%;
+				height: 2px;
+				background-color: var(--foreground);
+			}
+
+			.error-title {
+				font-size: clamp(1.25rem, 3vw, 1.75rem);
+				font-weight: 500;
+				margin-bottom: 1rem;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+			}
+
+			.error-message {
+				color: var(--muted-foreground);
+				font-size: clamp(0.875rem, 2vw, 1rem);
+				line-height: 1.6;
+				margin-bottom: 2rem;
+			}
+
+			.back-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				color: var(--foreground);
+				text-decoration: none;
+				font-size: 0.875rem;
+				font-weight: 500;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				padding: 0.75rem 1.5rem;
+				border: 1px solid var(--border);
+				transition: all 0.2s ease;
+			}
+
+			.back-link:hover {
+				background-color: var(--foreground);
+				color: var(--background);
+				border-color: var(--foreground);
+			}
+
+			.back-link svg {
+				width: 16px;
+				height: 16px;
+				transition: transform 0.2s ease;
+			}
+
+			.back-link:hover svg {
+				transform: translateX(-4px);
+			}
+
+			.glitch {
+				animation: glitch 2s infinite;
+			}
+
+			@keyframes glitch {
+				0%,
+				90%,
+				100% {
+					opacity: 1;
+				}
+				92%,
+				94%,
+				96% {
+					opacity: 0;
+					transform: translateX(-2px);
+				}
+				93%,
+				95%,
+				97% {
+					opacity: 1;
+					transform: translateX(2px);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="error-container">
+			<h1 class="error-code glitch">500</h1>
+			<h2 class="error-title">Internal Error</h2>
+			<p class="error-message">
+				Something unexpected happened. The application encountered a critical error during
+				initialization. Please try refreshing the page or come back later.
+			</p>
+			<a href="/" class="back-link">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="M19 12H5M12 19l-7-7 7-7" />
+				</svg>
+				Return Home
+			</a>
+		</div>
+	</body>
+</html>
