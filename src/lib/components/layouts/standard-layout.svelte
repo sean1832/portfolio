@@ -1,11 +1,34 @@
 <script lang="ts">
+	import { onMount, onDestroy } from 'svelte';
 	import type { Project } from '$lib/types/project';
 	import LazyImage from '$lib/components/molecules/lazy-image.svelte';
 	import Decoder from '$lib/components/molecules/decoder.svelte';
 	import ExternalLink from '../atoms/external-link.svelte';
 	import LazyVideo from '../molecules/lazy-video.svelte';
+	import { navbarState } from '$lib/hooks/navbar-state.svelte';
 
 	let { project }: { project: Project } = $props();
+
+	// Set navbar state based on layout
+	let isImmersive = $derived(project.layout !== 'standard');
+
+	// Bind hero element for height calculation
+	let heroElement: HTMLElement | undefined = $state();
+
+	onMount(() => {
+		// Set immersive mode for navbar
+		navbarState.setImmersive(true);
+
+		// Update hero height for scroll calculations
+		if (heroElement) {
+			navbarState.setHeroHeight(heroElement.offsetHeight);
+		}
+	});
+
+	onDestroy(() => {
+		// Reset navbar state when leaving the page
+		navbarState.reset();
+	});
 
 	// Derived state for images
 	let heroImage = $derived(
@@ -126,7 +149,15 @@
 
 <div class="min-h-screen w-full">
 	<!-- HERO SECTION -->
-	<header class="relative h-[65vh] w-full overflow-hidden">
+	<header
+		bind:this={heroElement}
+		class={`relative w-full overflow-hidden ${project.layout === 'standard' ? 'h-[65vh]' : 'h-screen'}`}
+	>
+		<!-- Gradient overlay for navbar readability (immersive mode only) -->
+		<div
+			class="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-linear-to-b from-black/40 to-transparent"
+		></div>
+
 		{#if heroImage?.type === 'image'}
 			<LazyImage
 				filename={heroImage.src}
@@ -250,54 +281,58 @@
 							class={`grid grid-cols-1 gap-6 ${columnsByCount[items.length] || 'md:grid-cols-4'}`}
 						>
 							{#each items as groupMedia}
-								{@const mediaIndex = galleryMedias.indexOf(groupMedia)}
-								<figure class="group w-full">
-									<div class="relative overflow-hidden">
-										{#if groupMedia.type === 'image'}
-											<LazyImage
-												filename={groupMedia.src}
-												alt={groupMedia.alt}
-												class="w-full {groupMedia.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
-												sizes={items.length === 1 ? '65vw' : '40vw'}
-												style={getMediaStyle(groupMedia)}
-											/>
-										{:else if groupMedia.type === 'video'}
-											{#if groupMedia.src && groupMedia.fallbackSrc}
-												<LazyVideo
-													primarySrc={groupMedia.src}
-													fallbackSrc={groupMedia.fallbackSrc}
-													posterSrc={groupMedia.posterSrc}
+								{#if !groupMedia.isHiddenGallery}
+									{@const mediaIndex = galleryMedias.indexOf(groupMedia)}
+									<figure class="group w-full">
+										<div class="relative overflow-hidden">
+											{#if groupMedia.type === 'image'}
+												<LazyImage
+													filename={groupMedia.src}
 													alt={groupMedia.alt}
 													class="w-full {groupMedia.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
+													sizes={items.length === 1 ? '65vw' : '40vw'}
 													style={getMediaStyle(groupMedia)}
 												/>
-											{:else}
-												<!-- Missing Video Fallback or src -->
-												<div
-													class="flex h-48 w-full items-center justify-center bg-muted text-xs text-destructive"
-												>
-													Missing video source or fallback source
-												</div>
-											{/if}
-										{/if}
-									</div>
-									<!-- Captions & Description -->
-									<div class="mt-3 flex flex-col gap-2">
-										<div
-											class="flex items-start justify-between border-t border-transparent pt-1 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
-										>
-											FIG.{mediaIndex + 1}
-											{#if groupMedia.showAlt}
-												<span class="line-clamp-1 max-w-[60%] text-right">{groupMedia.alt}</span>
+											{:else if groupMedia.type === 'video'}
+												{#if groupMedia.src && groupMedia.fallbackSrc}
+													<LazyVideo
+														primarySrc={groupMedia.src}
+														fallbackSrc={groupMedia.fallbackSrc}
+														posterSrc={groupMedia.posterSrc}
+														alt={groupMedia.alt}
+														class="w-full {groupMedia.aspectRatio
+															? 'h-full object-cover'
+															: 'h-auto'}"
+														style={getMediaStyle(groupMedia)}
+													/>
+												{:else}
+													<!-- Missing Video Fallback or src -->
+													<div
+														class="flex h-48 w-full items-center justify-center bg-muted text-xs text-destructive"
+													>
+														Missing video source or fallback source
+													</div>
+												{/if}
 											{/if}
 										</div>
-										{#if groupMedia.description}
-											<p class="text-justify text-xs leading-relaxed text-muted-foreground">
-												{groupMedia.description}
-											</p>
-										{/if}
-									</div>
-								</figure>
+										<!-- Captions & Description -->
+										<div class="mt-3 flex flex-col gap-2">
+											<div
+												class="flex items-start justify-between border-t border-transparent pt-1 text-[10px] font-medium tracking-[0.15em] text-muted-foreground/50 uppercase transition-colors group-hover:border-border"
+											>
+												FIG.{mediaIndex + 1}
+												{#if groupMedia.showAlt}
+													<span class="line-clamp-1 max-w-[60%] text-right">{groupMedia.alt}</span>
+												{/if}
+											</div>
+											{#if groupMedia.description}
+												<p class="text-justify text-xs leading-relaxed text-muted-foreground">
+													{groupMedia.description}
+												</p>
+											{/if}
+										</div>
+									</figure>
+								{/if}
 							{/each}
 						</div>
 					{/each}

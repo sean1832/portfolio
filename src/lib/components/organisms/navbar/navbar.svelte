@@ -1,10 +1,36 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import ZekeZhangIcon from '$lib/components/icons/zekezhang.svelte';
 	import Decoder from '$lib/components/molecules/decoder.svelte';
+	import { navbarState } from '$lib/hooks/navbar-state.svelte';
+
+	// Update scroll position
+	onMount(() => {
+		const handleScroll = () => {
+			navbarState.updateScroll(window.scrollY);
+		};
+
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		handleScroll(); // Initial check
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	});
 </script>
 
-<nav class="fixed top-0 z-50 w-full">
-	<div class="mx-auto flex items-center justify-between bg-background px-6 py-4">
+<nav
+	class="fixed top-0 z-50 w-full transition-all duration-300 {navbarState.isTransparent &&
+	!navbarState.isPastHero
+		? ''
+		: 'bg-background'}"
+>
+	<div
+		class="mx-auto flex items-center justify-between px-6 py-4 transition-colors duration-300 {navbarState.isTransparent &&
+		!navbarState.isPastHero
+			? 'text-white'
+			: 'text-foreground'}"
+	>
 		<!--logo-->
 		<a href="/">
 			<ZekeZhangIcon class="h-8 w-8" />
