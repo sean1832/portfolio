@@ -7,8 +7,11 @@
 	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
 }
 
-html {
-	scroll-behavior: smooth;
+/* Only apply smooth scrolling for same-page anchor navigation */
+@media (prefers-reduced-motion: no-preference) {
+	html:has(:target) {
+		scroll-behavior: smooth;
+	}
 }
 
 ::selection {
