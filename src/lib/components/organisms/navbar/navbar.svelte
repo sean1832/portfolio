@@ -33,7 +33,7 @@
 	>
 		<!--logo-->
 		<a href="/">
-			<ZekeZhangIcon class="h-8 w-8" />
+			<ZekeZhangIcon class="h-8 w-8" animated />
 		</a>
 
 		<!--navigation-->
