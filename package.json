@@ -45,7 +45,9 @@
 	},
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.2.8",
-		"mode-watcher": "^1.1.0",
-		"shiki": "^3.19.0"
+		"marked": "^17.0.1",
+		"marked-alert": "^2.1.2",
+		"marked-shiki": "^1.2.1",
+		"mode-watcher": "^1.1.0"
 	}
 }
