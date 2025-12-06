@@ -50,7 +50,10 @@
 					revealSpeedMs={40}
 				/>
 			</a>
-			<a href="/" class="min-w-12 hover:underline hover:underline-offset-4 sm:min-w-16 lg:min-w-20">
+			<a
+				href="/tools"
+				class="min-w-12 hover:underline hover:underline-offset-4 sm:min-w-16 lg:min-w-20"
+			>
 				<Decoder
 					text="TOOLS"
 					trigger="hover"
@@ -59,7 +62,10 @@
 					revealSpeedMs={40}
 				/>
 			</a>
-			<a href="/" class="min-w-12 hover:underline hover:underline-offset-4 sm:min-w-14 lg:min-w-15">
+			<a
+				href="/about"
+				class="min-w-12 hover:underline hover:underline-offset-4 sm:min-w-14 lg:min-w-15"
+			>
 				<Decoder
 					text="ABOUT"
 					trigger="hover"
