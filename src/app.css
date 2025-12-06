@@ -247,7 +247,34 @@
 	@apply bg-transparent p-0;
 }
 
-.prose .shiki {
+/* Code block wrapper with floating copy button (GitHub style) */
+.prose .code-block-wrapper {
+	@apply relative my-6;
+}
+
+.prose .code-block-wrapper pre {
+	@apply my-0;
+}
+
+.prose .code-copy-btn {
+	@apply absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-md border border-transparent bg-transparent text-muted-foreground opacity-0 transition-all;
+}
+
+.prose .code-block-wrapper:hover .code-copy-btn {
+	@apply border-border bg-background/80 opacity-100;
+}
+
+.prose .code-copy-btn:hover {
+	@apply bg-muted text-foreground;
+}
+
+.prose .code-copy-btn .hidden {
+	display: none;
+}
+
+/* Shiki code highlighting */
+.prose .shiki,
+.prose pre:has(.shiki) {
 	background-color: var(--secondary) !important;
 }
 
@@ -255,17 +282,12 @@
 	@apply font-mono text-[0.85em] leading-relaxed;
 }
 
-/* Light mode: show light theme, hide dark */
-.prose .shiki.shiki-themes.github-light.github-dark {
-	background-color: var(--secondary) !important;
-}
-
-.prose .shiki.shiki-themes.github-light.github-dark span {
+/* Shiki dual theme - light/dark mode switching */
+.prose .shiki span {
 	color: var(--shiki-light) !important;
 }
 
-/* Dark mode: show dark theme */
-.dark .prose .shiki.shiki-themes.github-light.github-dark span {
+.dark .prose .shiki span {
 	color: var(--shiki-dark) !important;
 }
 

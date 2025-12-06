@@ -20,6 +20,7 @@
 
 	let renderedHtml = $state('');
 	let isLoading = $state(true);
+	let articleEl: HTMLElement | undefined = $state(undefined);
 
 	// Extract TOC entries from markdown
 	function extractToc(markdown: string): TocEntry[] {
@@ -79,13 +80,22 @@
 					.use(
 						markedShiki({
 							highlight(code, lang) {
-								return hl.codeToHtml(code, {
+								const highlighted = hl.codeToHtml(code, {
 									lang: lang || 'text',
 									themes: {
 										light: 'github-light',
 										dark: 'github-dark'
-									}
+									},
+									defaultColor: false // Use CSS variables for both themes
 								});
+								// Wrap in container with floating copy button (GitHub style)
+								return `<div class="code-block-wrapper">
+<button class="code-copy-btn" type="button" aria-label="Copy code">
+<svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+<svg class="check-icon hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+</button>
+${highlighted}
+</div>`;
 							}
 						})
 					)
@@ -137,6 +147,47 @@
 			}
 		};
 	});
+
+	// Set up copy button event listeners after HTML is rendered
+	$effect(() => {
+		if (!articleEl || isLoading) return;
+
+		const copyButtons = articleEl.querySelectorAll<HTMLButtonElement>('.code-copy-btn');
+
+		function handleCopy(e: Event) {
+			const btn = e.currentTarget as HTMLButtonElement;
+			const wrapper = btn.closest('.code-block-wrapper');
+			if (!wrapper) return;
+
+			const codeEl = wrapper.querySelector('pre code');
+			if (!codeEl) return;
+
+			const code = codeEl.textContent || '';
+
+			navigator.clipboard.writeText(code).then(() => {
+				const copyIcon = btn.querySelector('.copy-icon');
+				const checkIcon = btn.querySelector('.check-icon');
+
+				copyIcon?.classList.add('hidden');
+				checkIcon?.classList.remove('hidden');
+
+				setTimeout(() => {
+					copyIcon?.classList.remove('hidden');
+					checkIcon?.classList.add('hidden');
+				}, 2000);
+			});
+		}
+
+		copyButtons.forEach((btn: HTMLButtonElement) => {
+			btn.addEventListener('click', handleCopy);
+		});
+
+		return () => {
+			copyButtons.forEach((btn: HTMLButtonElement) => {
+				btn.removeEventListener('click', handleCopy);
+			});
+		};
+	});
 </script>
 
 {#if isLoading}
@@ -147,7 +198,7 @@
 		<div class="h-4 w-2/3 animate-pulse bg-muted"></div>
 	</div>
 {:else}
-	<article class="prose {className}">
+	<article bind:this={articleEl} class="prose {className}">
 		{@html renderedHtml}
 	</article>
 {/if}
