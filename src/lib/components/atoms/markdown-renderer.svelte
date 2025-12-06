@@ -3,6 +3,7 @@
 	import markedAlert from 'marked-alert';
 	import markedShiki from 'marked-shiki';
 	import { createHighlighter, type Highlighter } from 'shiki';
+	import LazyVideo from '../molecules/lazy-video.svelte';
 
 	export interface TocEntry {
 		id: string;
@@ -126,6 +127,32 @@ ${highlighted}
 									return `<a href="${href}"${titleAttr} target="_blank" rel="noopener noreferrer">${text}</a>`;
 								}
 								return `<a href="${href}"${titleAttr}>${text}</a>`;
+							},
+
+							image({ href, title, text }) {
+								if (!href) return '';
+								const isVideo = /\.(mp4|webm|ogg|mov)($|\?)/i.test(href);
+								if (isVideo) {
+									return `
+									<div class="video-wrapper my-4">
+										<video 
+											controls 
+											playsinline 
+											preload="metadata"
+											class="w-full rounded-lg border bg-black/5"
+											title="${title || text}"
+										>
+											<source src="${href}">
+											<p>Your browser does not support the video tag.</p>
+										</video>
+									</div>`;
+								}
+								// Default image rendering behavior
+								const titleAttr = title ? ` title="${title}"` : '';
+								const altAttr = text ? ` alt="${text}"` : '';
+
+								// Explicitly return img tag so we don't lose functionality
+								return `<img src="${href}"${altAttr}${titleAttr} loading="lazy" class="rounded-lg my-4 max-w-full h-auto" />`;
 							}
 						}
 					});
