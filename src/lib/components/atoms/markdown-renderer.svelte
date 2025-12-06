@@ -22,13 +22,17 @@
 	let isLoading = $state(true);
 	let articleEl: HTMLElement | undefined = $state(undefined);
 
-	// Extract TOC entries from markdown
+	// Extract TOC entries from markdown (excluding code blocks)
 	function extractToc(markdown: string): TocEntry[] {
+		// First, remove all fenced code blocks to avoid matching headers inside them
+		const codeBlockRegex = /```[\s\S]*?```|~~~[\s\S]*?~~~/g;
+		const markdownWithoutCode = markdown.replace(codeBlockRegex, '');
+
 		const headingRegex = /^(#{1,6})\s+(.+)$/gm;
 		const entries: TocEntry[] = [];
 		let match;
 
-		while ((match = headingRegex.exec(markdown)) !== null) {
+		while ((match = headingRegex.exec(markdownWithoutCode)) !== null) {
 			const level = match[1].length;
 			const text = match[2].trim();
 			// Generate slug for ID (same algorithm as marked uses)
