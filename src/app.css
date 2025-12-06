@@ -136,3 +136,220 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+/* ============================================
+   Prose / Typography Styles
+   ============================================ */
+
+.prose {
+	@apply leading-relaxed text-foreground;
+	max-width: 75ch;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+	@apply font-semibold tracking-tight text-foreground;
+	scroll-margin-top: 6rem;
+}
+
+.prose h1 {
+	@apply mt-0 mb-6 text-2xl sm:text-3xl;
+}
+
+.prose h2 {
+	@apply mt-10 mb-4 border-b border-border pb-2 text-xl sm:text-2xl;
+}
+
+.prose h3 {
+	@apply mt-8 mb-3 text-lg sm:text-xl;
+}
+
+.prose h4 {
+	@apply mt-6 mb-2 text-base sm:text-lg;
+}
+
+.prose p {
+	@apply my-4 text-sm sm:text-base;
+}
+
+.prose a {
+	@apply text-primary underline underline-offset-2 transition-colors hover:text-primary/80;
+}
+
+.prose strong {
+	@apply font-semibold text-foreground;
+}
+
+.prose em {
+	@apply italic;
+}
+
+.prose ul,
+.prose ol {
+	@apply my-4 pl-6;
+}
+
+.prose ul {
+	@apply list-disc;
+}
+
+.prose ol {
+	@apply list-decimal;
+}
+
+.prose li {
+	@apply my-1 text-sm sm:text-base;
+}
+
+.prose li > ul,
+.prose li > ol {
+	@apply my-1;
+}
+
+.prose blockquote {
+	@apply my-4 border-l-2 border-muted-foreground/30 pl-4 text-muted-foreground italic;
+}
+
+.prose hr {
+	@apply my-8 border-border;
+}
+
+.prose img {
+	@apply my-6 max-w-full rounded border border-border;
+}
+
+.prose table {
+	@apply my-6 w-full border-collapse text-sm;
+}
+
+.prose th {
+	@apply border border-border bg-muted px-3 py-2 text-left font-semibold;
+}
+
+.prose td {
+	@apply border border-border px-3 py-2;
+}
+
+.prose code:not(pre code) {
+	@apply rounded bg-muted px-1.5 py-0.5 font-mono text-[0.85em] text-foreground;
+}
+
+.prose pre {
+	@apply my-6 overflow-x-auto rounded-md border border-border p-4 text-sm;
+}
+
+/* Shiki code blocks - light/dark mode switching */
+.prose pre code {
+	@apply bg-transparent p-0;
+}
+
+.prose .shiki {
+	background-color: var(--secondary) !important;
+}
+
+.prose .shiki code {
+	@apply font-mono text-[0.85em] leading-relaxed;
+}
+
+/* Light mode: show light theme, hide dark */
+.prose .shiki.shiki-themes.github-light.github-dark {
+	background-color: var(--secondary) !important;
+}
+
+.prose .shiki.shiki-themes.github-light.github-dark span {
+	color: var(--shiki-light) !important;
+}
+
+/* Dark mode: show dark theme */
+.dark .prose .shiki.shiki-themes.github-light.github-dark span {
+	color: var(--shiki-dark) !important;
+}
+
+/* ============================================
+   GitHub-style Admonition Callouts
+   ============================================ */
+
+.prose .markdown-alert {
+	@apply my-4 rounded-r-md border-l-4 p-4 text-sm;
+}
+
+.prose .markdown-alert-title {
+	@apply mb-2 flex items-center gap-2 text-xs font-semibold tracking-wider uppercase;
+}
+
+.prose .markdown-alert-title svg {
+	@apply h-4 w-4;
+}
+
+.prose .markdown-alert p {
+	@apply my-0 text-sm;
+}
+
+/* Note - Blue */
+.prose .markdown-alert-note {
+	@apply border-blue-500 bg-blue-500/10;
+}
+
+.prose .markdown-alert-note .markdown-alert-title {
+	@apply text-blue-600;
+}
+
+.dark .prose .markdown-alert-note .markdown-alert-title {
+	@apply text-blue-400;
+}
+
+/* Tip - Green */
+.prose .markdown-alert-tip {
+	@apply border-green-500 bg-green-500/10;
+}
+
+.prose .markdown-alert-tip .markdown-alert-title {
+	@apply text-green-600;
+}
+
+.dark .prose .markdown-alert-tip .markdown-alert-title {
+	@apply text-green-400;
+}
+
+/* Important - Purple */
+.prose .markdown-alert-important {
+	@apply border-purple-500 bg-purple-500/10;
+}
+
+.prose .markdown-alert-important .markdown-alert-title {
+	@apply text-purple-600;
+}
+
+.dark .prose .markdown-alert-important .markdown-alert-title {
+	@apply text-purple-400;
+}
+
+/* Warning - Yellow/Orange */
+.prose .markdown-alert-warning {
+	@apply border-yellow-500 bg-yellow-500/10;
+}
+
+.prose .markdown-alert-warning .markdown-alert-title {
+	@apply text-yellow-600;
+}
+
+.dark .prose .markdown-alert-warning .markdown-alert-title {
+	@apply text-yellow-500;
+}
+
+/* Caution - Red */
+.prose .markdown-alert-caution {
+	@apply border-red-500 bg-red-500/10;
+}
+
+.prose .markdown-alert-caution .markdown-alert-title {
+	@apply text-red-600;
+}
+
+.dark .prose .markdown-alert-caution .markdown-alert-title {
+	@apply text-red-400;
+}

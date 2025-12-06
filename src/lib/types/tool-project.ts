@@ -1,5 +1,3 @@
-import type { CodeMedia, ImageMedia, TextMedia, VideoMedia } from './media';
-
 export interface ToolProject {
 	slug: string;
 	type: 'cli' | 'desktop app' | 'web app' | 'class library' | 'script' | 'plugin' | (string & {});
@@ -10,6 +8,6 @@ export interface ToolProject {
 	repositoryUrl?: string;
 	websiteUrl?: string;
 	liveDemoUrl?: string;
-	medias?: (ImageMedia | VideoMedia | TextMedia | CodeMedia)[];
+	markdownContent?: string; // markdown content
 	priority?: number; // for sorting purposes, higher number means higher priority
 }

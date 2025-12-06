@@ -1,34 +1,29 @@
 <script lang="ts">
 	import Decoder from '$lib/components/molecules/decoder.svelte';
-	import ExternalLink from '$lib/components/atoms/external-link.svelte';
-	import LazyImage from '$lib/components/molecules/lazy-image.svelte';
-	import LazyVideo from '$lib/components/molecules/lazy-video.svelte';
+	import MarkdownRenderer from '$lib/components/atoms/markdown-renderer.svelte';
 	import { GithubIcon } from '$lib/components/icons';
 	import Globe from '@lucide/svelte/icons/globe';
 	import Play from '@lucide/svelte/icons/play';
 	import ArrowLeft from '@lucide/svelte/icons/arrow-left';
+	import List from '@lucide/svelte/icons/list';
 	import type { PageData } from './$types';
-	import type { ImageMedia, VideoMedia, TextMedia } from '$lib/types/media';
-	import RemoteImage from '$lib/components/molecules/remote-image.svelte';
-	import Codeblock from '$lib/components/atoms/code.svelte';
 
 	let { data }: { data: PageData } = $props();
 	const project = data.project;
 
-	// Get media items
-	const medias = project.medias || [];
-	const hasMedia = medias.length > 0;
+	// TOC state
+	let tocEntries = $state<{ id: string; text: string; level: number }[]>([]);
+	let showToc = $state(false);
 
-	// Helper to get media style
-	function getMediaStyle(media: ImageMedia | VideoMedia): string {
-		const styles: string[] = [];
-		if (media.aspectRatio) {
-			styles.push(`aspect-ratio: ${media.aspectRatio}`);
+	// Check if we have markdown content
+	const hasContent = Boolean(project.markdownContent?.trim());
+
+	// Handle TOC navigation with smooth scroll
+	function scrollToHeading(id: string) {
+		const element = document.getElementById(id);
+		if (element) {
+			element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
-		const justify = media.justify || 'center';
-		const align = media.align || 'center';
-		styles.push(`object-position: ${justify} ${align}`);
-		return styles.join('; ');
 	}
 </script>
 
@@ -62,7 +57,7 @@
 
 	<!-- Main Content Grid -->
 	<div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-		<!-- Left Column: Metadata -->
+		<!-- Left Column: Metadata & TOC -->
 		<aside class="lg:col-span-3">
 			<!-- Description -->
 			<div class="mb-8">
@@ -98,7 +93,7 @@
 
 			<!-- Links -->
 			{#if project.repositoryUrl || project.websiteUrl || project.liveDemoUrl}
-				<div>
+				<div class="mb-8">
 					<span
 						class="mb-2 block text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
 					>
@@ -141,89 +136,88 @@
 					</div>
 				</div>
 			{/if}
+
+			<!-- Table of Contents (only show if we have headings) -->
+			{#if tocEntries.length > 0}
+				<div class="hidden lg:block">
+					<span
+						class="mb-2 block text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
+					>
+						On This Page
+					</span>
+					<nav class="space-y-1">
+						{#each tocEntries as entry}
+							<button
+								onclick={() => scrollToHeading(entry.id)}
+								class="block w-full text-left text-sm text-muted-foreground transition-colors hover:text-primary"
+								style="padding-left: {(entry.level - 1) * 0.75}rem"
+							>
+								{entry.text}
+							</button>
+						{/each}
+					</nav>
+				</div>
+
+				<!-- Mobile TOC Toggle -->
+				<div class="lg:hidden">
+					<button
+						onclick={() => (showToc = !showToc)}
+						class="mb-2 flex items-center gap-2 text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
+					>
+						<List class="h-3 w-3" />
+						<span>On This Page</span>
+					</button>
+					{#if showToc}
+						<nav class="mb-6 space-y-1 border-l border-border pl-3">
+							{#each tocEntries as entry}
+								<button
+									onclick={() => {
+										scrollToHeading(entry.id);
+										showToc = false;
+									}}
+									class="block w-full text-left text-sm text-muted-foreground transition-colors hover:text-primary"
+									style="padding-left: {(entry.level - 1) * 0.75}rem"
+								>
+									{entry.text}
+								</button>
+							{/each}
+						</nav>
+					{/if}
+				</div>
+			{/if}
 		</aside>
 
-		<!-- Right Column: Media Gallery -->
+		<!-- Right Column: Markdown Content -->
 		<div class="lg:col-span-9">
-			{#if hasMedia}
-				<div class="space-y-6">
-					{#each medias as media, i}
-						{#if media.type === 'image' || media.type === 'remote-image'}
-							<div class="border border-primary/10 bg-muted/20">
-								{#if media.type === 'image'}
-									<LazyImage
-										filename={media.src}
-										alt={media.alt}
-										class="w-full object-cover"
-										style={getMediaStyle(media)}
-									/>
-								{:else if media.type === 'remote-image'}
-									<RemoteImage
-										src={media.src}
-										alt={media.alt}
-										class="w-full object-cover"
-										style={getMediaStyle(media)}
-									/>
-								{/if}
-								{#if media.showAlt || media.description}
-									<div class="border-t border-primary/10 p-3">
-										<p class="text-xs text-muted-foreground">
-											{media.description || media.alt}
-										</p>
-									</div>
-								{/if}
-							</div>
-						{:else if media.type === 'video'}
-							<div class="border border-primary/10 bg-muted/20">
-								<LazyVideo
-									primarySrc={media.src}
-									fallbackSrc={media.fallbackSrc}
-									posterSrc={media.posterSrc}
-									alt={media.alt}
-									class="w-full object-cover"
-									style={getMediaStyle(media)}
-								/>
-								{#if media.showAlt || media.description}
-									<div class="border-t border-primary/10 p-3">
-										<p class="text-xs text-muted-foreground">
-											{media.description || media.alt}
-										</p>
-									</div>
-								{/if}
-							</div>
-						{:else if media.type === 'text'}
-							<div class="flex flex-col justify-center bg-muted/20 p-4 sm:p-6">
-								{#if media.title}
-									<h3
-										class="mb-3 text-xs font-semibold tracking-[0.15em] text-muted-foreground/70 uppercase"
-									>
-										{media.title}
-									</h3>
-								{/if}
-								<p class="text-sm leading-relaxed sm:text-base">
-									{media.content}
-								</p>
-							</div>
-						{:else if media.type === 'code'}
-							<div class="flex flex-col justify-center overflow-hidden">
-								{#if media.title}
-									<h3
-										class="mb-3 text-xs font-semibold tracking-[0.15em] text-muted-foreground/70 uppercase"
-									>
-										{media.title}
-									</h3>
-								{/if}
-								<Codeblock code={media.content} lang={media.lang} />
-							</div>
-						{/if}
-					{/each}
-				</div>
+			{#if hasContent}
+				<MarkdownRenderer content={project.markdownContent!} bind:tocEntries />
 			{:else}
-				<!-- No media placeholder - minimal, clean design -->
-				<div
-					class="flex min-h-[200px] items-center justify-center border border-dashed border-primary/20"
-				>
-					<p class="text-sm text-muted-foreground/50">No media available</p>
+				<!-- Clean state for tools without documentation -->
+				<div class="flex flex-col items-center justify-center py-16 text-center">
+					<p class="mb-4 text-muted-foreground">
+						Documentation for this tool is maintained externally.
+					</p>
+					{#if project.repositoryUrl}
+						<a
+							href={project.repositoryUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center gap-2 border border-primary px-4 py-2 text-sm font-medium transition-colors hover:bg-primary hover:text-primary-foreground"
+						>
+							<GithubIcon class="h-4 w-4" />
+							<span>View on GitHub</span>
+						</a>
+					{:else if project.websiteUrl}
+						<a
+							href={project.websiteUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center gap-2 border border-primary px-4 py-2 text-sm font-medium transition-colors hover:bg-primary hover:text-primary-foreground"
+						>
+							<Globe class="h-4 w-4" />
+							<span>View Website</span>
+						</a>
+					{/if}
 				</div>
 			{/if}
 		</div>
