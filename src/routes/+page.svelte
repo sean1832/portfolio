@@ -5,6 +5,7 @@
 	import ArrowRight from '@lucide/svelte/icons/arrow-right';
 	import { designProjects, featureProjectWithVideo } from '$lib/data/designs';
 	import LazyVideo from '$lib/components/molecules/lazy-video.svelte';
+	import type { VideoMedia, ImageMedia } from '$lib/types/media';
 
 	let decoder: Decoder;
 
@@ -22,7 +23,7 @@
 	}
 
 	const featureVideoMedia = featureProjectWithVideo?.medias?.find(
-		(media) => media.isCover && media.type === 'video'
+		(media): media is VideoMedia => media.type === 'video' && media.isCover === true
 	);
 </script>
 
@@ -107,10 +108,13 @@
 <!--gallery-->
 <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 xl:grid-cols-3">
 	{#each designProjects as project (project.slug)}
-		{#if project.medias && project.medias.find((media) => media.isCover && media.type === 'image')}
+		{@const coverImage = project.medias?.find(
+			(media): media is ImageMedia => media.type === 'image' && media.isCover === true
+		)}
+		{#if coverImage}
 			<GalleryItem
-				imageSrc={project.medias.find((media) => media.isCover)?.src || ''}
-				imageAlt={project.medias.find((media) => media.isCover)?.alt || ''}
+				imageSrc={coverImage.src}
+				imageAlt={coverImage.alt}
 				title={project.name}
 				year={project.year.toString()}
 				href={`/projects/${project.slug}`}
