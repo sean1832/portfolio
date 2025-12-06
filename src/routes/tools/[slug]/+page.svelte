@@ -58,7 +58,7 @@
 	<!-- Main Content Grid -->
 	<div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
 		<!-- Left Column: Metadata & TOC -->
-		<aside class="lg:col-span-3">
+		<aside class="lg:sticky lg:top-32 lg:col-span-3 lg:self-start">
 			<!-- Description -->
 			<div class="mb-8">
 				<span
