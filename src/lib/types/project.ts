@@ -1,3 +1,5 @@
+import type { ImageMedia, VideoMedia, TextMedia, CodeMedia } from './media';
+
 export interface Project {
 	slug: string;
 	layout: 'standard' | 'immersive-video' | 'immersive-img';
@@ -15,26 +17,9 @@ export interface Project {
 	location?: string;
 	publications?: Publication[];
 	awards?: ExternalLink[];
-	medias?: Media[];
+	medias?: (ImageMedia | VideoMedia | TextMedia | CodeMedia)[];
 	priority?: number; // for sorting purposes, higher number means higher priority
 	isFeature?: boolean; // to highlight special projects
-}
-
-export interface Media {
-	type: 'video' | 'image';
-	src: string;
-	fallbackSrc?: string;
-	posterSrc?: string;
-	alt: string;
-	isCover?: boolean;
-	isHiddenGallery?: boolean; // media that is not shown in the gallery but can be used in other ways (e.g. as posterSrc)
-	isHero?: boolean;
-	showAlt?: boolean;
-	groupId?: string; // media with same groupId will be rendered side-by-side
-	aspectRatio?: string; // e.g. "16/9", "4/3"
-	description?: string; // longer description for media
-	justify?: 'left' | 'center' | 'right' | (string & {}); // horizontal position of visible area when cropped (object-position x)
-	align?: 'top' | 'center' | 'bottom' | (string & {}); // vertical position of visible area when cropped (object-position y)
 }
 
 export interface ExternalLink {
