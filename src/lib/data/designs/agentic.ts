@@ -42,7 +42,7 @@ export const data: Project = {
 	contributions: [
 		makeContribution('agent simulations', 100),
 		makeContribution('voxel massing formulation', 100),
-		makeContribution('volumetric segmentation by environmental analysis', 100),
+		makeContribution('intelligent spatial segmentation', 100),
 		makeContribution('component aggregation', 50),
 		makeContribution('distribution mapping', 50),
 		makeContribution('diagramming (animation)', 50)
