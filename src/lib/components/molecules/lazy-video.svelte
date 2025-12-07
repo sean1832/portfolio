@@ -109,7 +109,8 @@
 	<div class="relative" style={placeholderStyle}>
 		{#if videoAsset?.poster}
 			<PixelatedReveal
-				src={videoAsset.poster.src}
+				srcset={videoAsset.poster.srcset}
+				src={videoAsset.poster.fallbackSrc}
 				placeholder={videoAsset.poster.placeholder}
 				{alt}
 				class={className}
