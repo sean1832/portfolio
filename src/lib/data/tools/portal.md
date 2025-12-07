@@ -8,7 +8,7 @@ Portal is a Grasshopper3D plugin designed to facilitate [Inter-Process Communica
 - Portal.unity (Coming Soon)
 - Portal.revit (Coming Soon)
 
-![demo](/src/lib/assets/tools/portal/portal-demo.mp4)
+![demo](/tools/portal/portal-demo.mp4)
 
 ## Features
 
@@ -52,7 +52,6 @@ Portal is a Grasshopper3D plugin designed to facilitate [Inter-Process Communica
 3. Unblock all library files:
    - Right-click on each `.gha` and `.dll` file
    - If there's an "Unblock" option, make sure to select it
-
 
 ## Example Workflow
 
