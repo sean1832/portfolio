@@ -102,9 +102,9 @@
 
 							<!-- Links -->
 							<div class="mt-4 flex items-center gap-4">
-								{#if tool.repositoryUrl}
+								{#if tool.repository}
 									<a
-										href={tool.repositoryUrl}
+										href={tool.repository.url}
 										target="_blank"
 										rel="noopener noreferrer"
 										class="flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary"
@@ -114,21 +114,21 @@
 										<span>Source</span>
 									</a>
 								{/if}
-								{#if tool.websiteUrl}
+								{#if tool.website}
 									<a
-										href={tool.websiteUrl}
+										href={tool.website.url}
 										target="_blank"
 										rel="noopener noreferrer"
 										class="flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary"
 										onclick={(e) => e.stopPropagation()}
 									>
 										<Globe class="h-4 w-4" />
-										<span>Website</span>
+										<span>{tool.website.text}</span>
 									</a>
 								{/if}
-								{#if tool.liveDemoUrl}
+								{#if tool.liveDemo}
 									<a
-										href={tool.liveDemoUrl}
+										href={tool.liveDemo.url}
 										target="_blank"
 										rel="noopener noreferrer"
 										class="flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-primary"

@@ -7,6 +7,7 @@
 	import ArrowLeft from '@lucide/svelte/icons/arrow-left';
 	import List from '@lucide/svelte/icons/list';
 	import type { PageData } from './$types';
+	import { ScaleIcon } from '@lucide/svelte';
 
 	let { data }: { data: PageData } = $props();
 	const project = data.project;
@@ -91,8 +92,28 @@
 				</div>
 			{/if}
 
+			<!-- License -->
+			{#if project.license}
+				<div class="mb-8">
+					<span
+						class="mb-2 block text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
+					>
+						License
+					</span>
+					<a
+						href={project.license.url}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex items-center gap-2 text-sm uppercase transition-colors hover:text-primary hover:underline"
+					>
+						<ScaleIcon class="h-4 w-4" />
+						<span>{project.license.text}</span>
+					</a>
+				</div>
+			{/if}
+
 			<!-- Links -->
-			{#if project.repositoryUrl || project.websiteUrl || project.liveDemoUrl}
+			{#if project.repository || project.website || project.liveDemo}
 				<div class="mb-8">
 					<span
 						class="mb-2 block text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
@@ -100,9 +121,9 @@
 						Links
 					</span>
 					<div class="flex flex-col gap-2">
-						{#if project.repositoryUrl}
+						{#if project.repository}
 							<a
-								href={project.repositoryUrl}
+								href={project.repository.url}
 								target="_blank"
 								rel="noopener noreferrer"
 								class="flex items-center gap-2 text-sm transition-colors hover:text-primary hover:underline"
@@ -111,20 +132,20 @@
 								<span>Source Code</span>
 							</a>
 						{/if}
-						{#if project.websiteUrl}
+						{#if project.website}
 							<a
-								href={project.websiteUrl}
+								href={project.website.url}
 								target="_blank"
 								rel="noopener noreferrer"
 								class="flex items-center gap-2 text-sm transition-colors hover:text-primary hover:underline"
 							>
 								<Globe class="h-4 w-4" />
-								<span>Website</span>
+								<span>{project.website.text}</span>
 							</a>
 						{/if}
-						{#if project.liveDemoUrl}
+						{#if project.liveDemo}
 							<a
-								href={project.liveDemoUrl}
+								href={project.liveDemo.url}
 								target="_blank"
 								rel="noopener noreferrer"
 								class="flex items-center gap-2 text-sm transition-colors hover:text-primary hover:underline"
@@ -197,9 +218,9 @@
 					<p class="mb-4 text-muted-foreground">
 						Documentation for this tool is maintained externally.
 					</p>
-					{#if project.repositoryUrl}
+					{#if project.repository}
 						<a
-							href={project.repositoryUrl}
+							href={project.repository.url}
 							target="_blank"
 							rel="noopener noreferrer"
 							class="inline-flex items-center gap-2 border border-primary px-4 py-2 text-sm font-medium transition-colors hover:bg-primary hover:text-primary-foreground"
@@ -207,15 +228,15 @@
 							<GithubIcon class="h-4 w-4" />
 							<span>View on GitHub</span>
 						</a>
-					{:else if project.websiteUrl}
+					{:else if project.website}
 						<a
-							href={project.websiteUrl}
+							href={project.website.url}
 							target="_blank"
 							rel="noopener noreferrer"
 							class="inline-flex items-center gap-2 border border-primary px-4 py-2 text-sm font-medium transition-colors hover:bg-primary hover:text-primary-foreground"
 						>
 							<Globe class="h-4 w-4" />
-							<span>View Website</span>
+							<span>View Website | {project.website.text}</span>
 						</a>
 					{/if}
 				</div>
