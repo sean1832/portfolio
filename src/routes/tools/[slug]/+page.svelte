@@ -58,7 +58,7 @@
 				>
 					Description
 				</span>
-				<p class="text-sm leading-relaxed sm:text-base">
+				<p class="text-sm leading-relaxed first-letter:uppercase sm:text-base">
 					{project.description}
 				</p>
 			</div>
