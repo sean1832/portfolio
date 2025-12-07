@@ -23,6 +23,22 @@ npm run build
 npm run preview
 ```
 
+### Build OG Image
+
+To update the OG image, modify the `og-image.svg` located in `/static` folder and run the following command to generate a new PNG image:
+
+```bash
+npm run build:og
+```
+
+### Build video thumbnails
+
+After updating any video, run the following command to generate new video thumbnails:
+
+```bash
+npm run build:vid
+```
+
 ## Stacks
 
 - SvelteKit
