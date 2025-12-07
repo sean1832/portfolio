@@ -19,8 +19,7 @@
 
 {#if image}
 	<PixelatedReveal
-		srcset={image.srcset}
-		src={image.fallbackSrc}
+		src={image.src}
 		placeholder={image.placeholder}
 		{sizes}
 		{alt}

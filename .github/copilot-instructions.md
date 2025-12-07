@@ -105,18 +105,19 @@ onDestroy(() => {
 - Use typed arrays (`Float32Array`) for physics data
 - Always null-check canvas context before use
 
-### Image Optimization System
+### Image System
 
-**Critical**: Images use `vite-imagetools` for automatic optimization via `image-registry.ts`:
+**Critical**: Images use pre-optimized source files with tiny placeholders for progressive loading via `image-registry.ts`:
 
 ```typescript
-// In image-registry.ts
-const fullImages = import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp}', {
+// In image-registry.ts - No srcset re-encoding (source images are pre-optimized)
+const originalImages = import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp,avif}', {
     eager: true,
-    query: { as: 'srcset', format: 'webp', w: '320;640;1024;1440;1920;2560' }
+    import: 'default'
 });
 
-const placeholders = import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp}', {
+// Tiny base64 placeholders for blur-up effect
+const placeholders = import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp,avif}', {
     eager: true,
     query: { as: 'base64', format: 'png', w: '16' }
 });
@@ -124,9 +125,9 @@ const placeholders = import.meta.glob('/src/lib/assets/**/*.{jpg,jpeg,png,webp}'
 
 **Usage pattern**:
 
-1. Place images in `src/lib/assets/projects/[project-name]/`
+1. Place pre-optimized images in `src/lib/assets/projects/[project-name]/`
 2. Use `lazy-image.svelte` component with filename prop
-3. Component automatically gets srcset, placeholder, and fallback from registry
+3. Component gets original image URL + tiny placeholder from registry
 4. Images are progressively revealed via `pixelated-reveal.svelte` with mosaic effect
 
 ### Video Registry System

@@ -74,8 +74,7 @@
 			class:opacity-0={isPlaying}
 		>
 			<PixelatedReveal
-				src={posterData.fallbackSrc}
-				srcset={posterData.srcset}
+				src={posterData.src}
 				placeholder={posterData.placeholder}
 				alt="Video Poster"
 				class="h-full w-full"
