@@ -8,6 +8,7 @@
 	import List from '@lucide/svelte/icons/list';
 	import type { PageData } from './$types';
 	import { ScaleIcon } from '@lucide/svelte';
+	import Seo from '$lib/components/atoms/seo.svelte';
 
 	let { data }: { data: PageData } = $props();
 	const project = data.project;
@@ -28,9 +29,20 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{project.name} | Zeke Zhang</title>
-</svelte:head>
+<Seo
+	title="{project.name} | Zeke Zhang Tools"
+	description={project.description}
+	url="https://zekezhang.com/tools/{project.slug}"
+	keywords={[
+		project.name,
+		project.type,
+		...project.technologies.slice(0, 5),
+		'developer tools',
+		'open source',
+		'Zeke Zhang'
+	]}
+	publishedTime="{project.year}-01-01"
+/>
 
 <main class="min-h-screen px-4 pt-24 pb-16 sm:px-8 lg:px-32 lg:pt-32">
 	<!-- Header Section -->

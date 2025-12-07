@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 28.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1200 630" style="enable-background:new 0 0 1200 630;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;}
+	.st1{fill:none;stroke:#27272A;stroke-width:0.5;}
+	.st2{fill:url(#SVGID_1_);}
+	.st3{opacity:0.5;fill:url(#SVGID_00000126299271258234929320000006869173249060996799_);enable-background:new    ;}
+	.st4{opacity:0.15;}
+	.st5{fill:#FFFFFF;}
+	.st6{font-family:'Arial-BoldMT';}
+	.st7{font-size:72px;}
+	.st8{fill:#A1A1AA;}
+	.st9{font-family:'Inter-Regular';}
+	.st10{font-size:28px;}
+	.st11{fill:#71717A;}
+	.st12{font-size:24px;}
+	.st13{font-size:18px;}
+</style>
+<pattern  y="630" width="40" height="40" patternUnits="userSpaceOnUse" id="grid" viewBox="0.2 -40.2 40 40" style="overflow:visible;">
+	<g>
+		<rect x="0.2" y="-40.2" class="st0" width="40" height="40"/>
+		<path class="st1" d="M40.2-0.2h-40v-40"/>
+	</g>
+</pattern>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-358.7008" y1="855.6445" x2="-357.7008" y2="854.6445" gradientTransform="matrix(1200 0 0 -630 430441 539056)">
+	<stop  offset="0" style="stop-color:#09090B"/>
+	<stop  offset="1" style="stop-color:#18181B"/>
+</linearGradient>
+<rect class="st2" width="1200" height="630"/>
+<pattern  id="SVGID_00000038371801099363575750000015205880019236231101_" xlink:href="#grid" patternTransform="matrix(1 0 0 -1 39 -15988.5)">
+</pattern>
+<rect x="-3" y="3" style="opacity:0.5;fill:url(#SVGID_00000038371801099363575750000015205880019236231101_);enable-background:new    ;" width="1200" height="630"/>
+<g transform="translate(900, 80)" class="st4">
+	<polygon class="st5" points="47,125 197,125 77,295 177,295 147,345 -3,345 112,175 12,175 	"/>
+	<polygon class="st5" points="-33,125 117,125 -3,295 97,295 67,345 -83,345 32,175 -68,175 	"/>
+</g>
+<g transform="translate(80, 200)">
+	<text transform="matrix(1 0 0 1 0 59)" class="st5 st6 st7">ZEKE ZHANG</text>
+	<text transform="matrix(1 0 0 1 0 119)" class="st8 st9 st10">Computational Designer &amp; Researcher</text>
+	<text transform="matrix(1 0 0 1 0 179)" class="st11 st9 st12">Architecture • Algorithmic Design • Machine Learning</text>
+</g>
+<rect x="80" y="522.3" class="st5" width="400" height="0.7"/>
+<text transform="matrix(1 0 0 1 80 560.1816)" class="st11 st9 st13">zekezhang.com</text>
+</svg>

@@ -1,3 +1,11 @@
-# allow crawling everything by default
+# Robots.txt for zekezhang.com
+# Allow all crawlers access to all content
+
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap location
+Sitemap: https://zekezhang.com/sitemap.xml
+
+# Crawl-delay for politeness (optional)
+Crawl-delay: 1

@@ -6,6 +6,7 @@
 	import { designProjects, featureProjectWithVideo } from '$lib/data/designs';
 	import LazyVideo from '$lib/components/molecules/lazy-video.svelte';
 	import type { VideoMedia, ImageMedia } from '$lib/types/media';
+	import Seo from '$lib/components/atoms/seo.svelte';
 
 	let decoder: Decoder;
 
@@ -26,6 +27,24 @@
 		(media): media is VideoMedia => media.type === 'video' && media.isCover === true
 	);
 </script>
+
+<Seo
+	title="Zeke Zhang | Computational Designer & Researcher"
+	description="Portfolio of Zeke Zhang - Researcher and computational designer specializing in algorithmic architecture, reinforcement learning, GPU-accelerated workflows, and data-driven design systems."
+	url="https://zekezhang.com"
+	keywords={[
+		'computational design',
+		'architecture portfolio',
+		'algorithmic design',
+		'reinforcement learning',
+		'parametric design',
+		'grasshopper',
+		'rhinoceros',
+		'generative design',
+		'machine learning architecture',
+		'Zeke Zhang'
+	]}
+/>
 
 <!--hero-->
 <div class="relative flex h-screen w-full flex-col overflow-hidden">
