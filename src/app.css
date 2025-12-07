@@ -257,7 +257,7 @@
 }
 
 .prose .code-copy-btn {
-	@apply absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-md border border-transparent bg-transparent text-muted-foreground opacity-0 transition-all;
+	@apply absolute top-2 right-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-transparent bg-transparent text-muted-foreground opacity-0 transition-all;
 }
 
 .prose .code-block-wrapper:hover .code-copy-btn {

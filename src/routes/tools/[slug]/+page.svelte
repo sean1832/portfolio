@@ -161,7 +161,7 @@
 						{#each tocEntries as entry}
 							<button
 								onclick={() => scrollToHeading(entry.id)}
-								class="block w-full text-left text-sm text-muted-foreground transition-colors hover:text-primary"
+								class="block w-full cursor-pointer text-left text-sm text-muted-foreground transition-colors hover:text-primary"
 								style="padding-left: {(entry.level - 1) * 0.75}rem"
 							>
 								{entry.text}

@@ -3,7 +3,6 @@
 	import markedAlert from 'marked-alert';
 	import markedShiki from 'marked-shiki';
 	import { createHighlighter, type Highlighter } from 'shiki';
-	import LazyVideo from '../molecules/lazy-video.svelte';
 
 	export interface TocEntry {
 		id: string;
