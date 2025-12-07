@@ -33,15 +33,6 @@
 </svelte:head>
 
 <main class="min-h-screen px-4 pt-24 pb-16 sm:px-8 lg:px-32 lg:pt-32">
-	<!-- Back Link -->
-	<a
-		href="/tools"
-		class="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
-	>
-		<ArrowLeft class="h-4 w-4" />
-		<span>All Tools</span>
-	</a>
-
 	<!-- Header Section -->
 	<div class="mb-12 lg:mb-16">
 		<div class="flex flex-wrap items-baseline gap-4">
