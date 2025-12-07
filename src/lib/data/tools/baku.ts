@@ -11,5 +11,5 @@ export const data: ToolProject = {
     `.trim(),
 	year: 2023,
 	technologies: ['csharp', 'ILGPU', 'cuda', 'opencl', 'grasshopper', 'rhinocommon', 'rhino3d'],
-	repositoryUrl: 'https://github.com/sean1832/baku'
+	repository: { text: 'Github', url: 'https://github.com/sean1832/baku' }
 };

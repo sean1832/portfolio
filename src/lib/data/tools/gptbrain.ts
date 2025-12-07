@@ -8,5 +8,5 @@ export const data: ToolProject = {
 		'An AI-powered brain that efficiently stores, categorizes, and interrelates personal notes to optimize the management of creative ideas.',
 	year: 2022,
 	technologies: ['python', 'streamlit', 'openai'],
-	repositoryUrl: 'https://github.com/sean1832/GPT-Brain'
+	repository: { text: 'Github', url: 'https://github.com/sean1832/GPT-Brain' }
 };

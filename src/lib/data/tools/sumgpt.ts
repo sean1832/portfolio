@@ -6,7 +6,7 @@ export const data: ToolProject = {
 	type: 'web app',
 	description: 'Bulk summarization of documents using ChatGPT API',
 	year: 2022,
-	technologies: ['python', 'streamlit', 'langchain'],
-	repositoryUrl: 'https://github.com/sean1832/sumgpt',
-	liveDemoUrl: 'https://sumgpt.streamlit.app/'
+	technologies: ['python', 'streamlit', 'langchain', 'openai'],
+	repository: { text: 'github', url: 'https://github.com/sean1832/sumgpt' },
+	liveDemo: { text: 'sumgpt', url: 'https://sumgpt.streamlit.app/' }
 };
