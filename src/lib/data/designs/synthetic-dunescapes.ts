@@ -28,8 +28,111 @@ export const data: Project = {
 	medias: [
 		{
 			type: 'image',
-			src: '/projects/synthetic-dunescapes/section-collage.webp',
-			alt: 'syntehtic dunescapes 2024 - collage',
+			src: '/projects/synthetic-dunescapes/render-exterior03.avif',
+			alt: 'threashold between desert and building',
+			isHero: true
+		},
+		{
+			type: 'image',
+			src: '/projects/synthetic-dunescapes/render-exterior01.avif',
+			alt: 'threashold between desert and building',
+			aspectRatio: '1.85/1',
+			showAlt: true
+		},
+		{
+			type: 'image',
+			src: '/projects/synthetic-dunescapes/render-exterior02.avif',
+			alt: 'piezoelectric energy harvesting facade',
+			aspectRatio: '1.85/1',
+			align: 'top',
+			showAlt: true
+		},
+		{
+			type: 'video',
+			src: '/projects/synthetic-dunescapes/component-expansion_896p_1024kbps.AV1.webm',
+			fallbackSrc: '/projects/synthetic-dunescapes/component-expansion_896p_2048kbps.H.264.mp4',
+			posterSrc:
+				'/projects/synthetic-dunescapes/component-expansion_896p_1024kbps.H.264-poster.webp',
+			alt: 'incremental expansion of structural components',
+			aspectRatio: '1.85/1',
+			align: 'top',
+			showAlt: true
+		},
+		{
+			type: 'image',
+			src: '/projects/synthetic-dunescapes/component-details.avif',
+			alt: 'component details',
+			groupId: 'component-details'
+		},
+		{
+			type: 'video',
+			src: '/projects/synthetic-dunescapes/component-aggregation_1080p_64kbps.AV1.webm',
+			fallbackSrc: '/projects/synthetic-dunescapes/component-aggregation_1080p_4096kbps.H.264.mp4',
+			posterSrc:
+				'/projects/synthetic-dunescapes/component-aggregation_1080p_4096kbps.H.264-poster.webp',
+			alt: 'modular robotic units aggregating',
+			groupId: 'component-details',
+			showAlt: true
+		},
+		{
+			type: 'video',
+			src: '/projects/synthetic-dunescapes/spatial-transformation_720p_512kbps.AV1.webm',
+			fallbackSrc: '/projects/synthetic-dunescapes/spatial-transformation_720p_1669kbps.H.264.mp4',
+			posterSrc:
+				'/projects/synthetic-dunescapes/spatial-transformation_720p_1669kbps.H.264-poster.webp',
+			alt: 'modulation of light with self-assembling robotic units',
+			aspectRatio: '1.9/1',
+			align: 'top',
+			showAlt: true,
+			description: `
+			The individual robotic units, inspired by the 3D self-reconfiguration and locomotion 
+			modular robot developed at EPFL, are designed to be autonomous, self-assembling, 
+			and self-organizing. Each unit is equipped with sensors, actuators, and communication 
+			devices that enable it to interact with its environment and other units. 
+			The units can aggregate to form larger structures, disassemble to adapt to 
+			changing conditions, and reconfigure to optimize their performance. This adaptive 
+			system allows for the rapid construction of complex architectural forms in 
+			challenging environments.
+			`.trim()
+		},
+		{
+			type: 'image',
+			src: '/projects/synthetic-dunescapes/render-library.avif',
+			alt: 'library',
+			aspectRatio: '1/1',
+			groupId: 'interior-renders-01'
+		},
+		{
+			type: 'image',
+			src: '/projects/synthetic-dunescapes/render-ritualhub.avif',
+			alt: 'ritual hub',
+			aspectRatio: '1/1',
+			groupId: 'interior-renders-01'
+		},
+		{
+			type: 'image',
+			src: '/projects/synthetic-dunescapes/render-living.avif',
+			alt: 'living quarters',
+			aspectRatio: '1/1',
+			groupId: 'interior-renders-02'
+		},
+		{
+			type: 'image',
+			src: '/projects/synthetic-dunescapes/render-foodfactory.avif',
+			alt: 'food factory',
+			aspectRatio: '1/1',
+			groupId: 'interior-renders-02'
+		},
+		{
+			type: 'image',
+			src: '/projects/synthetic-dunescapes/diagram-workflow.avif',
+			alt: 'AI workflow diagram',
+			showAlt: true
+		},
+		{
+			type: 'image',
+			src: '/projects/synthetic-dunescapes/section.avif',
+			alt: 'sectional diagram of synthetic dunescape',
 			isCover: true
 		}
 	]
