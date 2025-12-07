@@ -30,7 +30,7 @@
 
 <main class="min-h-screen px-4 pt-24 pb-16 sm:px-8 lg:px-32 lg:pt-32">
 	<!-- Header Section -->
-	<div class="mb-16 lg:mb-24">
+	<div class="mb-8 lg:mb-24">
 		<Decoder
 			text="DEVELOPER TOOLS"
 			className="text-[32px] sm:text-[48px] lg:text-[76px] tracking-tight"
@@ -41,7 +41,7 @@
 	<!-- Content Grid -->
 	<div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
 		<!-- Left Column: Label -->
-		<div class="lg:col-span-3">
+		<div class="hidden lg:col-span-3 lg:block">
 			<span class="text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase">
 				Projects
 			</span>
