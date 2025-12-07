@@ -128,7 +128,9 @@
 		</div>
 
 		<!-- DESKTOP: LEFT COLUMN - STICKY TITLE & METADATA -->
-		<aside class="hidden h-fit flex-col gap-8 md:col-span-4 md:flex lg:sticky lg:top-32">
+		<aside
+			class="hidden h-fit max-h-[calc(100vh-10rem)] flex-col gap-8 overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] md:col-span-4 md:flex lg:sticky lg:top-32 [&::-webkit-scrollbar]:hidden"
+		>
 			<!-- Header Block -->
 			<ProjectHeader {project} size="large" />
 			<!-- Desktop: Full Metadata Group -->
