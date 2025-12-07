@@ -2,6 +2,7 @@
 	import { getVideo } from '$lib/helpers/video-registry';
 	import VideoPlayer from './video-player.svelte';
 	import PixelatedReveal from './pixelated-reveal.svelte';
+	import VideoLoader from '../atoms/loader.svelte';
 	import { onMount } from 'svelte';
 
 	interface Props {
@@ -14,9 +15,24 @@
 		alt: string;
 		class?: string;
 		style?: string;
+		/** Aspect ratio to maintain during loading (e.g., "16/9", "4/3") */
+		aspectRatio?: string;
 	}
 
-	let { primarySrc, fallbackSrc, posterSrc, alt, class: className, style }: Props = $props();
+	let {
+		primarySrc,
+		fallbackSrc,
+		posterSrc,
+		alt,
+		class: className,
+		style,
+		aspectRatio
+	}: Props = $props();
+
+	// Compute combined style with aspect ratio for loading states
+	let placeholderStyle = $derived(
+		[aspectRatio ? `aspect-ratio: ${aspectRatio}` : '', style].filter(Boolean).join('; ')
+	);
 
 	// State for async loading
 	let primaryUrl = $state<string | null>(null);
@@ -81,7 +97,7 @@
 	<!-- Fallback UI for missing/failed videos -->
 	<div
 		class="flex items-center justify-center bg-muted text-xs text-destructive {className}"
-		{style}
+		style={placeholderStyle}
 	>
 		<div class="p-4 text-center">
 			<p class="font-semibold">Video Not Found</p>
@@ -89,22 +105,24 @@
 		</div>
 	</div>
 {:else if isLoading}
-	<!-- Loading state: Show poster or placeholder -->
-	{#if videoAsset?.poster}
-		<PixelatedReveal
-			src={videoAsset.poster.fallbackSrc}
-			srcset={videoAsset.poster.srcset}
-			placeholder={videoAsset.poster.placeholder}
-			{alt}
-			class={className}
-			{style}
-		/>
-	{:else}
-		<div class="animate-pulse bg-muted {className}" {style}></div>
-	{/if}
+	<!-- Loading state: Show poster or placeholder with loader overlay -->
+	<div class="relative" style={placeholderStyle}>
+		{#if videoAsset?.poster}
+			<PixelatedReveal
+				src={videoAsset.poster.src}
+				placeholder={videoAsset.poster.placeholder}
+				{alt}
+				class={className}
+				style={placeholderStyle}
+			/>
+		{:else}
+			<div class="bg-muted {className}" style={placeholderStyle}></div>
+		{/if}
+		<VideoLoader />
+	</div>
 {:else if primaryUrl}
 	<!-- Render actual video once URLs are loaded -->
-	<VideoPlayer poster={posterSrc} class={className} {style}>
+	<VideoPlayer poster={posterSrc} class={className} {style} {aspectRatio}>
 		<source src={primaryUrl} type={primaryMimeType} />
 		{#if fallbackUrl && fallbackMimeType}
 			<source src={fallbackUrl} type={fallbackMimeType} />

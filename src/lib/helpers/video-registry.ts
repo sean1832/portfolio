@@ -14,7 +14,7 @@ export interface VideoAsset {
 	src: () => Promise<string>;
 	/** Fallback video source (typically H.264 MP4) - lazy loaded */
 	fallbackSrc?: () => Promise<string>;
-	/** Poster image data (srcset, placeholder, fallback) - from image registry */
+	/** Poster image data (src, placeholder) - from image registry */
 	poster: ImageAsset | null;
 }
 
@@ -38,7 +38,7 @@ export interface VideoAsset {
  * if (video) {
  *   const primaryUrl = await video.src();
  *   const fallbackUrl = await video.fallbackSrc();
- *   const posterData = video.poster; // { srcset, placeholder, fallbackSrc }
+ *   const posterData = video.poster; // { src, placeholder }
  * }
  * ```
  */

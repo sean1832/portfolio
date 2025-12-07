@@ -3,6 +3,7 @@
 	import type { Snippet } from 'svelte';
 	import type { Action } from 'svelte/action';
 	import PixelatedReveal from './pixelated-reveal.svelte';
+	import VideoLoader from '../atoms/loader.svelte';
 	import { getImage } from '$lib/helpers/image-registry';
 
 	interface Props {
@@ -10,8 +11,15 @@
 		class?: string;
 		style?: string;
 		poster?: string;
+		/** Aspect ratio to maintain container dimensions (e.g., "16/9") */
+		aspectRatio?: string;
 	}
-	let { children, class: className, poster, style }: Props = $props();
+	let { children, class: className, poster, style, aspectRatio }: Props = $props();
+
+	// Compute container style with aspect ratio
+	let containerStyle = $derived(
+		[aspectRatio ? `aspect-ratio: ${aspectRatio}` : '', style].filter(Boolean).join('; ')
+	);
 
 	const posterData = poster ? getImage(poster) : undefined;
 
@@ -33,6 +41,8 @@
 							.catch(() => {
 								// Silent catch: Auto-play policies or
 								// Low Power Mode interactions are expected failures.
+								// Still mark as playing to hide loader (user will see static poster)
+								isPlaying = true;
 							});
 
 						// stop observing for performance optimization
@@ -57,19 +67,18 @@
 	};
 </script>
 
-<div class="relative h-full w-full overflow-hidden">
+<div class="relative h-full w-full overflow-hidden" style={containerStyle}>
 	{#if posterData}
 		<div
 			class="pointer-events-none absolute inset-0 z-20 h-full w-full"
 			class:opacity-0={isPlaying}
 		>
 			<PixelatedReveal
-				src={posterData.fallbackSrc}
-				srcset={posterData.srcset}
+				src={posterData.src}
 				placeholder={posterData.placeholder}
 				alt="Video Poster"
 				class="h-full w-full"
-				{style}
+				style={containerStyle}
 			/>
 		</div>
 	{/if}
@@ -90,4 +99,9 @@
 		{@render children()}
 	</video>
 	<div class="absolute inset-0 z-10 bg-transparent"></div>
+
+	<!-- Loading Animation Overlay (on top of everything, visible until video plays) -->
+	{#if !isPlaying}
+		<VideoLoader />
+	{/if}
 </div>

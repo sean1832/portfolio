@@ -40,32 +40,32 @@ export const data: Project = {
 	medias: [
 		{
 			type: 'image',
-			src: '/projects/modular/render.webp',
+			src: '/projects/modular/render.avif',
 			alt: 'exterior render',
 			isHero: true
 		},
 		{
 			type: 'image',
-			src: '/projects/modular/drone-view.webp',
+			src: '/projects/modular/drone-view.avif',
 			alt: 'drone view',
 			showAlt: true
 		},
 		{
 			type: 'image',
-			src: '/projects/modular/axo.webp',
+			src: '/projects/modular/axo.avif',
 			alt: 'module assembly details',
 			isCover: true,
 			showAlt: true
 		},
 		{
 			type: 'image',
-			src: '/projects/modular/plans.webp',
+			src: '/projects/modular/plans.avif',
 			alt: 'spatial planing',
 			showAlt: true
 		},
 		{
 			type: 'image',
-			src: '/projects/modular/sections.webp',
+			src: '/projects/modular/sections.avif',
 			alt: 'sections',
 			showAlt: true
 		}
