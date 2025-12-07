@@ -94,7 +94,7 @@ export const data: Project = {
 		},
 		{
 			type: 'image',
-			src: '/projects/agentic/crystalization-perspective-02.png',
+			src: '/projects/agentic/crystalization-perspective.avif',
 			alt: 'crystallization',
 			showAlt: true
 		},
