@@ -6,6 +6,7 @@
 	import Globe from '@lucide/svelte/icons/globe';
 	import Play from '@lucide/svelte/icons/play';
 	import { goto } from '$app/navigation';
+	import Seo from '$lib/components/atoms/seo.svelte';
 
 	let decoders: Record<string, Decoder> = {};
 
@@ -24,9 +25,21 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Tools | Zeke Zhang</title>
-</svelte:head>
+<Seo
+	title="Developer Tools | Zeke Zhang"
+	description="Open-source developer tools and software projects by Zeke Zhang. Explore GPT integrations, automation utilities, browser extensions, and computational design tools."
+	url="https://zekezhang.com/tools"
+	keywords={[
+		'developer tools',
+		'open source',
+		'GPT tools',
+		'automation',
+		'browser extensions',
+		'computational design tools',
+		'grasshopper plugins',
+		'python tools'
+	]}
+/>
 
 <main class="min-h-screen px-4 pt-24 pb-16 sm:px-8 lg:px-32 lg:pt-32">
 	<!-- Header Section -->

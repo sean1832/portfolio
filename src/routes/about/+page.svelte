@@ -2,11 +2,24 @@
 	import { ZekeZhangIcon } from '$lib/components/icons';
 	import { About } from '$lib/data/about';
 	import Decoder from '$lib/components/molecules/decoder.svelte';
+	import Seo from '$lib/components/atoms/seo.svelte';
 </script>
 
-<svelte:head>
-	<title>About | {About.name}</title>
-</svelte:head>
+<Seo
+	title="About Zeke Zhang | Computational Designer & Researcher"
+	description="Learn about Zeke Zhang - Researcher and computational designer working at the intersection of code and architecture. Combining algorithmic design, reinforcement learning, and GPU-accelerated workflows to develop data-driven, resource-efficient design systems."
+	url="https://zekezhang.com/about"
+	keywords={[
+		'Zeke Zhang',
+		'computational designer',
+		'architecture researcher',
+		'algorithmic design',
+		'reinforcement learning',
+		'grasshopper developer',
+		'rhinoceros 3d',
+		'parametric architecture'
+	]}
+/>
 
 <main class="min-h-screen px-4 pt-24 pb-16 sm:px-8 lg:px-32 lg:pt-32">
 	<!-- Header Section -->
