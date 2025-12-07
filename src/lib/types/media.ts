@@ -4,7 +4,7 @@ export interface MediaBase {
 }
 
 export interface ImageMedia extends MediaBase {
-	type: 'image' | 'remote-image';
+	type: 'image';
 	src: string;
 	alt: string;
 	// positioning options

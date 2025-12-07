@@ -6,7 +6,6 @@
 	import ExternalLink from '../atoms/external-link.svelte';
 	import LazyVideo from '../molecules/lazy-video.svelte';
 	import { navbarState } from '$lib/hooks/navbar-state.svelte';
-	import RemoteImage from '../molecules/remote-image.svelte';
 
 	let { project }: { project: Project } = $props();
 
@@ -31,29 +30,24 @@
 		navbarState.reset();
 	});
 
-	// Derived state for images
-	let heroImage = $derived(
-		project.medias?.find(
-			(media) => (media.type === 'image' || media.type === 'remote-image') && media.isHero
-		) ||
-			project.medias?.find(
-				(media) => (media.type === 'image' || media.type === 'remote-image') && media.isCover
-			)
+	// Determine the single hero media (prefer any item with `isHero`, else fallback to `isCover`)
+	let heroMedia = $derived(
+		project.medias?.find((m) => 'isHero' in m && (m as any).isHero) ||
+			project.medias?.find((m) => 'isCover' in m && (m as any).isCover)
 	);
 
-	let heroVideo = $derived(
-		project.medias?.find((media) => media.type === 'video' && media.isHero) ||
-			project.medias?.find((media) => media.type === 'video' && media.isCover)
-	);
+	// Convenience derived values for templates (image or video)
+	let heroImage = $derived(heroMedia?.type === 'image' ? heroMedia : undefined);
+	let heroVideo = $derived(heroMedia?.type === 'video' ? heroMedia : undefined);
 
 	// Group media items by groupId
 	type MediaItem = NonNullable<Project['medias']>[number];
 	type MediaGroup = { type: 'group'; groupId: string; items: MediaItem[] };
 	type GalleryItem = MediaItem | MediaGroup;
 
-	// Filter out the hero image from the gallery list
+	// Filter out the hero media from the gallery list
 	let visibleGalleryMedias = $derived(
-		project.medias?.filter((media) => media !== heroImage && !media.isHiddenGallery) || []
+		project.medias?.filter((media) => media !== heroMedia && !media.isHiddenGallery) || []
 	);
 
 	let galleryItems = $derived.by(() => {
@@ -135,8 +129,8 @@
 	};
 
 	$effect(() => {
-		if (!heroImage) {
-			console.warn('No hero or cover image found for project ' + project.slug);
+		if (!heroMedia) {
+			console.warn('No hero or cover media found for project ' + project.slug);
 		}
 	});
 </script>
@@ -183,13 +177,6 @@
 		{#if heroImage?.type === 'image'}
 			<LazyImage
 				filename={heroImage.src}
-				alt={heroImage.alt}
-				class="h-full w-full object-cover "
-				style={getMediaStyle(heroImage)}
-			/>
-		{:else if heroImage?.type === 'remote-image'}
-			<RemoteImage
-				src={heroImage.src}
 				alt={heroImage.alt}
 				class="h-full w-full object-cover "
 				style={getMediaStyle(heroImage)}
@@ -330,14 +317,6 @@
 											{#if groupMedia.type === 'image'}
 												<LazyImage
 													filename={groupMedia.src}
-													alt={groupMedia.alt}
-													class="w-full {groupMedia.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
-													sizes={items.length === 1 ? '65vw' : '40vw'}
-													style={getMediaStyle(groupMedia)}
-												/>
-											{:else if groupMedia.type === 'remote-image'}
-												<RemoteImage
-													src={groupMedia.src}
 													alt={groupMedia.alt}
 													class="w-full {groupMedia.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
 													sizes={items.length === 1 ? '65vw' : '40vw'}
