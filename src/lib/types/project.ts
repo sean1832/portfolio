@@ -17,10 +17,12 @@ export interface Project {
 	location?: string;
 	publications?: Publication[];
 	awards?: ExternalLink[];
-	medias?: (ImageMedia | VideoMedia | TextMedia | CodeMedia)[];
+	medias?: DesignProjectMedia[];
 	priority?: number; // for sorting purposes, higher number means higher priority
 	isFeature?: boolean; // to highlight special projects
 }
+
+export type DesignProjectMedia = ImageMedia | VideoMedia | TextMedia | CodeMedia;
 
 export interface ExternalLink {
 	text: string;
