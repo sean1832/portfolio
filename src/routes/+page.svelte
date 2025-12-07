@@ -30,7 +30,7 @@
 <!--hero-->
 <div class="relative flex h-screen w-full flex-col overflow-hidden">
 	<DistortionField
-		class="inset-0 h-[75vh] w-full"
+		class="inset-0 h-[85vh] w-full sm:h-[75vh]"
 		{gridSpacing}
 		{pointSize}
 		mouseForce={300}
@@ -42,7 +42,7 @@
 
 	<Decoder
 		text="ZEKE ZHANG"
-		className="relative z-10 text-[32px] sm:text-[48px] lg:text-[76px] ml-4 mt-6"
+		className="relative z-10 text-[24px] sm:text-[48px] lg:text-[76px] ml-4 mt-6"
 	/>
 	<Decoder
 		text={[
@@ -52,7 +52,7 @@
 			'LOW-TECH ASSEMBLY CRAFT',
 			'DIFFUSION TECTONICS'
 		]}
-		className="relative z-10 text-[18px] sm:text-[28px] lg:text-[48px] ml-4 sm:ml-16 lg:ml-72"
+		className="relative z-10 text-[12px] sm:text-[28px] lg:text-[48px] ml-4 sm:ml-16 lg:ml-72"
 	/>
 </div>
 
@@ -83,7 +83,7 @@
 					{/if}
 
 					<div
-						class="mt-4 min-w-100 cursor-pointer lg:absolute lg:bottom-0 lg:left-full lg:mt-0 lg:ml-8"
+						class="mt-4 min-w-[200px] cursor-pointer sm:min-w-[300px] lg:absolute lg:bottom-0 lg:left-full lg:mt-0 lg:ml-8 lg:min-w-100"
 					>
 						<hr class="border-primary" />
 						<div class="flex items-center justify-between">

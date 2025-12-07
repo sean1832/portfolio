@@ -6,6 +6,11 @@
 	import ExternalLink from '../atoms/external-link.svelte';
 	import LazyVideo from '../molecules/lazy-video.svelte';
 	import { navbarState } from '$lib/hooks/navbar-state.svelte';
+	import ChevronDown from '@lucide/svelte/icons/chevron-down';
+	import ChevronUp from '@lucide/svelte/icons/chevron-up';
+	import Info from '@lucide/svelte/icons/info';
+	import * as Drawer from '$lib/components/ui/drawer';
+	import { cn } from '$lib/utils';
 
 	let { project }: { project: Project } = $props();
 
@@ -14,6 +19,28 @@
 
 	// Bind hero element for height calculation
 	let heroElement: HTMLElement | undefined = $state();
+
+	// Mobile description expansion state
+	let isDescriptionExpanded = $state(false);
+	const DESCRIPTION_PREVIEW_LENGTH = 200;
+
+	// Drawer state for mobile metadata
+	let isDrawerOpen = $state(false);
+
+	// Derived: check if description needs truncation
+	let descriptionNeedsTruncation = $derived(
+		project.description.length > DESCRIPTION_PREVIEW_LENGTH
+	);
+
+	// Derived: truncated description for mobile
+	let truncatedDescription = $derived.by(() => {
+		if (!descriptionNeedsTruncation) return project.description;
+		// Find a good break point (space) near the limit
+		const breakPoint = project.description.lastIndexOf(' ', DESCRIPTION_PREVIEW_LENGTH);
+		return (
+			project.description.slice(0, breakPoint > 0 ? breakPoint : DESCRIPTION_PREVIEW_LENGTH) + '...'
+		);
+	});
 
 	onMount(() => {
 		// Set immersive mode for navbar
@@ -135,7 +162,7 @@
 	});
 </script>
 
-{#snippet metadataSection(title: string, items: any[] | undefined)}
+{#snippet metadataSection(title: string, items: any[] | undefined, className?: string)}
 	{#if items && items.length > 0}
 		<div class="flex flex-col gap-2">
 			<span
@@ -148,7 +175,7 @@
 					{@const text = typeof item === 'string' ? item : item.text}
 					{@const url = typeof item === 'object' ? item.url : undefined}
 
-					<li class="text-sm leading-normal font-normal tracking-wide">
+					<li class={cn('text-sm leading-normal font-normal tracking-wide ', className)}>
 						{#if url}
 							<ExternalLink href={url}>
 								{text}
@@ -161,6 +188,110 @@
 			</ul>
 		</div>
 	{/if}
+{/snippet}
+
+{#snippet contributionsSection()}
+	{#if project.contributions && project.contributions.length > 0}
+		<div>
+			<span
+				class="mb-4 block text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase md:mb-6"
+				>Contributions</span
+			>
+			<!-- Mobile: compact inline list with minimal bars -->
+			<div class="flex flex-col gap-3 md:hidden">
+				{#each project.contributions as contrib}
+					<div class="flex items-center gap-3">
+						<span class="min-w-0 flex-1 truncate text-xs font-medium tracking-wide text-foreground">
+							{contrib.description}
+						</span>
+						<div class="flex w-20 items-center gap-2">
+							<div class="h-0.5 flex-1 bg-muted">
+								<div class="h-full bg-foreground/70" style="width: {contrib.percent}%"></div>
+							</div>
+							<span class="w-8 text-right text-[10px] text-muted-foreground tabular-nums"
+								>{contrib.percent}%</span
+							>
+						</div>
+					</div>
+				{/each}
+			</div>
+			<!-- Desktop: full grid with progress bars -->
+			<div class="hidden grid-cols-1 gap-x-12 gap-y-5 sm:grid-cols-2 md:grid lg:grid-cols-3">
+				{#each project.contributions as contrib}
+					<div class="group flex flex-col gap-2">
+						<div class="flex items-baseline justify-between gap-4">
+							<span class="text-xs font-medium tracking-wide text-foreground uppercase">
+								{contrib.description}
+							</span>
+							<span class="text-[10px] text-muted-foreground tabular-nums">{contrib.percent}%</span>
+						</div>
+						<div class="h-0.5 w-full bg-muted">
+							<div
+								class="h-full bg-foreground/60 transition-all duration-300 group-hover:bg-foreground"
+								style="width: {contrib.percent}%"
+							></div>
+						</div>
+					</div>
+				{/each}
+			</div>
+		</div>
+	{/if}
+{/snippet}
+
+{#snippet descriptionSection()}
+	<div class="max-w-none text-justify text-sm font-light">
+		<!-- Mobile: collapsible description -->
+		<div class="md:hidden">
+			<p class="mt-0">
+				{isDescriptionExpanded || !descriptionNeedsTruncation
+					? project.description
+					: truncatedDescription}
+			</p>
+			{#if descriptionNeedsTruncation}
+				<button
+					onclick={() => (isDescriptionExpanded = !isDescriptionExpanded)}
+					class="mt-3 flex items-center gap-1 text-xs font-medium tracking-wide text-muted-foreground transition-colors hover:text-foreground"
+				>
+					{isDescriptionExpanded ? 'Show less' : 'Show more'}
+					{#if isDescriptionExpanded}
+						<ChevronUp class="h-3.5 w-3.5" />
+					{:else}
+						<ChevronDown class="h-3.5 w-3.5" />
+					{/if}
+				</button>
+			{/if}
+		</div>
+		<!-- Desktop: full description in columns -->
+		<div class="hidden columns-1 gap-12 md:block md:columns-2">
+			<p class="mt-0">{project.description}</p>
+		</div>
+	</div>
+{/snippet}
+
+{#snippet metadataGroup()}
+	<div class="flex flex-col gap-8">
+		{#if project.location}
+			<!-- Location -->
+			<div class="flex flex-col gap-1">
+				<span class="text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
+					>Location</span
+				>
+				<span class="text-sm font-normal tracking-wide">{project.location}</span>
+			</div>
+		{/if}
+
+		<!-- Team -->
+		{#if project.directors?.length || project.collaborators?.length}
+			<div class="flex flex-col gap-6">
+				{@render metadataSection('Director', project.directors, 'capitalize')}
+				{@render metadataSection('Collaborators', project.collaborators, 'capitalize')}
+			</div>
+		{/if}
+
+		{@render metadataSection('Supporters', project.supporters)}
+		{@render metadataSection('Recognitions', project.awards)}
+		{@render metadataSection('Publications', project.publications)}
+	</div>
 {/snippet}
 
 <div class="min-h-screen w-full">
@@ -197,14 +328,53 @@
 
 	<!-- MAIN GRID LAYOUT -->
 	<main
-		class="mx-auto grid max-w-[1800px] grid-cols-1 gap-12 px-6 py-12 md:grid-cols-12 md:gap-16 md:px-12"
+		class="mx-auto grid max-w-[1800px] grid-cols-1 gap-8 px-6 py-8 md:grid-cols-12 md:gap-16 md:px-12 md:py-12"
 	>
-		<!-- LEFT COLUMN: STICKY TITLE & METADATA -->
-		<aside class="flex h-fit flex-col gap-8 md:col-span-4 lg:sticky lg:top-32">
+		<!-- MOBILE: Compact header with title only -->
+		<div class="flex flex-col gap-4 md:hidden">
+			<!-- Header Block -->
+			<div class="flex flex-col gap-3">
+				<h1 class="text-3xl leading-[0.9] font-semibold tracking-tighter wrap-break-word uppercase">
+					<Decoder
+						text={project.name}
+						revealSpeedMs={40}
+						scrambleSpeedMs={10}
+						trigger="load"
+						variant="shuffle"
+					/>
+				</h1>
+				<div
+					class="flex items-center gap-3 text-xs font-medium tracking-widest text-muted-foreground uppercase"
+				>
+					<span>{project.year}</span>
+					<span class="text-border">/</span>
+					<span>{project.types[0]}</span>
+				</div>
+				<hr class="w-8 border-border opacity-50" />
+			</div>
+
+			<!-- Mobile: Compact description -->
+			{@render descriptionSection()}
+
+			<!-- Mobile: Compact contributions -->
+			{@render contributionsSection()}
+
+			<!-- Mobile: Project Details Button (opens drawer) -->
+			<button
+				onclick={() => (isDrawerOpen = true)}
+				class="group mt-2 flex items-center gap-2 self-start border-b border-transparent pb-0.5 text-[10px] font-semibold tracking-[0.2em] text-muted-foreground uppercase transition-colors hover:border-foreground hover:text-foreground"
+			>
+				<Info class="h-3 w-3" />
+				View Details
+			</button>
+		</div>
+
+		<!-- DESKTOP: LEFT COLUMN - STICKY TITLE & METADATA -->
+		<aside class="hidden h-fit flex-col gap-8 md:col-span-4 md:flex lg:sticky lg:top-32">
 			<!-- Header Block -->
 			<div class="flex flex-col gap-3">
 				<h1
-					class="text-3xl leading-[0.9] font-semibold tracking-tighter wrap-break-word uppercase md:text-5xl lg:text-6xl"
+					class="text-5xl leading-[0.9] font-semibold tracking-tighter wrap-break-word uppercase lg:text-6xl"
 				>
 					<Decoder
 						text={project.name}
@@ -224,68 +394,18 @@
 				<hr class="w-8 border-border opacity-50" />
 			</div>
 
-			<!-- Metadata Group -->
-			<div class="flex flex-col gap-8">
-				{#if project.location}
-					<!-- Location -->
-					<div class="flex flex-col gap-1">
-						<span
-							class="text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
-							>Location</span
-						>
-						<span class="text-sm font-normal tracking-wide">{project.location}</span>
-					</div>
-				{/if}
-
-				<!-- Team -->
-				{#if project.directors?.length || project.collaborators?.length}
-					<div class="flex flex-col gap-6">
-						{@render metadataSection('Director', project.directors)}
-						{@render metadataSection('Collaborators', project.collaborators)}
-					</div>
-				{/if}
-
-				{@render metadataSection('Supporters', project.supporters)}
-				{@render metadataSection('Recognitions', project.awards)}
-				{@render metadataSection('Publications', project.publications)}
-			</div>
+			<!-- Desktop: Full Metadata Group -->
+			{@render metadataGroup()}
 		</aside>
 
-		<!-- RIGHT COLUMN: CONTENT -->
-		<article class="flex flex-col gap-20 md:col-span-8">
-			<!-- Narrative & Specs -->
-			<section>
-				<!-- Narrative Text:  -->
-				<div class="max-w-none columns-1 gap-12 text-justify text-sm font-light md:columns-2">
-					<p class="mt-0">{project.description}</p>
+		<!-- RIGHT COLUMN: CONTENT (Gallery) -->
+		<article class="flex flex-col gap-12 md:col-span-8 md:gap-20">
+			<!-- Desktop only: Narrative & Contributions -->
+			<section class="hidden md:block">
+				{@render descriptionSection()}
+				<div class="mt-8">
+					{@render contributionsSection()}
 				</div>
-
-				<!-- Contributions Grid -->
-				{#if project.contributions && project.contributions.length > 0}
-					<div class="mt-8">
-						<span
-							class="mb-6 block text-[10px] font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase"
-							>Contributions</span
-						>
-						<div class="grid grid-cols-1 gap-x-12 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
-							{#each project.contributions as contrib}
-								<div class="flex flex-col border-t border-border pt-3">
-									<span class="text-xs font-medium tracking-wider text-foreground uppercase"
-										>{contrib.description}</span
-									>
-									<div class="mt-2 flex items-end justify-between">
-										<div class="relative -top-1 mr-4 h-px flex-1 bg-muted">
-											<div class="h-full bg-primary" style="width: {contrib.percent}%"></div>
-										</div>
-										<span class="text-[10px] font-bold text-muted-foreground"
-											>{contrib.percent}%</span
-										>
-									</div>
-								</div>
-							{/each}
-						</div>
-					</div>
-				{/if}
 			</section>
 
 			<!-- Gallery -->
@@ -354,11 +474,9 @@
 														// {visualIndex + 1}
 													{/if}
 													{#if groupMedia.showAlt && groupMedia.type === 'image' && !groupMedia.description}
-														<span class="line-clamp-1 max-w-[60%] text-right">{groupMedia.alt}</span
-														>
+														<span class="line-clamp-1 text-right">{groupMedia.alt}</span>
 													{:else if groupMedia.showAlt && groupMedia.type === 'video' && groupMedia.alt && !groupMedia.description}
-														<span class="line-clamp-1 max-w-[60%] text-right">{groupMedia.alt}</span
-														>
+														<span class="line-clamp-1 text-right">{groupMedia.alt}</span>
 													{/if}
 												</div>
 												{#if groupMedia.description}
@@ -388,4 +506,21 @@
 			{/if}
 		</article>
 	</main>
+
+	<!-- MOBILE: Project Details Drawer -->
+	<Drawer.Root bind:open={isDrawerOpen}>
+		<Drawer.Content>
+			<div class="mx-auto flex w-full max-w-lg flex-col overflow-hidden">
+				<Drawer.Header class="shrink-0">
+					<Drawer.Title>Project Details</Drawer.Title>
+					<Drawer.Description class="text-sm font-normal tracking-wide text-foreground">
+						{project.name} — {project.year}
+					</Drawer.Description>
+				</Drawer.Header>
+				<div class="flex-1 overflow-y-auto px-6 pt-6 pb-10">
+					{@render metadataGroup()}
+				</div>
+			</div>
+		</Drawer.Content>
+	</Drawer.Root>
 </div>
