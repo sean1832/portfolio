@@ -321,6 +321,7 @@
 					alt={heroVideo.alt}
 					class="h-full w-full object-cover"
 					style={getMediaStyle(heroVideo)}
+					aspectRatio={heroVideo.aspectRatio}
 				/>
 			{/if}
 		{/if}
@@ -453,6 +454,7 @@
 															? 'h-full object-cover'
 															: 'h-auto'}"
 														style={getMediaStyle(groupMedia)}
+														aspectRatio={groupMedia.aspectRatio}
 													/>
 												{:else}
 													<!-- Missing Video src -->

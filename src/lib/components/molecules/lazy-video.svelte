@@ -14,9 +14,24 @@
 		alt: string;
 		class?: string;
 		style?: string;
+		/** Aspect ratio to maintain during loading (e.g., "16/9", "4/3") */
+		aspectRatio?: string;
 	}
 
-	let { primarySrc, fallbackSrc, posterSrc, alt, class: className, style }: Props = $props();
+	let {
+		primarySrc,
+		fallbackSrc,
+		posterSrc,
+		alt,
+		class: className,
+		style,
+		aspectRatio
+	}: Props = $props();
+
+	// Compute combined style with aspect ratio for loading states
+	let placeholderStyle = $derived(
+		[aspectRatio ? `aspect-ratio: ${aspectRatio}` : '', style].filter(Boolean).join('; ')
+	);
 
 	// State for async loading
 	let primaryUrl = $state<string | null>(null);
@@ -81,7 +96,7 @@
 	<!-- Fallback UI for missing/failed videos -->
 	<div
 		class="flex items-center justify-center bg-muted text-xs text-destructive {className}"
-		{style}
+		style={placeholderStyle}
 	>
 		<div class="p-4 text-center">
 			<p class="font-semibold">Video Not Found</p>
@@ -97,14 +112,14 @@
 			placeholder={videoAsset.poster.placeholder}
 			{alt}
 			class={className}
-			{style}
+			style={placeholderStyle}
 		/>
 	{:else}
-		<div class="animate-pulse bg-muted {className}" {style}></div>
+		<div class="animate-pulse bg-muted {className}" style={placeholderStyle}></div>
 	{/if}
 {:else if primaryUrl}
 	<!-- Render actual video once URLs are loaded -->
-	<VideoPlayer poster={posterSrc} class={className} {style}>
+	<VideoPlayer poster={posterSrc} class={className} {style} {aspectRatio}>
 		<source src={primaryUrl} type={primaryMimeType} />
 		{#if fallbackUrl && fallbackMimeType}
 			<source src={fallbackUrl} type={fallbackMimeType} />

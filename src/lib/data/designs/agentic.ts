@@ -61,6 +61,7 @@ export const data: Project = {
 			src: '/projects/agentic/agents-perspective_1080p_2048kbps.h264.mp4',
 			posterSrc: '/projects/agentic/agents-perspective_1080p_2048kbps.h264-poster.webp',
 			alt: 'agentic architecture cover video 10sec',
+			aspectRatio: '3/4',
 			isCover: true,
 			isHiddenGallery: true
 		},

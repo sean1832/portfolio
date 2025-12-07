@@ -10,8 +10,15 @@
 		class?: string;
 		style?: string;
 		poster?: string;
+		/** Aspect ratio to maintain container dimensions (e.g., "16/9") */
+		aspectRatio?: string;
 	}
-	let { children, class: className, poster, style }: Props = $props();
+	let { children, class: className, poster, style, aspectRatio }: Props = $props();
+
+	// Compute container style with aspect ratio
+	let containerStyle = $derived(
+		[aspectRatio ? `aspect-ratio: ${aspectRatio}` : '', style].filter(Boolean).join('; ')
+	);
 
 	const posterData = poster ? getImage(poster) : undefined;
 
@@ -57,7 +64,7 @@
 	};
 </script>
 
-<div class="relative h-full w-full overflow-hidden">
+<div class="relative h-full w-full overflow-hidden" style={containerStyle}>
 	{#if posterData}
 		<div
 			class="pointer-events-none absolute inset-0 z-20 h-full w-full"
@@ -69,7 +76,7 @@
 				placeholder={posterData.placeholder}
 				alt="Video Poster"
 				class="h-full w-full"
-				{style}
+				style={containerStyle}
 			/>
 		</div>
 	{/if}
