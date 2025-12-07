@@ -1,38 +1,42 @@
-# sv
+# Portfolio
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This repository is my personal portfolio showcasing my projects.
 
-## Creating a project
+## Quick Start
 
-If you're seeing this, you've probably already done this step. Congrats!
+To get started, fork the repository and clone it to your local machine.
 
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
+```bash
+git clone https://github.com/your-username/portfolio.git
+cd portfolio
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+### Building the Project
 
-To create a production version of your app:
+To build the project, ensure you have the necessary dependencies installed. Then run:
 
-```sh
+```bash
+npm install
 npm run build
+npm run preview
 ```
 
-You can preview the production build with `npm run preview`.
+## Stacks
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- SvelteKit
+- TypeScript
+- TailwindCSS
+- Vite
+- Shadcn-Svelte
+
+## Modify project content
+
+All projects data are stored under `src/lib/data` folder in typescript files. You can modify or add your projects in these files. Each project should follow the structure defined in the `Project` type found in `src/lib/types/project.ts`.
+
+To add a new project, simply create a new typescript file under the `src/lib/data/designs` or `src/lib/data/tools` folder and export a project object that adheres to the `Project` type. It should automatically populate in the portfolio.
+
+### Media Assets
+
+All media assets (images, videos) for the projects are stored in the `/src/lib/assets` folder. When adding a new project, make sure to place the corresponding media files in this directory and reference them correctly in your project data file.
