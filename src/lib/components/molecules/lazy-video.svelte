@@ -2,6 +2,7 @@
 	import { getVideo } from '$lib/helpers/video-registry';
 	import VideoPlayer from './video-player.svelte';
 	import PixelatedReveal from './pixelated-reveal.svelte';
+	import VideoLoader from '../atoms/loader.svelte';
 	import { onMount } from 'svelte';
 
 	interface Props {
@@ -104,19 +105,22 @@
 		</div>
 	</div>
 {:else if isLoading}
-	<!-- Loading state: Show poster or placeholder -->
-	{#if videoAsset?.poster}
-		<PixelatedReveal
-			src={videoAsset.poster.fallbackSrc}
-			srcset={videoAsset.poster.srcset}
-			placeholder={videoAsset.poster.placeholder}
-			{alt}
-			class={className}
-			style={placeholderStyle}
-		/>
-	{:else}
-		<div class="animate-pulse bg-muted {className}" style={placeholderStyle}></div>
-	{/if}
+	<!-- Loading state: Show poster or placeholder with loader overlay -->
+	<div class="relative" style={placeholderStyle}>
+		{#if videoAsset?.poster}
+			<PixelatedReveal
+				src={videoAsset.poster.fallbackSrc}
+				srcset={videoAsset.poster.srcset}
+				placeholder={videoAsset.poster.placeholder}
+				{alt}
+				class={className}
+				style={placeholderStyle}
+			/>
+		{:else}
+			<div class="bg-muted {className}" style={placeholderStyle}></div>
+		{/if}
+		<VideoLoader />
+	</div>
 {:else if primaryUrl}
 	<!-- Render actual video once URLs are loaded -->
 	<VideoPlayer poster={posterSrc} class={className} {style} {aspectRatio}>

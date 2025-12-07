@@ -3,6 +3,7 @@
 	import type { Snippet } from 'svelte';
 	import type { Action } from 'svelte/action';
 	import PixelatedReveal from './pixelated-reveal.svelte';
+	import VideoLoader from '../atoms/loader.svelte';
 	import { getImage } from '$lib/helpers/image-registry';
 
 	interface Props {
@@ -40,6 +41,8 @@
 							.catch(() => {
 								// Silent catch: Auto-play policies or
 								// Low Power Mode interactions are expected failures.
+								// Still mark as playing to hide loader (user will see static poster)
+								isPlaying = true;
 							});
 
 						// stop observing for performance optimization
@@ -97,4 +100,9 @@
 		{@render children()}
 	</video>
 	<div class="absolute inset-0 z-10 bg-transparent"></div>
+
+	<!-- Loading Animation Overlay (on top of everything, visible until video plays) -->
+	{#if !isPlaying}
+		<VideoLoader />
+	{/if}
 </div>
