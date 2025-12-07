@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
-	import { ScrambleStrategy, ShuffleStrategy, TextAnimator } from '$lib/algorithms/text-animator';
+	import { ScrambleStrategy, ShuffleStrategy, TextAnimator } from '$lib/helpers/text-animator';
 	import { onDestroy, onMount } from 'svelte';
 
 	// props
