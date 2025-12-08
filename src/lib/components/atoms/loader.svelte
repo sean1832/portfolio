@@ -56,6 +56,7 @@
 <style>
 	.loader-svg {
 		shape-rendering: geometricPrecision;
+		filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.6));
 	}
 
 	.back-z {

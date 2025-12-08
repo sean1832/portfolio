@@ -52,7 +52,7 @@ export const data: Project = {
 			src: '/projects/synthetic-dunescapes/component-expansion_896p_1024kbps.AV1.webm',
 			fallbackSrc: '/projects/synthetic-dunescapes/component-expansion_896p_2048kbps.H.264.mp4',
 			posterSrc:
-				'/projects/synthetic-dunescapes/component-expansion_896p_1024kbps.H.264-poster.webp',
+				'/projects/synthetic-dunescapes/component-expansion_896p_2048kbps.H.264-poster.webp',
 			alt: 'incremental expansion of structural components',
 			aspectRatio: '1.85/1',
 			align: 'top',

@@ -2,7 +2,8 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import Navbar from '$lib/components/organisms/navbar/navbar.svelte';
-	import '@fontsource-variable/inter';
+	import '@fontsource-variable/geist';
+	import '@fontsource-variable/geist-mono';
 	import Footer from '$lib/components/organisms/footer/footer.svelte';
 	import Seo from '$lib/components/atoms/seo.svelte';
 

@@ -62,6 +62,7 @@
 	<Decoder
 		text="ZEKE ZHANG"
 		className="relative z-10 text-[24px] sm:text-[48px] lg:text-[76px] ml-4 mt-6"
+		monospace
 	/>
 	<Decoder
 		text={[
@@ -72,6 +73,7 @@
 			'DIFFUSION TECTONICS'
 		]}
 		className="relative z-10 text-[12px] sm:text-[28px] lg:text-[48px] ml-4 sm:ml-16 lg:ml-72"
+		monospace
 	/>
 </div>
 
