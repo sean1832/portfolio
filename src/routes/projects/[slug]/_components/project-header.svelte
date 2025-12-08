@@ -14,7 +14,7 @@
 <div class="flex flex-col gap-3">
 	<h1
 		class={cn(
-			'leading-[0.9] font-semibold tracking-tighter wrap-break-word uppercase',
+			'leading-[0.9] font-semibold wrap-break-word uppercase',
 			size === 'small' ? 'text-3xl' : 'text-5xl lg:text-6xl'
 		)}
 	>
@@ -24,6 +24,7 @@
 			scrambleSpeedMs={10}
 			trigger="load"
 			variant="shuffle"
+			monospace
 		/>
 	</h1>
 

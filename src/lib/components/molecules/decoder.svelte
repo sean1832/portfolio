@@ -14,6 +14,8 @@
 	export let variant: 'scramble' | 'shuffle' = 'scramble';
 	/** when to trigger the animation */
 	export let trigger: 'load' | 'hover' | 'manual' = 'load';
+	/** Use monospace font (Geist Mono) to prevent layout shift during animation */
+	export let monospace: boolean = false;
 
 	let el: HTMLDivElement;
 	let animator: TextAnimator;
@@ -105,4 +107,4 @@
 	}
 </script>
 
-<div bind:this={el} class={cn('', className)}></div>
+<div bind:this={el} class={cn(monospace && 'font-mono', className)}></div>
