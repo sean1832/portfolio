@@ -5,7 +5,7 @@ export const data: Project = {
 	priority: 60,
 	layout: 'standard',
 	slug: 'modular',
-	name: 'modular: natural - build',
+	name: 'modular: natural build',
 	year: 2022,
 	description: getDescription(),
 	types: ['international competition'],

@@ -4,12 +4,13 @@
 	import type { Action } from 'svelte/action';
 	import PixelatedReveal from './pixelated-reveal.svelte';
 	import VideoLoader from '../atoms/loader.svelte';
-	import { getImage } from '$lib/helpers/image-registry';
+	import { onMount } from 'svelte';
 
 	interface Props {
 		children: Snippet;
 		class?: string;
 		style?: string;
+		/** Path to poster image in static folder (e.g., "/projects/video-poster.webp") */
 		poster?: string;
 		/** Aspect ratio to maintain container dimensions (e.g., "16/9") */
 		aspectRatio?: string;
@@ -21,7 +22,21 @@
 		[aspectRatio ? `aspect-ratio: ${aspectRatio}` : '', style].filter(Boolean).join('; ')
 	);
 
-	const posterData = poster ? getImage(poster) : undefined;
+	// Get poster placeholder from pre-generated manifest
+	let posterPlaceholder = $state<string | undefined>(poster);
+
+	onMount(async () => {
+		if (poster) {
+			try {
+				const response = await fetch('/placeholders.json');
+				const placeholders = await response.json();
+				posterPlaceholder = placeholders[poster] ?? poster;
+			} catch (e) {
+				// Fallback to poster if manifest doesn't exist
+				posterPlaceholder = poster;
+			}
+		}
+	});
 
 	let isPlaying = $state(false);
 	const lazyPlay: Action<HTMLVideoElement> = (node) => {
@@ -68,15 +83,14 @@
 </script>
 
 <div class="relative h-full w-full overflow-hidden" style={containerStyle}>
-	{#if posterData}
+	{#if poster}
 		<div
 			class="pointer-events-none absolute inset-0 z-20 h-full w-full"
 			class:opacity-0={isPlaying}
 		>
 			<PixelatedReveal
-				srcset={posterData.srcset}
-				src={posterData.fallbackSrc}
-				placeholder={posterData.placeholder}
+				src={poster}
+				placeholder={posterPlaceholder ?? poster}
 				alt="Video Poster"
 				class="h-full w-full"
 				style={containerStyle}

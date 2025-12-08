@@ -57,10 +57,9 @@
 							<div class="relative overflow-hidden">
 								{#if groupMedia.type === 'image'}
 									<LazyImage
-										filename={groupMedia.src}
+										src={groupMedia.src}
 										alt={groupMedia.alt}
 										class="w-full {groupMedia.aspectRatio ? 'h-full object-cover' : 'h-auto'}"
-										sizes={items.length === 1 ? '65vw' : '40vw'}
 										style={getMediaStyle(groupMedia)}
 									/>
 								{:else if groupMedia.type === 'video'}

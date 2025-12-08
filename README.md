@@ -19,8 +19,14 @@ To build the project, ensure you have the necessary dependencies installed. Then
 
 ```bash
 npm install
-npm run build
+npm run build:placeholders && npm run build
 npm run preview
+```
+
+Before deploying, generate tiny blur-up placeholders for images (used by the image components):
+
+```bash
+npm run build:placeholders
 ```
 
 ### Build OG Image
@@ -39,6 +45,8 @@ After updating any video, run the following command to generate new video thumbn
 npm run build:vid
 ```
 
+Note: Videos and posters should be placed in the `static/projects/[project-name]/` folder.
+
 ## Stacks
 
 - SvelteKit
@@ -55,4 +63,16 @@ To add a new project, simply create a new typescript file under the `src/lib/dat
 
 ### Media Assets
 
-All media assets (images, videos) for the projects are stored in the `/src/lib/assets` folder. When adding a new project, make sure to place the corresponding media files in this directory and reference them correctly in your project data file.
+All media assets (images, videos) for the projects are stored in the `static/projects/[project-name]/` folder. Use pre-optimized image formats (AVIF/WebP) and pre-encoded video codecs (AV1/VP9 + H.264) for best results.
+
+Workflow for images:
+
+- Place files in `static/projects/[project-name]/`.
+- Run `npm run build:placeholders` to generate `static/placeholders.json` (manifest of tiny base64 placeholders).
+- In project data, reference images by root path, e.g. `/projects/agentic/collage.avif`.
+
+Workflow for videos:
+
+- Place videos and posters in `static/projects/[project-name]/`.
+- Run `npm run build:vid` to generate any missing posters.
+- In project data, reference video paths directly, e.g. `/projects/agentic/horizontal-preview.AV1.webm` and provide a `fallbackSrc` for H.264 MP4 when needed.
