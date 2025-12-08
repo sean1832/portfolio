@@ -3,7 +3,7 @@ import { makeContribution } from '$lib/data/factories';
 
 export const data: Project = {
 	priority: 60,
-	layout: "immersive-video",
+	layout: 'immersive-video',
 	slug: 'shara-clarke',
 	name: 'shara clarke',
 	year: 2021,
@@ -93,17 +93,19 @@ export const data: Project = {
 		},
 		{
 			type: 'image',
-			src: '/projects/on-country/multipurpose-a.avif',
-			alt: 'multi purpose room - configuration a',
-			showAlt: true,
-			groupId: 'multipurpose-views'
-		},
-		{
-			type: 'image',
 			src: '/projects/on-country/multipurpose-b.avif',
 			alt: 'multi purpose room - configuration b',
 			showAlt: true,
-			groupId: 'multipurpose-views'
+			groupId: 'multipurpose-views',
+			aspectRatio: '4/3'
+		},
+		{
+			type: 'image',
+			src: '/projects/on-country/multipurpose-a.avif',
+			alt: 'multi purpose room - configuration a',
+			showAlt: true,
+			groupId: 'multipurpose-views',
+			aspectRatio: '4/3'
 		},
 		{
 			type: 'image',

@@ -1,34 +1,30 @@
 <script lang="ts">
-	import { getImage } from '$lib/helpers/image-registry';
 	import PixelatedReveal from './pixelated-reveal.svelte';
+	import { onMount } from 'svelte';
 
 	interface Props {
-		filename: string;
+		/** Path to image in static folder (e.g., "/projects/agentic/collage.avif") */
+		src: string;
 		alt: string;
-		/**default '100vw'*/
-		sizes?: string;
 		class?: string;
 		style?: string;
 	}
 
-	let { filename, alt, class: className, sizes, style }: Props = $props();
+	let { src, alt, class: className, style }: Props = $props();
 
-	// get data synchronously
-	const image = getImage(filename);
+	// Get placeholder from pre-generated manifest, fallback to src if not found
+	let placeholder = $state(src);
+
+	onMount(async () => {
+		try {
+			const response = await fetch('/placeholders.json');
+			const placeholders = await response.json();
+			placeholder = placeholders[src] ?? src;
+		} catch (e) {
+			// Fallback to src if manifest doesn't exist
+			placeholder = src;
+		}
+	});
 </script>
 
-{#if image}
-	<PixelatedReveal
-		srcset={image.srcset}
-		src={image.fallbackSrc}
-		placeholder={image.placeholder}
-		{sizes}
-		{alt}
-		{style}
-		class={className}
-	/>
-{:else}
-	<div class="bg-gray-200 {className} flex items-center justify-center text-xs text-red-500">
-		Image Not Found
-	</div>
-{/if}
+<PixelatedReveal {src} {placeholder} {alt} {style} class={className} />

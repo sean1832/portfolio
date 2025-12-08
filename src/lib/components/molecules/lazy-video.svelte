@@ -1,9 +1,5 @@
 <script lang="ts">
-	import { getVideo } from '$lib/helpers/video-registry';
 	import VideoPlayer from './video-player.svelte';
-	import PixelatedReveal from './pixelated-reveal.svelte';
-	import VideoLoader from '../atoms/loader.svelte';
-	import { onMount } from 'svelte';
 
 	interface Props {
 		/** Path to primary video (e.g., "/projects/my-video.av1.webm") */
@@ -29,20 +25,6 @@
 		aspectRatio
 	}: Props = $props();
 
-	// Compute combined style with aspect ratio for loading states
-	let placeholderStyle = $derived(
-		[aspectRatio ? `aspect-ratio: ${aspectRatio}` : '', style].filter(Boolean).join('; ')
-	);
-
-	// State for async loading
-	let primaryUrl = $state<string | null>(null);
-	let fallbackUrl = $state<string | null>(null);
-	let isLoading = $state(true);
-	let hasError = $state(false);
-
-	// Get video asset from registry
-	const videoAsset = getVideo(primarySrc, fallbackSrc, posterSrc);
-
 	/**
 	 * Detect MIME type from file extension
 	 */
@@ -57,76 +39,17 @@
 			case 'ogv':
 				return 'video/ogg';
 			default:
-				return 'video/mp4'; // Default fallback
+				return 'video/mp4';
 		}
 	}
 
-	// Detect MIME types from filenames
 	const primaryMimeType = getMimeType(primarySrc);
-	let fallbackMimeType = $state<string | null>(null);
-	if (fallbackSrc) {
-		fallbackMimeType = getMimeType(fallbackSrc);
-	}
-
-	onMount(async () => {
-		if (!videoAsset) {
-			console.error('[lazy-video] videoAsset is null');
-			hasError = true;
-			isLoading = false;
-			return;
-		}
-
-		try {
-			// Load video URLs in parallel
-			const urls = await Promise.all([
-				videoAsset.src(),
-				videoAsset.fallbackSrc ? videoAsset.fallbackSrc() : Promise.resolve(null)
-			]);
-			primaryUrl = urls[0];
-			fallbackUrl = urls[1];
-			isLoading = false;
-		} catch (error) {
-			console.error('[lazy-video] Failed to load video URLs:', error);
-			hasError = true;
-			isLoading = false;
-		}
-	});
+	const fallbackMimeType = fallbackSrc ? getMimeType(fallbackSrc) : null;
 </script>
 
-{#if hasError}
-	<!-- Fallback UI for missing/failed videos -->
-	<div
-		class="flex items-center justify-center bg-muted text-xs text-destructive {className}"
-		style={placeholderStyle}
-	>
-		<div class="p-4 text-center">
-			<p class="font-semibold">Video Not Found</p>
-			<p class="mt-1 text-[10px] text-muted-foreground">{primarySrc}</p>
-		</div>
-	</div>
-{:else if isLoading}
-	<!-- Loading state: Show poster or placeholder with loader overlay -->
-	<div class="relative" style={placeholderStyle}>
-		{#if videoAsset?.poster}
-			<PixelatedReveal
-				srcset={videoAsset.poster.srcset}
-				src={videoAsset.poster.fallbackSrc}
-				placeholder={videoAsset.poster.placeholder}
-				{alt}
-				class={className}
-				style={placeholderStyle}
-			/>
-		{:else}
-			<div class="bg-muted {className}" style={placeholderStyle}></div>
-		{/if}
-		<VideoLoader />
-	</div>
-{:else if primaryUrl}
-	<!-- Render actual video once URLs are loaded -->
-	<VideoPlayer poster={posterSrc} class={className} {style} {aspectRatio}>
-		<source src={primaryUrl} type={primaryMimeType} />
-		{#if fallbackUrl && fallbackMimeType}
-			<source src={fallbackUrl} type={fallbackMimeType} />
-		{/if}
-	</VideoPlayer>
-{/if}
+<VideoPlayer poster={posterSrc} class={className} {style} {aspectRatio}>
+	<source src={primarySrc} type={primaryMimeType} />
+	{#if fallbackSrc && fallbackMimeType}
+		<source src={fallbackSrc} type={fallbackMimeType} />
+	{/if}
+</VideoPlayer>

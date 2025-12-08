@@ -45,7 +45,7 @@ export const data: Project = {
 		},
 		{
 			type: 'image',
-			src: '/projects/terra-form/hero.webp',
+			src: '/projects/terra-form/hero.avif',
 			alt: 'terra form - 2021',
 			isCover: true
 		},

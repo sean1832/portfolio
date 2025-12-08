@@ -7,7 +7,6 @@
 		href?: string;
 		imageSrc: string;
 		imageAlt: string;
-		imageSize?: string;
 		title: string;
 		year: string;
 		imageClass?: string;
@@ -15,17 +14,8 @@
 		footerClass?: string;
 	}
 
-	let {
-		href,
-		imageSrc,
-		imageAlt,
-		imageSize = '75vw',
-		title,
-		year,
-		imageClass,
-		imageWrapperClass,
-		footerClass
-	}: Props = $props();
+	let { href, imageSrc, imageAlt, title, year, imageClass, imageWrapperClass, footerClass }: Props =
+		$props();
 
 	const Tag = href ? 'a' : 'div';
 	let decoder: Decoder;
@@ -42,10 +32,9 @@
 >
 	<div class={cn('relative min-h-0 w-full flex-1', imageWrapperClass)}>
 		<LazyImage
-			filename={imageSrc}
+			src={imageSrc}
 			alt={imageAlt}
 			class={cn('absolute inset-0 h-full w-full object-cover p-4', imageClass)}
-			sizes={imageSize}
 		/>
 	</div>
 

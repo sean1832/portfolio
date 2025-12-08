@@ -41,7 +41,7 @@ export const data: Project = {
 		},
 		{
 			type: 'image',
-			src: '/projects/tectonic-resilience/render-hotpot.avif',
+			src: '/projects/tectonic-resilience/render-hotpot_1024p.avif',
 			alt: 'interior perspective of modular timber structure used as community gathering space',
 			groupId: 'modular-adaptation'
 		},

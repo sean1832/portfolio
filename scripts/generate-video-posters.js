@@ -1,5 +1,5 @@
 /**
- * Scans src/lib/assets/projects for video files and generates WebP posters.
+ * Scans static/projects for video files and generates WebP posters.
  * Uses a centralized cache file to support incremental builds.
  *
  * Usage:
@@ -59,8 +59,8 @@ const Logger = {
 // 2. CONFIGURATION & ARGS
 // ==========================================
 const CONFIG = {
-	baseDir: './src/lib/assets/projects',
-	cacheFile: './scripts/.poster-cache.json', // Centralized Cache
+	baseDir: 'static/projects',
+	cacheFile: 'node_modules/.cache/poster-cache.json', // Cache
 	ffmpegCmd: 'ffmpeg',
 	ffmpegArgs: (input, output) => [
 		'-y',

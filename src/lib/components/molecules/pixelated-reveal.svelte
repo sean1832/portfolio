@@ -4,8 +4,6 @@
 
 	interface Props {
 		src: string;
-		srcset?: string;
-		sizes?: string;
 		placeholder: string;
 		alt: string;
 		class?: string;
@@ -13,16 +11,7 @@
 		durationMs?: number;
 	}
 
-	let {
-		src,
-		srcset,
-		placeholder,
-		sizes,
-		alt,
-		class: className,
-		style,
-		durationMs = 600
-	}: Props = $props();
+	let { src, placeholder, alt, class: className, style, durationMs = 600 }: Props = $props();
 
 	let canvas: HTMLCanvasElement | undefined = $state();
 	let imgRef: HTMLImageElement | undefined = $state();
@@ -38,20 +27,19 @@
 	const STEPS = [0.02, 0.05, 0.1, 0.25, 0.5, 1.0];
 
 	function drawStep(image: HTMLImageElement, scale: number) {
-		if (!canvas) return;
+		if (!canvas || !containerRef) return;
 
 		const w = image.naturalWidth;
 		const h = image.naturalHeight;
 
-		// resize internal canvas resolution to low-res step
-		// max(1, ...) to prevent 0px dimension errors
+		// Set canvas internal resolution to low-res pixelated size
 		canvas.width = Math.max(1, Math.floor(w * scale));
 		canvas.height = Math.max(1, Math.floor(h * scale));
 
 		const ctx = canvas.getContext('2d');
 		if (!ctx) return;
 
-		// disable smoothing for hard pixel image
+		// disable smoothing for hard pixel edges
 		ctx.imageSmoothingEnabled = false;
 
 		ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
@@ -152,14 +140,14 @@
 		src={placeholder}
 		{alt}
 		aria-hidden="true"
-		class={cn('h-full w-full object-cover', className)}
+		class={cn('h-full w-full', className)}
 		class:opacity-0={isLoaded}
 		style="image-rendering: pixelated; {style || ''}"
 	/>
 
 	<canvas
 		bind:this={canvas}
-		class="absolute inset-0 h-full w-full object-cover"
+		class={cn('absolute inset-0 h-full w-full', className)}
 		class:hidden={!isLoaded || !isDecoded || isRevealed}
 		style="image-rendering: pixelated; {style || ''}"
 		aria-hidden="true"
@@ -170,13 +158,11 @@
 		<img
 			bind:this={imgRef}
 			{src}
-			{srcset}
-			{sizes}
 			{alt}
 			loading="eager"
 			fetchpriority="high"
 			decoding="async"
-			class="absolute inset-0 h-full w-full object-cover"
+			class={cn('absolute inset-0 h-full w-full', className)}
 			class:opacity-0={!isRevealed}
 			{style}
 			onload={onMainImageLoad}

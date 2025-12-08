@@ -21,7 +21,7 @@
 
 {#if heroImage?.type === 'image'}
 	<LazyImage
-		filename={heroImage.src}
+		src={heroImage.src}
 		alt={heroImage.alt}
 		class="h-full w-full object-cover "
 		style={getMediaStyle(heroImage)}
