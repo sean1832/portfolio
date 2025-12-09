@@ -31,7 +31,7 @@ export const data: Project = {
 	],
 	contributions: [
 		makeContribution('grasshopper & code development', 100),
-		makeContribution('design & modeling', 75),
+		makeContribution('design & modeling', 50),
 		makeContribution('rendering', 100),
 		makeContribution('details / assembly development', 50),
 		makeContribution('narrative & concept', 50),
