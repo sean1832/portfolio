@@ -54,9 +54,9 @@
 
 		<!--desktop navigation-->
 		<div class="hidden items-center gap-8 text-lg sm:flex lg:gap-32">
-			<a href="/#projects" class="min-w-16 hover:underline hover:underline-offset-4 lg:min-w-20">
+			<a href="/#designs" class="min-w-16 hover:underline hover:underline-offset-4 lg:min-w-20">
 				<Decoder
-					text="PROJECTS"
+					text="DESIGNS"
 					trigger="hover"
 					variant="shuffle"
 					scrambleSpeedMs={40}
