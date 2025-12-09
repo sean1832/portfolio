@@ -29,7 +29,7 @@
 </script>
 
 <Seo
-	title="Zeke Zhang | Computational Designer & Researcher"
+	title="Zeke Zhang"
 	description="Portfolio of Zeke Zhang - Researcher and computational designer specializing in algorithmic architecture, reinforcement learning, GPU-accelerated workflows, and data-driven design systems."
 	url="https://zekezhang.com"
 	keywords={[
@@ -79,7 +79,7 @@
 
 <!--feature work-->
 {#if featureProjectWithVideo}
-	<div id="projects" class="flex min-h-screen items-center justify-center py-8 lg:h-screen">
+	<div id="projects" class="flex min-h-screen items-center justify-center py-8">
 		<div class="flex items-end p-4 sm:p-8 lg:p-32">
 			<div class="relative flex flex-col lg:block">
 				<h1 class="mb-4 text-lg lg:absolute lg:top-0 lg:right-full lg:mr-8 lg:mb-0">
