@@ -1,4 +1,5 @@
 import type { ToolProject } from '$lib/types/tool-project';
+import mdContent from './baku.md?raw';
 
 export const data: ToolProject = {
 	slug: 'baku',
@@ -11,5 +12,7 @@ export const data: ToolProject = {
     `.trim(),
 	year: 2023,
 	technologies: ['csharp', 'ILGPU', 'cuda', 'opencl', 'grasshopper', 'rhinocommon', 'rhino3d'],
-	repository: { text: 'Github', url: 'https://github.com/sean1832/baku' }
+	repository: { text: 'Github', url: 'https://github.com/sean1832/baku' },
+	license: { text: 'Apache-2.0', url: 'https://github.com/sean1832/BAKU/blob/master/LICENSE' },
+	markdownContent: mdContent
 };
