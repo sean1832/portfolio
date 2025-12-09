@@ -185,6 +185,7 @@
 				alt="Video Poster"
 				class="h-full w-full"
 				style={containerStyle}
+				objectFit="cover"
 			/>
 		</div>
 	{/if}
