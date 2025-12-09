@@ -13,8 +13,21 @@
 		style?: string;
 		poster?: string;
 		aspectRatio?: string;
+		/**
+		 * Behavior when autoplay is blocked:
+		 * - 'play-button': Show a manual play button overlay (default)
+		 * - 'poster-fallback': Show static poster image, hide video entirely
+		 */
+		autoplayFallback?: 'play-button' | 'poster-fallback';
 	}
-	let { children, class: className, poster, style, aspectRatio }: Props = $props();
+	let {
+		children,
+		class: className,
+		poster,
+		style,
+		aspectRatio,
+		autoplayFallback = 'play-button'
+	}: Props = $props();
 
 	let containerStyle = $derived(
 		[aspectRatio ? `aspect-ratio: ${aspectRatio}` : '', style].filter(Boolean).join('; ')
@@ -27,6 +40,7 @@
 	let isPlaying = $state(false); // Video is actually running
 	let isLoading = $state(false); // Waiting for browser/network
 	let showPlayButton = $state(false); // Autoplay failed, waiting for user click
+	let showPosterFallback = $state(false); // Autoplay failed and we're showing poster instead
 	let hasTriedWeChatAutoplay = false;
 
 	onMount(async () => {
@@ -53,10 +67,17 @@
 							isPlaying = true;
 							isLoading = false;
 							showPlayButton = false;
+							showPosterFallback = false;
 						}).catch(() => {
-							// Blocked again? Show button.
+							// Blocked again? Choose fallback.
 							isLoading = false;
-							showPlayButton = true;
+							if (autoplayFallback === 'poster-fallback' && poster) {
+								showPosterFallback = true;
+								showPlayButton = false;
+							} else {
+								showPlayButton = true;
+								showPosterFallback = false;
+							}
 						});
 					}
 				}
@@ -82,19 +103,29 @@
 					isPlaying = true;
 					isLoading = false;
 					showPlayButton = false;
+					showPosterFallback = false;
 				})
 				.catch((e) => {
 					console.warn('Autoplay blocked:', e);
-					// Failed! Stop loading, show Play button
+					// Failed! Stop loading
 					isPlaying = false;
 					isLoading = false;
-					showPlayButton = true;
+
+					// Choose fallback behavior based on prop
+					if (autoplayFallback === 'poster-fallback' && poster) {
+						showPosterFallback = true;
+						showPlayButton = false;
+					} else {
+						showPlayButton = true;
+						showPosterFallback = false;
+					}
 				});
 		} else {
 			// Older browsers (synchronous play)
 			isPlaying = true;
 			isLoading = false;
 			showPlayButton = false;
+			showPosterFallback = false;
 		}
 	}
 
@@ -121,6 +152,9 @@
 	};
 
 	function handleManualPlay() {
+		// Don't try to play if we're in poster-fallback mode
+		if (showPosterFallback) return;
+
 		if (videoEl) {
 			if (videoEl.paused) {
 				videoEl.muted = true;
@@ -143,7 +177,7 @@
 	{#if poster}
 		<div
 			class="pointer-events-none absolute inset-0 z-20 h-full w-full transition-opacity duration-500"
-			class:opacity-0={isPlaying}
+			class:opacity-0={isPlaying && !showPosterFallback}
 		>
 			<PixelatedReveal
 				src={poster}
@@ -158,7 +192,7 @@
 	<video
 		bind:this={videoEl}
 		use:lazyPlay
-		class={cn('h-full w-full object-cover', className)}
+		class={cn('h-full w-full object-cover', showPosterFallback && 'invisible', className)}
 		{style}
 		preload="none"
 		muted

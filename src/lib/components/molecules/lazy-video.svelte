@@ -13,6 +13,12 @@
 		style?: string;
 		/** Aspect ratio to maintain during loading (e.g., "16/9", "4/3") */
 		aspectRatio?: string;
+		/**
+		 * Behavior when autoplay is blocked:
+		 * - 'play-button': Show a manual play button overlay (default)
+		 * - 'poster-fallback': Show static poster image, hide video entirely
+		 */
+		autoplayFallback?: 'play-button' | 'poster-fallback';
 	}
 
 	let {
@@ -22,7 +28,8 @@
 		alt,
 		class: className,
 		style,
-		aspectRatio
+		aspectRatio,
+		autoplayFallback = 'play-button'
 	}: Props = $props();
 
 	/**
@@ -47,7 +54,7 @@
 	const fallbackMimeType = fallbackSrc ? getMimeType(fallbackSrc) : null;
 </script>
 
-<VideoPlayer poster={posterSrc} class={className} {style} {aspectRatio}>
+<VideoPlayer poster={posterSrc} class={className} {style} {aspectRatio} {autoplayFallback}>
 	<source src={primarySrc} type={primaryMimeType} />
 	{#if fallbackSrc && fallbackMimeType}
 		<source src={fallbackSrc} type={fallbackMimeType} />
