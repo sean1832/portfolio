@@ -29,6 +29,7 @@
 	let showSwipeHint = $state(false);
 	const HINT_STORAGE_KEY = 'portfolio-swipe-hint-seen';
 	const HINT_DURATION = 3000; // How long to show the hint
+	const HINT_COOLDOWN = 7 * 24 * 60 * 60 * 1000; // expires in 7 days
 
 	// Boundary feedback state (first/last project)
 	let boundaryMessage = $state<string | null>(null);
@@ -107,12 +108,16 @@
 
 		// Show hint on mobile viewport if not seen before
 		if (isMobileViewport()) {
-			const hasSeenHint = localStorage.getItem(HINT_STORAGE_KEY);
-			if (!hasSeenHint && (prevProject || nextProject)) {
-				// Mark as seen immediately (before showing)
-				localStorage.setItem(HINT_STORAGE_KEY, 'true');
+			const lastSeen = localStorage.getItem(HINT_STORAGE_KEY);
+			const now = Date.now();
+
+			// check if key is missing or if cooldown has passed
+			const shouldShow = !lastSeen || now - parseInt(lastSeen) > HINT_COOLDOWN;
+
+			if (shouldShow && (prevProject || nextProject)) {
+				// store current timestamp
+				localStorage.setItem(HINT_STORAGE_KEY, now.toString());
 				showSwipeHint = true;
-				// Auto-dismiss after duration
 				setTimeout(() => {
 					showSwipeHint = false;
 				}, HINT_DURATION);
