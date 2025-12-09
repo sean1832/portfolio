@@ -44,6 +44,19 @@
 	publishedTime="{project.year}-01-01"
 />
 
+<!-- Fixed Back Button -->
+<a
+	href="/tools"
+	class="fixed top-20 left-4 z-40 hidden
+	items-center gap-2 border bg-background
+	px-3 py-1 text-sm text-muted-foreground
+	transition-all hover:border-primary hover:text-primary
+	sm:flex lg:left-32"
+>
+	<ArrowLeft class="h-4 w-4" />
+	<span>All Tools</span>
+</a>
+
 <main class="min-h-screen px-4 pt-24 pb-16 sm:px-8 lg:px-32 lg:pt-32">
 	<!-- Header Section -->
 	<div class="mb-12 lg:mb-16">
