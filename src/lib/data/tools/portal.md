@@ -5,8 +5,6 @@ Portal is a Grasshopper3D plugin designed to facilitate [Inter-Process Communica
 ## Adaptors
 
 - [Portal.blender](https://github.com/sean1832/Portal.blender)
-- Portal.unity (Coming Soon)
-- Portal.revit (Coming Soon)
 
 ![demo](/tools/portal/portal-demo.mp4)
 
@@ -36,9 +34,6 @@ Portal is a Grasshopper3D plugin designed to facilitate [Inter-Process Communica
   - Linear Light
 - **Data Compression / Decompression** using GZip
 - **Metadata Support** for geometry
-
-> [!NOTE]
-> Due to the fact that I am working on this project alone in my free time, the development process maybe slow. I will try to implement features as soon as possible. If you have any feature requests, please let me know by creating a [feature request](https://github.com/sean1832/Portal/issues).
 
 ## System Requirements
 
