@@ -2,7 +2,7 @@
 	import Seo from '$lib/components/atoms/seo.svelte';
 	import type { PageData } from './$types';
 	import type { ImageMedia } from '$lib/types/media';
-	import { onMount, onDestroy } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { navbarState } from '$lib/hooks/navbar-state.svelte';
 	import Info from '@lucide/svelte/icons/info';
 	import * as Drawer from '$lib/components/ui/drawer';
@@ -14,6 +14,7 @@
 		ProjectMetadata,
 		ProjectContributions,
 		ProjectGallery,
+		ProjectFloatingNav,
 		MediaUtils
 	} from './_components';
 
@@ -94,6 +95,9 @@
 	]}
 	publishedTime="{project.year}-01-01"
 />
+
+<!-- FLOATING SIDE NAVIGATION (appears after scrolling past hero) -->
+<ProjectFloatingNav currentSlug={project.slug} />
 
 <div class="min-h-screen w-full">
 	<!-- HERO SECTION -->
