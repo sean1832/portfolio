@@ -29,7 +29,7 @@
 </script>
 
 <Seo
-	title="Zeke Zhang | Computational Designer & Researcher"
+	title="Zeke Zhang"
 	description="Portfolio of Zeke Zhang - Researcher and computational designer specializing in algorithmic architecture, reinforcement learning, GPU-accelerated workflows, and data-driven design systems."
 	url="https://zekezhang.com"
 	keywords={[
