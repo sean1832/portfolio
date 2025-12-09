@@ -79,7 +79,7 @@
 
 <!--feature work-->
 {#if featureProjectWithVideo}
-	<div id="projects" class="flex min-h-screen items-center justify-center py-8">
+	<div id="designs" class="flex min-h-screen items-center justify-center py-8">
 		<div class="flex items-end p-4 sm:p-8 lg:p-32">
 			<div class="relative flex flex-col lg:block">
 				<h1 class="mb-4 text-lg lg:absolute lg:top-0 lg:right-full lg:mr-8 lg:mb-0">
@@ -105,9 +105,9 @@
 					{/if}
 
 					<div
-						class="mt-4 min-w-[200px] cursor-pointer sm:min-w-[300px] lg:absolute lg:bottom-0 lg:left-full lg:mt-0 lg:ml-8 lg:min-w-100"
+						class="mt-4 min-w-[200px] cursor-pointer sm:min-w-[300px] 2xl:absolute 2xl:bottom-0 2xl:left-full 2xl:mt-0 2xl:ml-8 2xl:min-w-80"
 					>
-						<hr class="border-primary" />
+						<hr class="hidden border-primary 2xl:block" />
 						<div class="flex items-center justify-between">
 							<Decoder
 								bind:this={decoder}
