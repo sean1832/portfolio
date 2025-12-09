@@ -105,9 +105,9 @@
 					{/if}
 
 					<div
-						class="mt-4 min-w-[200px] cursor-pointer sm:min-w-[300px] lg:absolute lg:bottom-0 lg:left-full lg:mt-0 lg:ml-8 lg:min-w-100"
+						class="mt-4 min-w-[200px] cursor-pointer sm:min-w-[300px] 2xl:absolute 2xl:bottom-0 2xl:left-full 2xl:mt-0 2xl:ml-8 2xl:min-w-80"
 					>
-						<hr class="border-primary" />
+						<hr class="hidden border-primary 2xl:block" />
 						<div class="flex items-center justify-between">
 							<Decoder
 								bind:this={decoder}
