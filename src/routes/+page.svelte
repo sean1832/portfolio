@@ -101,6 +101,7 @@
 							alt={featureVideoMedia.alt}
 							class="w-full max-w-[800px] lg:w-[800px]"
 							aspectRatio={featureVideoMedia.aspectRatio || '3/4'}
+							autoplayFallback="poster-fallback"
 						/>
 					{/if}
 

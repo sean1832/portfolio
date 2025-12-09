@@ -9,9 +9,22 @@
 		class?: string;
 		style?: string;
 		durationMs?: number;
+		/** Object-fit style for the image (default: none, use 'cover' for video posters) */
+		objectFit?: 'cover' | 'contain' | 'fill' | 'none';
 	}
 
-	let { src, placeholder, alt, class: className, style, durationMs = 600 }: Props = $props();
+	let {
+		src,
+		placeholder,
+		alt,
+		class: className,
+		style,
+		durationMs = 600,
+		objectFit
+	}: Props = $props();
+
+	// Compute object-fit style string
+	let objectFitStyle = $derived(objectFit ? `object-fit: ${objectFit};` : '');
 
 	let canvas: HTMLCanvasElement | undefined = $state();
 	let imgRef: HTMLImageElement | undefined = $state();
@@ -142,14 +155,14 @@
 		aria-hidden="true"
 		class={cn('h-full w-full', className)}
 		class:opacity-0={isLoaded}
-		style="image-rendering: pixelated; {style || ''}"
+		style="image-rendering: pixelated; {objectFitStyle} {style || ''}"
 	/>
 
 	<canvas
 		bind:this={canvas}
 		class={cn('absolute inset-0 h-full w-full', className)}
 		class:hidden={!isLoaded || !isDecoded || isRevealed}
-		style="image-rendering: pixelated; {style || ''}"
+		style="image-rendering: pixelated; {objectFitStyle} {style || ''}"
 		aria-hidden="true"
 	></canvas>
 
@@ -164,7 +177,7 @@
 			decoding="async"
 			class={cn('absolute inset-0 h-full w-full', className)}
 			class:opacity-0={!isRevealed}
-			{style}
+			style="{objectFitStyle} {style || ''}"
 			onload={onMainImageLoad}
 		/>
 	{/if}

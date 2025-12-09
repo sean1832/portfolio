@@ -4,26 +4,44 @@
 	import type { Action } from 'svelte/action';
 	import PixelatedReveal from './pixelated-reveal.svelte';
 	import VideoLoader from '../atoms/loader.svelte';
+	import Play from '@lucide/svelte/icons/play';
 	import { onMount } from 'svelte';
 
 	interface Props {
 		children: Snippet;
 		class?: string;
 		style?: string;
-		/** Path to poster image in static folder (e.g., "/projects/video-poster.webp") */
 		poster?: string;
-		/** Aspect ratio to maintain container dimensions (e.g., "16/9") */
 		aspectRatio?: string;
+		/**
+		 * Behavior when autoplay is blocked:
+		 * - 'play-button': Show a manual play button overlay (default)
+		 * - 'poster-fallback': Show static poster image, hide video entirely
+		 */
+		autoplayFallback?: 'play-button' | 'poster-fallback';
 	}
-	let { children, class: className, poster, style, aspectRatio }: Props = $props();
+	let {
+		children,
+		class: className,
+		poster,
+		style,
+		aspectRatio,
+		autoplayFallback = 'play-button'
+	}: Props = $props();
 
-	// Compute container style with aspect ratio
 	let containerStyle = $derived(
 		[aspectRatio ? `aspect-ratio: ${aspectRatio}` : '', style].filter(Boolean).join('; ')
 	);
 
-	// Get poster placeholder from pre-generated manifest
 	let posterPlaceholder = $state<string | undefined>(poster);
+	let videoEl = $state<HTMLVideoElement | undefined>();
+
+	// State management
+	let isPlaying = $state(false); // Video is actually running
+	let isLoading = $state(false); // Waiting for browser/network
+	let showPlayButton = $state(false); // Autoplay failed, waiting for user click
+	let showPosterFallback = $state(false); // Autoplay failed and we're showing poster instead
+	let hasTriedWeChatAutoplay = false;
 
 	onMount(async () => {
 		if (poster) {
@@ -32,61 +50,134 @@
 				const placeholders = await response.json();
 				posterPlaceholder = placeholders[poster] ?? poster;
 			} catch (e) {
-				// Fallback to poster if manifest doesn't exist
 				posterPlaceholder = poster;
+			}
+		}
+
+		// [WeChat] Listen for bridge ready to trigger immediate play
+		// This is our best "aggressive" shot at bypassing the click requirement
+		if (typeof window !== 'undefined') {
+			const tryWeChatPlay = () => {
+				if (videoEl && !isPlaying && !hasTriedWeChatAutoplay) {
+					hasTriedWeChatAutoplay = true;
+					videoEl.muted = true; // Mute increases success rate
+					const p = videoEl.play();
+					if (p !== undefined) {
+						p.then(() => {
+							isPlaying = true;
+							isLoading = false;
+							showPlayButton = false;
+							showPosterFallback = false;
+						}).catch(() => {
+							// Blocked again? Choose fallback.
+							isLoading = false;
+							if (autoplayFallback === 'poster-fallback' && poster) {
+								showPosterFallback = true;
+								showPlayButton = false;
+							} else {
+								showPlayButton = true;
+								showPosterFallback = false;
+							}
+						});
+					}
+				}
+			};
+
+			if ((window as any).WeixinJSBridge) {
+				tryWeChatPlay();
+			} else {
+				document.addEventListener('WeixinJSBridgeReady', tryWeChatPlay, false);
 			}
 		}
 	});
 
-	let isPlaying = $state(false);
+	// Helper to attempt playback and manage UI state
+	function tryPlay(node: HTMLVideoElement) {
+		isLoading = true; // Show spinner while we ask permission
+		const playPromise = node.play();
+
+		if (playPromise !== undefined) {
+			playPromise
+				.then(() => {
+					// Success!
+					isPlaying = true;
+					isLoading = false;
+					showPlayButton = false;
+					showPosterFallback = false;
+				})
+				.catch((e) => {
+					console.warn('Autoplay blocked:', e);
+					// Failed! Stop loading
+					isPlaying = false;
+					isLoading = false;
+
+					// Choose fallback behavior based on prop
+					if (autoplayFallback === 'poster-fallback' && poster) {
+						showPosterFallback = true;
+						showPlayButton = false;
+					} else {
+						showPlayButton = true;
+						showPosterFallback = false;
+					}
+				});
+		} else {
+			// Older browsers (synchronous play)
+			isPlaying = true;
+			isLoading = false;
+			showPlayButton = false;
+			showPosterFallback = false;
+		}
+	}
+
 	const lazyPlay: Action<HTMLVideoElement> = (node) => {
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
-						// force browser to load the source
 						node.preload = 'auto';
-
-						// play the video
-						node
-							.play()
-							.then(() => {
-								isPlaying = true;
-							})
-							.catch(() => {
-								// Silent catch: Auto-play policies or
-								// Low Power Mode interactions are expected failures.
-								// Still mark as playing to hide loader (user will see static poster)
-								isPlaying = true;
-							});
-
-						// stop observing for performance optimization
+						tryPlay(node);
 						observer.unobserve(node);
 						observer.disconnect();
 					}
 				});
 			},
-			{
-				rootMargin: '200px', // start loading 200px before it enters the screen
-				threshold: 0.01 // Trigger as soon as 1% is visible
-			}
+			{ rootMargin: '200px', threshold: 0.01 }
 		);
-
 		observer.observe(node);
-
 		return {
 			destroy() {
 				observer.disconnect();
 			}
 		};
 	};
+
+	function handleManualPlay() {
+		// Don't try to play if we're in poster-fallback mode
+		if (showPosterFallback) return;
+
+		if (videoEl) {
+			if (videoEl.paused) {
+				videoEl.muted = true;
+				tryPlay(videoEl);
+			} else {
+				// Pause
+			}
+		}
+	}
 </script>
 
-<div class="relative h-full w-full overflow-hidden" style={containerStyle}>
+<div
+	class="group relative h-full w-full cursor-pointer overflow-hidden"
+	style={containerStyle}
+	role="button"
+	tabindex="0"
+	onclick={handleManualPlay}
+	onkeydown={(e) => e.key === 'Enter' && handleManualPlay()}
+>
 	{#if poster}
 		<div
-			class="pointer-events-none absolute inset-0 z-20 h-full w-full"
-			class:opacity-0={isPlaying}
+			class="pointer-events-none absolute inset-0 z-20 h-full w-full transition-opacity duration-500"
+			class:opacity-0={isPlaying && !showPosterFallback}
 		>
 			<PixelatedReveal
 				src={poster}
@@ -94,12 +185,15 @@
 				alt="Video Poster"
 				class="h-full w-full"
 				style={containerStyle}
+				objectFit="cover"
 			/>
 		</div>
 	{/if}
+
 	<video
+		bind:this={videoEl}
 		use:lazyPlay
-		class={cn('h-full w-full object-cover', className)}
+		class={cn('h-full w-full object-cover', showPosterFallback && 'invisible', className)}
 		{style}
 		preload="none"
 		muted
@@ -113,10 +207,22 @@
 	>
 		{@render children()}
 	</video>
+
 	<div class="absolute inset-0 z-10 bg-transparent"></div>
 
-	<!-- Loading Animation Overlay (on top of everything, visible until video plays) -->
-	{#if !isPlaying}
+	{#if isLoading && !isPlaying && !showPlayButton}
 		<VideoLoader />
+	{/if}
+
+	{#if showPlayButton && !isPlaying && !isLoading}
+		<div
+			class="absolute inset-0 z-30 flex animate-in items-center justify-center bg-black/10 backdrop-blur-[2px] transition-all duration-300 fade-in"
+		>
+			<div
+				class="rounded-full bg-white/20 p-4 backdrop-blur-md transition-transform group-hover:scale-110"
+			>
+				<Play class="h-8 w-8 fill-white text-white" />
+			</div>
+		</div>
 	{/if}
 </div>
